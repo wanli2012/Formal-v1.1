@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *picImageV;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *communityLabel;
-//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewWidth;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
@@ -26,21 +25,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+
     self.picImageV.layer.cornerRadius = 20;
     self.attentionBtn.layer.cornerRadius = 5.f;
-    
-//    if (self.sum <= 3 && self.sum  > 0) {
-//        self.collectionViewHeight.constant = kSCREEN_WIDTH - 20;
-//    }else if(self.sum > 3 && self.sum <= 6){
-//        self.collectionViewHeight.constant = (kSCREEN_WIDTH - 30)/2;
-//    }else if (self.sum > 6){
-//        self.collectionViewHeight.constant = 340;
-//    }
-   
-//    NSLog(@"%f",self.collectionViewHeight.constant);
-    
-//    [self layoutIfNeeded];
 
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc] init];
     self.collectionView.collectionViewLayout = layout;
@@ -55,28 +42,26 @@
     self.contentLabel.text = model.content;
     
     if ([self.model.sum integerValue] == 4) {
-        self.collectionViewWidth.constant = 2 *(kSCREEN_WIDTH - 30)/3 + 26;
+        
+        self.collectionViewWidth.constant = 2 *(kSCREEN_WIDTH - 40)/3 + 36;
+        
     }else{
         self.collectionViewWidth.constant = kSCREEN_WIDTH;
     }
     
+    [self.collectionView reloadData];
 }
 
 #pragma mark - UICollectionViewDelegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     
-    return 9;
+    return [self.model.sum integerValue];
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     GLHome_AttentionCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GLHome_AttentionCollectionCell" forIndexPath:indexPath];
 
     cell.imageV.image = [UIImage imageNamed:@"图-2"];
-    
-    if (indexPath.row + 1 > [self.model.sum integerValue]) {
-        cell.hidden = YES;
-    }
-    
-    NSLog(@"self.sum = %@",self.model.sum);
+
     return cell;
 }
 
@@ -94,16 +79,15 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     if ([self.model.sum integerValue] == 1) {
-        return CGSizeMake(kSCREEN_WIDTH - 20, kSCREEN_WIDTH - 20);
+        return CGSizeMake(kSCREEN_WIDTH - 30, kSCREEN_WIDTH - 30);
     }else if([self.model.sum integerValue] == 2){
-        return CGSizeMake((kSCREEN_WIDTH - 25)/2, (kSCREEN_WIDTH - 25)/2);
+        return CGSizeMake((kSCREEN_WIDTH - 35)/2, (kSCREEN_WIDTH - 35)/2);
     }
     
-    return CGSizeMake((kSCREEN_WIDTH - 30)/3, (kSCREEN_WIDTH - 30)/3);
+    return CGSizeMake((kSCREEN_WIDTH - 40)/3, (kSCREEN_WIDTH - 40)/3);
 }
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(0, 10, 0, 10);
+    return UIEdgeInsetsMake(0, 15, 0, 15);
 }
-
 
 @end

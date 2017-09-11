@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="366"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="393" height="366"/>
+                <rect key="frame" x="0.0" y="0.0" width="393" height="365"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="头像1" translatesAutoresizingMaskIntoConstraints="NO" id="DrA-u9-14C">
@@ -59,7 +59,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="吕斌是个傻逼,不管你们信不信 ,反正我是行了,吕斌是个傻逼,不管你们信不信 ,反正我是行了,吕斌是个傻逼,不管你们信不信 ,反正我是行了," textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mz6-n1-JgU">
-                        <rect key="frame" x="10" y="105" width="373" height="47"/>
+                        <rect key="frame" x="10" y="100" width="373" height="47"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="es9-c2-Tqn"/>
                         </constraints>
@@ -68,10 +68,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="XUG-sl-asG">
-                        <rect key="frame" x="0.0" y="162" width="0.0" height="156.5"/>
+                        <rect key="frame" x="0.0" y="157" width="393" height="162"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" id="V8O-8X-dNP"/>
+                            <constraint firstAttribute="width" constant="393" id="V8O-8X-dNP"/>
                         </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bcM-bU-XHo">
                             <size key="itemSize" width="50" height="50"/>
@@ -139,7 +139,7 @@
                     <constraint firstItem="IYg-DQ-1GI" firstAttribute="top" secondItem="PFY-Xl-KEf" secondAttribute="bottom" constant="10" id="To2-b7-Tis"/>
                     <constraint firstItem="ajY-mo-JnX" firstAttribute="top" secondItem="W4d-yU-8o4" secondAttribute="bottom" constant="15" id="VHM-Gh-Do6"/>
                     <constraint firstItem="edf-jg-sVs" firstAttribute="centerY" secondItem="PFY-Xl-KEf" secondAttribute="centerY" id="WEr-KJ-TgB"/>
-                    <constraint firstItem="Mz6-n1-JgU" firstAttribute="top" secondItem="ajY-mo-JnX" secondAttribute="bottom" constant="15" id="Y5c-6Y-Pms"/>
+                    <constraint firstItem="Mz6-n1-JgU" firstAttribute="top" secondItem="ajY-mo-JnX" secondAttribute="bottom" constant="10" id="Y5c-6Y-Pms"/>
                     <constraint firstAttribute="bottom" secondItem="u5x-PA-ehx" secondAttribute="bottom" id="ZWT-aq-81L"/>
                     <constraint firstAttribute="trailingMargin" secondItem="ajY-mo-JnX" secondAttribute="trailing" constant="10" id="ege-Ds-MBs"/>
                     <constraint firstItem="qnR-Ae-ETR" firstAttribute="top" secondItem="DrA-u9-14C" secondAttribute="top" id="fBh-68-x3E"/>

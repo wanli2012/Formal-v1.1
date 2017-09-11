@@ -21,10 +21,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.view.backgroundColor = [UIColor whiteColor];
     [self.tableView registerNib:[UINib nibWithNibName:@"GLHome_AttentionCell" bundle:nil] forCellReuseIdentifier:@"GLHome_AttentionCell"];
 
-    for (int i = 3; i < 8; i++) {
+    for (int i = 1; i < 8; i++) {
         NSString *str = [NSString stringWithFormat:@"%zd",i];
         
         GLHome_AttentionModel *model = [[GLHome_AttentionModel alloc] init];
@@ -54,11 +55,7 @@
     GLHome_AttentionModel*model = self.dataSourceArr[indexPath.row];
     
     return model.cellHeight;
-    
-    
-//    self.tableView.rowHeight = UITableViewAutomaticDimension;
-//    self.tableView.estimatedRowHeight = 44;
-//    return self.tableView.rowHeight;
+
 }
 
 - (NSMutableArray *)dataSourceArr{

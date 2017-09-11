@@ -27,7 +27,7 @@
         collectionHeight = 3 *(kSCREEN_WIDTH - 40)/3 + 20;
     }
     
-    return 145 + titleSize.height + collectionHeight;
+    return 140 + titleSize.height + collectionHeight;
 }
 
 @end

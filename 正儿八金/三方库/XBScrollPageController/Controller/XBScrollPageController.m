@@ -468,14 +468,14 @@
 {
     if (!_selectionIndicator) {
         _selectionIndicator = [[UIView alloc]init];
-        _selectionIndicator.backgroundColor = [UIColor clearColor];
+        _selectionIndicator.backgroundColor = [UIColor groupTableViewBackgroundColor];
         
         //1.使用固定的tagItemSize
         if (![self isZeroSize:self.tagItemSize]) {
             if ([self isZeroSize:self.selectedIndicatorSize]) { //如果未手动设定指示条宽高,则设置默认值
                 self.selectedIndicatorSize = CGSizeMake(self.tagItemSize.width, 2);
             }
-            _selectionIndicator.frame = CGRectMake(0, self.tagViewHeight - self.selectedIndicatorSize.height, self.tagItemSize.width, self.selectedIndicatorSize.height);
+            _selectionIndicator.frame = CGRectMake(0, self.tagViewHeight - self.selectedIndicatorSize.height - 1, self.tagItemSize.width, self.selectedIndicatorSize.height);
         }
         //2.使用自由文本宽度,默认设为第一个自由文本的size
         else{
@@ -486,7 +486,7 @@
                 self.selectedIndicatorSize = CGSizeMake(tagSize.width, 8);
             }
             
-            _selectionIndicator.frame = CGRectMake(0, self.tagViewHeight - self.selectedIndicatorSize.height, tagSize.width, self.selectedIndicatorSize.height);
+            _selectionIndicator.frame = CGRectMake(0, self.tagViewHeight - self.selectedIndicatorSize.height - 1, tagSize.width, self.selectedIndicatorSize.height);
         }
 
         UIView *sub = [[UIView alloc]init];
@@ -495,6 +495,12 @@
         sub.frame = CGRectMake(self.selectedIndicatorSize.width/2, 0, self.selectedIndicatorSize.width / 2, self.selectedIndicatorSize.height);
         sub.centerX = _selectionIndicator.centerX;
         [_selectionIndicator addSubview:sub];
+        
+        
+        UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, self.tagViewHeight - self.selectedIndicatorSize.height, kSCREEN_WIDTH, 8)];
+        bottomView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        
+        [self.tagCollectionView addSubview:bottomView];
         [self.tagCollectionView addSubview:_selectionIndicator];
     }
 

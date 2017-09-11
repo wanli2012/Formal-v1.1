@@ -14,17 +14,18 @@
 
 @interface GLHomeController ()
 
+@property (weak, nonatomic) IBOutlet UIView *searchView;
+
 @end
 
 @implementation GLHomeController
 
-
 //重载init方法
-- (instancetype)init
-{
-    if (self = [super initWithTagViewHeight:49])
+- (instancetype)init{
+    
+    if (self = [super initWithTagViewHeight:40])
     {
-        self.yFloat = 20;
+        self.yFloat = 64;
     }
     return self;
 }
@@ -34,6 +35,11 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    self.searchView.layer.borderColor = MAIN_COLOR.CGColor;
+    self.searchView.layer.borderWidth = 1.f;
+    self.searchView.layer.cornerRadius = 5.f;
+    self.searchView.clipsToBounds = YES;
     
     [self addviewcontrol];
     [self selectTagByIndex:0 animated:YES];
@@ -48,24 +54,21 @@
 -(void)addviewcontrol{
     
     //设置自定义属性
-    self.tagItemSize = CGSizeMake(kSCREEN_WIDTH / 3, 49);
+    self.tagItemSize = CGSizeMake(kSCREEN_WIDTH / 2, 49);
 
     NSArray *titleArray = @[
                             @"关注动态",
-                            @"新品推荐",
                             @"热门话题",
                             ];
     
     NSArray *classNames = @[
                             [GLHome_AttentionController class],
-                            [GLHome_NewController class],
                             [GLHome_hotController class],
                             ];
     
     self.normalTitleColor = [UIColor blackColor];
-    self.selectedTitleColor = YYSRGBColor(233, 76, 137, 1);
-    self.selectedIndicatorColor = YYSRGBColor(233, 76, 137, 1);
-    
+    self.selectedTitleColor = MAIN_COLOR;
+    self.selectedIndicatorColor = MAIN_COLOR;
     
     [self reloadDataWith:titleArray andSubViewdisplayClasses:classNames withParams:nil];
     

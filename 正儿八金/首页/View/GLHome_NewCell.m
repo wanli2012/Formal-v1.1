@@ -12,7 +12,25 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    self.contentView.layer.masksToBounds = YES;
+    
+    self.contentView.layer.cornerRadius = 3;
+    
+    self.contentView.layer.borderWidth = 1;
+    
+    self.contentView.layer.borderColor = YYSRGBColor(0, 0, 0, 0.08).CGColor;
+    
+    self.layer.shadowOffset = CGSizeMake(0, 2);
+    
+    self.layer.shadowColor = YYSRGBColor(0, 0, 0, 1).CGColor;
+    
+    self.layer.shadowOpacity = 0.1;
+    
+    self.layer.shadowRadius = 4;
+    
+    self.layer.masksToBounds = NO;
+    
 }
 
 @end
