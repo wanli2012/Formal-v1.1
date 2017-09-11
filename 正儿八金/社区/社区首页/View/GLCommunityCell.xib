@@ -45,6 +45,9 @@
                         <state key="normal" title="关注">
                             <color key="titleColor" red="0.91507440809999996" green="0.2976952195" blue="0.53578960899999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
+                        <connections>
+                            <action selector="attentClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8g1-nd-lwP"/>
+                        </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MP3-Gk-U0F">
                         <rect key="frame" x="60" y="57.5" width="265" height="1"/>
@@ -53,13 +56,21 @@
                             <constraint firstAttribute="height" constant="1" id="GJI-ad-QJj"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关注:1222" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVj-AQ-voo">
+                        <rect key="frame" x="259.5" y="34" width="55.5" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="MP3-Gk-U0F" secondAttribute="bottom" id="5ET-lk-PHf"/>
                     <constraint firstItem="WSY-O6-sk9" firstAttribute="leading" secondItem="ivz-Sv-7I3" secondAttribute="trailing" constant="10" id="7Me-S8-YdL"/>
+                    <constraint firstAttribute="trailing" secondItem="DVj-AQ-voo" secondAttribute="trailing" constant="10" id="Bfu-fo-5Bc"/>
                     <constraint firstItem="ivz-Sv-7I3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="CsG-Yz-dc8"/>
                     <constraint firstItem="u0i-s4-anA" firstAttribute="leading" secondItem="ivz-Sv-7I3" secondAttribute="trailing" constant="10" id="HZM-Kz-jse"/>
                     <constraint firstAttribute="trailing" secondItem="mon-Kf-hQr" secondAttribute="trailing" constant="10" id="IGt-M0-Vg8"/>
+                    <constraint firstItem="DVj-AQ-voo" firstAttribute="centerY" secondItem="WSY-O6-sk9" secondAttribute="centerY" id="II8-IZ-2IE"/>
                     <constraint firstAttribute="bottom" secondItem="ivz-Sv-7I3" secondAttribute="bottom" constant="10" id="MYH-Un-aNw"/>
                     <constraint firstItem="u0i-s4-anA" firstAttribute="top" secondItem="ivz-Sv-7I3" secondAttribute="top" id="N7O-cp-J9o"/>
                     <constraint firstAttribute="trailing" secondItem="MP3-Gk-U0F" secondAttribute="trailing" id="a7p-d0-6Ab"/>
@@ -71,6 +82,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="attentBtn" destination="mon-Kf-hQr" id="nN7-6w-4CO"/>
+                <outlet property="attentLabel" destination="DVj-AQ-voo" id="Jbz-cy-07o"/>
                 <outlet property="detailLabel" destination="WSY-O6-sk9" id="Wmy-b7-KdE"/>
                 <outlet property="picImageV" destination="ivz-Sv-7I3" id="6UG-Rb-HJB"/>
                 <outlet property="titleLabel" destination="u0i-s4-anA" id="LSt-wi-ImI"/>

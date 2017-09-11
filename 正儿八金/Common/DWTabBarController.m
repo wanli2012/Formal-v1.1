@@ -16,7 +16,7 @@
 #import "DWTabBar.h"
 #import "LBSessionListViewController.h"
 
-#define DWColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0] //<<< 用10进制表示颜色，例如（255,255,255）黑色
+#define DWColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0] //用10进制表示颜色，例如（255,255,255）黑色
 #define DWRandomColor DWColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
 
 @implementation DWTabBarController
@@ -43,10 +43,8 @@
     [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];
     
     //设置导航控制器颜色为黄色
-    [[UINavigationBar appearance] setBackgroundImage:[self imageWithColor:DWColor(253, 218, 68)] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackgroundImage:[self imageWithColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
 
-    
-    
 }
 
 #pragma mark -
@@ -122,7 +120,7 @@
 
 - (void)addOneChildViewController:(UIViewController *)viewController WithTitle:(NSString *)title imageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName{
     
-    viewController.view.backgroundColor     = DWRandomColor;
+    viewController.view.backgroundColor     = [UIColor whiteColor];
     viewController.tabBarItem.title         = title;
     viewController.tabBarItem.image         = [UIImage imageNamed:imageName];
     UIImage *image = [UIImage imageNamed:selectedImageName];

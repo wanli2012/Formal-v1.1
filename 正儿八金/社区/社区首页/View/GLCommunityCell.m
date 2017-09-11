@@ -10,11 +10,10 @@
 
 @interface GLCommunityCell()
 
-@property (weak, nonatomic) IBOutlet UIButton *attentBtn;
-
 @property (weak, nonatomic) IBOutlet UIImageView *picImageV;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *detailLabel;
+
 
 @end
 
@@ -26,6 +25,14 @@
     self.attentBtn.layer.cornerRadius = 5.f;
     self.attentBtn.layer.borderWidth = 1.f;
     self.attentBtn.layer.borderColor = MAIN_COLOR.CGColor;
+    
+}
+
+- (IBAction)attentClick:(id)sender {
+    
+    if ([self.delegate respondsToSelector:@selector(attent:)]) {
+        [self.delegate attent:self.index];
+    }
     
 }
 

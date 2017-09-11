@@ -17,44 +17,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationBar.barTintColor = YYSRGBColor(120, 161, 255, 1);
-    self.navigationBar.tintColor=[UIColor whiteColor];
-//    self.navigationBarHidden = YES;
+//    self.navigationBar.barTintColor = [UIColor whiteColor];
     
-    [self.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17],NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-//    self.navigationBar.barStyle = UIBarStyleDefault;
+    [self.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17],NSForegroundColorAttributeName:MAIN_COLOR}];
+
 }
 
-//+(void)initialize
-//{
-//    UINavigationBar *naBar = [UINavigationBar appearance];
-//    naBar.tintColor = YYSRGBColor(230, 38, 7);
-//    naBar.backgroundColor = YYSRGBColor(230, 38, 7);
-//    naBar.translucent = NO;
-//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//    dict[NSForegroundColorAttributeName] = YYSRGBColor(230, 38, 7);
-//    [naBar setTitleTextAttributes:dict];
-//}
-
-
-- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
-
-{
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
     // viewController.hidesBottomBarWhenPushed = YES; //隐藏底部标签栏
     
     [super pushViewController:viewController animated:animated];
-    
     
 //    UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
 //    self.visibleViewController.navigationItem.backBarButtonItem = backButtonItem;
     
     [self.visibleViewController.navigationItem setHidesBackButton:YES];
     
-    UIButton *button=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
-    [button setImage:[UIImage imageNamed:@"iv_back"] forState:UIControlStateNormal];
-    [button setImageEdgeInsets:UIEdgeInsetsMake(5, -5, 5, 25)];
+    UIButton *button=[[UIButton alloc]initWithFrame:CGRectMake( 0, 0, 80, 44)];
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;//左对齐
+    [button setImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
+    [button setImageEdgeInsets:UIEdgeInsetsMake(0 ,10, 0, 0)];
+    // 让返回按钮内容继续向左边偏移10
+    button.contentEdgeInsets = UIEdgeInsetsMake(0, -17, 0, 0);
+    
     button.backgroundColor=[UIColor clearColor];
     [button addTarget:self action:@selector(popself) forControlEvents:UIControlEventTouchUpInside];
     
@@ -64,8 +49,7 @@
     
 }
 
--(UIBarButtonItem*) createBackButton
-
+- (UIBarButtonItem*)createBackButton
 {
     
     return [[UIBarButtonItem alloc]
@@ -81,7 +65,6 @@
 }
 
 -(void)popself
-
 {
     
     [self popViewControllerAnimated:YES];

@@ -1,5 +1,5 @@
 //
-//  GLCommunity_FollowController.h
+//  GLCommunity_PostCommentReplyCell.h
 //  正儿八金
 //
 //  Created by 龚磊 on 2017/9/11.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GLCommunity_FollowController : UITableViewController
-
-@property (nonatomic, strong)NSArray *dataSource;
+@interface GLCommunity_PostCommentReplyCell : UITableViewCell
 
 @end

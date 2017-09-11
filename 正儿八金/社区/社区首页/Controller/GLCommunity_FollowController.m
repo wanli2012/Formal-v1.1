@@ -9,6 +9,7 @@
 #import "GLCommunity_FollowController.h"
 #import "GLCommunityCell.h"
 
+
 @interface GLCommunity_FollowController ()
 
 @end
@@ -22,6 +23,7 @@
     self.tableView.showsHorizontalScrollIndicator = NO;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"GLCommunityCell" bundle:nil] forCellReuseIdentifier:@"GLCommunityCell"];
+    
 }
 
 #pragma mark - Table view data source
@@ -40,9 +42,24 @@
     
     GLCommunityCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GLCommunityCell" forIndexPath:indexPath];
     
+    cell.titleLabel.text = self.dataSource[indexPath.row];
+    cell.index = indexPath.row;
+    
+    cell.attentBtn.hidden = YES;
+    cell.attentLabel.hidden = NO;
+   
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSLog(@"买菜社区:%zd",indexPath.row);
+    
+    if ([self.delegate respondsToSelector:@selector(pushControllerWithIndex:)]) {
+        [self.delegate pushControllerWithIndex:indexPath.row];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -11,14 +11,6 @@
 
 @interface GLHome_AttentionCell()<UICollectionViewDelegate,UICollectionViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UIButton *attentionBtn;
-@property (weak, nonatomic) IBOutlet UIImageView *picImageV;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *communityLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewWidth;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
-
 @end
 
 @implementation GLHome_AttentionCell
@@ -34,6 +26,7 @@
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"GLHome_AttentionCollectionCell" bundle:nil] forCellWithReuseIdentifier:@"GLHome_AttentionCollectionCell"];
     
+
 }
 
 - (void)setModel:(GLHome_AttentionModel *)model{
@@ -47,6 +40,12 @@
         
     }else{
         self.collectionViewWidth.constant = kSCREEN_WIDTH;
+    }
+    
+    if (model.isHiddenAttendBtn) {
+        self.attentionBtn.hidden = YES;
+    }else{
+        self.attentionBtn.hidden = NO;
     }
     
     [self.collectionView reloadData];

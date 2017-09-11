@@ -1,5 +1,5 @@
 //
-//  GLCommunityCell.h
+//  GLCommunity_PostController.h
 //  正儿八金
 //
 //  Created by 龚磊 on 2017/9/11.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GLCommunityCell : UITableViewCell
+@interface GLCommunity_PostController : UIViewController
 
 @end
