@@ -16,6 +16,8 @@
 #import "DWTabBar.h"
 #import "LBSessionListViewController.h"
 
+
+
 #define DWColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0] //用10进制表示颜色，例如（255,255,255）黑色
 #define DWRandomColor DWColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
 
@@ -87,25 +89,25 @@
     
     [self addOneChildViewController:[[BaseNavigationViewController alloc]initWithRootViewController:[[GLHomeController alloc]init]]
                           WithTitle:@"首页"
-                          imageName:@"我的未点中"
+                          imageName:@"首页未点中"
                   selectedImageName:@"首页"];
     
     [self addOneChildViewController:[[BaseNavigationViewController alloc]initWithRootViewController:[[GLCommunityController alloc] init]]
-                          WithTitle:@"同城"
-                          imageName:@"我的未点中"
-                  selectedImageName:@"首页"];
+                          WithTitle:@"社区"
+                          imageName:@"社区未点中"
+                  selectedImageName:@"社区"];
     
     
     [self addOneChildViewController:[[BaseNavigationViewController alloc]initWithRootViewController:[[LBSessionListViewController alloc]init]]
                           WithTitle:@"好友"
-                          imageName:@"我的未点中"
-                  selectedImageName:@"首页"];
+                          imageName:@"好友未点中"
+                  selectedImageName:@"好友"];
     
     
     [self addOneChildViewController:[[BaseNavigationViewController alloc]initWithRootViewController:[[GLMineController alloc]init]]
                           WithTitle:@"我的"
                           imageName:@"我的未点中"
-                  selectedImageName:@"首页"];
+                  selectedImageName:@"我的"];
     
 }
 

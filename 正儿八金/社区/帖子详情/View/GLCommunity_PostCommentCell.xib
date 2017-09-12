@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="359" height="339"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="359" height="339"/>
+                <rect key="frame" x="0.0" y="0.0" width="359" height="338"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="头像1" translatesAutoresizingMaskIntoConstraints="NO" id="yHD-hM-wMl">
@@ -60,20 +60,27 @@
                         </state>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jn1-zA-riJ">
-                        <rect key="frame" x="50" y="50" width="299" height="86"/>
+                        <rect key="frame" x="50" y="50" width="299" height="93.5"/>
                         <string key="text">          孩子语文课练习册上的问题,孩子语文课练习册上的问题,孩子语文课练习册上的问题,孩子语文课练习册上的问题,孩子语文课练习册上的问题,孩子语文课练习册上的问题,孩子语文课练习册上的问题,孩子语文课练习册上的问题,孩子语文课练习册上的问题,孩子语文课练习册上的问题,</string>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KTL-p5-NnZ">
-                        <rect key="frame" x="50" y="141" width="299" height="193"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <rect key="frame" x="50" y="148.5" width="299" height="180"/>
+                        <color key="backgroundColor" red="0.92156862750000001" green="0.92063152790000002" blue="0.94577074049999998" alpha="0.5" colorSpace="calibratedRGB"/>
                         <connections>
                             <outlet property="dataSource" destination="KGk-i7-Jjw" id="pdB-x3-6HQ"/>
                             <outlet property="delegate" destination="KGk-i7-Jjw" id="doU-3S-xTP"/>
                         </connections>
                     </tableView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8nK-9H-VBC">
+                        <rect key="frame" x="50" y="337.5" width="309" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="4ka-CK-Q8Y"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Jn1-zA-riJ" firstAttribute="top" secondItem="ocb-VS-k5V" secondAttribute="bottom" constant="10" id="3qm-Vc-iua"/>
@@ -83,19 +90,23 @@
                     <constraint firstItem="Av2-Iv-RMW" firstAttribute="leading" secondItem="HTY-UB-nWM" secondAttribute="trailing" constant="10" id="ByF-Ox-Dfu"/>
                     <constraint firstAttribute="trailing" secondItem="KTL-p5-NnZ" secondAttribute="trailing" constant="10" id="D6t-FK-nsf"/>
                     <constraint firstItem="Av2-Iv-RMW" firstAttribute="centerY" secondItem="yHD-hM-wMl" secondAttribute="centerY" id="GAP-O2-nhp"/>
+                    <constraint firstItem="8nK-9H-VBC" firstAttribute="leading" secondItem="KTL-p5-NnZ" secondAttribute="leading" id="LbX-QC-ojQ"/>
                     <constraint firstItem="KTL-p5-NnZ" firstAttribute="leading" secondItem="Jn1-zA-riJ" secondAttribute="leading" id="PdG-tx-vyS"/>
                     <constraint firstItem="Jn1-zA-riJ" firstAttribute="leading" secondItem="ocb-VS-k5V" secondAttribute="leading" id="Rpo-aT-RXc"/>
                     <constraint firstAttribute="trailing" secondItem="Jn1-zA-riJ" secondAttribute="trailing" constant="10" id="U06-Y4-Iry"/>
+                    <constraint firstAttribute="bottom" secondItem="8nK-9H-VBC" secondAttribute="bottom" id="dOV-FS-l5E"/>
                     <constraint firstItem="vAy-RO-ZPn" firstAttribute="top" secondItem="yHD-hM-wMl" secondAttribute="top" id="hpS-W8-XsX"/>
                     <constraint firstItem="yHD-hM-wMl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="jhq-Hl-uCY"/>
+                    <constraint firstAttribute="trailing" secondItem="8nK-9H-VBC" secondAttribute="trailing" id="kcL-Wz-9oA"/>
                     <constraint firstItem="vAy-RO-ZPn" firstAttribute="leading" secondItem="yHD-hM-wMl" secondAttribute="trailing" constant="10" id="mcI-0h-xZa"/>
                     <constraint firstItem="HTY-UB-nWM" firstAttribute="centerY" secondItem="Av2-Iv-RMW" secondAttribute="centerY" id="q33-wf-vvh"/>
-                    <constraint firstAttribute="bottom" secondItem="KTL-p5-NnZ" secondAttribute="bottom" constant="5" id="tFu-gX-JY4"/>
+                    <constraint firstAttribute="bottom" secondItem="KTL-p5-NnZ" secondAttribute="bottom" constant="10" id="tFu-gX-JY4"/>
                     <constraint firstItem="ocb-VS-k5V" firstAttribute="leading" secondItem="yHD-hM-wMl" secondAttribute="trailing" constant="10" id="uFv-Wc-VQh"/>
                     <constraint firstItem="ocb-VS-k5V" firstAttribute="bottom" secondItem="yHD-hM-wMl" secondAttribute="bottom" id="xGt-cL-JbH"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="commentLabel" destination="Jn1-zA-riJ" id="Bx6-dl-Us8"/>
                 <outlet property="tableView" destination="KTL-p5-NnZ" id="r3a-Zp-L7V"/>
             </connections>
             <point key="canvasLocation" x="17.5" y="10.5"/>

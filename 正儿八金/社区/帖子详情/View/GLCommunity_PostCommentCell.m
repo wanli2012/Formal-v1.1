@@ -13,6 +13,10 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (weak, nonatomic) IBOutlet UILabel *commentLabel;
+
+@property (nonatomic, copy)NSArray *models;
+
 @end
 
 @implementation GLCommunity_PostCommentCell
@@ -24,20 +28,51 @@
     
 }
 
+- (void)setModel:(GLCommunity_PostCommentModel *)model{
+    _model = model;
+    self.commentLabel.text = model.comment;
+    self.models = model.commentArr;
+    
+    [self.tableView reloadData];
+}
+
 #pragma mark UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
+
+    return self.models.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     GLCommunity_PostCommentReplyCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GLCommunity_PostCommentReplyCell"];
+    GLCommunity_PostCommentModel *model = self.models[indexPath.row];
+
+    NSString *str = [NSString stringWithFormat:@"%@:%@",model.son_commentName,model.son_comment];
+    NSMutableAttributedString *noteStr = [[NSMutableAttributedString alloc] initWithString:str];
+    NSRange redRange = NSMakeRange(0, [[noteStr string] rangeOfString:@":"].location);
+    [noteStr addAttribute:NSForegroundColorAttributeName value:MAIN_COLOR range:redRange];
     
+    [cell.contentLabel setAttributedText:noteStr] ;
+    [cell.contentLabel sizeToFit];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     return cell;
+    
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 0)];
+    view.backgroundColor = [UIColor clearColor];
+    return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     

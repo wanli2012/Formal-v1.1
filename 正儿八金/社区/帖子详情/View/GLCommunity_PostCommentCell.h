@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GLCommunity_PostCommentModel.h"
 
 @interface GLCommunity_PostCommentCell : UITableViewCell
+
+@property (nonatomic, strong)GLCommunity_PostCommentModel *model;
+
 
 @end

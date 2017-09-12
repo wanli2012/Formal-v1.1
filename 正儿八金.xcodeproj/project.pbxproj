@@ -171,6 +171,34 @@
 		4A5D0D321F62868C009DD45D /* LBGoodFriendsViewHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5D0D291F62868C009DD45D /* LBGoodFriendsViewHeaderFooterView.m */; };
 		4A5D0D361F6293AF009DD45D /* GLHome_NewsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5D0D341F6293AF009DD45D /* GLHome_NewsHeaderView.m */; };
 		4A5D0D371F6293AF009DD45D /* GLHome_NewsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A5D0D351F6293AF009DD45D /* GLHome_NewsHeaderView.xib */; };
+		4A605EBB1F677DD500F80666 /* GLCommunity_PostCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605EBA1F677DD500F80666 /* GLCommunity_PostCommentModel.m */; };
+		4A605ECC1F67B81500F80666 /* GLCommentListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605ECA1F67B81500F80666 /* GLCommentListController.m */; };
+		4A605ECD1F67B81500F80666 /* GLCommentListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A605ECB1F67B81500F80666 /* GLCommentListController.xib */; };
+		4A605ED11F67B9BF00F80666 /* GLCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605ECF1F67B9BF00F80666 /* GLCommentCell.m */; };
+		4A605ED21F67B9BF00F80666 /* GLCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A605ED01F67B9BF00F80666 /* GLCommentCell.xib */; };
+		4A605EE01F67CCBB00F80666 /* GLLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605EDE1F67CCBB00F80666 /* GLLoginController.m */; };
+		4A605EE11F67CCBB00F80666 /* GLLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A605EDF1F67CCBB00F80666 /* GLLoginController.xib */; };
+		4A605EE51F67CCE300F80666 /* GLRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605EE31F67CCE300F80666 /* GLRegisterController.m */; };
+		4A605EE61F67CCE300F80666 /* GLRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A605EE41F67CCE300F80666 /* GLRegisterController.xib */; };
+		4A605F0E1F67EB5A00F80666 /* UINavigationController+WXSTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605EEC1F67EB5A00F80666 /* UINavigationController+WXSTransition.m */; };
+		4A605F0F1F67EB5A00F80666 /* UIViewController+WXSTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605EEE1F67EB5A00F80666 /* UIViewController+WXSTransition.m */; };
+		4A605F101F67EB5A00F80666 /* UIViewController+WXSTransitionProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605EF01F67EB5A00F80666 /* UIViewController+WXSTransitionProperty.m */; };
+		4A605F111F67EB5A00F80666 /* WXSPercentDrivenInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605EF21F67EB5A00F80666 /* WXSPercentDrivenInteractiveTransition.m */; };
+		4A605F121F67EB5A00F80666 /* WXSTransitionManager+BoomAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605EF41F67EB5A00F80666 /* WXSTransitionManager+BoomAnimation.m */; };
+		4A605F131F67EB5A00F80666 /* WXSTransitionManager+BrickAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605EF61F67EB5A00F80666 /* WXSTransitionManager+BrickAnimation.m */; };
+		4A605F141F67EB5A00F80666 /* WXSTransitionManager+CoverAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605EF81F67EB5A00F80666 /* WXSTransitionManager+CoverAnimation.m */; };
+		4A605F151F67EB5A00F80666 /* WXSTransitionManager+FlipAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605EFA1F67EB5A00F80666 /* WXSTransitionManager+FlipAnimation.m */; };
+		4A605F161F67EB5A00F80666 /* WXSTransitionManager+FragmentAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605EFC1F67EB5A00F80666 /* WXSTransitionManager+FragmentAnimation.m */; };
+		4A605F171F67EB5A00F80666 /* WXSTransitionManager+InsideThenPushAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605EFE1F67EB5A00F80666 /* WXSTransitionManager+InsideThenPushAnimation.m */; };
+		4A605F181F67EB5A00F80666 /* WXSTransitionManager+PageAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605F001F67EB5A00F80666 /* WXSTransitionManager+PageAnimation.m */; };
+		4A605F191F67EB5A00F80666 /* WXSTransitionManager+SpreadAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605F021F67EB5A00F80666 /* WXSTransitionManager+SpreadAnimation.m */; };
+		4A605F1A1F67EB5A00F80666 /* WXSTransitionManager+SystermAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605F041F67EB5A00F80666 /* WXSTransitionManager+SystermAnimation.m */; };
+		4A605F1B1F67EB5A00F80666 /* WXSTransitionManager+TypeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605F061F67EB5A00F80666 /* WXSTransitionManager+TypeTool.m */; };
+		4A605F1C1F67EB5A00F80666 /* WXSTransitionManager+ViewMoveAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605F081F67EB5A00F80666 /* WXSTransitionManager+ViewMoveAnimation.m */; };
+		4A605F1D1F67EB5A00F80666 /* WXSTransitionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605F0A1F67EB5A00F80666 /* WXSTransitionManager.m */; };
+		4A605F1E1F67EB5A00F80666 /* WXSTransitionProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605F0C1F67EB5A00F80666 /* WXSTransitionProperty.m */; };
+		4A605F221F67F0C600F80666 /* GLForgetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605F201F67F0C600F80666 /* GLForgetController.m */; };
+		4A605F231F67F0C600F80666 /* GLForgetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A605F211F67F0C600F80666 /* GLForgetController.xib */; };
 		4A6FC4341F662B94002AE9DE /* GLHomeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6FC4331F662B94002AE9DE /* GLHomeController.xib */; };
 		4A73CE9A1F60D7760071C559 /* GLHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A73CE981F60D7760071C559 /* GLHomeController.m */; };
 		4A73CE9F1F60D7890071C559 /* GLMineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A73CE9D1F60D7890071C559 /* GLMineController.m */; };
@@ -541,6 +569,58 @@
 		4A5D0D331F6293AF009DD45D /* GLHome_NewsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHome_NewsHeaderView.h; sourceTree = "<group>"; };
 		4A5D0D341F6293AF009DD45D /* GLHome_NewsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLHome_NewsHeaderView.m; sourceTree = "<group>"; };
 		4A5D0D351F6293AF009DD45D /* GLHome_NewsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLHome_NewsHeaderView.xib; sourceTree = "<group>"; };
+		4A605EB91F677DD500F80666 /* GLCommunity_PostCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCommunity_PostCommentModel.h; sourceTree = "<group>"; };
+		4A605EBA1F677DD500F80666 /* GLCommunity_PostCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCommunity_PostCommentModel.m; sourceTree = "<group>"; };
+		4A605EC91F67B81500F80666 /* GLCommentListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCommentListController.h; sourceTree = "<group>"; };
+		4A605ECA1F67B81500F80666 /* GLCommentListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCommentListController.m; sourceTree = "<group>"; };
+		4A605ECB1F67B81500F80666 /* GLCommentListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLCommentListController.xib; sourceTree = "<group>"; };
+		4A605ECE1F67B9BF00F80666 /* GLCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCommentCell.h; sourceTree = "<group>"; };
+		4A605ECF1F67B9BF00F80666 /* GLCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCommentCell.m; sourceTree = "<group>"; };
+		4A605ED01F67B9BF00F80666 /* GLCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLCommentCell.xib; sourceTree = "<group>"; };
+		4A605EDD1F67CCBB00F80666 /* GLLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLoginController.h; sourceTree = "<group>"; };
+		4A605EDE1F67CCBB00F80666 /* GLLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLoginController.m; sourceTree = "<group>"; };
+		4A605EDF1F67CCBB00F80666 /* GLLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLLoginController.xib; sourceTree = "<group>"; };
+		4A605EE21F67CCE300F80666 /* GLRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRegisterController.h; sourceTree = "<group>"; };
+		4A605EE31F67CCE300F80666 /* GLRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRegisterController.m; sourceTree = "<group>"; };
+		4A605EE41F67CCE300F80666 /* GLRegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLRegisterController.xib; sourceTree = "<group>"; };
+		4A605EEB1F67EB5A00F80666 /* UINavigationController+WXSTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+WXSTransition.h"; sourceTree = "<group>"; };
+		4A605EEC1F67EB5A00F80666 /* UINavigationController+WXSTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+WXSTransition.m"; sourceTree = "<group>"; };
+		4A605EED1F67EB5A00F80666 /* UIViewController+WXSTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+WXSTransition.h"; sourceTree = "<group>"; };
+		4A605EEE1F67EB5A00F80666 /* UIViewController+WXSTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WXSTransition.m"; sourceTree = "<group>"; };
+		4A605EEF1F67EB5A00F80666 /* UIViewController+WXSTransitionProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+WXSTransitionProperty.h"; sourceTree = "<group>"; };
+		4A605EF01F67EB5A00F80666 /* UIViewController+WXSTransitionProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WXSTransitionProperty.m"; sourceTree = "<group>"; };
+		4A605EF11F67EB5A00F80666 /* WXSPercentDrivenInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXSPercentDrivenInteractiveTransition.h; sourceTree = "<group>"; };
+		4A605EF21F67EB5A00F80666 /* WXSPercentDrivenInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXSPercentDrivenInteractiveTransition.m; sourceTree = "<group>"; };
+		4A605EF31F67EB5A00F80666 /* WXSTransitionManager+BoomAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXSTransitionManager+BoomAnimation.h"; sourceTree = "<group>"; };
+		4A605EF41F67EB5A00F80666 /* WXSTransitionManager+BoomAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXSTransitionManager+BoomAnimation.m"; sourceTree = "<group>"; };
+		4A605EF51F67EB5A00F80666 /* WXSTransitionManager+BrickAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXSTransitionManager+BrickAnimation.h"; sourceTree = "<group>"; };
+		4A605EF61F67EB5A00F80666 /* WXSTransitionManager+BrickAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXSTransitionManager+BrickAnimation.m"; sourceTree = "<group>"; };
+		4A605EF71F67EB5A00F80666 /* WXSTransitionManager+CoverAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXSTransitionManager+CoverAnimation.h"; sourceTree = "<group>"; };
+		4A605EF81F67EB5A00F80666 /* WXSTransitionManager+CoverAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXSTransitionManager+CoverAnimation.m"; sourceTree = "<group>"; };
+		4A605EF91F67EB5A00F80666 /* WXSTransitionManager+FlipAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXSTransitionManager+FlipAnimation.h"; sourceTree = "<group>"; };
+		4A605EFA1F67EB5A00F80666 /* WXSTransitionManager+FlipAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXSTransitionManager+FlipAnimation.m"; sourceTree = "<group>"; };
+		4A605EFB1F67EB5A00F80666 /* WXSTransitionManager+FragmentAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXSTransitionManager+FragmentAnimation.h"; sourceTree = "<group>"; };
+		4A605EFC1F67EB5A00F80666 /* WXSTransitionManager+FragmentAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXSTransitionManager+FragmentAnimation.m"; sourceTree = "<group>"; };
+		4A605EFD1F67EB5A00F80666 /* WXSTransitionManager+InsideThenPushAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXSTransitionManager+InsideThenPushAnimation.h"; sourceTree = "<group>"; };
+		4A605EFE1F67EB5A00F80666 /* WXSTransitionManager+InsideThenPushAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXSTransitionManager+InsideThenPushAnimation.m"; sourceTree = "<group>"; };
+		4A605EFF1F67EB5A00F80666 /* WXSTransitionManager+PageAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXSTransitionManager+PageAnimation.h"; sourceTree = "<group>"; };
+		4A605F001F67EB5A00F80666 /* WXSTransitionManager+PageAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXSTransitionManager+PageAnimation.m"; sourceTree = "<group>"; };
+		4A605F011F67EB5A00F80666 /* WXSTransitionManager+SpreadAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXSTransitionManager+SpreadAnimation.h"; sourceTree = "<group>"; };
+		4A605F021F67EB5A00F80666 /* WXSTransitionManager+SpreadAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXSTransitionManager+SpreadAnimation.m"; sourceTree = "<group>"; };
+		4A605F031F67EB5A00F80666 /* WXSTransitionManager+SystermAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXSTransitionManager+SystermAnimation.h"; sourceTree = "<group>"; };
+		4A605F041F67EB5A00F80666 /* WXSTransitionManager+SystermAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXSTransitionManager+SystermAnimation.m"; sourceTree = "<group>"; };
+		4A605F051F67EB5A00F80666 /* WXSTransitionManager+TypeTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXSTransitionManager+TypeTool.h"; sourceTree = "<group>"; };
+		4A605F061F67EB5A00F80666 /* WXSTransitionManager+TypeTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXSTransitionManager+TypeTool.m"; sourceTree = "<group>"; };
+		4A605F071F67EB5A00F80666 /* WXSTransitionManager+ViewMoveAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXSTransitionManager+ViewMoveAnimation.h"; sourceTree = "<group>"; };
+		4A605F081F67EB5A00F80666 /* WXSTransitionManager+ViewMoveAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXSTransitionManager+ViewMoveAnimation.m"; sourceTree = "<group>"; };
+		4A605F091F67EB5A00F80666 /* WXSTransitionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXSTransitionManager.h; sourceTree = "<group>"; };
+		4A605F0A1F67EB5A00F80666 /* WXSTransitionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXSTransitionManager.m; sourceTree = "<group>"; };
+		4A605F0B1F67EB5A00F80666 /* WXSTransitionProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXSTransitionProperty.h; sourceTree = "<group>"; };
+		4A605F0C1F67EB5A00F80666 /* WXSTransitionProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXSTransitionProperty.m; sourceTree = "<group>"; };
+		4A605F0D1F67EB5A00F80666 /* WXSTypedefConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXSTypedefConfig.h; sourceTree = "<group>"; };
+		4A605F1F1F67F0C600F80666 /* GLForgetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLForgetController.h; sourceTree = "<group>"; };
+		4A605F201F67F0C600F80666 /* GLForgetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLForgetController.m; sourceTree = "<group>"; };
+		4A605F211F67F0C600F80666 /* GLForgetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLForgetController.xib; sourceTree = "<group>"; };
 		4A6FC4331F662B94002AE9DE /* GLHomeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLHomeController.xib; sourceTree = "<group>"; };
 		4A73CE971F60D7760071C559 /* GLHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHomeController.h; sourceTree = "<group>"; };
 		4A73CE981F60D7760071C559 /* GLHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLHomeController.m; sourceTree = "<group>"; };
@@ -656,6 +736,7 @@
 			children = (
 				4A49508A1F5F886600180007 /* AppDelegate.h */,
 				4A49508B1F5F886600180007 /* AppDelegate.m */,
+				4A605ED31F67CC9F00F80666 /* 登录注册 */,
 				4A73CE8B1F60D7550071C559 /* 首页 */,
 				4A73CE931F60D7550071C559 /* 社区 */,
 				4A73CED21F6127600071C559 /* 好友 */,
@@ -714,6 +795,7 @@
 		4A4950B21F5F898C00180007 /* 三方库 */ = {
 			isa = PBXGroup;
 			children = (
+				4A605EEA1F67EB5A00F80666 /* WXSTransition */,
 				4A5D0B851F628636009DD45D /* 聊天资料 */,
 				4A73CEDB1F61369A0071C559 /* XBScrollPageController */,
 				4A4950FF1F5F898C00180007 /* PopMenuTableViewCell.h */,
@@ -1333,6 +1415,173 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		4A605EC51F67B80200F80666 /* 评论列表 */ = {
+			isa = PBXGroup;
+			children = (
+				4A605EC61F67B80200F80666 /* Controller */,
+				4A605EC71F67B80200F80666 /* Model */,
+				4A605EC81F67B80200F80666 /* View */,
+			);
+			path = "评论列表";
+			sourceTree = "<group>";
+		};
+		4A605EC61F67B80200F80666 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4A605EC91F67B81500F80666 /* GLCommentListController.h */,
+				4A605ECA1F67B81500F80666 /* GLCommentListController.m */,
+				4A605ECB1F67B81500F80666 /* GLCommentListController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4A605EC71F67B80200F80666 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4A605EC81F67B80200F80666 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4A605ECE1F67B9BF00F80666 /* GLCommentCell.h */,
+				4A605ECF1F67B9BF00F80666 /* GLCommentCell.m */,
+				4A605ED01F67B9BF00F80666 /* GLCommentCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4A605ED31F67CC9F00F80666 /* 登录注册 */ = {
+			isa = PBXGroup;
+			children = (
+				4A605EDA1F67CC9F00F80666 /* 登录 */,
+				4A605ED71F67CC9F00F80666 /* 注册 */,
+				4A605ED41F67CC9F00F80666 /* 忘记密码 */,
+			);
+			path = "登录注册";
+			sourceTree = "<group>";
+		};
+		4A605ED41F67CC9F00F80666 /* 忘记密码 */ = {
+			isa = PBXGroup;
+			children = (
+				4A605ED51F67CC9F00F80666 /* Controller */,
+				4A605ED61F67CC9F00F80666 /* View */,
+			);
+			path = "忘记密码";
+			sourceTree = "<group>";
+		};
+		4A605ED51F67CC9F00F80666 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4A605F1F1F67F0C600F80666 /* GLForgetController.h */,
+				4A605F201F67F0C600F80666 /* GLForgetController.m */,
+				4A605F211F67F0C600F80666 /* GLForgetController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4A605ED61F67CC9F00F80666 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4A605ED71F67CC9F00F80666 /* 注册 */ = {
+			isa = PBXGroup;
+			children = (
+				4A605ED81F67CC9F00F80666 /* Controller */,
+				4A605ED91F67CC9F00F80666 /* View */,
+			);
+			path = "注册";
+			sourceTree = "<group>";
+		};
+		4A605ED81F67CC9F00F80666 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4A605EE21F67CCE300F80666 /* GLRegisterController.h */,
+				4A605EE31F67CCE300F80666 /* GLRegisterController.m */,
+				4A605EE41F67CCE300F80666 /* GLRegisterController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4A605ED91F67CC9F00F80666 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4A605EDA1F67CC9F00F80666 /* 登录 */ = {
+			isa = PBXGroup;
+			children = (
+				4A605EDB1F67CC9F00F80666 /* Controller */,
+				4A605EDC1F67CC9F00F80666 /* View */,
+			);
+			path = "登录";
+			sourceTree = "<group>";
+		};
+		4A605EDB1F67CC9F00F80666 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4A605EDD1F67CCBB00F80666 /* GLLoginController.h */,
+				4A605EDE1F67CCBB00F80666 /* GLLoginController.m */,
+				4A605EDF1F67CCBB00F80666 /* GLLoginController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4A605EDC1F67CC9F00F80666 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4A605EEA1F67EB5A00F80666 /* WXSTransition */ = {
+			isa = PBXGroup;
+			children = (
+				4A605EEB1F67EB5A00F80666 /* UINavigationController+WXSTransition.h */,
+				4A605EEC1F67EB5A00F80666 /* UINavigationController+WXSTransition.m */,
+				4A605EED1F67EB5A00F80666 /* UIViewController+WXSTransition.h */,
+				4A605EEE1F67EB5A00F80666 /* UIViewController+WXSTransition.m */,
+				4A605EEF1F67EB5A00F80666 /* UIViewController+WXSTransitionProperty.h */,
+				4A605EF01F67EB5A00F80666 /* UIViewController+WXSTransitionProperty.m */,
+				4A605EF11F67EB5A00F80666 /* WXSPercentDrivenInteractiveTransition.h */,
+				4A605EF21F67EB5A00F80666 /* WXSPercentDrivenInteractiveTransition.m */,
+				4A605EF31F67EB5A00F80666 /* WXSTransitionManager+BoomAnimation.h */,
+				4A605EF41F67EB5A00F80666 /* WXSTransitionManager+BoomAnimation.m */,
+				4A605EF51F67EB5A00F80666 /* WXSTransitionManager+BrickAnimation.h */,
+				4A605EF61F67EB5A00F80666 /* WXSTransitionManager+BrickAnimation.m */,
+				4A605EF71F67EB5A00F80666 /* WXSTransitionManager+CoverAnimation.h */,
+				4A605EF81F67EB5A00F80666 /* WXSTransitionManager+CoverAnimation.m */,
+				4A605EF91F67EB5A00F80666 /* WXSTransitionManager+FlipAnimation.h */,
+				4A605EFA1F67EB5A00F80666 /* WXSTransitionManager+FlipAnimation.m */,
+				4A605EFB1F67EB5A00F80666 /* WXSTransitionManager+FragmentAnimation.h */,
+				4A605EFC1F67EB5A00F80666 /* WXSTransitionManager+FragmentAnimation.m */,
+				4A605EFD1F67EB5A00F80666 /* WXSTransitionManager+InsideThenPushAnimation.h */,
+				4A605EFE1F67EB5A00F80666 /* WXSTransitionManager+InsideThenPushAnimation.m */,
+				4A605EFF1F67EB5A00F80666 /* WXSTransitionManager+PageAnimation.h */,
+				4A605F001F67EB5A00F80666 /* WXSTransitionManager+PageAnimation.m */,
+				4A605F011F67EB5A00F80666 /* WXSTransitionManager+SpreadAnimation.h */,
+				4A605F021F67EB5A00F80666 /* WXSTransitionManager+SpreadAnimation.m */,
+				4A605F031F67EB5A00F80666 /* WXSTransitionManager+SystermAnimation.h */,
+				4A605F041F67EB5A00F80666 /* WXSTransitionManager+SystermAnimation.m */,
+				4A605F051F67EB5A00F80666 /* WXSTransitionManager+TypeTool.h */,
+				4A605F061F67EB5A00F80666 /* WXSTransitionManager+TypeTool.m */,
+				4A605F071F67EB5A00F80666 /* WXSTransitionManager+ViewMoveAnimation.h */,
+				4A605F081F67EB5A00F80666 /* WXSTransitionManager+ViewMoveAnimation.m */,
+				4A605F091F67EB5A00F80666 /* WXSTransitionManager.h */,
+				4A605F0A1F67EB5A00F80666 /* WXSTransitionManager.m */,
+				4A605F0B1F67EB5A00F80666 /* WXSTransitionProperty.h */,
+				4A605F0C1F67EB5A00F80666 /* WXSTransitionProperty.m */,
+				4A605F0D1F67EB5A00F80666 /* WXSTypedefConfig.h */,
+			);
+			path = WXSTransition;
+			sourceTree = "<group>";
+		};
 		4A73CE8B1F60D7550071C559 /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1430,6 +1679,7 @@
 				4AAE8EFD1F6670C100AC549D /* 社区首页 */,
 				4AAE8F0A1F6670C100AC549D /* 社区详情 */,
 				4AAE8F1D1F668C6F00AC549D /* 帖子详情 */,
+				4A605EC51F67B80200F80666 /* 评论列表 */,
 			);
 			path = "社区";
 			sourceTree = "<group>";
@@ -1599,6 +1849,8 @@
 		4AAE8F1F1F668C6F00AC549D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4A605EB91F677DD500F80666 /* GLCommunity_PostCommentModel.h */,
+				4A605EBA1F677DD500F80666 /* GLCommunity_PostCommentModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1699,13 +1951,16 @@
 				4A4954C11F5F898F00180007 /* Mine_sixPart.xcassets in Resources */,
 				4AAE8F171F6670F500AC549D /* GLCommunity_DetailController.xib in Resources */,
 				4A6FC4341F662B94002AE9DE /* GLHomeController.xib in Resources */,
+				4A605ED21F67B9BF00F80666 /* GLCommentCell.xib in Resources */,
 				4A5D0D2D1F62868C009DD45D /* LBSessionListViewController.xib in Resources */,
 				4A73CEBE1F60E3090071C559 /* GLHome_AttentionController.xib in Resources */,
 				4A5D0D311F62868C009DD45D /* LBGoodFriendsSectionView.xib in Resources */,
 				4A4954D41F5F89A100180007 /* NodataView.xib in Resources */,
 				4A5D0D2F1F62868C009DD45D /* LBGoodFriendsHeaderView.xib in Resources */,
 				4A73CF551F614D7A0071C559 /* GLHome_AttentionCollectionCell.xib in Resources */,
+				4A605ECD1F67B81500F80666 /* GLCommentListController.xib in Resources */,
 				4A73CEC81F60E3310071C559 /* GLHome_hotController.xib in Resources */,
+				4A605F231F67F0C600F80666 /* GLForgetController.xib in Resources */,
 				4AAE8F121F6670C100AC549D /* GLCommunityCell.xib in Resources */,
 				4AAE8F251F668CF200AC549D /* GLCommunity_PostController.xib in Resources */,
 				4A4950941F5F886600180007 /* Assets.xcassets in Resources */,
@@ -1716,6 +1971,7 @@
 				4AAE8F1C1F66715900AC549D /* GLCommunity_DetailCell.xib in Resources */,
 				4A4950921F5F886600180007 /* Main.storyboard in Resources */,
 				4A73CED11F6124AD0071C559 /* GLHome_AttentionCell.xib in Resources */,
+				4A605EE11F67CCBB00F80666 /* GLLoginController.xib in Resources */,
 				4A73CEA01F60D7890071C559 /* GLMineController.xib in Resources */,
 				4A4954BC1F5F898F00180007 /* HomePage.xcassets in Resources */,
 				4A73CEC31F60E31E0071C559 /* GLHome_NewController.xib in Resources */,
@@ -1723,6 +1979,7 @@
 				4A4954BE1F5F898F00180007 /* loadWait.xcassets in Resources */,
 				4A5D0D371F6293AF009DD45D /* GLHome_NewsHeaderView.xib in Resources */,
 				4A4953941F5F898D00180007 /* PopMenuTableViewCell.xib in Resources */,
+				4A605EE61F67CCE300F80666 /* GLRegisterController.xib in Resources */,
 				4A4954C61F5F898F00180007 /* 我的.xcassets in Resources */,
 				4A4954C41F5F898F00180007 /* setUp.xcassets in Resources */,
 			);
@@ -1793,8 +2050,10 @@
 				4A5D0CA61F628637009DD45D /* UITableView+NIMScrollToBottom.m in Sources */,
 				4A5D0CBC1F628637009DD45D /* NIMInputAudioRecordIndicatorView.m in Sources */,
 				4A5D0CF41F628637009DD45D /* NIMTeamMemberCardViewController.m in Sources */,
+				4A605EBB1F677DD500F80666 /* GLCommunity_PostCommentModel.m in Sources */,
 				4A4954F11F5F89B200180007 /* UIButton+SetEdgeInsets.m in Sources */,
 				4A5D0CAC1F628637009DD45D /* NIMKit.m in Sources */,
+				4A605EE51F67CCE300F80666 /* GLRegisterController.m in Sources */,
 				4A5D0D051F628637009DD45D /* NSMutableAttributedString+NIM.m in Sources */,
 				4A5D0CC61F628637009DD45D /* NIMKitEvent.m in Sources */,
 				4A5D0CE61F628637009DD45D /* NIMSessionUnknowContentView.m in Sources */,
@@ -1813,7 +2072,9 @@
 				4A5D0D2A1F62868C009DD45D /* GLFriendController.m in Sources */,
 				4AAE8F0D1F6670C100AC549D /* GLCommunity_FollowController.m in Sources */,
 				4A5D0CD31F628637009DD45D /* NIMUnsupportContentConfig.m in Sources */,
+				4A605F121F67EB5A00F80666 /* WXSTransitionManager+BoomAnimation.m in Sources */,
 				4A5D0CF51F628637009DD45D /* NIMTeamMemberListViewController.m in Sources */,
+				4A605F1C1F67EB5A00F80666 /* WXSTransitionManager+ViewMoveAnimation.m in Sources */,
 				4A4950A71F5F896B00180007 /* LBLoginNavigationViewController.m in Sources */,
 				4A4954D31F5F89A100180007 /* NodataView.m in Sources */,
 				4A5D0CF71F628637009DD45D /* NIMTeamAnnouncementListCell.m in Sources */,
@@ -1827,6 +2088,7 @@
 				4A5D0D121F628637009DD45D /* NIMProgressHUD.m in Sources */,
 				4A5D0CCB1F628637009DD45D /* NIMBaseSessionContentConfig.m in Sources */,
 				4A5D0CB41F628637009DD45D /* NIMContactDataCell.m in Sources */,
+				4A605F171F67EB5A00F80666 /* WXSTransitionManager+InsideThenPushAnimation.m in Sources */,
 				4A5D0CC41F628637009DD45D /* NIMInputToolBar.m in Sources */,
 				4A5D0CD11F628637009DD45D /* NIMTextContentConfig.m in Sources */,
 				4A73CEF21F6136D00071C559 /* UIView+XBExtension.m in Sources */,
@@ -1835,6 +2097,7 @@
 				4A5D0CFE1F628637009DD45D /* NIMKitUtil.m in Sources */,
 				4A5D0CD01F628637009DD45D /* NIMNotificationContentConfig.m in Sources */,
 				4A73CF491F6146BB0071C559 /* DWTabBarController.m in Sources */,
+				4A605F111F67EB5A00F80666 /* WXSPercentDrivenInteractiveTransition.m in Sources */,
 				4A4953931F5F898D00180007 /* PopMenuTableViewCell.m in Sources */,
 				4A49508F1F5F886600180007 /* ViewController.m in Sources */,
 				4A73CF591F6159020071C559 /* GLHome_NewCell.m in Sources */,
@@ -1848,12 +2111,14 @@
 				4A5D0CDB1F628637009DD45D /* NIMTimestampModel.m in Sources */,
 				4A4954EC1F5F89B200180007 /* GetLabelBounds.m in Sources */,
 				4A5D0CAD1F628637009DD45D /* NIMAvatarImageView.m in Sources */,
+				4A605F151F67EB5A00F80666 /* WXSTransitionManager+FlipAnimation.m in Sources */,
 				4A5D0D181F628637009DD45D /* TimerHolder.m in Sources */,
 				4A4954F21F5F89B200180007 /* UILabel+UILabel_ChangeLineSpaceAndWordSpace.m in Sources */,
 				4A5D0D061F628637009DD45D /* NIMImageCache.m in Sources */,
 				4A5D0CFB1F628637009DD45D /* NIMTimePickerView.m in Sources */,
 				4A5D0D0C1F628637009DD45D /* NIMWebImagePrefetcher.m in Sources */,
 				4AAE8F0E1F6670C100AC549D /* GLCommunity_RecommendController.m in Sources */,
+				4A605F101F67EB5A00F80666 /* UIViewController+WXSTransitionProperty.m in Sources */,
 				4A5D0CE01F628637009DD45D /* NIMSessionImageContentView.m in Sources */,
 				4A5D0CF01F628637009DD45D /* NIMAdvancedTeamCardViewController.m in Sources */,
 				4A5D0CD81F628637009DD45D /* NIMSessionMsgDatasource.m in Sources */,
@@ -1865,10 +2130,15 @@
 				4A5D0CD61F628637009DD45D /* NIMMessageCellMaker.m in Sources */,
 				4A5D0B821F623A8E009DD45D /* GLHome_AttentionModel.m in Sources */,
 				4A73CED01F6124AD0071C559 /* GLHome_AttentionCell.m in Sources */,
+				4A605F1A1F67EB5A00F80666 /* WXSTransitionManager+SystermAnimation.m in Sources */,
+				4A605F0F1F67EB5A00F80666 /* UIViewController+WXSTransition.m in Sources */,
+				4A605F1B1F67EB5A00F80666 /* WXSTransitionManager+TypeTool.m in Sources */,
 				4A5D0D0A1F628637009DD45D /* NIMWebImageDownloaderOperation.m in Sources */,
+				4A605F161F67EB5A00F80666 /* WXSTransitionManager+FragmentAnimation.m in Sources */,
 				4A5D0CB91F628637009DD45D /* NIMContactSelectConfig.m in Sources */,
 				4A5D0CA71F628637009DD45D /* UIView+NIM.m in Sources */,
 				4A5D0CAE1F628637009DD45D /* NIMBadgeView.m in Sources */,
+				4A605F191F67EB5A00F80666 /* WXSTransitionManager+SpreadAnimation.m in Sources */,
 				4AAE8F111F6670C100AC549D /* GLCommunityCell.m in Sources */,
 				4A5D0CD71F628637009DD45D /* NIMMessageMaker.m in Sources */,
 				4A5D0CE91F628637009DD45D /* NIMSessionListViewController.m in Sources */,
@@ -1882,6 +2152,7 @@
 				4A4954EB1F5F89B200180007 /* formattime.m in Sources */,
 				4A5D0CC91F628637009DD45D /* NIMUIConfig.m in Sources */,
 				4A73CEBD1F60E3090071C559 /* GLHome_AttentionController.m in Sources */,
+				4A605F181F67EB5A00F80666 /* WXSTransitionManager+PageAnimation.m in Sources */,
 				4A5D0CA51F628637009DD45D /* UIImage+NIM.m in Sources */,
 				4A5D0D131F628637009DD45D /* UIView+NIMKitToast.m in Sources */,
 				4A5D0CAF1F628637009DD45D /* NIMCustomLeftBarView.m in Sources */,
@@ -1892,15 +2163,22 @@
 				4A5D0D151F628637009DD45D /* DataManager.m in Sources */,
 				4A5D0D0B1F628637009DD45D /* NIMWebImageManager.m in Sources */,
 				4A5D0CB21F628637009DD45D /* NIMMemberGroupView.m in Sources */,
+				4A605ED11F67B9BF00F80666 /* GLCommentCell.m in Sources */,
 				4A5D0CE41F628637009DD45D /* NIMSessionNotificationContentView.m in Sources */,
 				4A5D0CEF1F628637009DD45D /* NIMUsrInfoData.m in Sources */,
 				4A5D0CA31F628637009DD45D /* NIMExtensionHelper.m in Sources */,
+				4A605F1E1F67EB5A00F80666 /* WXSTransitionProperty.m in Sources */,
 				4A5D0CBF1F628637009DD45D /* NIMInputEmoticonManager.m in Sources */,
 				4A5D0CA91F628637009DD45D /* NIMCommonTableDelegate.m in Sources */,
 				4A73CEEA1F61369A0071C559 /* XBScrollPageController.m in Sources */,
 				4A5D0CCA1F628637009DD45D /* NIMAudioContentConfig.m in Sources */,
 				4A4950891F5F886600180007 /* main.m in Sources */,
+				4A605F221F67F0C600F80666 /* GLForgetController.m in Sources */,
 				4A5D0CFD1F628637009DD45D /* NIMKitTimerHolder.m in Sources */,
+				4A605ECC1F67B81500F80666 /* GLCommentListController.m in Sources */,
+				4A605F0E1F67EB5A00F80666 /* UINavigationController+WXSTransition.m in Sources */,
+				4A605EE01F67CCBB00F80666 /* GLLoginController.m in Sources */,
+				4A605F131F67EB5A00F80666 /* WXSTransitionManager+BrickAnimation.m in Sources */,
 				4A73CF4F1F6146D70071C559 /* DWPublishButton.m in Sources */,
 				4A5D0CC01F628637009DD45D /* NIMInputEmoticonParser.m in Sources */,
 				4A4954F31F5F89B200180007 /* UIView+Extension.m in Sources */,
@@ -1917,7 +2195,9 @@
 				4A5D0CE31F628637009DD45D /* NIMSessionNetChatNotifyContentView.m in Sources */,
 				4A5D0CBB1F628637009DD45D /* NIMContactSelectViewController.m in Sources */,
 				4A5D0D0E1F628637009DD45D /* UIImage+NIMGIF.m in Sources */,
+				4A605F1D1F67EB5A00F80666 /* WXSTransitionManager.m in Sources */,
 				4A5D0CB71F628637009DD45D /* NIMContactDataItem.m in Sources */,
+				4A605F141F67EB5A00F80666 /* WXSTransitionManager+CoverAnimation.m in Sources */,
 				4A73CEED1F61369A0071C559 /* XBTagTitleCell.m in Sources */,
 				4A73CEEB1F61369A0071C559 /* XBTagTitleModel.m in Sources */,
 				4A5D0CD21F628637009DD45D /* NIMTipContentConfig.m in Sources */,

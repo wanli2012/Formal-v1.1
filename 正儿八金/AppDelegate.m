@@ -1,4 +1,4 @@
-//
+
 //  AppDelegate.m
 //  正儿八金
 //
@@ -15,6 +15,10 @@
 #import "GLFriendController.h"
 #import "GLMineController.h"
 
+
+//前期测试
+#import "GLLoginController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -24,48 +28,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen]bounds]];
     
     self.window.rootViewController = [[DWTabBarController alloc]init];
+//    self.window.rootViewController = [[GLLoginController alloc] init];
     [self.window makeKeyAndVisible];
     
     return YES;
 }
 
-//- (CYTabBarController *)setTabbarController{
-//    
-//    CYTabBarController * tabbarController = [[CYTabBarController alloc]init];
-//    
-//    /**
-//     *  配置外观
-//     */
-//    [CYTabBarConfig shared].selectedTextColor = [UIColor orangeColor];
-//    [CYTabBarConfig shared].textColor = [UIColor grayColor];
-//    [CYTabBarConfig shared].backgroundColor = [UIColor whiteColor];
-//    [CYTabBarConfig shared].selectIndex = 0;
-//    [CYTabBarConfig shared].centerBtnIndex = 2;
-//    
-//    /**
-//     *  style 1 (中间按钮突出 ， 设为按钮 , 底部有文字 ， 闲鱼)
-//     */
-//    BaseNavigationViewController *homeNav = [[BaseNavigationViewController alloc]initWithRootViewController:[GLHomeController new]];
-//    [tabbarController addChildController:homeNav title:@"发现" imageName:@"好友未点中" selectedImageName:@"首页"];
-//    
-//    BaseNavigationViewController *commNav = [[BaseNavigationViewController alloc]initWithRootViewController:[GLCommunityController new]];
-//    [tabbarController addChildController:commNav title:@"我的" imageName:@"好友未点中" selectedImageName:@"首页"];
-//    
-////    BaseNavigationViewController *midNav = [[BaseNavigationViewController alloc]initWithRootViewController:[GLMineController new]];
-//    [tabbarController addCenterController:nil bulge:YES title:@"" imageName:@"post_normal" selectedImageName:@"post_normal"];
-//    
-//    BaseNavigationViewController *friendNav = [[BaseNavigationViewController alloc]initWithRootViewController:[GLFriendController new]];
-//    [tabbarController addChildController:friendNav title:@"好友" imageName:@"好友未点中" selectedImageName:@"首页"];
-//    
-//    BaseNavigationViewController *mineNav = [[BaseNavigationViewController alloc]initWithRootViewController:[GLCommunityController new]];
-//    [tabbarController addChildController:mineNav title:@"我的" imageName:@"好友未点中" selectedImageName:@"首页"];
-//    
-//    return tabbarController;
-//
-//}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

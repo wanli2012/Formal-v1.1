@@ -10,7 +10,7 @@
 
 
 @interface GLCommunity_PostCommentReplyCell()
-@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+
 
 @end
 

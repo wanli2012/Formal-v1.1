@@ -40,6 +40,7 @@
         model.sum = str;
         model.content = [NSString stringWithFormat:@"lldsfjj垃圾袋龙卷风拉丝机放辣椒酸辣粉静安路附近奥拉夫极乐世界分类设计费时代峰峻螺蛳粉连手机分类是否杀戮空间福建省类是否杀戮空间菲利克斯福建省菲利克斯积分拉伸发链接阿拉斯加冯老师分类是------%zd",i];
         model.isHiddenAttendBtn = YES;
+        model.isHiddenLandlord = NO;
         [self.dataSourceArr addObject:model];
     }
 
@@ -47,6 +48,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
     self.navigationController.navigationBar.hidden = NO;
 }
 

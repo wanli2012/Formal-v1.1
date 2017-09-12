@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface GLCommunity_PostCommentReplyCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 
 @end

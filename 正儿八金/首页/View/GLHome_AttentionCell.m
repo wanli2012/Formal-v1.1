@@ -10,6 +10,9 @@
 #import "GLHome_AttentionCollectionCell.h"
 
 @interface GLHome_AttentionCell()<UICollectionViewDelegate,UICollectionViewDataSource>
+@property (weak, nonatomic) IBOutlet UIButton *landlordBtn;//楼主标志
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;//标题Label
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleLabelHeight;
 
 @end
 
@@ -42,11 +45,28 @@
         self.collectionViewWidth.constant = kSCREEN_WIDTH;
     }
     
+    //是否隐藏关注按钮
     if (model.isHiddenAttendBtn) {
         self.attentionBtn.hidden = YES;
     }else{
         self.attentionBtn.hidden = NO;
     }
+    
+    //是否隐藏楼主标志
+    if(model.isHiddenLandlord){
+        self.landlordBtn.hidden = YES;
+    }else{
+        self.landlordBtn.hidden = NO;
+    }
+    
+    //是否隐藏标题label
+    if (model.isHiddenTitleLabel) {
+        self.titleLabelHeight.constant = 0;
+    }else{
+//        self.titleLabel.height = NO;
+        self.titleLabelHeight.constant = 20;
+    }
+    
     
     [self.collectionView reloadData];
 }

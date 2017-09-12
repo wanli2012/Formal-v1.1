@@ -16,6 +16,10 @@
 
 @property (nonatomic, assign)CGFloat cellHeight;
 
-@property (nonatomic, assign)BOOL isHiddenAttendBtn;
+@property (nonatomic, assign)BOOL isHiddenAttendBtn;//关注按钮是否隐藏
+
+@property (nonatomic, assign)BOOL isHiddenLandlord;//楼主标志是否隐藏
+
+@property (nonatomic, assign)BOOL isHiddenTitleLabel;//标题是否隐藏
 
 @end
