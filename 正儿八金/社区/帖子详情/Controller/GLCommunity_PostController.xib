@@ -122,6 +122,9 @@
                                         <state key="normal" title="举报">
                                             <color key="titleColor" red="0.91507440809999996" green="0.2976952195" blue="0.53578960899999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="report:" destination="-1" eventType="touchUpInside" id="A7E-jr-Tu6"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
