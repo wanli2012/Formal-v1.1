@@ -63,11 +63,15 @@
     [sender setTitleColor:MAIN_COLOR forState:UIControlStateNormal];
     
     if (sender == self.attentedBtn) {
+        
         self.followVC.view.frame = CGRectMake(0, 0, self.bottomView.width, self.bottomView.height);
         [self.bottomView addSubview:self.followVC.view];
+        
     }else{
+        
         self.recommendVC.view.frame = CGRectMake(0, 0, self.bottomView.width, self.bottomView.height);
         [self.bottomView addSubview:self.recommendVC.view];
+        
     }
     
 }
@@ -80,6 +84,7 @@
     self.hidesBottomBarWhenPushed = NO;
     
 }
+
 - (GLCommunity_FollowController *)followVC{
     if (!_followVC) {
         _followVC = [[GLCommunity_FollowController alloc] init];
