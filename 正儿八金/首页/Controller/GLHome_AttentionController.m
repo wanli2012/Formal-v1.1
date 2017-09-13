@@ -25,7 +25,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self.tableView registerNib:[UINib nibWithNibName:@"GLHome_AttentionCell" bundle:nil] forCellReuseIdentifier:@"GLHome_AttentionCell"];
 
-    for (int i = 1; i < 8; i++) {
+    for (int i = 0; i < 8; i++) {
         NSString *str = [NSString stringWithFormat:@"%zd",i];
         
         GLHome_AttentionModel *model = [[GLHome_AttentionModel alloc] init];

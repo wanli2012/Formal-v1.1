@@ -33,7 +33,7 @@
     
     [self.visibleViewController.navigationItem setHidesBackButton:YES];
     
-    UIButton *button=[[UIButton alloc]initWithFrame:CGRectMake( 0, 0, 80, 44)];
+    UIButton *button=[[UIButton alloc]initWithFrame:CGRectMake( 0, 0, 50, 44)];
     button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;//左对齐
     [button setImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
     [button setImageEdgeInsets:UIEdgeInsetsMake(0 ,10, 0, 0)];
@@ -49,8 +49,7 @@
     
 }
 
-- (UIBarButtonItem*)createBackButton
-{
+- (UIBarButtonItem*)createBackButton{
     
     return [[UIBarButtonItem alloc]
             

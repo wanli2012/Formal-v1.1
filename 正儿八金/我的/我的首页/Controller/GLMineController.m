@@ -8,8 +8,10 @@
 
 #import "GLMineController.h"
 #import "GLMineCell.h"
-#import "GLMine_SetupController.h"
-#import "GLMine_PersonInfoController.h"
+#import "GLMine_SetupController.h"//设置
+#import "GLMine_PersonInfoController.h"//个人信息
+#import "GLMine_EventController.h"//活动
+#import "GLMine_MyPostController.h"//我的帖子
 
 @interface GLMineController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -75,6 +77,35 @@
     
     return 50;
     
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    self.hidesBottomBarWhenPushed = YES;
+    switch (indexPath.row) {
+        case 0:
+        {
+            
+        }
+            break;
+        case 1:
+        {
+            GLMine_EventController * eventVC = [[GLMine_EventController alloc] init];
+            [self.navigationController pushViewController:eventVC animated:YES];
+            
+        }
+            break;
+        case 2:
+        {
+            GLMine_MyPostController *myPostVC = [[GLMine_MyPostController alloc] init];
+            [self.navigationController pushViewController:myPostVC animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    self.hidesBottomBarWhenPushed = NO;
 }
 
 #pragma mark -

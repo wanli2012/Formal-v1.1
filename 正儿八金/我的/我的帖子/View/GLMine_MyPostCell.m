@@ -1,29 +1,33 @@
 //
-//  GLHome_AttentionCell.m
+//  GLMine_MyPostCell.m
 //  正儿八金
 //
-//  Created by 龚磊 on 2017/9/7.
+//  Created by 龚磊 on 2017/9/13.
 //  Copyright © 2017年 三君科技有限公司. All rights reserved.
 //
 
-#import "GLHome_AttentionCell.h"
+#import "GLMine_MyPostCell.h"
 #import "GLHome_AttentionCollectionCell.h"
 
-@interface GLHome_AttentionCell()<UICollectionViewDelegate,UICollectionViewDataSource>
-@property (weak, nonatomic) IBOutlet UIButton *landlordBtn;//楼主标志
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;//标题Label
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleLabelHeight;
+@interface GLMine_MyPostCell ()<UICollectionViewDelegate,UICollectionViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewWidth;
+//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewHeight;
+
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;//日期
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;//内容
+@property (weak, nonatomic) IBOutlet UIButton *scanBtn;//浏览量
+@property (weak, nonatomic) IBOutlet UIButton *replyBtn;//回复
 
 @end
 
-@implementation GLHome_AttentionCell
+@implementation GLMine_MyPostCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-
-    self.picImageV.layer.cornerRadius = 20;
-    self.attentionBtn.layer.cornerRadius = 5.f;
-
+    
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc] init];
     self.collectionView.collectionViewLayout = layout;
     
@@ -33,39 +37,21 @@
 
 - (void)setModel:(GLHome_AttentionModel *)model{
     _model = model;
-
+    
     self.contentLabel.text = model.content;
     
-    if ([self.model.sum integerValue] == 4) {
+    if ([self.model.sum integerValue] == 0){
         
-        self.collectionViewWidth.constant = 2 *(kSCREEN_WIDTH - 40)/3 + 36;
+//        self.collectionViewHeight.constant = 0;
+        
+    }else if ([self.model.sum integerValue] == 4) {
+        
+        self.collectionViewWidth.constant = 2 * (kSCREEN_WIDTH - 40)/3 ;
         
     }else{
+        
         self.collectionViewWidth.constant = kSCREEN_WIDTH;
     }
-    
-    //是否隐藏关注按钮
-    if (model.isHiddenAttendBtn) {
-        self.attentionBtn.hidden = YES;
-    }else{
-        self.attentionBtn.hidden = NO;
-    }
-    
-    //是否隐藏楼主标志
-    if(model.isHiddenLandlord){
-        self.landlordBtn.hidden = YES;
-    }else{
-        self.landlordBtn.hidden = NO;
-    }
-    
-    //是否隐藏标题label
-    if (model.isHiddenTitleLabel) {
-        self.titleLabelHeight.constant = 0;
-    }else{
-
-        self.titleLabelHeight.constant = 20;
-    }
-    
     
     [self.collectionView reloadData];
 }
@@ -75,12 +61,12 @@
     
     return [self.model.sum integerValue];
 }
-
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
     GLHome_AttentionCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GLHome_AttentionCollectionCell" forIndexPath:indexPath];
-
+    
     cell.imageV.image = [UIImage imageNamed:@"图-2"];
-
+    
     return cell;
 }
 
@@ -96,8 +82,9 @@
 
 //定义每个UICollectionViewCell 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if ([self.model.sum integerValue] == 1) {
+    if([self.model.sum integerValue] == 0){
+        return CGSizeZero;
+    }else if ([self.model.sum integerValue] == 1) {
         return CGSizeMake(kSCREEN_WIDTH - 30, kSCREEN_WIDTH - 30);
     }else if([self.model.sum integerValue] == 2){
         return CGSizeMake((kSCREEN_WIDTH - 35)/2, (kSCREEN_WIDTH - 35)/2);
@@ -105,9 +92,8 @@
     
     return CGSizeMake((kSCREEN_WIDTH - 40)/3, (kSCREEN_WIDTH - 40)/3);
 }
-
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(0, 15, 0, 15);
+    return UIEdgeInsetsMake(10, 15, 0, 15);
 }
 
 @end

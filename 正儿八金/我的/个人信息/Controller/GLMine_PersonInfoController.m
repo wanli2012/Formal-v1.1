@@ -47,6 +47,7 @@
     cell.detailLabel.hidden = NO;
     cell.titleLabel.text = self.titleArr[indexPath.row];
     cell.detailLabel.text = self.valueArr[indexPath.row];
+    
     if (indexPath.row == 0) {
         cell.arrowImageV.hidden = YES;
     }else{

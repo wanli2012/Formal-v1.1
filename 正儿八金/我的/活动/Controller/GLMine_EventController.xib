@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLMine_EventController">
+            <connections>
+                <outlet property="offLineBtn" destination="Ha4-x2-5bH" id="r3S-44-urm"/>
+                <outlet property="onLineBtn" destination="MCR-kZ-KBr" id="Jus-Ox-zkc"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="304" height="437"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z6J-Nv-VxW">
+                    <rect key="frame" x="0.0" y="0.0" width="304" height="40"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MCR-kZ-KBr">
+                            <rect key="frame" x="0.0" y="0.0" width="152" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="线上活动">
+                                <color key="titleColor" red="0.91904610399999997" green="0.29763087630000001" blue="0.53569805619999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="buttonEvent:" destination="-1" eventType="touchUpInside" id="Zkz-Bl-D9W"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DrA-ic-3s0">
+                            <rect key="frame" x="152" y="10" width="1" height="20"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="bXe-dP-4rR"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ha4-x2-5bH">
+                            <rect key="frame" x="153" y="0.0" width="151" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="线下活动">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="buttonEvent:" destination="-1" eventType="touchUpInside" id="IIL-Ly-lta"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="DrA-ic-3s0" secondAttribute="bottom" constant="10" id="86V-K4-M2l"/>
+                        <constraint firstItem="MCR-kZ-KBr" firstAttribute="width" secondItem="Z6J-Nv-VxW" secondAttribute="width" multiplier="1/2" id="9eV-mi-aC1"/>
+                        <constraint firstItem="DrA-ic-3s0" firstAttribute="leading" secondItem="MCR-kZ-KBr" secondAttribute="trailing" id="EgW-Jf-X6N"/>
+                        <constraint firstAttribute="bottom" secondItem="Ha4-x2-5bH" secondAttribute="bottom" id="F6g-b2-h0F"/>
+                        <constraint firstItem="Ha4-x2-5bH" firstAttribute="leading" secondItem="DrA-ic-3s0" secondAttribute="trailing" id="HWn-ju-yQ3"/>
+                        <constraint firstItem="MCR-kZ-KBr" firstAttribute="leading" secondItem="Z6J-Nv-VxW" secondAttribute="leading" id="Lzq-Ct-nP6"/>
+                        <constraint firstAttribute="height" constant="40" id="SZ5-Qo-Nhu"/>
+                        <constraint firstAttribute="trailing" secondItem="Ha4-x2-5bH" secondAttribute="trailing" id="X0t-oC-wJF"/>
+                        <constraint firstAttribute="bottom" secondItem="MCR-kZ-KBr" secondAttribute="bottom" id="cxk-De-0LT"/>
+                        <constraint firstItem="DrA-ic-3s0" firstAttribute="top" secondItem="Z6J-Nv-VxW" secondAttribute="top" constant="10" id="jfr-WL-KPV"/>
+                        <constraint firstItem="MCR-kZ-KBr" firstAttribute="top" secondItem="Z6J-Nv-VxW" secondAttribute="top" id="r4U-sq-zW4"/>
+                        <constraint firstItem="Ha4-x2-5bH" firstAttribute="top" secondItem="Z6J-Nv-VxW" secondAttribute="top" id="z6x-OV-ACE"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Z6J-Nv-VxW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="EKM-8Z-nft"/>
+                <constraint firstItem="Z6J-Nv-VxW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OOq-mB-Ep6"/>
+                <constraint firstAttribute="trailing" secondItem="Z6J-Nv-VxW" secondAttribute="trailing" id="Uqh-Aw-Gie"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="34" y="43.5"/>
+        </view>
+    </objects>
+</document>
