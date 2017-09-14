@@ -62,28 +62,16 @@
                                 <action selector="back:" destination="-1" eventType="touchUpInside" id="Tq9-bj-IDa"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjI-e8-oIK">
-                            <rect key="frame" x="281" y="0.0" width="60" height="44"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="60" id="2ag-se-iYt"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
-                            <state key="normal" image="消息"/>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="6Dg-yO-aIj" firstAttribute="top" secondItem="b6S-Bd-heI" secondAttribute="top" constant="7" id="AQg-Gn-edP"/>
                         <constraint firstItem="6Dg-yO-aIj" firstAttribute="leading" secondItem="6hO-Pc-dZo" secondAttribute="trailing" id="DDf-H5-5We"/>
                         <constraint firstAttribute="height" constant="44" id="G6u-cC-GZW"/>
+                        <constraint firstItem="6Dg-yO-aIj" firstAttribute="centerX" secondItem="b6S-Bd-heI" secondAttribute="centerX" id="JDL-Iz-jAZ"/>
                         <constraint firstItem="6hO-Pc-dZo" firstAttribute="leading" secondItem="b6S-Bd-heI" secondAttribute="leading" id="LTo-aL-7MZ"/>
                         <constraint firstAttribute="bottom" secondItem="6hO-Pc-dZo" secondAttribute="bottom" id="ULc-fT-2FA"/>
-                        <constraint firstAttribute="trailing" secondItem="rjI-e8-oIK" secondAttribute="trailing" id="cl8-WL-TE4"/>
-                        <constraint firstItem="rjI-e8-oIK" firstAttribute="top" secondItem="b6S-Bd-heI" secondAttribute="top" id="fK1-TF-dxo"/>
                         <constraint firstItem="6hO-Pc-dZo" firstAttribute="top" secondItem="b6S-Bd-heI" secondAttribute="top" id="gHA-em-wur"/>
-                        <constraint firstItem="rjI-e8-oIK" firstAttribute="leading" secondItem="6Dg-yO-aIj" secondAttribute="trailing" id="kmW-tt-58s"/>
-                        <constraint firstAttribute="bottom" secondItem="rjI-e8-oIK" secondAttribute="bottom" id="n5h-s6-IzZ"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="uWW-sp-Htj"/>
                         <constraint firstAttribute="bottom" secondItem="6Dg-yO-aIj" secondAttribute="bottom" constant="7" id="voM-VB-J0E"/>
                     </constraints>
@@ -190,7 +178,6 @@
     </objects>
     <resources>
         <image name="搜索" width="16" height="16"/>
-        <image name="消息" width="22" height="22"/>
         <image name="返回" width="22" height="22"/>
     </resources>
 </document>

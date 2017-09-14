@@ -85,6 +85,11 @@
     
 }
 
+///消息
+- (IBAction)message:(id)sender{
+    
+}
+
 - (GLCommunity_FollowController *)followVC{
     if (!_followVC) {
         _followVC = [[GLCommunity_FollowController alloc] init];

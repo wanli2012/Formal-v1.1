@@ -12,6 +12,8 @@
 #import "GLHome_NewController.h"
 #import "GLHome_hotController.h"
 
+#import "GLMessageController.h"//消息
+
 @interface GLHomeController ()
 
 @property (weak, nonatomic) IBOutlet UIView *searchView;
@@ -72,6 +74,13 @@
     
     [self reloadDataWith:titleArray andSubViewdisplayClasses:classNames withParams:nil];
     
+}
+//消息
+- (IBAction)message:(id)sender {
+    self.hidesBottomBarWhenPushed = YES;
+    GLMessageController *messageVC = [[GLMessageController alloc] init];
+    [self.navigationController pushViewController:messageVC animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
 }
 
 @end

@@ -14,6 +14,37 @@
 		4A0727821F6939AA00F1AFFE /* GLMine_MyPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0727811F6939AA00F1AFFE /* GLMine_MyPostModel.m */; };
 		4A07278A1F694ABC00F1AFFE /* GLMine_EventDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0727881F694ABC00F1AFFE /* GLMine_EventDetailController.m */; };
 		4A07278B1F694ABC00F1AFFE /* GLMine_EventDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0727891F694ABC00F1AFFE /* GLMine_EventDetailController.xib */; };
+		4A0E4B881F6A504600EBADE8 /* HXAlbumListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B4C1F6A504600EBADE8 /* HXAlbumListView.m */; };
+		4A0E4B891F6A504600EBADE8 /* HXAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B4E1F6A504600EBADE8 /* HXAlbumModel.m */; };
+		4A0E4B8A1F6A504600EBADE8 /* HXAlbumTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B501F6A504600EBADE8 /* HXAlbumTitleButton.m */; };
+		4A0E4B8B1F6A504600EBADE8 /* HXCameraPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B521F6A504600EBADE8 /* HXCameraPreviewViewController.m */; };
+		4A0E4B8C1F6A504600EBADE8 /* HXCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B541F6A504600EBADE8 /* HXCameraViewController.m */; };
+		4A0E4B8D1F6A504600EBADE8 /* HXCircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B561F6A504600EBADE8 /* HXCircleProgressView.m */; };
+		4A0E4B8E1F6A504600EBADE8 /* HXCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B581F6A504600EBADE8 /* HXCollectionView.m */; };
+		4A0E4B8F1F6A504600EBADE8 /* HXFullScreenCameraPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B5A1F6A504600EBADE8 /* HXFullScreenCameraPlayView.m */; };
+		4A0E4B901F6A504600EBADE8 /* HXFullScreenCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B5C1F6A504600EBADE8 /* HXFullScreenCameraViewController.m */; };
+		4A0E4B911F6A504600EBADE8 /* HXPhotoEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B5E1F6A504600EBADE8 /* HXPhotoEditView.m */; };
+		4A0E4B921F6A504600EBADE8 /* HXPhotoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B601F6A504600EBADE8 /* HXPhotoEditViewController.m */; };
+		4A0E4B931F6A504600EBADE8 /* HXPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B621F6A504600EBADE8 /* HXPhotoManager.m */; };
+		4A0E4B941F6A504600EBADE8 /* HXPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B641F6A504600EBADE8 /* HXPhotoModel.m */; };
+		4A0E4B951F6A504600EBADE8 /* HXPhotoPreviewViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B661F6A504600EBADE8 /* HXPhotoPreviewViewCell.m */; };
+		4A0E4B961F6A504600EBADE8 /* HXPhotoPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B681F6A504600EBADE8 /* HXPhotoPreviewViewController.m */; };
+		4A0E4B971F6A504600EBADE8 /* HXPhotoResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B6A1F6A504600EBADE8 /* HXPhotoResultModel.m */; };
+		4A0E4B981F6A504600EBADE8 /* HXPhotoSubViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B6C1F6A504600EBADE8 /* HXPhotoSubViewCell.m */; };
+		4A0E4B991F6A504600EBADE8 /* HXPhotoTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B6E1F6A504600EBADE8 /* HXPhotoTools.m */; };
+		4A0E4B9A1F6A504600EBADE8 /* HXPhotoUIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B701F6A504600EBADE8 /* HXPhotoUIManager.m */; };
+		4A0E4B9B1F6A504600EBADE8 /* HXPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B721F6A504600EBADE8 /* HXPhotoView.m */; };
+		4A0E4B9C1F6A504600EBADE8 /* HXPhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B741F6A504600EBADE8 /* HXPhotoViewCell.m */; };
+		4A0E4B9D1F6A504600EBADE8 /* HXPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B761F6A504600EBADE8 /* HXPhotoViewController.m */; };
+		4A0E4B9E1F6A504600EBADE8 /* HXPresentTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B781F6A504600EBADE8 /* HXPresentTransition.m */; };
+		4A0E4B9F1F6A504600EBADE8 /* HXTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B7A1F6A504600EBADE8 /* HXTransition.m */; };
+		4A0E4BA01F6A504600EBADE8 /* HXVideoPresentTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B7C1F6A504600EBADE8 /* HXVideoPresentTransition.m */; };
+		4A0E4BA11F6A504600EBADE8 /* HXVideoPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B7E1F6A504600EBADE8 /* HXVideoPreviewViewController.m */; };
+		4A0E4BA21F6A504600EBADE8 /* HXWeiboPhotoPicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A0E4B7F1F6A504600EBADE8 /* HXWeiboPhotoPicker.bundle */; };
+		4A0E4BA31F6A504600EBADE8 /* NSBundle+HXWeiboPhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B811F6A504600EBADE8 /* NSBundle+HXWeiboPhotoPicker.m */; };
+		4A0E4BA41F6A504600EBADE8 /* UIButton+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B831F6A504600EBADE8 /* UIButton+HXExtension.m */; };
+		4A0E4BA51F6A504600EBADE8 /* UIImage+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B851F6A504600EBADE8 /* UIImage+HXExtension.m */; };
+		4A0E4BA61F6A504600EBADE8 /* UIView+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B871F6A504600EBADE8 /* UIView+HXExtension.m */; };
 		4A4950891F5F886600180007 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4950881F5F886600180007 /* main.m */; };
 		4A49508C1F5F886600180007 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A49508B1F5F886600180007 /* AppDelegate.m */; };
 		4A49508F1F5F886600180007 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A49508E1F5F886600180007 /* ViewController.m */; };
@@ -258,6 +289,18 @@
 		4AAE8F2A1F669E7200AC549D /* GLCommunity_PostCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AAE8F281F669E7200AC549D /* GLCommunity_PostCommentCell.xib */; };
 		4AAE8F2E1F66A0AA00AC549D /* GLCommunity_PostCommentReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAE8F2C1F66A0AA00AC549D /* GLCommunity_PostCommentReplyCell.m */; };
 		4AAE8F2F1F66A0AA00AC549D /* GLCommunity_PostCommentReplyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AAE8F2D1F66A0AA00AC549D /* GLCommunity_PostCommentReplyCell.xib */; };
+		4AB992EF1F6A76F200DE5590 /* 发表.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AB992EE1F6A76F200DE5590 /* 发表.xcassets */; };
+		4AB992F71F6A7FF400DE5590 /* GLPublishController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB992F31F6A7FF400DE5590 /* GLPublishController.m */; };
+		4AB992F81F6A7FF400DE5590 /* GLPublishController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AB992F41F6A7FF400DE5590 /* GLPublishController.xib */; };
+		4AB993001F6A803700DE5590 /* GLPublish_CommunityChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB992FE1F6A803700DE5590 /* GLPublish_CommunityChooseController.m */; };
+		4AB993011F6A803700DE5590 /* GLPublish_CommunityChooseController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AB992FF1F6A803700DE5590 /* GLPublish_CommunityChooseController.xib */; };
+		4AB993051F6A809600DE5590 /* GLPublish_CommunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB993031F6A809600DE5590 /* GLPublish_CommunityCell.m */; };
+		4AB993061F6A809600DE5590 /* GLPublish_CommunityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AB993041F6A809600DE5590 /* GLPublish_CommunityCell.xib */; };
+		4AB9930E1F6A9C1C00DE5590 /* GLMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB9930C1F6A9C1C00DE5590 /* GLMessageController.m */; };
+		4AB9930F1F6A9C1C00DE5590 /* GLMessageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AB9930D1F6A9C1C00DE5590 /* GLMessageController.xib */; };
+		4AB993131F6A9D4500DE5590 /* GLMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB993111F6A9D4500DE5590 /* GLMessageCell.m */; };
+		4AB993141F6A9D4500DE5590 /* GLMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AB993121F6A9D4500DE5590 /* GLMessageCell.xib */; };
+		4AB993171F6AA1C400DE5590 /* yindaotuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB993161F6AA1C400DE5590 /* yindaotuViewController.m */; };
 		62DDAB3E488A5881405D5AFA /* libPods-正儿八金.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 164A41A728AEAD2883C7498C /* libPods-正儿八金.a */; };
 /* End PBXBuildFile section */
 
@@ -274,6 +317,67 @@
 		4A0727871F694ABC00F1AFFE /* GLMine_EventDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMine_EventDetailController.h; sourceTree = "<group>"; };
 		4A0727881F694ABC00F1AFFE /* GLMine_EventDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMine_EventDetailController.m; sourceTree = "<group>"; };
 		4A0727891F694ABC00F1AFFE /* GLMine_EventDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLMine_EventDetailController.xib; sourceTree = "<group>"; };
+		4A0E4B4B1F6A504600EBADE8 /* HXAlbumListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumListView.h; sourceTree = "<group>"; };
+		4A0E4B4C1F6A504600EBADE8 /* HXAlbumListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumListView.m; sourceTree = "<group>"; };
+		4A0E4B4D1F6A504600EBADE8 /* HXAlbumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumModel.h; sourceTree = "<group>"; };
+		4A0E4B4E1F6A504600EBADE8 /* HXAlbumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumModel.m; sourceTree = "<group>"; };
+		4A0E4B4F1F6A504600EBADE8 /* HXAlbumTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumTitleButton.h; sourceTree = "<group>"; };
+		4A0E4B501F6A504600EBADE8 /* HXAlbumTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumTitleButton.m; sourceTree = "<group>"; };
+		4A0E4B511F6A504600EBADE8 /* HXCameraPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXCameraPreviewViewController.h; sourceTree = "<group>"; };
+		4A0E4B521F6A504600EBADE8 /* HXCameraPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXCameraPreviewViewController.m; sourceTree = "<group>"; };
+		4A0E4B531F6A504600EBADE8 /* HXCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXCameraViewController.h; sourceTree = "<group>"; };
+		4A0E4B541F6A504600EBADE8 /* HXCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXCameraViewController.m; sourceTree = "<group>"; };
+		4A0E4B551F6A504600EBADE8 /* HXCircleProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXCircleProgressView.h; sourceTree = "<group>"; };
+		4A0E4B561F6A504600EBADE8 /* HXCircleProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXCircleProgressView.m; sourceTree = "<group>"; };
+		4A0E4B571F6A504600EBADE8 /* HXCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXCollectionView.h; sourceTree = "<group>"; };
+		4A0E4B581F6A504600EBADE8 /* HXCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXCollectionView.m; sourceTree = "<group>"; };
+		4A0E4B591F6A504600EBADE8 /* HXFullScreenCameraPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXFullScreenCameraPlayView.h; sourceTree = "<group>"; };
+		4A0E4B5A1F6A504600EBADE8 /* HXFullScreenCameraPlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXFullScreenCameraPlayView.m; sourceTree = "<group>"; };
+		4A0E4B5B1F6A504600EBADE8 /* HXFullScreenCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXFullScreenCameraViewController.h; sourceTree = "<group>"; };
+		4A0E4B5C1F6A504600EBADE8 /* HXFullScreenCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXFullScreenCameraViewController.m; sourceTree = "<group>"; };
+		4A0E4B5D1F6A504600EBADE8 /* HXPhotoEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPhotoEditView.h; sourceTree = "<group>"; };
+		4A0E4B5E1F6A504600EBADE8 /* HXPhotoEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXPhotoEditView.m; sourceTree = "<group>"; };
+		4A0E4B5F1F6A504600EBADE8 /* HXPhotoEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPhotoEditViewController.h; sourceTree = "<group>"; };
+		4A0E4B601F6A504600EBADE8 /* HXPhotoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXPhotoEditViewController.m; sourceTree = "<group>"; };
+		4A0E4B611F6A504600EBADE8 /* HXPhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPhotoManager.h; sourceTree = "<group>"; };
+		4A0E4B621F6A504600EBADE8 /* HXPhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXPhotoManager.m; sourceTree = "<group>"; };
+		4A0E4B631F6A504600EBADE8 /* HXPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPhotoModel.h; sourceTree = "<group>"; };
+		4A0E4B641F6A504600EBADE8 /* HXPhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXPhotoModel.m; sourceTree = "<group>"; };
+		4A0E4B651F6A504600EBADE8 /* HXPhotoPreviewViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPhotoPreviewViewCell.h; sourceTree = "<group>"; };
+		4A0E4B661F6A504600EBADE8 /* HXPhotoPreviewViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXPhotoPreviewViewCell.m; sourceTree = "<group>"; };
+		4A0E4B671F6A504600EBADE8 /* HXPhotoPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPhotoPreviewViewController.h; sourceTree = "<group>"; };
+		4A0E4B681F6A504600EBADE8 /* HXPhotoPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXPhotoPreviewViewController.m; sourceTree = "<group>"; };
+		4A0E4B691F6A504600EBADE8 /* HXPhotoResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPhotoResultModel.h; sourceTree = "<group>"; };
+		4A0E4B6A1F6A504600EBADE8 /* HXPhotoResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXPhotoResultModel.m; sourceTree = "<group>"; };
+		4A0E4B6B1F6A504600EBADE8 /* HXPhotoSubViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPhotoSubViewCell.h; sourceTree = "<group>"; };
+		4A0E4B6C1F6A504600EBADE8 /* HXPhotoSubViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXPhotoSubViewCell.m; sourceTree = "<group>"; };
+		4A0E4B6D1F6A504600EBADE8 /* HXPhotoTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPhotoTools.h; sourceTree = "<group>"; };
+		4A0E4B6E1F6A504600EBADE8 /* HXPhotoTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXPhotoTools.m; sourceTree = "<group>"; };
+		4A0E4B6F1F6A504600EBADE8 /* HXPhotoUIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPhotoUIManager.h; sourceTree = "<group>"; };
+		4A0E4B701F6A504600EBADE8 /* HXPhotoUIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXPhotoUIManager.m; sourceTree = "<group>"; };
+		4A0E4B711F6A504600EBADE8 /* HXPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPhotoView.h; sourceTree = "<group>"; };
+		4A0E4B721F6A504600EBADE8 /* HXPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXPhotoView.m; sourceTree = "<group>"; };
+		4A0E4B731F6A504600EBADE8 /* HXPhotoViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPhotoViewCell.h; sourceTree = "<group>"; };
+		4A0E4B741F6A504600EBADE8 /* HXPhotoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXPhotoViewCell.m; sourceTree = "<group>"; };
+		4A0E4B751F6A504600EBADE8 /* HXPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPhotoViewController.h; sourceTree = "<group>"; };
+		4A0E4B761F6A504600EBADE8 /* HXPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXPhotoViewController.m; sourceTree = "<group>"; };
+		4A0E4B771F6A504600EBADE8 /* HXPresentTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPresentTransition.h; sourceTree = "<group>"; };
+		4A0E4B781F6A504600EBADE8 /* HXPresentTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXPresentTransition.m; sourceTree = "<group>"; };
+		4A0E4B791F6A504600EBADE8 /* HXTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXTransition.h; sourceTree = "<group>"; };
+		4A0E4B7A1F6A504600EBADE8 /* HXTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXTransition.m; sourceTree = "<group>"; };
+		4A0E4B7B1F6A504600EBADE8 /* HXVideoPresentTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXVideoPresentTransition.h; sourceTree = "<group>"; };
+		4A0E4B7C1F6A504600EBADE8 /* HXVideoPresentTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXVideoPresentTransition.m; sourceTree = "<group>"; };
+		4A0E4B7D1F6A504600EBADE8 /* HXVideoPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXVideoPreviewViewController.h; sourceTree = "<group>"; };
+		4A0E4B7E1F6A504600EBADE8 /* HXVideoPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXVideoPreviewViewController.m; sourceTree = "<group>"; };
+		4A0E4B7F1F6A504600EBADE8 /* HXWeiboPhotoPicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HXWeiboPhotoPicker.bundle; sourceTree = "<group>"; };
+		4A0E4B801F6A504600EBADE8 /* NSBundle+HXWeiboPhotoPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+HXWeiboPhotoPicker.h"; sourceTree = "<group>"; };
+		4A0E4B811F6A504600EBADE8 /* NSBundle+HXWeiboPhotoPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+HXWeiboPhotoPicker.m"; sourceTree = "<group>"; };
+		4A0E4B821F6A504600EBADE8 /* UIButton+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+HXExtension.h"; sourceTree = "<group>"; };
+		4A0E4B831F6A504600EBADE8 /* UIButton+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+HXExtension.m"; sourceTree = "<group>"; };
+		4A0E4B841F6A504600EBADE8 /* UIImage+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+HXExtension.h"; sourceTree = "<group>"; };
+		4A0E4B851F6A504600EBADE8 /* UIImage+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HXExtension.m"; sourceTree = "<group>"; };
+		4A0E4B861F6A504600EBADE8 /* UIView+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HXExtension.h"; sourceTree = "<group>"; };
+		4A0E4B871F6A504600EBADE8 /* UIView+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HXExtension.m"; sourceTree = "<group>"; };
 		4A4950841F5F886600180007 /* 正儿八金.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "正儿八金.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A4950881F5F886600180007 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4A49508A1F5F886600180007 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -735,6 +839,24 @@
 		4AAE8F2B1F66A0AA00AC549D /* GLCommunity_PostCommentReplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCommunity_PostCommentReplyCell.h; sourceTree = "<group>"; };
 		4AAE8F2C1F66A0AA00AC549D /* GLCommunity_PostCommentReplyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCommunity_PostCommentReplyCell.m; sourceTree = "<group>"; };
 		4AAE8F2D1F66A0AA00AC549D /* GLCommunity_PostCommentReplyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLCommunity_PostCommentReplyCell.xib; sourceTree = "<group>"; };
+		4AB992EE1F6A76F200DE5590 /* 发表.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "发表.xcassets"; sourceTree = "<group>"; };
+		4AB992F21F6A7FF400DE5590 /* GLPublishController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLPublishController.h; sourceTree = "<group>"; };
+		4AB992F31F6A7FF400DE5590 /* GLPublishController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLPublishController.m; sourceTree = "<group>"; };
+		4AB992F41F6A7FF400DE5590 /* GLPublishController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLPublishController.xib; sourceTree = "<group>"; };
+		4AB992FD1F6A803700DE5590 /* GLPublish_CommunityChooseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLPublish_CommunityChooseController.h; sourceTree = "<group>"; };
+		4AB992FE1F6A803700DE5590 /* GLPublish_CommunityChooseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLPublish_CommunityChooseController.m; sourceTree = "<group>"; };
+		4AB992FF1F6A803700DE5590 /* GLPublish_CommunityChooseController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLPublish_CommunityChooseController.xib; sourceTree = "<group>"; };
+		4AB993021F6A809600DE5590 /* GLPublish_CommunityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLPublish_CommunityCell.h; sourceTree = "<group>"; };
+		4AB993031F6A809600DE5590 /* GLPublish_CommunityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLPublish_CommunityCell.m; sourceTree = "<group>"; };
+		4AB993041F6A809600DE5590 /* GLPublish_CommunityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLPublish_CommunityCell.xib; sourceTree = "<group>"; };
+		4AB9930B1F6A9C1C00DE5590 /* GLMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMessageController.h; sourceTree = "<group>"; };
+		4AB9930C1F6A9C1C00DE5590 /* GLMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMessageController.m; sourceTree = "<group>"; };
+		4AB9930D1F6A9C1C00DE5590 /* GLMessageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLMessageController.xib; sourceTree = "<group>"; };
+		4AB993101F6A9D4500DE5590 /* GLMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMessageCell.h; sourceTree = "<group>"; };
+		4AB993111F6A9D4500DE5590 /* GLMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMessageCell.m; sourceTree = "<group>"; };
+		4AB993121F6A9D4500DE5590 /* GLMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLMessageCell.xib; sourceTree = "<group>"; };
+		4AB993151F6AA1C400DE5590 /* yindaotuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yindaotuViewController.h; sourceTree = "<group>"; };
+		4AB993161F6AA1C400DE5590 /* yindaotuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = yindaotuViewController.m; sourceTree = "<group>"; };
 		6B31BB0DBF2BD8D4ACBD79BB /* Pods-正儿八金.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-正儿八金.debug.xcconfig"; path = "Pods/Target Support Files/Pods-正儿八金/Pods-正儿八金.debug.xcconfig"; sourceTree = "<group>"; };
 		EF60FA471903D3B61FEEB693 /* Pods-正儿八金.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-正儿八金.release.xcconfig"; path = "Pods/Target Support Files/Pods-正儿八金/Pods-正儿八金.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -833,6 +955,83 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		4A0E4B411F6A153800EBADE8 /* 发布 */ = {
+			isa = PBXGroup;
+			children = (
+				4AB992F01F6A7FF400DE5590 /* 发布 */,
+				4AB992F91F6A801900DE5590 /* 社区选择 */,
+			);
+			path = "发布";
+			sourceTree = "<group>";
+		};
+		4A0E4B4A1F6A504600EBADE8 /* HXWeiboPhotoPicker */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E4B4B1F6A504600EBADE8 /* HXAlbumListView.h */,
+				4A0E4B4C1F6A504600EBADE8 /* HXAlbumListView.m */,
+				4A0E4B4D1F6A504600EBADE8 /* HXAlbumModel.h */,
+				4A0E4B4E1F6A504600EBADE8 /* HXAlbumModel.m */,
+				4A0E4B4F1F6A504600EBADE8 /* HXAlbumTitleButton.h */,
+				4A0E4B501F6A504600EBADE8 /* HXAlbumTitleButton.m */,
+				4A0E4B511F6A504600EBADE8 /* HXCameraPreviewViewController.h */,
+				4A0E4B521F6A504600EBADE8 /* HXCameraPreviewViewController.m */,
+				4A0E4B531F6A504600EBADE8 /* HXCameraViewController.h */,
+				4A0E4B541F6A504600EBADE8 /* HXCameraViewController.m */,
+				4A0E4B551F6A504600EBADE8 /* HXCircleProgressView.h */,
+				4A0E4B561F6A504600EBADE8 /* HXCircleProgressView.m */,
+				4A0E4B571F6A504600EBADE8 /* HXCollectionView.h */,
+				4A0E4B581F6A504600EBADE8 /* HXCollectionView.m */,
+				4A0E4B591F6A504600EBADE8 /* HXFullScreenCameraPlayView.h */,
+				4A0E4B5A1F6A504600EBADE8 /* HXFullScreenCameraPlayView.m */,
+				4A0E4B5B1F6A504600EBADE8 /* HXFullScreenCameraViewController.h */,
+				4A0E4B5C1F6A504600EBADE8 /* HXFullScreenCameraViewController.m */,
+				4A0E4B5D1F6A504600EBADE8 /* HXPhotoEditView.h */,
+				4A0E4B5E1F6A504600EBADE8 /* HXPhotoEditView.m */,
+				4A0E4B5F1F6A504600EBADE8 /* HXPhotoEditViewController.h */,
+				4A0E4B601F6A504600EBADE8 /* HXPhotoEditViewController.m */,
+				4A0E4B611F6A504600EBADE8 /* HXPhotoManager.h */,
+				4A0E4B621F6A504600EBADE8 /* HXPhotoManager.m */,
+				4A0E4B631F6A504600EBADE8 /* HXPhotoModel.h */,
+				4A0E4B641F6A504600EBADE8 /* HXPhotoModel.m */,
+				4A0E4B651F6A504600EBADE8 /* HXPhotoPreviewViewCell.h */,
+				4A0E4B661F6A504600EBADE8 /* HXPhotoPreviewViewCell.m */,
+				4A0E4B671F6A504600EBADE8 /* HXPhotoPreviewViewController.h */,
+				4A0E4B681F6A504600EBADE8 /* HXPhotoPreviewViewController.m */,
+				4A0E4B691F6A504600EBADE8 /* HXPhotoResultModel.h */,
+				4A0E4B6A1F6A504600EBADE8 /* HXPhotoResultModel.m */,
+				4A0E4B6B1F6A504600EBADE8 /* HXPhotoSubViewCell.h */,
+				4A0E4B6C1F6A504600EBADE8 /* HXPhotoSubViewCell.m */,
+				4A0E4B6D1F6A504600EBADE8 /* HXPhotoTools.h */,
+				4A0E4B6E1F6A504600EBADE8 /* HXPhotoTools.m */,
+				4A0E4B6F1F6A504600EBADE8 /* HXPhotoUIManager.h */,
+				4A0E4B701F6A504600EBADE8 /* HXPhotoUIManager.m */,
+				4A0E4B711F6A504600EBADE8 /* HXPhotoView.h */,
+				4A0E4B721F6A504600EBADE8 /* HXPhotoView.m */,
+				4A0E4B731F6A504600EBADE8 /* HXPhotoViewCell.h */,
+				4A0E4B741F6A504600EBADE8 /* HXPhotoViewCell.m */,
+				4A0E4B751F6A504600EBADE8 /* HXPhotoViewController.h */,
+				4A0E4B761F6A504600EBADE8 /* HXPhotoViewController.m */,
+				4A0E4B771F6A504600EBADE8 /* HXPresentTransition.h */,
+				4A0E4B781F6A504600EBADE8 /* HXPresentTransition.m */,
+				4A0E4B791F6A504600EBADE8 /* HXTransition.h */,
+				4A0E4B7A1F6A504600EBADE8 /* HXTransition.m */,
+				4A0E4B7B1F6A504600EBADE8 /* HXVideoPresentTransition.h */,
+				4A0E4B7C1F6A504600EBADE8 /* HXVideoPresentTransition.m */,
+				4A0E4B7D1F6A504600EBADE8 /* HXVideoPreviewViewController.h */,
+				4A0E4B7E1F6A504600EBADE8 /* HXVideoPreviewViewController.m */,
+				4A0E4B7F1F6A504600EBADE8 /* HXWeiboPhotoPicker.bundle */,
+				4A0E4B801F6A504600EBADE8 /* NSBundle+HXWeiboPhotoPicker.h */,
+				4A0E4B811F6A504600EBADE8 /* NSBundle+HXWeiboPhotoPicker.m */,
+				4A0E4B821F6A504600EBADE8 /* UIButton+HXExtension.h */,
+				4A0E4B831F6A504600EBADE8 /* UIButton+HXExtension.m */,
+				4A0E4B841F6A504600EBADE8 /* UIImage+HXExtension.h */,
+				4A0E4B851F6A504600EBADE8 /* UIImage+HXExtension.m */,
+				4A0E4B861F6A504600EBADE8 /* UIView+HXExtension.h */,
+				4A0E4B871F6A504600EBADE8 /* UIView+HXExtension.m */,
+			);
+			path = HXWeiboPhotoPicker;
+			sourceTree = "<group>";
+		};
 		4A49507B1F5F886600180007 = {
 			isa = PBXGroup;
 			children = (
@@ -856,11 +1055,15 @@
 			children = (
 				4A49508A1F5F886600180007 /* AppDelegate.h */,
 				4A49508B1F5F886600180007 /* AppDelegate.m */,
+				4AB993151F6AA1C400DE5590 /* yindaotuViewController.h */,
+				4AB993161F6AA1C400DE5590 /* yindaotuViewController.m */,
 				4A605ED31F67CC9F00F80666 /* 登录注册 */,
 				4A73CE8B1F60D7550071C559 /* 首页 */,
 				4A73CE931F60D7550071C559 /* 社区 */,
+				4A0E4B411F6A153800EBADE8 /* 发布 */,
 				4A73CED21F6127600071C559 /* 好友 */,
 				4A73CE8F1F60D7550071C559 /* 我的 */,
+				4AB993071F6A9C0900DE5590 /* 消息 */,
 				4A4954D51F5F89B200180007 /* Tool(工具类) */,
 				4A4954C71F5F89A100180007 /* 自定义View */,
 				4A4954AC1F5F898F00180007 /* 图片资源 */,
@@ -915,6 +1118,7 @@
 		4A4950B21F5F898C00180007 /* 三方库 */ = {
 			isa = PBXGroup;
 			children = (
+				4A0E4B4A1F6A504600EBADE8 /* HXWeiboPhotoPicker */,
 				4A605EEA1F67EB5A00F80666 /* WXSTransition */,
 				4A5D0B851F628636009DD45D /* 聊天资料 */,
 				4A73CEDB1F61369A0071C559 /* XBScrollPageController */,
@@ -936,6 +1140,7 @@
 				4A4954B71F5F898F00180007 /* setUp.xcassets */,
 				4A4954B81F5F898F00180007 /* tabbarimage.xcassets */,
 				4A4954B91F5F898F00180007 /* 我的.xcassets */,
+				4AB992EE1F6A76F200DE5590 /* 发表.xcassets */,
 			);
 			path = "图片资源";
 			sourceTree = "<group>";
@@ -2104,6 +2309,114 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		4AB992F01F6A7FF400DE5590 /* 发布 */ = {
+			isa = PBXGroup;
+			children = (
+				4AB992F11F6A7FF400DE5590 /* Controller */,
+				4AB992F51F6A7FF400DE5590 /* Model */,
+				4AB992F61F6A7FF400DE5590 /* View */,
+			);
+			path = "发布";
+			sourceTree = "<group>";
+		};
+		4AB992F11F6A7FF400DE5590 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4AB992F21F6A7FF400DE5590 /* GLPublishController.h */,
+				4AB992F31F6A7FF400DE5590 /* GLPublishController.m */,
+				4AB992F41F6A7FF400DE5590 /* GLPublishController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4AB992F51F6A7FF400DE5590 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4AB992F61F6A7FF400DE5590 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4AB992F91F6A801900DE5590 /* 社区选择 */ = {
+			isa = PBXGroup;
+			children = (
+				4AB992FA1F6A801900DE5590 /* Controller */,
+				4AB992FB1F6A801900DE5590 /* Model */,
+				4AB992FC1F6A801900DE5590 /* View */,
+			);
+			path = "社区选择";
+			sourceTree = "<group>";
+		};
+		4AB992FA1F6A801900DE5590 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4AB992FD1F6A803700DE5590 /* GLPublish_CommunityChooseController.h */,
+				4AB992FE1F6A803700DE5590 /* GLPublish_CommunityChooseController.m */,
+				4AB992FF1F6A803700DE5590 /* GLPublish_CommunityChooseController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4AB992FB1F6A801900DE5590 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4AB992FC1F6A801900DE5590 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4AB993021F6A809600DE5590 /* GLPublish_CommunityCell.h */,
+				4AB993031F6A809600DE5590 /* GLPublish_CommunityCell.m */,
+				4AB993041F6A809600DE5590 /* GLPublish_CommunityCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4AB993071F6A9C0900DE5590 /* 消息 */ = {
+			isa = PBXGroup;
+			children = (
+				4AB993081F6A9C0900DE5590 /* Controller */,
+				4AB993091F6A9C0900DE5590 /* Model */,
+				4AB9930A1F6A9C0900DE5590 /* View */,
+			);
+			path = "消息";
+			sourceTree = "<group>";
+		};
+		4AB993081F6A9C0900DE5590 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4AB9930B1F6A9C1C00DE5590 /* GLMessageController.h */,
+				4AB9930C1F6A9C1C00DE5590 /* GLMessageController.m */,
+				4AB9930D1F6A9C1C00DE5590 /* GLMessageController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4AB993091F6A9C0900DE5590 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4AB9930A1F6A9C0900DE5590 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4AB993101F6A9D4500DE5590 /* GLMessageCell.h */,
+				4AB993111F6A9D4500DE5590 /* GLMessageCell.m */,
+				4AB993121F6A9D4500DE5590 /* GLMessageCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		61412A8A09190E00702632B0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2194,11 +2507,15 @@
 				4A5D0D2D1F62868C009DD45D /* LBSessionListViewController.xib in Resources */,
 				4A73CEBE1F60E3090071C559 /* GLHome_AttentionController.xib in Resources */,
 				4A07277E1F69321600F1AFFE /* GLMine_MyPostCell.xib in Resources */,
+				4A0E4BA21F6A504600EBADE8 /* HXWeiboPhotoPicker.bundle in Resources */,
+				4AB9930F1F6A9C1C00DE5590 /* GLMessageController.xib in Resources */,
 				4A5D0D311F62868C009DD45D /* LBGoodFriendsSectionView.xib in Resources */,
 				4A4954D41F5F89A100180007 /* NodataView.xib in Resources */,
+				4AB993141F6A9D4500DE5590 /* GLMessageCell.xib in Resources */,
 				4A5D0D2F1F62868C009DD45D /* LBGoodFriendsHeaderView.xib in Resources */,
 				4A73CF551F614D7A0071C559 /* GLHome_AttentionCollectionCell.xib in Resources */,
 				4A605ECD1F67B81500F80666 /* GLCommentListController.xib in Resources */,
+				4AB992EF1F6A76F200DE5590 /* 发表.xcassets in Resources */,
 				4A5B48B61F68CABD00AD2F0D /* GLMineController.xib in Resources */,
 				4A73CEC81F60E3310071C559 /* GLHome_hotController.xib in Resources */,
 				4A605F231F67F0C600F80666 /* GLForgetController.xib in Resources */,
@@ -2218,6 +2535,7 @@
 				4A5B48D51F68DA5700AD2F0D /* GLMine_SetupCell.xib in Resources */,
 				4A73CF5A1F6159020071C559 /* GLHome_NewCell.xib in Resources */,
 				4A5B48D71F68DDA600AD2F0D /* GLMine_SetupController.xib in Resources */,
+				4AB993011F6A803700DE5590 /* GLPublish_CommunityChooseController.xib in Resources */,
 				4A4954BE1F5F898F00180007 /* loadWait.xcassets in Resources */,
 				4A5B48ED1F69073900AD2F0D /* GLMine_EventController.xib in Resources */,
 				4A5D0D371F6293AF009DD45D /* GLHome_NewsHeaderView.xib in Resources */,
@@ -2225,6 +2543,8 @@
 				4A605EE61F67CCE300F80666 /* GLRegisterController.xib in Resources */,
 				4A4954C61F5F898F00180007 /* 我的.xcassets in Resources */,
 				4A4954C41F5F898F00180007 /* setUp.xcassets in Resources */,
+				4AB992F81F6A7FF400DE5590 /* GLPublishController.xib in Resources */,
+				4AB993061F6A809600DE5590 /* GLPublish_CommunityCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2288,15 +2608,20 @@
 				4A5D0CBD1F628637009DD45D /* NIMInputEmoticonButton.m in Sources */,
 				4AAE8F161F6670F500AC549D /* GLCommunity_DetailController.m in Sources */,
 				4A5D0CEB1F628637009DD45D /* NIMCardMemberItem.m in Sources */,
+				4A0E4BA01F6A504600EBADE8 /* HXVideoPresentTransition.m in Sources */,
 				4A4953A11F5F898D00180007 /* QQPopMenuView.m in Sources */,
+				4A0E4B951F6A504600EBADE8 /* HXPhotoPreviewViewCell.m in Sources */,
 				4A5D0CA61F628637009DD45D /* UITableView+NIMScrollToBottom.m in Sources */,
 				4A5D0CBC1F628637009DD45D /* NIMInputAudioRecordIndicatorView.m in Sources */,
 				4A5D0CF41F628637009DD45D /* NIMTeamMemberCardViewController.m in Sources */,
 				4A605EBB1F677DD500F80666 /* GLCommunity_PostCommentModel.m in Sources */,
 				4A4954F11F5F89B200180007 /* UIButton+SetEdgeInsets.m in Sources */,
+				4A0E4B891F6A504600EBADE8 /* HXAlbumModel.m in Sources */,
+				4A0E4BA31F6A504600EBADE8 /* NSBundle+HXWeiboPhotoPicker.m in Sources */,
 				4A5D0CAC1F628637009DD45D /* NIMKit.m in Sources */,
 				4A605EE51F67CCE300F80666 /* GLRegisterController.m in Sources */,
 				4A5D0D051F628637009DD45D /* NSMutableAttributedString+NIM.m in Sources */,
+				4A0E4B911F6A504600EBADE8 /* HXPhotoEditView.m in Sources */,
 				4A5D0CC61F628637009DD45D /* NIMKitEvent.m in Sources */,
 				4A5D0CE61F628637009DD45D /* NIMSessionUnknowContentView.m in Sources */,
 				4A5D0CB51F628637009DD45D /* NIMGroupedDataCollection.m in Sources */,
@@ -2309,7 +2634,10 @@
 				4A73CE9A1F60D7760071C559 /* GLHomeController.m in Sources */,
 				4A73CEEE1F61369A0071C559 /* XBConst.m in Sources */,
 				4A5D0CCF1F628637009DD45D /* NIMLocationContentConfig.m in Sources */,
+				4A0E4B971F6A504600EBADE8 /* HXPhotoResultModel.m in Sources */,
+				4AB993001F6A803700DE5590 /* GLPublish_CommunityChooseController.m in Sources */,
 				4A5D0CBE1F628637009DD45D /* NIMInputEmoticonContainerView.m in Sources */,
+				4A0E4B9B1F6A504600EBADE8 /* HXPhotoView.m in Sources */,
 				4A5B48D41F68DA5700AD2F0D /* GLMine_SetupCell.m in Sources */,
 				4A5D0CEE1F628637009DD45D /* NIMTeamInfoData.m in Sources */,
 				4A5B48EC1F69073900AD2F0D /* GLMine_EventController.m in Sources */,
@@ -2320,30 +2648,38 @@
 				4A5D0CF51F628637009DD45D /* NIMTeamMemberListViewController.m in Sources */,
 				4A605F1C1F67EB5A00F80666 /* WXSTransitionManager+ViewMoveAnimation.m in Sources */,
 				4A4950A71F5F896B00180007 /* LBLoginNavigationViewController.m in Sources */,
+				4A0E4B9E1F6A504600EBADE8 /* HXPresentTransition.m in Sources */,
 				4A4954D31F5F89A100180007 /* NodataView.m in Sources */,
+				4A0E4B8D1F6A504600EBADE8 /* HXCircleProgressView.m in Sources */,
 				4A5D0CF71F628637009DD45D /* NIMTeamAnnouncementListCell.m in Sources */,
+				4A0E4B8E1F6A504600EBADE8 /* HXCollectionView.m in Sources */,
 				4A4954D11F5F89A100180007 /* LoadWaitView.m in Sources */,
 				4A5D0D0F1F628637009DD45D /* UIImage+NIMMultiFormat.m in Sources */,
 				4A5D0CAB1F628637009DD45D /* NIMKitSwitcherCell.m in Sources */,
 				4A5D0CCE1F628637009DD45D /* NIMImageContentConfig.m in Sources */,
 				4A5D0CDD1F628637009DD45D /* NIMSessionTimestampCell.m in Sources */,
 				4A5D0CE11F628637009DD45D /* NIMSessionLocationContentView.m in Sources */,
+				4AB993171F6AA1C400DE5590 /* yindaotuViewController.m in Sources */,
 				4A5D0D031F628637009DD45D /* NIMAttributedLabelAttachment.m in Sources */,
+				4A0E4BA61F6A504600EBADE8 /* UIView+HXExtension.m in Sources */,
 				4A5D0D121F628637009DD45D /* NIMProgressHUD.m in Sources */,
 				4A5D0CCB1F628637009DD45D /* NIMBaseSessionContentConfig.m in Sources */,
 				4A5D0CB41F628637009DD45D /* NIMContactDataCell.m in Sources */,
 				4A5B48F71F69131100AD2F0D /* GLMine_EventCell.m in Sources */,
 				4A605F171F67EB5A00F80666 /* WXSTransitionManager+InsideThenPushAnimation.m in Sources */,
+				4A0E4B8F1F6A504600EBADE8 /* HXFullScreenCameraPlayView.m in Sources */,
 				4A5D0CC41F628637009DD45D /* NIMInputToolBar.m in Sources */,
 				4A5D0CD11F628637009DD45D /* NIMTextContentConfig.m in Sources */,
 				4A73CEF21F6136D00071C559 /* UIView+XBExtension.m in Sources */,
 				4A0727821F6939AA00F1AFFE /* GLMine_MyPostModel.m in Sources */,
 				4A5D0CB81F628637009DD45D /* NIMContactPickedView.m in Sources */,
 				4A5D0CED1F628637009DD45D /* NIMTeamCardRowItem.m in Sources */,
+				4A0E4B9A1F6A504600EBADE8 /* HXPhotoUIManager.m in Sources */,
 				4A5D0CFE1F628637009DD45D /* NIMKitUtil.m in Sources */,
 				4A5D0CD01F628637009DD45D /* NIMNotificationContentConfig.m in Sources */,
 				4A73CF491F6146BB0071C559 /* DWTabBarController.m in Sources */,
 				4A605F111F67EB5A00F80666 /* WXSPercentDrivenInteractiveTransition.m in Sources */,
+				4A0E4B991F6A504600EBADE8 /* HXPhotoTools.m in Sources */,
 				4A4953931F5F898D00180007 /* PopMenuTableViewCell.m in Sources */,
 				4A49508F1F5F886600180007 /* ViewController.m in Sources */,
 				4A73CF591F6159020071C559 /* GLHome_NewCell.m in Sources */,
@@ -2351,6 +2687,7 @@
 				4A5D0D301F62868C009DD45D /* LBGoodFriendsSectionView.m in Sources */,
 				4A5D0CA41F628637009DD45D /* NSString+NIM.m in Sources */,
 				4A73CF541F614D7A0071C559 /* GLHome_AttentionCollectionCell.m in Sources */,
+				4AB9930E1F6A9C1C00DE5590 /* GLMessageController.m in Sources */,
 				4A5D0CFF1F628637009DD45D /* NIMPinyinConverter.m in Sources */,
 				4A5D0D141F628637009DD45D /* CustomSysNotificationSender.m in Sources */,
 				4A49508C1F5F886600180007 /* AppDelegate.m in Sources */,
@@ -2360,6 +2697,7 @@
 				4A605F151F67EB5A00F80666 /* WXSTransitionManager+FlipAnimation.m in Sources */,
 				4A5D0D181F628637009DD45D /* TimerHolder.m in Sources */,
 				4A4954F21F5F89B200180007 /* UILabel+UILabel_ChangeLineSpaceAndWordSpace.m in Sources */,
+				4A0E4BA11F6A504600EBADE8 /* HXVideoPreviewViewController.m in Sources */,
 				4A5D0D061F628637009DD45D /* NIMImageCache.m in Sources */,
 				4A5D0CFB1F628637009DD45D /* NIMTimePickerView.m in Sources */,
 				4A5D0D0C1F628637009DD45D /* NIMWebImagePrefetcher.m in Sources */,
@@ -2367,9 +2705,12 @@
 				4A07277D1F69321600F1AFFE /* GLMine_MyPostCell.m in Sources */,
 				4A605F101F67EB5A00F80666 /* UIViewController+WXSTransitionProperty.m in Sources */,
 				4A5D0CE01F628637009DD45D /* NIMSessionImageContentView.m in Sources */,
+				4A0E4B981F6A504600EBADE8 /* HXPhotoSubViewCell.m in Sources */,
 				4A5D0CF01F628637009DD45D /* NIMAdvancedTeamCardViewController.m in Sources */,
+				4A0E4B921F6A504600EBADE8 /* HXPhotoEditViewController.m in Sources */,
 				4A5D0CD81F628637009DD45D /* NIMSessionMsgDatasource.m in Sources */,
 				4A5D0CFC1F628637009DD45D /* NIMKitDevice.m in Sources */,
+				4A0E4B9F1F6A504600EBADE8 /* HXTransition.m in Sources */,
 				4A5D0CD41F628637009DD45D /* NIMVideoContentConfig.m in Sources */,
 				4A5D0D081F628637009DD45D /* NIMWebImageDecoder.m in Sources */,
 				4AAE8F2E1F66A0AA00AC549D /* GLCommunity_PostCommentReplyCell.m in Sources */,
@@ -2390,15 +2731,18 @@
 				4A5D0CD71F628637009DD45D /* NIMMessageMaker.m in Sources */,
 				4A5D0CE91F628637009DD45D /* NIMSessionListViewController.m in Sources */,
 				4A5D0CD91F628637009DD45D /* NIMSessionViewController.m in Sources */,
+				4A0E4B961F6A504600EBADE8 /* HXPhotoPreviewViewController.m in Sources */,
 				4A4954EF1F5F89B200180007 /* predicateModel.m in Sources */,
 				4A4954F01F5F89B200180007 /* ScaleSizeImage.m in Sources */,
 				4A5D0D321F62868C009DD45D /* LBGoodFriendsViewHeaderFooterView.m in Sources */,
 				4A5D0CDE1F628637009DD45D /* NIMSessionAudioContentView.m in Sources */,
 				4A5D0CE51F628637009DD45D /* NIMSessionTextContentView.m in Sources */,
 				4A5D0D0D1F628637009DD45D /* NSData+NIMImageContentType.m in Sources */,
+				4A0E4B901F6A504600EBADE8 /* HXFullScreenCameraViewController.m in Sources */,
 				4A4954EB1F5F89B200180007 /* formattime.m in Sources */,
 				4A5D0CC91F628637009DD45D /* NIMUIConfig.m in Sources */,
 				4A73CEBD1F60E3090071C559 /* GLHome_AttentionController.m in Sources */,
+				4A0E4B941F6A504600EBADE8 /* HXPhotoModel.m in Sources */,
 				4A605F181F67EB5A00F80666 /* WXSTransitionManager+PageAnimation.m in Sources */,
 				4A5D0CA51F628637009DD45D /* UIImage+NIM.m in Sources */,
 				4A5D0D131F628637009DD45D /* UIView+NIMKitToast.m in Sources */,
@@ -2411,10 +2755,12 @@
 				4A5D0D151F628637009DD45D /* DataManager.m in Sources */,
 				4A5D0D0B1F628637009DD45D /* NIMWebImageManager.m in Sources */,
 				4A5D0CB21F628637009DD45D /* NIMMemberGroupView.m in Sources */,
+				4A0E4BA51F6A504600EBADE8 /* UIImage+HXExtension.m in Sources */,
 				4A605ED11F67B9BF00F80666 /* GLCommentCell.m in Sources */,
 				4A5D0CE41F628637009DD45D /* NIMSessionNotificationContentView.m in Sources */,
 				4A5D0CEF1F628637009DD45D /* NIMUsrInfoData.m in Sources */,
 				4A5D0CA31F628637009DD45D /* NIMExtensionHelper.m in Sources */,
+				4A0E4B8B1F6A504600EBADE8 /* HXCameraPreviewViewController.m in Sources */,
 				4A605F1E1F67EB5A00F80666 /* WXSTransitionProperty.m in Sources */,
 				4A5D0CBF1F628637009DD45D /* NIMInputEmoticonManager.m in Sources */,
 				4A5D0CA91F628637009DD45D /* NIMCommonTableDelegate.m in Sources */,
@@ -2433,6 +2779,7 @@
 				4A5B48DF1F68FD2000AD2F0D /* GLMine_PersonInfoController.m in Sources */,
 				4A5D0CC01F628637009DD45D /* NIMInputEmoticonParser.m in Sources */,
 				4A4954F31F5F89B200180007 /* UIView+Extension.m in Sources */,
+				4A0E4B9D1F6A504600EBADE8 /* HXPhotoViewController.m in Sources */,
 				4A5D0D2C1F62868C009DD45D /* LBSessionListViewController.m in Sources */,
 				4A5D0CC51F628637009DD45D /* NIMInputView.m in Sources */,
 				4A5D0D071F628637009DD45D /* NIMWebImageCompat.m in Sources */,
@@ -2451,9 +2798,12 @@
 				4A605F1D1F67EB5A00F80666 /* WXSTransitionManager.m in Sources */,
 				4A5D0CB71F628637009DD45D /* NIMContactDataItem.m in Sources */,
 				4A605F141F67EB5A00F80666 /* WXSTransitionManager+CoverAnimation.m in Sources */,
+				4AB993131F6A9D4500DE5590 /* GLMessageCell.m in Sources */,
 				4A73CEED1F61369A0071C559 /* XBTagTitleCell.m in Sources */,
 				4A73CEEB1F61369A0071C559 /* XBTagTitleModel.m in Sources */,
+				4A0E4BA41F6A504600EBADE8 /* UIButton+HXExtension.m in Sources */,
 				4A5D0CD21F628637009DD45D /* NIMTipContentConfig.m in Sources */,
+				4A0E4B9C1F6A504600EBADE8 /* HXPhotoViewCell.m in Sources */,
 				4A5D0CB11F628637009DD45D /* NIMLoadProgressView.m in Sources */,
 				4A5D0CB01F628637009DD45D /* NIMKitNotificationFirer.m in Sources */,
 				4A5D0CF81F628637009DD45D /* NIMTeamCardHeaderCell.m in Sources */,
@@ -2462,7 +2812,9 @@
 				4A5D0CFA1F628637009DD45D /* NIMTeamSwitchTableViewCell.m in Sources */,
 				4A5D0CC71F628637009DD45D /* NIMMediaItem.m in Sources */,
 				4A4950B01F5F897700180007 /* UserModel.m in Sources */,
+				4AB993051F6A809600DE5590 /* GLPublish_CommunityCell.m in Sources */,
 				4A5B48F01F690F7D00AD2F0D /* GLMine_EventOnLineController.m in Sources */,
+				4AB992F71F6A7FF400DE5590 /* GLPublishController.m in Sources */,
 				4A5D0CA81F628637009DD45D /* NIMCommonTableData.m in Sources */,
 				4A5D0CDC1F628637009DD45D /* NIMMessageCell.m in Sources */,
 				4A4950A51F5F896B00180007 /* BaseNavigationViewController.m in Sources */,
@@ -2476,13 +2828,17 @@
 				4A4950B11F5F897700180007 /* usermodelachivar.m in Sources */,
 				4AAE8F0F1F6670C100AC549D /* GLCommunityController.m in Sources */,
 				4A5D0CA21F628637009DD45D /* NIMAttributedLabel+NIMKit.m in Sources */,
+				4A0E4B8A1F6A504600EBADE8 /* HXAlbumTitleButton.m in Sources */,
+				4A0E4B881F6A504600EBADE8 /* HXAlbumListView.m in Sources */,
 				4A73CEC21F60E31E0071C559 /* GLHome_NewController.m in Sources */,
 				4A5D0CC31F628637009DD45D /* NIMInputTextView.m in Sources */,
 				4A5D0D091F628637009DD45D /* NIMWebImageDownloader.m in Sources */,
 				4AAE8F241F668CF200AC549D /* GLCommunity_PostController.m in Sources */,
 				4A5D0D361F6293AF009DD45D /* GLHome_NewsHeaderView.m in Sources */,
+				4A0E4B8C1F6A504600EBADE8 /* HXCameraViewController.m in Sources */,
 				4A5D0CCD1F628637009DD45D /* NIMFileContentConfig.m in Sources */,
 				4A5D0CBA1F628637009DD45D /* NIMContactSelectTabView.m in Sources */,
+				4A0E4B931F6A504600EBADE8 /* HXPhotoManager.m in Sources */,
 				4A5D0D041F628637009DD45D /* NIMAttributedLabelURL.m in Sources */,
 				4A5D0D001F628637009DD45D /* NIMSpellingCenter.m in Sources */,
 				4A5D0D161F628637009DD45D /* NSDictionary+Json.m in Sources */,

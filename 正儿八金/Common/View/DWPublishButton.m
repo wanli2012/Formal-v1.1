@@ -7,6 +7,9 @@
 //
 
 #import "DWPublishButton.h"
+#import "GLPublishController.h"
+#import "DWTabBarController.h"
+#import "BaseNavigationViewController.h"
 
 @interface DWPublishButton ()<UIActionSheetDelegate>
 
@@ -83,7 +86,13 @@
 
 - (void)clickPublish {
     UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-    UIViewController *viewController = tabBarController.selectedViewController;
+    
+//    UIViewController *viewController = tabBarController.selectedViewController;
+    
+    GLPublishController * publishVC = [[GLPublishController alloc] init];
+    BaseNavigationViewController *publishNav = [[BaseNavigationViewController alloc] initWithRootViewController:publishVC];
+    
+    [tabBarController presentViewController:publishNav animated:YES completion:nil];
     
 //    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
 //                                                            delegate:self
