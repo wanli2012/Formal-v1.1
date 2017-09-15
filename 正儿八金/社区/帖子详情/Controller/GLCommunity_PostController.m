@@ -12,7 +12,7 @@
 #import "GLCommunity_PostCommentModel.h"
 #import "GLCommentListController.h"
 
-@interface GLCommunity_PostController ()<UITableViewDelegate,UITableViewDataSource>
+@interface GLCommunity_PostController ()<UITableViewDelegate,UITableViewDataSource,GLCommunity_PostCommentCellDelegate>
 {
     GLHome_AttentionModel *_model;
 }
@@ -80,9 +80,22 @@
 - (IBAction)report:(id)sender {
     NSLog(@"我要举报");
 }
+//发送消息
+- (IBAction)sendMessage:(id)sender {
+    
+    NSLog(@"发送消息");
+}
 
-#pragma mark -
-#pragma mark UITableViewDelegate UITableViewDataSource
+
+#pragma mark - GLCommunity_PostCommentCellDelegate
+
+- (void)pushController {
+    self.hidesBottomBarWhenPushed = YES;
+    GLCommentListController *commentListVC = [[GLCommentListController alloc] init];
+    [self.navigationController pushViewController:commentListVC animated:YES];
+}
+
+#pragma mark - UITableViewDelegate UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataSource.count + 1;
@@ -102,6 +115,8 @@
         
         GLCommunity_PostCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GLCommunity_PostCommentCell"];
         cell.selectionStyle =  UITableViewCellSelectionStyleNone;
+        
+        cell.delegate = self;
         cell.model = self.dataSource[indexPath.row - 1];
         
         return cell;

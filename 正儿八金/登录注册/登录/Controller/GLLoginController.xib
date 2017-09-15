@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLLoginController">
             <connections>
+                <outlet property="phoneTF" destination="pda-9H-Hd5" id="psE-xV-ClF"/>
+                <outlet property="pwdTF" destination="NFD-v9-zWa" id="Mpu-jH-YUX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

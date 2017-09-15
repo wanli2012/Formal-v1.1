@@ -9,6 +9,8 @@
 #import "GLHome_hotController.h"
 #import "GLHome_AttentionCell.h"
 #import "GLHome_AttentionModel.h"
+#import "GLCommunity_DetailController.h"
+#import "GLHomeController.h"
 
 @interface GLHome_hotController ()
 
@@ -58,7 +60,27 @@
     return model.cellHeight;
     
 }
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    GLHomeController *homeVC = [self View:tableView];
+    
+    homeVC.hidesBottomBarWhenPushed = YES;
+    GLCommunity_DetailController *detailVC = [[GLCommunity_DetailController alloc] init];
+    [homeVC.navigationController pushViewController:detailVC animated:YES];
+    homeVC.hidesBottomBarWhenPushed = NO;
+    
+}
+//可以获取到父容器的控制器的方法,就是这个黑科技.
+- (GLHomeController *)View:(UIView *)view{
+    UIResponder *responder = view;
+    //循环获取下一个响应者,直到响应者是一个UIViewController类的一个对象为止,然后返回该对象.
+    while ((responder = [responder nextResponder])) {
+        if ([responder isKindOfClass:[UIViewController class]]) {
+            return (GLHomeController *)responder;
+        }
+    }
+    return nil;
+}
 - (NSMutableArray *)dataSourceArr{
     if (!_dataSourceArr) {
         _dataSourceArr = [[NSMutableArray alloc] init];

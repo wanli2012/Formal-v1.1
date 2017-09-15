@@ -31,15 +31,15 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen]bounds]];
     
-//    self.window.rootViewController = [[GLLoginController alloc] init];
+    self.window.rootViewController = [[GLLoginController alloc] init];
     [self.window makeKeyAndVisible];
     
-    if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"isdirect1"] isEqualToString:@"YES"]) {
-        
-        self.window.rootViewController = [[DWTabBarController alloc]init];
-    }else{
-        self.window.rootViewController = [[yindaotuViewController alloc]init];
-    }
+//    if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"isdirect1"] isEqualToString:@"YES"]) {
+//        
+//        self.window.rootViewController = [[DWTabBarController alloc]init];
+//    }else{
+//        self.window.rootViewController = [[yindaotuViewController alloc]init];
+//    }
     
     
     return YES;

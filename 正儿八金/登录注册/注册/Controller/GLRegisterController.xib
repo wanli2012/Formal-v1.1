@@ -11,7 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLRegisterController">
             <connections>
+                <outlet property="codeTF" destination="qOo-hw-bMe" id="0C3-XB-bkL"/>
                 <outlet property="getCodeBtn" destination="ZiT-8x-ibw" id="suL-zi-qH7"/>
+                <outlet property="phoneTF" destination="5jc-9j-jvS" id="VER-gJ-3gg"/>
+                <outlet property="pwdEnsureTF" destination="xFP-wt-9hX" id="W33-2w-wco"/>
+                <outlet property="pwdTF" destination="CtB-Ip-pTR" id="Ts9-DQ-lid"/>
                 <outlet property="registerBtn" destination="YTi-4w-Bv4" id="dfN-hM-Nsi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -183,6 +187,9 @@
                                     <state key="normal" title="获取验证码">
                                         <color key="titleColor" red="0.91507440809999996" green="0.2976952195" blue="0.53578960899999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="getCode:" destination="-1" eventType="touchUpInside" id="4bP-Ar-SVZ"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

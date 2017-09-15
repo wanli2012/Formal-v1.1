@@ -8,9 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol GLCommunity_RecommendDelegate <NSObject>
+
+- (void)pushControllerWithIndex:(NSInteger)index;
+
+@end
+
 @interface GLCommunity_RecommendController : UITableViewController
 
 @property (nonatomic, strong)NSArray *dataSource;
 
+@property (nonatomic, weak)id <GLCommunity_RecommendDelegate> delegate;
 
 @end

@@ -14,6 +14,12 @@
 
 
 #import "UIView+Extension.h"
+#import "MBProgressHUD+LB.h"
+#import "predicateModel.h"
+#import "NetworkManager.h"
+#import "LoadWaitView.h"
+#import "UserModel.h"
+#import "usermodelachivar.h"
 
 #endif
 
@@ -28,6 +34,14 @@
 
 #define kSCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
 #define kSCREEN_HEIGHT  [UIScreen mainScreen].bounds.size.height
+
+
+
+#define URL_Base @"http://192.168.1.132/baby/index.php/App/"
+#define URL_Base2 @"App/"
+#define kGETCODE_URL @"User/PartneVerificationCode"//获取验证码User/PartnerRegister
+#define kREGISTER_URL @"User/PartnerRegister"//注册
+#define kLOGIN_URL @"User/PartnerLogin"//登录
 
 
 #endif /* PrefixHeader_pch */

@@ -25,6 +25,17 @@
     
     return model;
 }
+
+
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+{
+    if([key isEqualToString:@"id"]){
+        
+        self.userId = value;
+    }
+}
+
+
 #pragma mark - getter
 - (BOOL)needAutoLogin {
     BOOL needautologin=[[[NSUserDefaults standardUserDefaults]objectForKey:@"AUTOLOGIN"]boolValue];

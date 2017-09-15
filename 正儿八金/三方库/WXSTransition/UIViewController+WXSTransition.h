@@ -14,6 +14,9 @@ typedef void(^WXSTransitionBlock)(WXSTransitionProperty *transition);
 - (void)wxs_presentViewController:(UIViewController *)viewControllerToPresent makeTransition:(WXSTransitionBlock)transitionBlock completion:(void (^)(void))completion;
 
 
+//消失
+- (void)wxs_dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion;
+
 @end
 
 

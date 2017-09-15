@@ -48,6 +48,13 @@
     [[UINavigationBar appearance] setBackgroundImage:[self imageWithColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
 
 }
+//刷新界面
+-(void)refreshInterface{
+    
+    [self.viewControllers reverseObjectEnumerator];
+    [self setUpChildViewController];
+    
+}
 
 #pragma mark -
 #pragma mark - Private Methods

@@ -16,6 +16,9 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (weak, nonatomic) IBOutlet UIView *headerView;//头视图
+@property (weak, nonatomic) IBOutlet UIView *commentView;//评论View
+@property (weak, nonatomic) IBOutlet UITextField *commentTF;
+
 
 @end
 
@@ -36,6 +39,8 @@
     
     self.headerView.height = 80 + titleSize.height;
     
+    self.commentView.alpha = 0;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -48,8 +53,8 @@
     NSLog(@"查看原帖子");
 }
 
-#pragma mark -
-#pragma mark UITableViewDelegate UITableViewDataSource
+
+#pragma mark - UITableViewDelegate UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 6;
@@ -70,10 +75,16 @@
     self.tableView.estimatedRowHeight = 44;
     
     return self.tableView.rowHeight;
+}
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    self.commentView.alpha = 1;
+    [self.commentTF becomeFirstResponder];
     
 }
-//
+
+
 //- (NSMutableArray *)dataSource{
 //    if (!_dataSource) {
 //        _dataSource = [NSMutableArray array];

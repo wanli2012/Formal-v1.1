@@ -137,7 +137,7 @@
     self.model.downloadError = NO;
     self.model.downloadComplete = NO;
     __weak typeof(self) weakSelf = self;
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:self.model.networkPhotoUrl] placeholderImage:self.model.thumbPhoto options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:self.model.networkPhotoUrl] placeholderImage:self.model.thumbPhoto options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize,NSURL * _Nullable targetURL) {
         weakSelf.model.receivedSize = receivedSize;
         weakSelf.model.expectedSize = expectedSize;
         CGFloat progress = (CGFloat)receivedSize / expectedSize;
@@ -192,7 +192,7 @@
 //        }
         __weak typeof(self) weakSelf = self;
         self.progressView.hidden = model.downloadComplete;
-        [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.networkPhotoUrl] placeholderImage:model.thumbPhoto options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.networkPhotoUrl] placeholderImage:model.thumbPhoto options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize,NSURL * _Nullable targetURL) {
 
             
             model.receivedSize = receivedSize;

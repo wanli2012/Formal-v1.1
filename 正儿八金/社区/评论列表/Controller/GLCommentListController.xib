@@ -12,6 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLCommentListController">
             <connections>
                 <outlet property="commentLabel" destination="iH9-ky-G2p" id="jF5-tQ-Tgq"/>
+                <outlet property="commentTF" destination="U47-Bj-OJE" id="sb7-4y-IDc"/>
+                <outlet property="commentView" destination="imO-ML-tHb" id="Umi-Wn-WqK"/>
                 <outlet property="headerView" destination="79j-qF-V84" id="ix6-fy-xDE"/>
                 <outlet property="tableView" destination="bDT-ni-V6n" id="EsU-V1-yGf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -19,14 +21,14 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="347" height="305"/>
+            <rect key="frame" x="0.0" y="0.0" width="360" height="367"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bDT-ni-V6n">
-                    <rect key="frame" x="0.0" y="0.0" width="347" height="305"/>
+                    <rect key="frame" x="0.0" y="0.0" width="360" height="367"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <view key="tableHeaderView" contentMode="scaleToFill" id="79j-qF-V84" userLabel="headerView">
-                        <rect key="frame" x="0.0" y="0.0" width="347" height="118"/>
+                        <rect key="frame" x="0.0" y="0.0" width="360" height="118"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="头像1" translatesAutoresizingMaskIntoConstraints="NO" id="w8Y-X2-l7Q">
@@ -49,7 +51,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wtj-O5-Hmd">
-                                <rect key="frame" x="277" y="17.5" width="60" height="15"/>
+                                <rect key="frame" x="290" y="18" width="60" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="sKf-7U-Sne"/>
                                 </constraints>
@@ -60,7 +62,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRp-3w-Yqz">
-                                <rect key="frame" x="207" y="17.5" width="60" height="15"/>
+                                <rect key="frame" x="220" y="18" width="60" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="KpO-cb-yQJ"/>
                                 </constraints>
@@ -71,7 +73,7 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="有人说世上99%的事都能用钱解决,但是他们没说,解决剩下的1%有人说1%" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iH9-ky-G2p">
-                                <rect key="frame" x="50" y="50" width="287" height="31.5"/>
+                                <rect key="frame" x="50" y="50" width="300" height="31.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -115,20 +117,67 @@
                         <outlet property="delegate" destination="-1" id="VcA-ot-U14"/>
                     </connections>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imO-ML-tHb">
+                    <rect key="frame" x="0.0" y="317" width="360" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znp-It-9QJ">
+                            <rect key="frame" x="310" y="0.0" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="jgf-XL-cYz"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                            <state key="normal" image="share"/>
+                        </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="评论" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U47-Bj-OJE">
+                            <rect key="frame" x="10" y="10" width="300" height="30"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="send"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="ntX-R7-6kB"/>
+                            </connections>
+                        </textField>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Scw-SO-EUU">
+                            <rect key="frame" x="0.0" y="1" width="360" height="1"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="nGt-mC-I7F"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="4aW-aI-cnS"/>
+                        <constraint firstItem="U47-Bj-OJE" firstAttribute="leading" secondItem="imO-ML-tHb" secondAttribute="leading" constant="10" id="DS1-ma-Jec"/>
+                        <constraint firstItem="Scw-SO-EUU" firstAttribute="top" secondItem="imO-ML-tHb" secondAttribute="top" constant="1" id="EHG-Mg-1nN"/>
+                        <constraint firstAttribute="trailing" secondItem="Scw-SO-EUU" secondAttribute="trailing" id="Ktz-7H-ck6"/>
+                        <constraint firstAttribute="bottom" secondItem="znp-It-9QJ" secondAttribute="bottom" id="cvc-ha-8GK"/>
+                        <constraint firstItem="znp-It-9QJ" firstAttribute="leading" secondItem="U47-Bj-OJE" secondAttribute="trailing" id="fDE-gW-bOR"/>
+                        <constraint firstItem="Scw-SO-EUU" firstAttribute="leading" secondItem="imO-ML-tHb" secondAttribute="leading" id="fh9-B1-rXn"/>
+                        <constraint firstAttribute="bottom" secondItem="U47-Bj-OJE" secondAttribute="bottom" constant="10" id="nhl-7u-Gze"/>
+                        <constraint firstItem="znp-It-9QJ" firstAttribute="top" secondItem="imO-ML-tHb" secondAttribute="top" id="oXR-c3-wBh"/>
+                        <constraint firstItem="U47-Bj-OJE" firstAttribute="top" secondItem="imO-ML-tHb" secondAttribute="top" constant="10" id="pxF-f9-Ajz"/>
+                        <constraint firstAttribute="trailing" secondItem="znp-It-9QJ" secondAttribute="trailing" id="tbb-7n-CGq"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="bDT-ni-V6n" secondAttribute="bottom" id="2qv-SB-Tc5"/>
+                <constraint firstAttribute="trailing" secondItem="imO-ML-tHb" secondAttribute="trailing" id="4PR-WV-5cd"/>
                 <constraint firstItem="bDT-ni-V6n" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5sZ-Hu-O50"/>
+                <constraint firstItem="imO-ML-tHb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GK0-A6-GTI"/>
                 <constraint firstItem="bDT-ni-V6n" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bPW-Vg-xmT"/>
                 <constraint firstAttribute="trailing" secondItem="bDT-ni-V6n" secondAttribute="trailing" id="dN7-q2-nXD"/>
+                <constraint firstAttribute="bottom" secondItem="imO-ML-tHb" secondAttribute="bottom" id="frI-Pf-kQS"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="73.5" y="-342.5"/>
+            <point key="canvasLocation" x="80" y="-311.5"/>
         </view>
     </objects>
     <resources>
+        <image name="share" width="26" height="25"/>
         <image name="头像1" width="35" height="35"/>
         <image name="评论" width="15" height="15"/>
         <image name="赞" width="15" height="15"/>

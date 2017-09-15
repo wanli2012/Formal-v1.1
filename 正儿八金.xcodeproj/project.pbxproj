@@ -58,7 +58,7 @@
 		4A4953931F5F898D00180007 /* PopMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4951001F5F898C00180007 /* PopMenuTableViewCell.m */; };
 		4A4953941F5F898D00180007 /* PopMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4951011F5F898C00180007 /* PopMenuTableViewCell.xib */; };
 		4A4953A11F5F898D00180007 /* QQPopMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4951201F5F898C00180007 /* QQPopMenuView.m */; };
-		4A4954BC1F5F898F00180007 /* HomePage.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4954AF1F5F898F00180007 /* HomePage.xcassets */; };
+		4A4954BC1F5F898F00180007 /* 首页.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4954AF1F5F898F00180007 /* 首页.xcassets */; };
 		4A4954BE1F5F898F00180007 /* loadWait.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4954B11F5F898F00180007 /* loadWait.xcassets */; };
 		4A4954BF1F5F898F00180007 /* loginRegister.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4954B21F5F898F00180007 /* loginRegister.xcassets */; };
 		4A4954C41F5F898F00180007 /* setUp.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4954B71F5F898F00180007 /* setUp.xcassets */; };
@@ -252,6 +252,7 @@
 		4A605F1E1F67EB5A00F80666 /* WXSTransitionProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605F0C1F67EB5A00F80666 /* WXSTransitionProperty.m */; };
 		4A605F221F67F0C600F80666 /* GLForgetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605F201F67F0C600F80666 /* GLForgetController.m */; };
 		4A605F231F67F0C600F80666 /* GLForgetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A605F211F67F0C600F80666 /* GLForgetController.xib */; };
+		4A6A768D1F6BC0EB00B0766A /* 社区.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A6A768C1F6BC0EB00B0766A /* 社区.xcassets */; };
 		4A6FC4341F662B94002AE9DE /* GLHomeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6FC4331F662B94002AE9DE /* GLHomeController.xib */; };
 		4A73CE9A1F60D7760071C559 /* GLHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A73CE981F60D7760071C559 /* GLHomeController.m */; };
 		4A73CEBD1F60E3090071C559 /* GLHome_AttentionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A73CEBB1F60E3090071C559 /* GLHome_AttentionController.m */; };
@@ -275,6 +276,8 @@
 		4A73CF551F614D7A0071C559 /* GLHome_AttentionCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A73CF531F614D7A0071C559 /* GLHome_AttentionCollectionCell.xib */; };
 		4A73CF591F6159020071C559 /* GLHome_NewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A73CF571F6159020071C559 /* GLHome_NewCell.m */; };
 		4A73CF5A1F6159020071C559 /* GLHome_NewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A73CF581F6159020071C559 /* GLHome_NewCell.xib */; };
+		4A8398B11F6BDCB7001D76C8 /* MBProgressHUD+LB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8398B01F6BDCB7001D76C8 /* MBProgressHUD+LB.m */; };
+		4A8398B51F6BDCF3001D76C8 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8398B41F6BDCF3001D76C8 /* NetworkManager.m */; };
 		4AAE8F0D1F6670C100AC549D /* GLCommunity_FollowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAE8F001F6670C100AC549D /* GLCommunity_FollowController.m */; };
 		4AAE8F0E1F6670C100AC549D /* GLCommunity_RecommendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAE8F021F6670C100AC549D /* GLCommunity_RecommendController.m */; };
 		4AAE8F0F1F6670C100AC549D /* GLCommunityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAE8F041F6670C100AC549D /* GLCommunityController.m */; };
@@ -401,7 +404,7 @@
 		4A4951011F5F898C00180007 /* PopMenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopMenuTableViewCell.xib; sourceTree = "<group>"; };
 		4A49511F1F5F898C00180007 /* QQPopMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQPopMenuView.h; sourceTree = "<group>"; };
 		4A4951201F5F898C00180007 /* QQPopMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQPopMenuView.m; sourceTree = "<group>"; };
-		4A4954AF1F5F898F00180007 /* HomePage.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = HomePage.xcassets; sourceTree = "<group>"; };
+		4A4954AF1F5F898F00180007 /* 首页.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "首页.xcassets"; sourceTree = "<group>"; };
 		4A4954B11F5F898F00180007 /* loadWait.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = loadWait.xcassets; sourceTree = "<group>"; };
 		4A4954B21F5F898F00180007 /* loginRegister.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = loginRegister.xcassets; sourceTree = "<group>"; };
 		4A4954B71F5F898F00180007 /* setUp.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = setUp.xcassets; sourceTree = "<group>"; };
@@ -778,6 +781,7 @@
 		4A605F1F1F67F0C600F80666 /* GLForgetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLForgetController.h; sourceTree = "<group>"; };
 		4A605F201F67F0C600F80666 /* GLForgetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLForgetController.m; sourceTree = "<group>"; };
 		4A605F211F67F0C600F80666 /* GLForgetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLForgetController.xib; sourceTree = "<group>"; };
+		4A6A768C1F6BC0EB00B0766A /* 社区.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "社区.xcassets"; sourceTree = "<group>"; };
 		4A6FC4331F662B94002AE9DE /* GLHomeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLHomeController.xib; sourceTree = "<group>"; };
 		4A73CE971F60D7760071C559 /* GLHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHomeController.h; sourceTree = "<group>"; };
 		4A73CE981F60D7760071C559 /* GLHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLHomeController.m; sourceTree = "<group>"; };
@@ -817,6 +821,10 @@
 		4A73CF561F6159020071C559 /* GLHome_NewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHome_NewCell.h; sourceTree = "<group>"; };
 		4A73CF571F6159020071C559 /* GLHome_NewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLHome_NewCell.m; sourceTree = "<group>"; };
 		4A73CF581F6159020071C559 /* GLHome_NewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLHome_NewCell.xib; sourceTree = "<group>"; };
+		4A8398AF1F6BDCB7001D76C8 /* MBProgressHUD+LB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MBProgressHUD+LB.h"; path = "../../../大众共享v2.0/Universialshare/Tool(工具类)/MBProgressHUD+LB.h"; sourceTree = "<group>"; };
+		4A8398B01F6BDCB7001D76C8 /* MBProgressHUD+LB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MBProgressHUD+LB.m"; path = "../../../大众共享v2.0/Universialshare/Tool(工具类)/MBProgressHUD+LB.m"; sourceTree = "<group>"; };
+		4A8398B31F6BDCF3001D76C8 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
+		4A8398B41F6BDCF3001D76C8 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		4AAE8EFF1F6670C100AC549D /* GLCommunity_FollowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCommunity_FollowController.h; sourceTree = "<group>"; };
 		4AAE8F001F6670C100AC549D /* GLCommunity_FollowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCommunity_FollowController.m; sourceTree = "<group>"; };
 		4AAE8F011F6670C100AC549D /* GLCommunity_RecommendController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCommunity_RecommendController.h; sourceTree = "<group>"; };
@@ -1069,6 +1077,7 @@
 				4A4954AC1F5F898F00180007 /* 图片资源 */,
 				4A4950B21F5F898C00180007 /* 三方库 */,
 				4A4950A81F5F897700180007 /* 数据保存 */,
+				4A8398B21F6BDCF3001D76C8 /* 网络请求 */,
 				4A49509E1F5F896B00180007 /* Common */,
 				4A49508D1F5F886600180007 /* ViewController.h */,
 				4A49508E1F5F886600180007 /* ViewController.m */,
@@ -1134,7 +1143,8 @@
 		4A4954AC1F5F898F00180007 /* 图片资源 */ = {
 			isa = PBXGroup;
 			children = (
-				4A4954AF1F5F898F00180007 /* HomePage.xcassets */,
+				4A4954AF1F5F898F00180007 /* 首页.xcassets */,
+				4A6A768C1F6BC0EB00B0766A /* 社区.xcassets */,
 				4A4954B11F5F898F00180007 /* loadWait.xcassets */,
 				4A4954B21F5F898F00180007 /* loginRegister.xcassets */,
 				4A4954B71F5F898F00180007 /* setUp.xcassets */,
@@ -1178,6 +1188,8 @@
 				4A4954E61F5F89B200180007 /* UIView+Extension.m */,
 				4A4954E71F5F89B200180007 /* UIView+SFrame.h */,
 				4A4954E81F5F89B200180007 /* UIView+SFrame.m */,
+				4A8398AF1F6BDCB7001D76C8 /* MBProgressHUD+LB.h */,
+				4A8398B01F6BDCB7001D76C8 /* MBProgressHUD+LB.m */,
 			);
 			path = "Tool(工具类)";
 			sourceTree = "<group>";
@@ -2208,6 +2220,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		4A8398B21F6BDCF3001D76C8 /* 网络请求 */ = {
+			isa = PBXGroup;
+			children = (
+				4A8398B31F6BDCF3001D76C8 /* NetworkManager.h */,
+				4A8398B41F6BDCF3001D76C8 /* NetworkManager.m */,
+			);
+			name = "网络请求";
+			path = "../../大众共享v2.0/Universialshare/网络请求";
+			sourceTree = "<group>";
+		};
 		4AAE8EFD1F6670C100AC549D /* 社区首页 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2503,6 +2525,7 @@
 				4AAE8F171F6670F500AC549D /* GLCommunity_DetailController.xib in Resources */,
 				4A6FC4341F662B94002AE9DE /* GLHomeController.xib in Resources */,
 				4A605ED21F67B9BF00F80666 /* GLCommentCell.xib in Resources */,
+				4A6A768D1F6BC0EB00B0766A /* 社区.xcassets in Resources */,
 				4A5B48F81F69131100AD2F0D /* GLMine_EventCell.xib in Resources */,
 				4A5D0D2D1F62868C009DD45D /* LBSessionListViewController.xib in Resources */,
 				4A73CEBE1F60E3090071C559 /* GLHome_AttentionController.xib in Resources */,
@@ -2530,7 +2553,7 @@
 				4A4950921F5F886600180007 /* Main.storyboard in Resources */,
 				4A73CED11F6124AD0071C559 /* GLHome_AttentionCell.xib in Resources */,
 				4A605EE11F67CCBB00F80666 /* GLLoginController.xib in Resources */,
-				4A4954BC1F5F898F00180007 /* HomePage.xcassets in Resources */,
+				4A4954BC1F5F898F00180007 /* 首页.xcassets in Resources */,
 				4A73CEC31F60E31E0071C559 /* GLHome_NewController.xib in Resources */,
 				4A5B48D51F68DA5700AD2F0D /* GLMine_SetupCell.xib in Resources */,
 				4A73CF5A1F6159020071C559 /* GLHome_NewCell.xib in Resources */,
@@ -2691,6 +2714,7 @@
 				4A5D0CFF1F628637009DD45D /* NIMPinyinConverter.m in Sources */,
 				4A5D0D141F628637009DD45D /* CustomSysNotificationSender.m in Sources */,
 				4A49508C1F5F886600180007 /* AppDelegate.m in Sources */,
+				4A8398B51F6BDCF3001D76C8 /* NetworkManager.m in Sources */,
 				4A5D0CDB1F628637009DD45D /* NIMTimestampModel.m in Sources */,
 				4A4954EC1F5F89B200180007 /* GetLabelBounds.m in Sources */,
 				4A5D0CAD1F628637009DD45D /* NIMAvatarImageView.m in Sources */,
@@ -2808,6 +2832,7 @@
 				4A5D0CB01F628637009DD45D /* NIMKitNotificationFirer.m in Sources */,
 				4A5D0CF81F628637009DD45D /* NIMTeamCardHeaderCell.m in Sources */,
 				4A5D0D111F628637009DD45D /* NIMIndefiniteAnimatedView.m in Sources */,
+				4A8398B11F6BDCB7001D76C8 /* MBProgressHUD+LB.m in Sources */,
 				4A5D0D171F628637009DD45D /* SessionConfig.m in Sources */,
 				4A5D0CFA1F628637009DD45D /* NIMTeamSwitchTableViewCell.m in Sources */,
 				4A5D0CC71F628637009DD45D /* NIMMediaItem.m in Sources */,
