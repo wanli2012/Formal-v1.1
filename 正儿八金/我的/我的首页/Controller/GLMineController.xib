@@ -11,6 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLMineController">
             <connections>
+                <outlet property="experienceLabel" destination="UJu-Cg-35D" id="mN3-mb-iMF"/>
+                <outlet property="gradeLabel" destination="Y3z-KY-EmK" id="04A-5h-L6I"/>
+                <outlet property="nameLabel" destination="5gq-Yc-HnZ" id="rXw-Wx-EoN"/>
                 <outlet property="tableView" destination="Jhd-u0-SF4" id="911-Tl-UqQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

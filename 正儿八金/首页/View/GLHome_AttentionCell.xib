@@ -54,8 +54,8 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="K4k-1U-8pl"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="吕斌是个傻逼,不管你们信不信 ,反正我是行了,吕斌是个傻逼,不管你们信不信 ,反正我是行了,吕斌是个傻逼,不管你们信不信 ,反正我是行了," textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mz6-n1-JgU">
@@ -68,7 +68,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="XUG-sl-asG">
-                        <rect key="frame" x="0.0" y="137" width="393" height="182"/>
+                        <rect key="frame" x="0.0" y="132" width="393" height="187"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="393" id="V8O-8X-dNP"/>
@@ -129,6 +129,14 @@
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <state key="normal" title="楼主"/>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcF-1J-bZq">
+                        <rect key="frame" x="10" y="319" width="243" height="35.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="成都市-金牛区" image="location">
+                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="QXs-iY-YPM" firstAttribute="centerY" secondItem="qnR-Ae-ETR" secondAttribute="centerY" id="06q-IE-sEy"/>
@@ -140,11 +148,13 @@
                     <constraint firstAttribute="trailing" secondItem="oxi-6h-e41" secondAttribute="trailing" constant="15" id="6VI-le-wcG"/>
                     <constraint firstItem="ajY-mo-JnX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="93B-dM-ggc"/>
                     <constraint firstItem="qnR-Ae-ETR" firstAttribute="leading" secondItem="DrA-u9-14C" secondAttribute="trailing" constant="10" id="Aob-Zh-VFV"/>
+                    <constraint firstItem="IYg-DQ-1GI" firstAttribute="top" secondItem="zcF-1J-bZq" secondAttribute="bottom" id="Bas-lY-Ict"/>
                     <constraint firstItem="u5x-PA-ehx" firstAttribute="top" secondItem="IYg-DQ-1GI" secondAttribute="bottom" id="ENR-1e-lt1"/>
                     <constraint firstItem="W4d-yU-8o4" firstAttribute="leading" secondItem="qnR-Ae-ETR" secondAttribute="leading" id="IgV-ab-DUp"/>
+                    <constraint firstItem="zcF-1J-bZq" firstAttribute="top" secondItem="XUG-sl-asG" secondAttribute="bottom" id="KBA-VQ-Csh"/>
                     <constraint firstItem="W4d-yU-8o4" firstAttribute="bottom" secondItem="DrA-u9-14C" secondAttribute="bottom" id="OYU-N3-QkH"/>
                     <constraint firstItem="edf-jg-sVs" firstAttribute="top" secondItem="XUG-sl-asG" secondAttribute="bottom" constant="10.5" id="PDO-tk-ZdP"/>
-                    <constraint firstItem="XUG-sl-asG" firstAttribute="top" secondItem="Mz6-n1-JgU" secondAttribute="bottom" constant="10" id="Pyq-wt-dOu"/>
+                    <constraint firstItem="XUG-sl-asG" firstAttribute="top" secondItem="Mz6-n1-JgU" secondAttribute="bottom" constant="5" id="Pyq-wt-dOu"/>
                     <constraint firstItem="XUG-sl-asG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="QVC-ZA-TtJ"/>
                     <constraint firstItem="DrA-u9-14C" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="TcP-Re-Tp8"/>
                     <constraint firstItem="IYg-DQ-1GI" firstAttribute="top" secondItem="PFY-Xl-KEf" secondAttribute="bottom" constant="10" id="To2-b7-Tis"/>
@@ -152,11 +162,13 @@
                     <constraint firstItem="edf-jg-sVs" firstAttribute="centerY" secondItem="PFY-Xl-KEf" secondAttribute="centerY" id="WEr-KJ-TgB"/>
                     <constraint firstItem="Mz6-n1-JgU" firstAttribute="top" secondItem="ajY-mo-JnX" secondAttribute="bottom" constant="5" id="Y5c-6Y-Pms"/>
                     <constraint firstAttribute="bottom" secondItem="u5x-PA-ehx" secondAttribute="bottom" id="ZWT-aq-81L"/>
+                    <constraint firstItem="edf-jg-sVs" firstAttribute="leading" secondItem="zcF-1J-bZq" secondAttribute="trailing" id="dNo-ah-ew0"/>
                     <constraint firstAttribute="trailingMargin" secondItem="ajY-mo-JnX" secondAttribute="trailing" constant="10" id="ege-Ds-MBs"/>
                     <constraint firstItem="qnR-Ae-ETR" firstAttribute="top" secondItem="DrA-u9-14C" secondAttribute="top" id="fBh-68-x3E"/>
                     <constraint firstAttribute="trailing" secondItem="IYg-DQ-1GI" secondAttribute="trailing" id="lYd-9g-rIV"/>
                     <constraint firstItem="Mz6-n1-JgU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="lo1-4y-ePZ"/>
                     <constraint firstItem="DrA-u9-14C" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="rjC-u2-ajV"/>
+                    <constraint firstItem="zcF-1J-bZq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="se7-gK-p1w"/>
                     <constraint firstItem="oxi-6h-e41" firstAttribute="centerY" secondItem="DrA-u9-14C" secondAttribute="centerY" id="v3c-ea-e1k"/>
                     <constraint firstItem="u5x-PA-ehx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="vhb-it-bwF"/>
                     <constraint firstAttribute="trailing" secondItem="PFY-Xl-KEf" secondAttribute="trailing" constant="10" id="xFZ-Pj-dyW"/>
@@ -174,10 +186,11 @@
                 <outlet property="titleLabel" destination="ajY-mo-JnX" id="yrA-7C-PMB"/>
                 <outlet property="titleLabelHeight" destination="K4k-1U-8pl" id="clp-3P-lsK"/>
             </connections>
-            <point key="canvasLocation" x="-6" y="-127"/>
+            <point key="canvasLocation" x="-6.5" y="-127"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="location" width="11" height="15"/>
         <image name="头像1" width="35" height="35"/>
         <image name="评论" width="15" height="15"/>
         <image name="赞" width="15" height="15"/>

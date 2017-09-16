@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLRegisterController">
             <connections>
+                <outlet property="bgViewBottom" destination="bYi-bn-NPH" id="OaC-am-I2F"/>
                 <outlet property="codeTF" destination="qOo-hw-bMe" id="0C3-XB-bkL"/>
                 <outlet property="getCodeBtn" destination="ZiT-8x-ibw" id="suL-zi-qH7"/>
                 <outlet property="phoneTF" destination="5jc-9j-jvS" id="VER-gJ-3gg"/>
@@ -33,10 +34,10 @@
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ham-YD-4DH">
-                    <rect key="frame" x="10" y="140" width="293" height="392"/>
+                    <rect key="frame" x="10" y="162" width="293" height="350"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="注册底" translatesAutoresizingMaskIntoConstraints="NO" id="0By-o4-W5Q">
-                            <rect key="frame" x="0.0" y="0.0" width="293" height="392"/>
+                            <rect key="frame" x="0.0" y="0.0" width="293" height="350"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的头像" translatesAutoresizingMaskIntoConstraints="NO" id="nlQ-Ef-lnK">
                             <rect key="frame" x="106.5" y="0.0" width="80" height="80"/>
@@ -46,7 +47,7 @@
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wzr-gE-PxA">
-                            <rect key="frame" x="10" y="132" width="273" height="50"/>
+                            <rect key="frame" x="10" y="90" width="273" height="50"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账号:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lx-1H-1yq">
                                     <rect key="frame" x="20" y="16.5" width="33" height="17"/>
@@ -83,7 +84,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ofk-1l-tMb">
-                            <rect key="frame" x="10" y="182" width="273" height="50"/>
+                            <rect key="frame" x="10" y="140" width="273" height="50"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GiS-zf-PE3">
                                     <rect key="frame" x="20" y="16.5" width="33" height="17"/>
@@ -120,7 +121,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vcI-qy-Wvb">
-                            <rect key="frame" x="10" y="232" width="273" height="50"/>
+                            <rect key="frame" x="10" y="190" width="273" height="50"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="再次输入:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sX8-UW-CnV">
                                     <rect key="frame" x="20" y="16.5" width="61.5" height="17"/>
@@ -157,7 +158,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zdO-lf-7eS">
-                            <rect key="frame" x="10" y="282" width="273" height="50"/>
+                            <rect key="frame" x="10" y="240" width="273" height="50"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="验证码:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wf5-vq-LDE">
                                     <rect key="frame" x="20" y="16.5" width="47" height="17"/>
@@ -210,7 +211,7 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTi-4w-Bv4">
-                            <rect key="frame" x="77" y="352" width="140" height="55"/>
+                            <rect key="frame" x="77" y="310" width="140" height="55"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="55" id="bJG-ni-a2h"/>
@@ -224,6 +225,7 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="height" constant="350" id="2nr-e7-teK"/>
                         <constraint firstItem="0By-o4-W5Q" firstAttribute="top" secondItem="Ham-YD-4DH" secondAttribute="top" id="97n-HB-yBy"/>
                         <constraint firstItem="0By-o4-W5Q" firstAttribute="leading" secondItem="Ham-YD-4DH" secondAttribute="leading" id="I7c-ct-VFV"/>
                         <constraint firstItem="nlQ-Ef-lnK" firstAttribute="top" secondItem="0By-o4-W5Q" secondAttribute="top" id="L2k-06-ci0"/>
@@ -247,7 +249,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zad-Wh-hdM">
-                    <rect key="frame" x="96.5" y="552" width="120" height="40"/>
+                    <rect key="frame" x="96.5" y="532" width="120" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="120" id="hJt-1c-5nY"/>
                         <constraint firstAttribute="height" constant="40" id="upZ-zV-zzd"/>
@@ -267,11 +269,10 @@
                 <constraint firstItem="DGn-eX-AYV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="J6B-eT-DDg"/>
                 <constraint firstItem="Ham-YD-4DH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="Pp3-t4-iqm"/>
                 <constraint firstAttribute="trailing" secondItem="Ham-YD-4DH" secondAttribute="trailing" constant="10" id="SG7-kE-PcX"/>
+                <constraint firstAttribute="bottom" secondItem="Ham-YD-4DH" secondAttribute="bottom" constant="100" id="bYi-bn-NPH"/>
                 <constraint firstItem="Ham-YD-4DH" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="hvR-ZG-rcF"/>
                 <constraint firstItem="zad-Wh-hdM" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="iVn-2y-HRK"/>
                 <constraint firstItem="zad-Wh-hdM" firstAttribute="top" secondItem="Ham-YD-4DH" secondAttribute="bottom" constant="20" id="jNF-qq-loF"/>
-                <constraint firstItem="Ham-YD-4DH" firstAttribute="top" secondItem="DGn-eX-AYV" secondAttribute="bottom" constant="70" id="jkC-nx-Ksx"/>
-                <constraint firstAttribute="bottom" secondItem="Ham-YD-4DH" secondAttribute="bottom" constant="80" id="vMn-kn-kBb"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-21.5" y="-57"/>

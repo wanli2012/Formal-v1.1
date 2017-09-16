@@ -251,7 +251,7 @@
 		4A605F1D1F67EB5A00F80666 /* WXSTransitionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605F0A1F67EB5A00F80666 /* WXSTransitionManager.m */; };
 		4A605F1E1F67EB5A00F80666 /* WXSTransitionProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605F0C1F67EB5A00F80666 /* WXSTransitionProperty.m */; };
 		4A605F221F67F0C600F80666 /* GLForgetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605F201F67F0C600F80666 /* GLForgetController.m */; };
-		4A605F231F67F0C600F80666 /* GLForgetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A605F211F67F0C600F80666 /* GLForgetController.xib */; };
+		4A61EF921F6CBC55002150DD /* GLForgetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A61EF911F6CBC55002150DD /* GLForgetController.xib */; };
 		4A6A768D1F6BC0EB00B0766A /* 社区.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A6A768C1F6BC0EB00B0766A /* 社区.xcassets */; };
 		4A6FC4341F662B94002AE9DE /* GLHomeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6FC4331F662B94002AE9DE /* GLHomeController.xib */; };
 		4A73CE9A1F60D7760071C559 /* GLHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A73CE981F60D7760071C559 /* GLHomeController.m */; };
@@ -780,7 +780,7 @@
 		4A605F0D1F67EB5A00F80666 /* WXSTypedefConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXSTypedefConfig.h; sourceTree = "<group>"; };
 		4A605F1F1F67F0C600F80666 /* GLForgetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLForgetController.h; sourceTree = "<group>"; };
 		4A605F201F67F0C600F80666 /* GLForgetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLForgetController.m; sourceTree = "<group>"; };
-		4A605F211F67F0C600F80666 /* GLForgetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLForgetController.xib; sourceTree = "<group>"; };
+		4A61EF911F6CBC55002150DD /* GLForgetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLForgetController.xib; sourceTree = "<group>"; };
 		4A6A768C1F6BC0EB00B0766A /* 社区.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "社区.xcassets"; sourceTree = "<group>"; };
 		4A6FC4331F662B94002AE9DE /* GLHomeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLHomeController.xib; sourceTree = "<group>"; };
 		4A73CE971F60D7760071C559 /* GLHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHomeController.h; sourceTree = "<group>"; };
@@ -1954,7 +1954,7 @@
 			children = (
 				4A605F1F1F67F0C600F80666 /* GLForgetController.h */,
 				4A605F201F67F0C600F80666 /* GLForgetController.m */,
-				4A605F211F67F0C600F80666 /* GLForgetController.xib */,
+				4A61EF911F6CBC55002150DD /* GLForgetController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2525,6 +2525,7 @@
 				4AAE8F171F6670F500AC549D /* GLCommunity_DetailController.xib in Resources */,
 				4A6FC4341F662B94002AE9DE /* GLHomeController.xib in Resources */,
 				4A605ED21F67B9BF00F80666 /* GLCommentCell.xib in Resources */,
+				4A61EF921F6CBC55002150DD /* GLForgetController.xib in Resources */,
 				4A6A768D1F6BC0EB00B0766A /* 社区.xcassets in Resources */,
 				4A5B48F81F69131100AD2F0D /* GLMine_EventCell.xib in Resources */,
 				4A5D0D2D1F62868C009DD45D /* LBSessionListViewController.xib in Resources */,
@@ -2541,7 +2542,6 @@
 				4AB992EF1F6A76F200DE5590 /* 发表.xcassets in Resources */,
 				4A5B48B61F68CABD00AD2F0D /* GLMineController.xib in Resources */,
 				4A73CEC81F60E3310071C559 /* GLHome_hotController.xib in Resources */,
-				4A605F231F67F0C600F80666 /* GLForgetController.xib in Resources */,
 				4AAE8F121F6670C100AC549D /* GLCommunityCell.xib in Resources */,
 				4AAE8F251F668CF200AC549D /* GLCommunity_PostController.xib in Resources */,
 				4A4950941F5F886600180007 /* Assets.xcassets in Resources */,

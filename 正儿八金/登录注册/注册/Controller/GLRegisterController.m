@@ -7,7 +7,7 @@
 //
 
 #import "GLRegisterController.h"
-#import "UIViewController+WXSTransition.h"
+
 
 @interface GLRegisterController ()
 @property (weak, nonatomic) IBOutlet UIButton *getCodeBtn;//获取验证码
@@ -20,6 +20,7 @@
 
 @property (strong, nonatomic)LoadWaitView *loadV;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bgViewBottom;
 
 @end
 
@@ -27,6 +28,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    self.bgViewBottom.constant = 100 *autoSizeScaleY;
     
     self.getCodeBtn.layer.borderColor = MAIN_COLOR.CGColor;
     self.getCodeBtn.layer.borderWidth = 1.f;
@@ -51,7 +55,7 @@
     
     [self startTime];//获取倒计时
     [NetworkManager requestPOSTWithURLStr:kGETCODE_URL paramDic:@{@"phone":self.phoneTF.text,@"client":@"3"} finish:^(id responseObject) {
-        if ([responseObject[@"code"] integerValue]==1) {
+        if ([responseObject[@"code"] integerValue]==105) {
             
         }else{
             
@@ -75,7 +79,7 @@
                 //设置界面的按钮显示 根据自己需求设置
                 [self.getCodeBtn setTitle:@"重发验证码" forState:UIControlStateNormal];
                 self.getCodeBtn.userInteractionEnabled = YES;
-                self.getCodeBtn.backgroundColor = YYSRGBColor(44, 153, 46, 1);
+                self.getCodeBtn.backgroundColor = [UIColor whiteColor];
                 self.getCodeBtn.titleLabel.font = [UIFont systemFontOfSize:13];
             });
         }else{
@@ -149,9 +153,10 @@
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:kREGISTER_URL paramDic:dic finish:^(id responseObject) {
         [_loadV removeloadview];
-        if ([responseObject[@"code"] integerValue]==1) {
+        
+        if ([responseObject[@"code"] integerValue] == 105) {
             
-            [MBProgressHUD showSuccess:responseObject[@"message"]];
+            [MBProgressHUD showSuccess:responseObject[@"发送成功"]];
             [self wxs_dismissViewControllerAnimated:YES completion:nil];
             
         }else{

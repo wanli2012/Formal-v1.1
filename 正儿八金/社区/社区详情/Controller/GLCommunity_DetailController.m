@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *attentBtn;//关注按钮
 @property (nonatomic, strong)NSMutableArray *dataSourceArr;
 
+@property (strong, nonatomic)LoadWaitView *loadV;
+
 @end
 
 @implementation GLCommunity_DetailController
@@ -43,9 +45,38 @@
         model.isHiddenLandlord = NO;
         [self.dataSourceArr addObject:model];
     }
+    
+    [self getData];
 
 }
-
+- (void)getData{
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    dic[@"id"] = [UserModel defaultUser].token;
+    dic[@"condition"] = [UserModel defaultUser].userId;
+    dic[@"eaiteall"] = @"1";
+    dic[@"page"] = [UserModel defaultUser].userId;
+    dic[@"limit"] = @"1";
+    dic[@"num"] = @"1";
+    
+    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:kCOMMUNITY_DETAIL_URL paramDic:dic finish:^(id responseObject) {
+        
+        [_loadV removeloadview];
+        
+        if ([responseObject[@"code"] integerValue]==105) {
+            
+        }else{
+            [MBProgressHUD showError:responseObject[@"message"]];
+        }
+        
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        [MBProgressHUD showError:error.localizedDescription];
+        
+    }];
+    
+}
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     

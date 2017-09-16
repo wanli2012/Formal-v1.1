@@ -21,6 +21,10 @@
 
 @property (nonatomic, copy)NSArray *titleArr;
 
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;//用户名
+@property (weak, nonatomic) IBOutlet UILabel *gradeLabel;//等级
+@property (weak, nonatomic) IBOutlet UILabel *experienceLabel;//经验值
+
 @end
 
 @implementation GLMineController
@@ -37,7 +41,12 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+    self.nameLabel.text = [NSString stringWithFormat:@"用户名:%@",[UserModel defaultUser].user_name];
+    self.gradeLabel.text = [NSString stringWithFormat:@"会员等级:%@",[UserModel defaultUser].number_name];
+    self.experienceLabel.text = [NSString stringWithFormat:@"经验值:%@",[UserModel defaultUser].experience];
+    
     self.navigationController.navigationBar.hidden = YES;
+    
 }
 //个人信息
 - (IBAction)personInfo:(id)sender {

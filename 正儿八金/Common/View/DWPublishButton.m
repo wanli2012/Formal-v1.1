@@ -85,14 +85,14 @@
 #pragma mark - Event Response
 
 - (void)clickPublish {
-    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+//    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
     
 //    UIViewController *viewController = tabBarController.selectedViewController;
     
     GLPublishController * publishVC = [[GLPublishController alloc] init];
     BaseNavigationViewController *publishNav = [[BaseNavigationViewController alloc] initWithRootViewController:publishVC];
     
-    [tabBarController presentViewController:publishNav animated:YES completion:nil];
+    [[self topViewController] presentViewController:publishNav animated:YES completion:nil];
     
 //    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
 //                                                            delegate:self
@@ -101,7 +101,26 @@
 //                                                    otherButtonTitles:@"拍照", @"从相册选取", @"淘宝一键转卖", nil];
 //    [actionSheet showInView:viewController.view];
 }
+- (UIViewController*)topViewController
+{
+    return [self topViewControllerWithRootViewController:self.window.rootViewController];
+}
 
+- (UIViewController*)topViewControllerWithRootViewController:(UIViewController*)rootViewController
+{
+    if ([rootViewController isKindOfClass:[UITabBarController class]]) {
+        UITabBarController *tabBarController = (UITabBarController *)rootViewController;
+        return [self topViewControllerWithRootViewController:tabBarController.selectedViewController];
+    } else if ([rootViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController* navigationController = (UINavigationController*)rootViewController;
+        return [self topViewControllerWithRootViewController:navigationController.visibleViewController];
+    } else if (rootViewController.presentedViewController) {
+        UIViewController* presentedViewController = rootViewController.presentedViewController;
+        return [self topViewControllerWithRootViewController:presentedViewController];
+    } else {
+        return rootViewController;
+    }
+}
 #pragma mark - UIActionSheetDelegate
 
 //- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {

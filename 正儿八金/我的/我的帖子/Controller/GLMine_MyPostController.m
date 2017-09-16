@@ -16,6 +16,9 @@
 
 @property (nonatomic, strong)NSMutableArray *dataSourceArr;
 
+@property (strong, nonatomic)LoadWaitView *loadV;
+
+
 @end
 
 @implementation GLMine_MyPostController
@@ -36,6 +39,36 @@
  
         [self.dataSourceArr addObject:model];
     }
+    
+    [self getData];
+}
+
+- (void)getData{
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    dic[@"token"] = [UserModel defaultUser].token;
+    dic[@"uid"] = [UserModel defaultUser].userId;
+    dic[@"group"] = @"1";
+    dic[@"user_id"] = [UserModel defaultUser].userId;
+    dic[@"user_group"] = @"1";
+    
+    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:kCHECK_INFO_URL paramDic:dic finish:^(id responseObject) {
+        
+        [_loadV removeloadview];
+        
+        if ([responseObject[@"code"] integerValue]==105) {
+        
+        }else{
+            [MBProgressHUD showError:responseObject[@"message"]];
+        }
+        
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        [MBProgressHUD showError:error.localizedDescription];
+        
+    }];
+
 }
 
 - (IBAction)pop:(id)sender {

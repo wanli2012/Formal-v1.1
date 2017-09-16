@@ -34,6 +34,34 @@
 }
 - (IBAction)signOut:(id)sender {
     NSLog(@"退出登录");
+    
+    [UserModel defaultUser].loginstatus = NO;
+    
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"您确定要退出吗?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [UserModel defaultUser].loginstatus = NO;
+//        [UserModel defaultUser].headPic = @"";
+//        [UserModel defaultUser].usrtype = @"0";
+        [usermodelachivar achive];
+        
+        CATransition *animation = [CATransition animation];
+        animation.duration = 0.3;
+        animation.timingFunction = UIViewAnimationCurveEaseInOut;
+        animation.type = @"suckEffect";
+
+        [self.view.window.layer addAnimation:animation forKey:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"exitLogin" object:nil];
+        [self.navigationController popViewControllerAnimated:YES];
+
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alertVC addAction:okAction];
+    [alertVC addAction:cancelAction];
+    
+    [self presentViewController:alertVC animated:YES completion:nil];
+    
 }
 
 #pragma mark -

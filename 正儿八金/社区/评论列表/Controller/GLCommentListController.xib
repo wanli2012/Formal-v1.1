@@ -21,14 +21,14 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="360" height="367"/>
+            <rect key="frame" x="0.0" y="0.0" width="356" height="354"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bDT-ni-V6n">
-                    <rect key="frame" x="0.0" y="0.0" width="360" height="367"/>
+                    <rect key="frame" x="0.0" y="0.0" width="356" height="354"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <view key="tableHeaderView" contentMode="scaleToFill" id="79j-qF-V84" userLabel="headerView">
-                        <rect key="frame" x="0.0" y="0.0" width="360" height="118"/>
+                        <rect key="frame" x="0.0" y="0.0" width="356" height="118"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="头像1" translatesAutoresizingMaskIntoConstraints="NO" id="w8Y-X2-l7Q">
@@ -51,7 +51,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wtj-O5-Hmd">
-                                <rect key="frame" x="290" y="18" width="60" height="15"/>
+                                <rect key="frame" x="286" y="18" width="60" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="sKf-7U-Sne"/>
                                 </constraints>
@@ -62,7 +62,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRp-3w-Yqz">
-                                <rect key="frame" x="220" y="18" width="60" height="15"/>
+                                <rect key="frame" x="216" y="18" width="60" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="KpO-cb-yQJ"/>
                                 </constraints>
@@ -73,7 +73,7 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="有人说世上99%的事都能用钱解决,但是他们没说,解决剩下的1%有人说1%" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iH9-ky-G2p">
-                                <rect key="frame" x="50" y="50" width="300" height="31.5"/>
+                                <rect key="frame" x="50" y="50" width="296" height="31.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -118,10 +118,10 @@
                     </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imO-ML-tHb">
-                    <rect key="frame" x="0.0" y="317" width="360" height="50"/>
+                    <rect key="frame" x="0.0" y="304" width="356" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znp-It-9QJ">
-                            <rect key="frame" x="310" y="0.0" width="50" height="50"/>
+                            <rect key="frame" x="306" y="0.0" width="50" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="jgf-XL-cYz"/>
                             </constraints>
@@ -129,7 +129,7 @@
                             <state key="normal" image="share"/>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="评论" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U47-Bj-OJE">
-                            <rect key="frame" x="10" y="10" width="300" height="30"/>
+                            <rect key="frame" x="10" y="10" width="296" height="30"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" returnKeyType="send"/>
@@ -138,7 +138,7 @@
                             </connections>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Scw-SO-EUU">
-                            <rect key="frame" x="0.0" y="1" width="360" height="1"/>
+                            <rect key="frame" x="0.0" y="1" width="356" height="1"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="nGt-mC-I7F"/>
@@ -173,7 +173,7 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="80" y="-311.5"/>
+            <point key="canvasLocation" x="94" y="-287"/>
         </view>
     </objects>
     <resources>

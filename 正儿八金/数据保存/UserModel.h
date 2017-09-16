@@ -14,14 +14,14 @@
 
 @property (nonatomic, assign)BOOL loginstatus;//登陆状态
 
-@property (nonatomic, copy)NSString  *experience;//
-@property (nonatomic, copy)NSString  *groupid;//
-@property (nonatomic, copy)NSString  *userId;//
-@property (nonatomic, copy)NSString  *number_name;//
-@property (nonatomic, copy)NSString  *phone;//
+@property (nonatomic, copy)NSString  *experience;//经验值
+@property (nonatomic, copy)NSString  *groupid;//身份
+@property (nonatomic, copy)NSString  *userId;//用户id
+@property (nonatomic, copy)NSString  *number_name;//等级
+@property (nonatomic, copy)NSString  *phone;//手机号
 @property (nonatomic, copy)NSString  *portrait;//
-@property (nonatomic, copy)NSString  *token;//
-@property (nonatomic, copy)NSString  *user_name;//
+@property (nonatomic, copy)NSString  *token;
+@property (nonatomic, copy)NSString  *user_name;//用户名
 
 +(UserModel*)defaultUser;
 

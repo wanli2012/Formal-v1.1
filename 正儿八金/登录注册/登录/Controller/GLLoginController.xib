@@ -11,8 +11,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLLoginController">
             <connections>
+                <outlet property="accountLabel" destination="CkI-Yk-0DP" id="jqu-pS-GcO"/>
+                <outlet property="accountViewHeight" destination="0zE-sa-fta" id="R3Y-9O-8l1"/>
+                <outlet property="bgViewBottom" destination="eWh-jE-YAd" id="a0s-dU-Mhd"/>
+                <outlet property="bgViewHeight" destination="6Tl-wk-H8j" id="UrR-wh-aNC"/>
+                <outlet property="loginBtn" destination="1LY-ue-WDa" id="6QT-R1-FSk"/>
+                <outlet property="loginBtnWidth" destination="akH-aY-J3Z" id="53P-dA-liS"/>
+                <outlet property="passwordLabel" destination="zzX-GD-0LZ" id="Q7q-pP-Ugu"/>
+                <outlet property="passwordViewHeight" destination="vtY-QU-Xqf" id="YvD-Zf-apK"/>
                 <outlet property="phoneTF" destination="pda-9H-Hd5" id="psE-xV-ClF"/>
                 <outlet property="pwdTF" destination="NFD-v9-zWa" id="Mpu-jH-YUX"/>
+                <outlet property="registerBtn" destination="KrG-NR-HdH" id="YLp-PB-Qz6"/>
+                <outlet property="registerBtnWidth" destination="sWE-qa-UQo" id="F89-c4-O0m"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,28 +31,14 @@
             <rect key="frame" x="0.0" y="0.0" width="313" height="562"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RTG-jL-WQI">
-                    <rect key="frame" x="57" y="30" width="200" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="aIQ-IR-7ZB"/>
-                        <constraint firstAttribute="width" constant="200" id="zWt-8x-fIl"/>
-                    </constraints>
-                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dm9-jA-Sk8">
-                    <rect key="frame" x="10" y="220" width="293" height="262"/>
+                    <rect key="frame" x="10" y="202" width="293" height="260"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="注册底" translatesAutoresizingMaskIntoConstraints="NO" id="D2T-rj-UkL">
-                            <rect key="frame" x="0.0" y="0.0" width="293" height="262"/>
-                        </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的头像" translatesAutoresizingMaskIntoConstraints="NO" id="P6y-TY-Df3">
-                            <rect key="frame" x="106.5" y="0.0" width="80" height="80"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="80" id="djc-wH-GzH"/>
-                                <constraint firstAttribute="height" constant="80" id="r87-LV-4it"/>
-                            </constraints>
+                            <rect key="frame" x="0.0" y="0.0" width="293" height="260"/>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MuQ-QV-wPO">
-                            <rect key="frame" x="10" y="92" width="273" height="50"/>
+                            <rect key="frame" x="10" y="90" width="273" height="50"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账号:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CkI-Yk-0DP">
                                     <rect key="frame" x="20" y="16.5" width="33" height="17"/>
@@ -79,7 +75,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5x-WP-C03">
-                            <rect key="frame" x="10" y="142" width="273" height="50"/>
+                            <rect key="frame" x="10" y="140" width="273" height="50"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzX-GD-0LZ">
                                     <rect key="frame" x="20" y="16.5" width="33" height="17"/>
@@ -127,20 +123,29 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1LY-ue-WDa">
-                            <rect key="frame" x="77" y="222" width="140" height="55"/>
+                            <rect key="frame" x="77" y="220" width="140" height="55"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="55" id="P5D-0q-1nT"/>
                                 <constraint firstAttribute="width" constant="140" id="akH-aY-J3Z"/>
                             </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <state key="normal" title="登录" backgroundImage="圆角矩形-1"/>
                             <connections>
                                 <action selector="login:" destination="-1" eventType="touchUpInside" id="X9i-Vu-Awc"/>
                             </connections>
                         </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的头像" translatesAutoresizingMaskIntoConstraints="NO" id="P6y-TY-Df3">
+                            <rect key="frame" x="106.5" y="0.0" width="80" height="80"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="80" id="djc-wH-GzH"/>
+                                <constraint firstAttribute="height" constant="80" id="r87-LV-4it"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="height" constant="260" id="6Tl-wk-H8j"/>
                         <constraint firstItem="D2T-rj-UkL" firstAttribute="top" secondItem="dm9-jA-Sk8" secondAttribute="top" id="6vq-pG-SQX"/>
                         <constraint firstAttribute="bottom" secondItem="D2T-rj-UkL" secondAttribute="bottom" id="DwP-CB-doQ"/>
                         <constraint firstItem="D2T-rj-UkL" firstAttribute="leading" secondItem="dm9-jA-Sk8" secondAttribute="leading" id="Ewg-XL-nA3"/>
@@ -158,12 +163,12 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KrG-NR-HdH">
-                    <rect key="frame" x="96.5" y="502" width="120" height="40"/>
+                    <rect key="frame" x="96.5" y="482" width="120" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="2yH-94-2V3"/>
                         <constraint firstAttribute="width" constant="120" id="sWE-qa-UQo"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <state key="normal" title="注册">
                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -171,17 +176,28 @@
                         <action selector="registe:" destination="-1" eventType="touchUpInside" id="bjq-YW-6Rr"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUM-C0-H2y">
+                    <rect key="frame" x="0.0" y="20" width="80" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="AG4-sc-Nbr"/>
+                        <constraint firstAttribute="width" constant="80" id="pLm-rZ-SpA"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="10" minY="16" maxX="60" maxY="16"/>
+                    <state key="normal" image="X"/>
+                    <connections>
+                        <action selector="logOut:" destination="-1" eventType="touchUpInside" id="nFh-F6-PvY"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="RTG-jL-WQI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="3UP-vF-d2d"/>
                 <constraint firstItem="KrG-NR-HdH" firstAttribute="centerX" secondItem="1LY-ue-WDa" secondAttribute="centerX" id="8jx-Tl-i7j"/>
                 <constraint firstAttribute="trailing" secondItem="dm9-jA-Sk8" secondAttribute="trailing" constant="10" id="JH0-6B-qtQ"/>
-                <constraint firstItem="dm9-jA-Sk8" firstAttribute="top" secondItem="RTG-jL-WQI" secondAttribute="bottom" constant="150" id="LAm-fG-hc8"/>
+                <constraint firstItem="UUM-C0-H2y" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="X8R-QV-IQy"/>
                 <constraint firstItem="dm9-jA-Sk8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="al3-gw-fDW"/>
-                <constraint firstAttribute="bottom" secondItem="dm9-jA-Sk8" secondAttribute="bottom" constant="80" id="kZ4-Qu-gnI"/>
-                <constraint firstItem="RTG-jL-WQI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="m31-95-dfQ"/>
+                <constraint firstAttribute="bottom" secondItem="dm9-jA-Sk8" secondAttribute="bottom" constant="100" id="eWh-jE-YAd"/>
                 <constraint firstItem="KrG-NR-HdH" firstAttribute="top" secondItem="dm9-jA-Sk8" secondAttribute="bottom" constant="20" id="utU-Qh-DNw"/>
+                <constraint firstItem="UUM-C0-H2y" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="xOS-Ul-f5P"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -189,6 +205,7 @@
         </view>
     </objects>
     <resources>
+        <image name="X" width="22" height="22"/>
         <image name="圆角矩形-1" width="140" height="55"/>
         <image name="忘" width="30" height="30"/>
         <image name="我的头像" width="80" height="80"/>

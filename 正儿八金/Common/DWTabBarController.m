@@ -16,10 +16,16 @@
 #import "DWTabBar.h"
 #import "LBSessionListViewController.h"
 
+#import "GLLoginController.h"
+
 
 
 #define DWColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0] //用10进制表示颜色，例如（255,255,255）黑色
 #define DWRandomColor DWColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
+@interface DWTabBarController ()<UITabBarControllerDelegate>
+
+@end
+
 
 @implementation DWTabBarController
 
@@ -29,6 +35,8 @@
 -(void)viewDidLoad{
     
     [super viewDidLoad];
+    
+    self.delegate = self;
     
     // 设置 TabBarItemTestAttributes 的颜色。
     [self setUpTabBarItemTextAttributes];
@@ -46,14 +54,44 @@
     
     //设置导航控制器颜色为黄色
     [[UINavigationBar appearance] setBackgroundImage:[self imageWithColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(refreshInterface) name:@"refreshInterface" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(exitLogin) name:@"exitLogin" object:nil];
 
 }
+
+//完善资料退出跳转登录
+-(void)exitLogin{
+    
+    self.selectedIndex = 0;
+}
+
 //刷新界面
 -(void)refreshInterface{
     
     [self.viewControllers reverseObjectEnumerator];
     [self setUpChildViewController];
     
+}
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
+    
+    if (viewController == [tabBarController.viewControllers objectAtIndex:3] ) {
+    
+        if ([UserModel defaultUser].loginstatus == YES) {
+            
+            return YES;
+        }
+        
+        GLLoginController *loginVC = [[GLLoginController alloc] init];
+        BaseNavigationViewController *nav = [[BaseNavigationViewController alloc]initWithRootViewController:loginVC];
+        nav.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [self presentViewController:nav animated:YES completion:nil];
+        return NO;
+        
+    }
+
+    return YES;
 }
 
 #pragma mark -
