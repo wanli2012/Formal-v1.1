@@ -19,15 +19,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="393" height="365"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="头像1" translatesAutoresizingMaskIntoConstraints="NO" id="DrA-u9-14C">
+                    <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="头像1" translatesAutoresizingMaskIntoConstraints="NO" id="DrA-u9-14C">
                         <rect key="frame" x="10" y="15" width="30" height="30"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="O6v-H5-fOs"/>
                             <constraint firstAttribute="width" constant="30" id="wTs-Bi-R5H"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下滑的名字" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qnR-Ae-ETR">
-                        <rect key="frame" x="50" y="15" width="61.5" height="14.5"/>
+                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下滑的名字" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qnR-Ae-ETR">
+                        <rect key="frame" x="50" y="15" width="61.5" height="16"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="Dx6-aE-PHn"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.91507440809999996" green="0.2976952195" blue="0.53578960899999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -101,6 +106,9 @@
                         <state key="normal" title="123" image="评论">
                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="comment:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="GkD-7F-GUz"/>
+                        </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IYg-DQ-1GI">
                         <rect key="frame" x="0.0" y="354.5" width="393" height="10"/>
@@ -119,9 +127,12 @@
                         <state key="normal" title="123" image="赞">
                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="praise:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="rgg-Kp-Cfq"/>
+                        </connections>
                     </button>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QXs-iY-YPM">
-                        <rect key="frame" x="121.5" y="14" width="30" height="16"/>
+                        <rect key="frame" x="121.5" y="15" width="30" height="16"/>
                         <color key="backgroundColor" red="0.91507440809999996" green="0.2976952195" blue="0.53578960899999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="Jgy-9J-HXF"/>
@@ -175,18 +186,21 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="addressBtn" destination="zcF-1J-bZq" id="1H7-gg-w07"/>
                 <outlet property="attentionBtn" destination="oxi-6h-e41" id="DLo-nC-Cs9"/>
                 <outlet property="collectionView" destination="XUG-sl-asG" id="iI1-C0-coG"/>
                 <outlet property="collectionViewWidth" destination="V8O-8X-dNP" id="lP0-Me-Ckg"/>
+                <outlet property="commentBtn" destination="PFY-Xl-KEf" id="HPz-IR-twk"/>
                 <outlet property="communityLabel" destination="W4d-yU-8o4" id="XOl-28-buS"/>
                 <outlet property="contentLabel" destination="Mz6-n1-JgU" id="Iqo-AO-srl"/>
                 <outlet property="landlordBtn" destination="QXs-iY-YPM" id="gVh-nu-HMi"/>
                 <outlet property="nameLabel" destination="qnR-Ae-ETR" id="THn-HG-hcP"/>
                 <outlet property="picImageV" destination="DrA-u9-14C" id="mHB-Tc-Sem"/>
+                <outlet property="praiseBtn" destination="edf-jg-sVs" id="3B2-dz-dqg"/>
                 <outlet property="titleLabel" destination="ajY-mo-JnX" id="yrA-7C-PMB"/>
                 <outlet property="titleLabelHeight" destination="K4k-1U-8pl" id="clp-3P-lsK"/>
             </connections>
-            <point key="canvasLocation" x="-6.5" y="-127"/>
+            <point key="canvasLocation" x="-34" y="-229"/>
         </tableViewCell>
     </objects>
     <resources>

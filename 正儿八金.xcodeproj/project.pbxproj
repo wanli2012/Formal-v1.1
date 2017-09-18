@@ -278,6 +278,7 @@
 		4A73CF5A1F6159020071C559 /* GLHome_NewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A73CF581F6159020071C559 /* GLHome_NewCell.xib */; };
 		4A8398B11F6BDCB7001D76C8 /* MBProgressHUD+LB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8398B01F6BDCB7001D76C8 /* MBProgressHUD+LB.m */; };
 		4A8398B51F6BDCF3001D76C8 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8398B41F6BDCF3001D76C8 /* NetworkManager.m */; };
+		4A913C841F6F730000E357EF /* GLHome_AttentionPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A913C831F6F730000E357EF /* GLHome_AttentionPostModel.m */; };
 		4AAE8F0D1F6670C100AC549D /* GLCommunity_FollowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAE8F001F6670C100AC549D /* GLCommunity_FollowController.m */; };
 		4AAE8F0E1F6670C100AC549D /* GLCommunity_RecommendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAE8F021F6670C100AC549D /* GLCommunity_RecommendController.m */; };
 		4AAE8F0F1F6670C100AC549D /* GLCommunityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAE8F041F6670C100AC549D /* GLCommunityController.m */; };
@@ -825,6 +826,8 @@
 		4A8398B01F6BDCB7001D76C8 /* MBProgressHUD+LB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MBProgressHUD+LB.m"; path = "../../../大众共享v2.0/Universialshare/Tool(工具类)/MBProgressHUD+LB.m"; sourceTree = "<group>"; };
 		4A8398B31F6BDCF3001D76C8 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		4A8398B41F6BDCF3001D76C8 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		4A913C821F6F730000E357EF /* GLHome_AttentionPostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHome_AttentionPostModel.h; sourceTree = "<group>"; };
+		4A913C831F6F730000E357EF /* GLHome_AttentionPostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLHome_AttentionPostModel.m; sourceTree = "<group>"; };
 		4AAE8EFF1F6670C100AC549D /* GLCommunity_FollowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCommunity_FollowController.h; sourceTree = "<group>"; };
 		4AAE8F001F6670C100AC549D /* GLCommunity_FollowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCommunity_FollowController.m; sourceTree = "<group>"; };
 		4AAE8F011F6670C100AC549D /* GLCommunity_RecommendController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCommunity_RecommendController.h; sourceTree = "<group>"; };
@@ -2094,6 +2097,8 @@
 			children = (
 				4A5D0B801F623A8E009DD45D /* GLHome_AttentionModel.h */,
 				4A5D0B811F623A8E009DD45D /* GLHome_AttentionModel.m */,
+				4A913C821F6F730000E357EF /* GLHome_AttentionPostModel.h */,
+				4A913C831F6F730000E357EF /* GLHome_AttentionPostModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2752,6 +2757,7 @@
 				4A5D0CAE1F628637009DD45D /* NIMBadgeView.m in Sources */,
 				4A605F191F67EB5A00F80666 /* WXSTransitionManager+SpreadAnimation.m in Sources */,
 				4AAE8F111F6670C100AC549D /* GLCommunityCell.m in Sources */,
+				4A913C841F6F730000E357EF /* GLHome_AttentionPostModel.m in Sources */,
 				4A5D0CD71F628637009DD45D /* NIMMessageMaker.m in Sources */,
 				4A5D0CE91F628637009DD45D /* NIMSessionListViewController.m in Sources */,
 				4A5D0CD91F628637009DD45D /* NIMSessionViewController.m in Sources */,

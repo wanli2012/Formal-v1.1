@@ -96,7 +96,7 @@
         
         [_loadV removeloadview];
         
-        if ([responseObject[@"code"] integerValue]==105) {
+        if ([responseObject[@"code"] integerValue] == 100) {
             
             [MBProgressHUD showError:responseObject[@"message"]];
             
@@ -112,11 +112,12 @@
             [UserModel defaultUser].loginstatus = YES;
             [usermodelachivar achive];
         
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshInterface" object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshInterface" object:nil];
             
             [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
             
         }else{
+            
             [MBProgressHUD showError:responseObject[@"message"]];
         }
         

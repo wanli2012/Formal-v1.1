@@ -12,6 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLMine_MyPostController">
             <connections>
+                <outlet property="attentionLabel" destination="cDg-JQ-zb8" id="kZU-vG-sqU"/>
+                <outlet property="fansLabel" destination="APY-CY-6pm" id="6Gj-gX-DBW"/>
+                <outlet property="gradeLabel" destination="HTQ-Rq-gIQ" id="23w-NW-ehz"/>
+                <outlet property="nameLabel" destination="x8D-v2-UHe" id="xK3-EF-xiI"/>
+                <outlet property="postLabel" destination="fPo-cD-Ec4" id="L8T-q6-Qsd"/>
                 <outlet property="tableView" destination="P9g-yf-F5I" id="u4L-Ku-mTW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

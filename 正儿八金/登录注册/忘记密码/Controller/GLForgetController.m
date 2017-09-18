@@ -159,7 +159,7 @@
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:kFORGET_PWD_URL paramDic:dic finish:^(id responseObject) {
         [_loadV removeloadview];
-        if ([responseObject[@"code"] integerValue] == 105) {
+        if ([responseObject[@"code"] integerValue] == 104) {
             
             [MBProgressHUD showSuccess:responseObject[@"message"]];
             [self.navigationController popViewControllerAnimated:YES];

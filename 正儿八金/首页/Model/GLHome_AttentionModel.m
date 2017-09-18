@@ -15,19 +15,26 @@
     
     CGFloat collectionHeight;
     
-    if ([self.sum integerValue] == 1) {
+    if (self.post.picture.count == 1) {
         collectionHeight = kSCREEN_WIDTH - 20;
-    }else if([self.sum integerValue] == 2){
+    }else if(self.post.picture.count == 2){
         collectionHeight = (kSCREEN_WIDTH - 30)/2;
-    }else if ([self.sum integerValue]== 3){
+    }else if (self.post.picture.count== 3){
         collectionHeight = (kSCREEN_WIDTH - 40)/3;
-    }else if([self.sum integerValue] > 3 && [self.sum integerValue] <= 6){
+    }else if(self.post.picture.count > 3 && [self.sum integerValue] <= 6){
         collectionHeight = 2 *(kSCREEN_WIDTH - 40)/3 + 10;
-    }else if([self.sum integerValue] > 6){
+    }else if(self.post.picture.count > 6){
         collectionHeight = 3 *(kSCREEN_WIDTH - 40)/3 + 20;
     }
     
     return 140 + titleSize.height + collectionHeight;
 }
+
+//- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+//{
+//    if([key isEqualToString:@"id"]){
+//        self.userId = value;
+//    }
+//}
 
 @end

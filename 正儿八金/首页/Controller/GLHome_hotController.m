@@ -12,12 +12,14 @@
 #import "GLCommunity_DetailController.h"
 #import "GLHomeController.h"
 
-@interface GLHome_hotController ()
+@interface GLHome_hotController ()<GLHome_AttentionCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong)NSMutableArray *dataSourceArr;
-
+@property (strong, nonatomic)LoadWaitView *loadV;
+@property (nonatomic, assign)NSInteger page;
+@property (nonatomic,strong)NodataView *nodataV;
 @end
 
 @implementation GLHome_hotController
@@ -25,29 +27,141 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = [UIColor whiteColor];
     [self.tableView registerNib:[UINib nibWithNibName:@"GLHome_AttentionCell" bundle:nil] forCellReuseIdentifier:@"GLHome_AttentionCell"];
     
-    for (int i = 1; i < 8; i++) {
-        NSString *str = [NSString stringWithFormat:@"%zd",i];
+    [self.tableView addSubview:self.nodataV];
+    __weak __typeof(self) weakSelf = self;
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
-        GLHome_AttentionModel *model = [[GLHome_AttentionModel alloc] init];
-        model.sum = str;
-        model.content = [NSString stringWithFormat:@"是否杀戮空间福建省类是否杀戮空间菲利克斯福建省菲利克斯积分拉伸发链接阿拉斯加冯老师分类是------%zd",i];
-        [self.dataSourceArr addObject:model];
-    }
+        [weakSelf getData:YES];
+    }];
+    
+    MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        
+        [weakSelf getData:NO];
+        
+    }];
+    
+    // 设置文字
+    [header setTitle:@"快扯我，快点" forState:MJRefreshStateIdle];
+    
+    [header setTitle:@"数据要来啦" forState:MJRefreshStatePulling];
+    
+    [header setTitle:@"服务器正在狂奔..." forState:MJRefreshStateRefreshing];
+    
+    self.tableView.mj_header = header;
+    self.tableView.mj_footer = footer;
+    
+    [self.tableView.mj_header beginRefreshing];
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"refreshInterface" object:nil];
     
 }
+//- (void)refresh {
+//    [self getData:YES];
+//}
 
-#pragma UITableViewDelegate UITableViewDataSource
+- (void)getData:(BOOL)status {
+    
+    if (status){
+        _page = 1;
+        [self.dataSourceArr removeAllObjects];
+    }else{
+        _page ++;
+    }
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    dic[@"token"] = [UserModel defaultUser].token;
+    dic[@"uid"] = [UserModel defaultUser].userId;
+    dic[@"group"] = [UserModel defaultUser].groupid;
+    dic[@"page"] =@(_page);
+    
+    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:kHOT_HOME_URL paramDic:dic finish:^(id responseObject) {
+        
+        [self endRefresh];
+        [_loadV removeloadview];
+        
+        if ([responseObject[@"code"] integerValue] == 104) {
+            
+            if ([responseObject[@"data"] count] == 0) {
+                
+                [self.tableView reloadData];
+                
+                return;
+            }
+            
+            for (NSDictionary *dic in responseObject[@"data"]) {
+                
+                GLHome_AttentionModel *model = [GLHome_AttentionModel mj_objectWithKeyValues:dic];
+                
+                model.isHiddenAttendBtn = NO;
+                model.isHiddenLandlord = YES;
+                model.isHiddenTitleLabel = NO;
+                
+                [self.dataSourceArr addObject:model];
+            }
+        }else if([responseObject[@"code"] integerValue] == 108){
+            if(_page != 1){
+                [MBProgressHUD showError:responseObject[@"message"]];
+            }
+        }else{
+            
+            [MBProgressHUD showError:responseObject[@"message"]];
+        }
+        
+        [self.tableView reloadData];
+        
+    } enError:^(NSError *error) {
+        [self endRefresh];
+        [_loadV removeloadview];
+        [self.tableView reloadData];
+        [MBProgressHUD showError:error.localizedDescription];
+        
+    }];
+}
+
+-(NodataView*)nodataV{
+    
+    if (!_nodataV) {
+        _nodataV=[[NSBundle mainBundle]loadNibNamed:@"NodataView" owner:self options:nil].firstObject;
+        _nodataV.frame = CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT - 64 - 49 - 49);
+    }
+    return _nodataV;
+    
+}
+- (void)endRefresh {
+    
+    [self.tableView.mj_header endRefreshing];
+    [self.tableView.mj_footer endRefreshing];
+}
+
+#pragma mark - GLHomeAttentionCellDelegate
+- (void)praise:(NSInteger)index{
+    NSLog(@"点赞%zd",index);
+}
+- (void)comment:(NSInteger)index{
+    NSLog(@"评论%zd",index);
+}
+#pragma mark - UITableViewDelegate UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    if (self.dataSourceArr.count <= 0 ) {
+        self.nodataV.hidden = NO;
+    }else{
+        self.nodataV.hidden = YES;
+    }
+    
     return self.dataSourceArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     GLHome_AttentionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GLHome_AttentionCell"];
     cell.selectionStyle =  UITableViewCellSelectionStyleNone;
-    
+    cell.delegate = self;
+    cell.index = indexPath.row;
     cell.model = self.dataSourceArr[indexPath.row];
     
     return cell;

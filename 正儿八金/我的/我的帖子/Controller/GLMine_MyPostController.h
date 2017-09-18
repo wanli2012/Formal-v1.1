@@ -10,4 +10,8 @@
 
 @interface GLMine_MyPostController : UIViewController
 
+@property (nonatomic, copy)NSString *targetUID;
+
+@property (nonatomic, copy)NSString *targetGroupID;
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GLHome_AttentionPostModel.h"
 
 @interface GLHome_AttentionModel : NSObject
 
@@ -22,4 +23,14 @@
 
 @property (nonatomic, assign)BOOL isHiddenTitleLabel;//标题是否隐藏
 
+@property (nonatomic, strong)NSString *mid;
+@property (nonatomic, strong)NSString *group_id;
+@property (nonatomic, strong)NSString *portrait;
+@property (nonatomic, strong)GLHome_AttentionPostModel *post;
+@property (nonatomic, strong)NSString *status;
+@property (nonatomic, strong)NSString *user_name;
+
 @end
+
+
+

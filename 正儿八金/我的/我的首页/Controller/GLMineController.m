@@ -114,6 +114,7 @@
         default:
             break;
     }
+    
     self.hidesBottomBarWhenPushed = NO;
 }
 

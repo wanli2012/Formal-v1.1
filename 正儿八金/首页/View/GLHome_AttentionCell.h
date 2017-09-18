@@ -9,20 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "GLHome_AttentionModel.h"
 
+@protocol GLHome_AttentionCellDelegate <NSObject>
+
+- (void)praise:(NSInteger)index;
+- (void)comment:(NSInteger)index;
+- (void)personInfo:(NSInteger)index;
+
+
+@end
+
 @interface GLHome_AttentionCell : UITableViewCell
 
-//@property (nonatomic, assign)NSInteger sum;
-
 @property (nonatomic, strong)GLHome_AttentionModel *model;
+@property (nonatomic, assign)NSInteger index;
 
-@property (nonatomic, assign)BOOL isHiddenAttendBtn;
-@property (weak, nonatomic) IBOutlet UIButton *attentionBtn;
-@property (weak, nonatomic) IBOutlet UIImageView *picImageV;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *communityLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewWidth;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
-
+@property (nonatomic, weak)id <GLHome_AttentionCellDelegate> delegate;
 
 @end

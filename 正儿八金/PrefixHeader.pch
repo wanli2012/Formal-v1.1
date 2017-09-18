@@ -16,9 +16,12 @@
 #import "predicateModel.h"
 #import "NetworkManager.h"
 #import "LoadWaitView.h"
+#import "NodataView.h"
 #import "UserModel.h"
 #import "usermodelachivar.h"
 #import "UIViewController+WXSTransition.h"
+#import <MJRefresh/MJRefresh.h>
+#import <MJExtension/MJExtension.h>
 
 #endif
 
@@ -29,11 +32,8 @@
 #define autoSizeScaleX (kSCREEN_WIDTH/320.f)
 #define autoSizeScaleY (kSCREEN_HEIGHT/568.f)
 
-
 #define kSCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
 #define kSCREEN_HEIGHT  [UIScreen mainScreen].bounds.size.height
-
-
 
 #define URL_Base @"http://192.168.1.132/baby/index.php/App/"
 //#define URL_Base2 @"App/"
@@ -43,6 +43,7 @@
 #define kFORGET_PWD_URL @"User/PartnerCryptogram"//找回密码
 #define kCHECK_INFO_URL @"PostBar/PostbarViewUser"//查看他人和自己信息
 #define kCOMMUNITY_DETAIL_URL @"PostBar/GetPostAll"//社区详情
-
+#define kATTENTION_HOME_URL @"PostBar/PostHomePage"//首页关注动态
+#define kHOT_HOME_URL @"PostBar/PostHotTopic"//首页热门话题
 
 #endif /* PrefixHeader_pch */

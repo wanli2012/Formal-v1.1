@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface formattime : NSObject
+
 + (NSString *)formateTime:(NSString *)time;
 
 + (NSString *)formateTimeYM:(NSString *)time;
+
 @end

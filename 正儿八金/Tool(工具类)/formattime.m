@@ -41,6 +41,7 @@
     return confromTimespStr;
     
 }
+
 + (NSString *)formateTimeYM:(NSString *)time{
     
     NSTimeInterval tempTime = [time intValue];
@@ -62,11 +63,11 @@
     
     NSString *confromTimespStr =nil;
     if (d_endDate - d_startDate == 0)
-        confromTimespStr =[NSString stringWithFormat:@"今天 %@",[formatterT stringFromDate:confromTimespT]] ;
+        confromTimespStr =[NSString stringWithFormat:@"今天 %@",[formatterT stringFromDate:confromTimespT]];
     else if (d_endDate - d_startDate == 1)
-        confromTimespStr =[NSString stringWithFormat:@"昨天 %@",[formatterT stringFromDate:confromTimespT]] ;
+        confromTimespStr =[NSString stringWithFormat:@"昨天 %@",[formatterT stringFromDate:confromTimespT]];
     else if (d_endDate - d_startDate == 2)
-        confromTimespStr =[NSString stringWithFormat:@"前天 %@",[formatterT stringFromDate:confromTimespT]] ;
+        confromTimespStr =[NSString stringWithFormat:@"前天 %@",[formatterT stringFromDate:confromTimespT]];
     else
         confromTimespStr = [formatter stringFromDate:confromTimesp];
     return confromTimespStr;

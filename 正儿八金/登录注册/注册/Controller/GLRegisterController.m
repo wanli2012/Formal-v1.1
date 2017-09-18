@@ -154,7 +154,7 @@
     [NetworkManager requestPOSTWithURLStr:kREGISTER_URL paramDic:dic finish:^(id responseObject) {
         [_loadV removeloadview];
         
-        if ([responseObject[@"code"] integerValue] == 105) {
+        if ([responseObject[@"code"] integerValue] == 104) {
             
             [MBProgressHUD showSuccess:responseObject[@"发送成功"]];
             [self wxs_dismissViewControllerAnimated:YES completion:nil];
