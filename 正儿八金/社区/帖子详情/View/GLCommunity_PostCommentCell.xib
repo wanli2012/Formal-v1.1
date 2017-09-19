@@ -68,7 +68,7 @@
                     </label>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KTL-p5-NnZ">
                         <rect key="frame" x="50" y="148.5" width="299" height="180"/>
-                        <color key="backgroundColor" red="0.92156862750000001" green="0.92063152790000002" blue="0.94577074049999998" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <connections>
                             <outlet property="dataSource" destination="KGk-i7-Jjw" id="pdB-x3-6HQ"/>
                             <outlet property="delegate" destination="KGk-i7-Jjw" id="doU-3S-xTP"/>
@@ -106,7 +106,12 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="commentBtn" destination="Av2-Iv-RMW" id="Whg-R8-Rsp"/>
                 <outlet property="commentLabel" destination="Jn1-zA-riJ" id="Bx6-dl-Us8"/>
+                <outlet property="dateLabel" destination="ocb-VS-k5V" id="C3g-zu-TmK"/>
+                <outlet property="nameLabel" destination="vAy-RO-ZPn" id="w2M-uL-i0M"/>
+                <outlet property="picImageV" destination="yHD-hM-wMl" id="ULA-SE-uq6"/>
+                <outlet property="praiseBtn" destination="HTY-UB-nWM" id="PLh-aA-ToK"/>
                 <outlet property="tableView" destination="KTL-p5-NnZ" id="r3a-Zp-L7V"/>
             </connections>
             <point key="canvasLocation" x="17.5" y="10.5"/>

@@ -8,6 +8,7 @@
 
 #import "GLMine_MyPostCell.h"
 #import "GLHome_AttentionCollectionCell.h"
+#import "formattime.h"
 
 @interface GLMine_MyPostCell ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -34,17 +35,20 @@
     [self.collectionView registerNib:[UINib nibWithNibName:@"GLHome_AttentionCollectionCell" bundle:nil] forCellWithReuseIdentifier:@"GLHome_AttentionCollectionCell"];
     
 }
+//评论
+- (IBAction)comment:(id)sender {
+    
+}
 
-- (void)setModel:(GLHome_AttentionModel *)model{
+- (void)setModel:(GLMine_MyPostModel *)model{
     _model = model;
     
-    self.contentLabel.text = model.content;
+    self.contentLabel.text = model.title;
+    self.dateLabel.text = [formattime formateTimeOfDate:model.time];
+    [self.scanBtn setTitle:model.pv forState:UIControlStateNormal];
+    [self.replyBtn setTitle:model.quantity forState:UIControlStateNormal];
     
-    if ([self.model.sum integerValue] == 0){
-        
-//        self.collectionViewHeight.constant = 0;
-        
-    }else if ([self.model.sum integerValue] == 4) {
+    if (self.model.picture.count  == 4) {
         
         self.collectionViewWidth.constant = 2 * (kSCREEN_WIDTH - 40)/3 ;
         
@@ -54,12 +58,13 @@
     }
     
     [self.collectionView reloadData];
+    
 }
 
 #pragma mark - UICollectionViewDelegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     
-    return [self.model.sum integerValue];
+    return self.model.picture.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -82,11 +87,11 @@
 
 //定义每个UICollectionViewCell 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if([self.model.sum integerValue] == 0){
+    if(self.model.picture.count == 0){
         return CGSizeZero;
-    }else if ([self.model.sum integerValue] == 1) {
+    }else if (self.model.picture.count == 1) {
         return CGSizeMake(kSCREEN_WIDTH - 30, kSCREEN_WIDTH - 30);
-    }else if([self.model.sum integerValue] == 2){
+    }else if(self.model.picture.count == 2){
         return CGSizeMake((kSCREEN_WIDTH - 35)/2, (kSCREEN_WIDTH - 35)/2);
     }
     

@@ -45,5 +45,7 @@
 #define kCOMMUNITY_DETAIL_URL @"PostBar/GetPostAll"//社区详情
 #define kATTENTION_HOME_URL @"PostBar/PostHomePage"//首页关注动态
 #define kHOT_HOME_URL @"PostBar/PostHotTopic"//首页热门话题
+#define kPOST_DETAIL_URL @"PostBar/PostDetails"//帖子详情
+
 
 #endif /* PrefixHeader_pch */

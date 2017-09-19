@@ -9,8 +9,9 @@
 #import "GLHome_hotController.h"
 #import "GLHome_AttentionCell.h"
 #import "GLHome_AttentionModel.h"
-#import "GLCommunity_DetailController.h"
+#import "GLCommunity_PostController.h"
 #import "GLHomeController.h"
+#import "GLMine_MyPostController.h"
 
 @interface GLHome_hotController ()<GLHome_AttentionCellDelegate>
 
@@ -145,6 +146,21 @@
 - (void)comment:(NSInteger)index{
     NSLog(@"评论%zd",index);
 }
+- (void)personInfo:(NSInteger)index{
+    
+    GLHome_AttentionModel *model = self.dataSourceArr[index];
+    GLHomeController *homeVC = [self View:self.tableView];
+    
+    homeVC.hidesBottomBarWhenPushed = YES;
+    
+    GLMine_MyPostController *detailVC = [[GLMine_MyPostController alloc] init];
+    detailVC.targetGroupID = model.group_id;
+    detailVC.targetUID = model.mid;
+    
+    [homeVC.navigationController pushViewController:detailVC animated:YES];
+    
+    homeVC.hidesBottomBarWhenPushed = NO;
+}
 #pragma mark - UITableViewDelegate UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -175,11 +191,13 @@
     
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    GLHome_AttentionModel *model = self.dataSourceArr[indexPath.row];
     GLHomeController *homeVC = [self View:tableView];
     
     homeVC.hidesBottomBarWhenPushed = YES;
-    GLCommunity_DetailController *detailVC = [[GLCommunity_DetailController alloc] init];
+    GLCommunity_PostController *detailVC = [[GLCommunity_PostController alloc] init];
+    detailVC.mid = model.mid;
+    detailVC.post_id = model.post.post_id;
     [homeVC.navigationController pushViewController:detailVC animated:YES];
     homeVC.hidesBottomBarWhenPushed = NO;
     

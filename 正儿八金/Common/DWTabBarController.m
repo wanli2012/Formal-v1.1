@@ -18,8 +18,6 @@
 
 #import "GLLoginController.h"
 
-
-
 #define DWColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0] //用10进制表示颜色，例如（255,255,255）黑色
 #define DWRandomColor DWColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
 @interface DWTabBarController ()<UITabBarControllerDelegate>

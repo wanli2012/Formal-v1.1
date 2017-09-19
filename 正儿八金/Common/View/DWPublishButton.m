@@ -17,7 +17,6 @@
 
 @implementation DWPublishButton
 
-
 #pragma mark -
 #pragma mark - Private Methods
 
@@ -86,7 +85,7 @@
 
 - (void)clickPublish {
 //    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-    
+//    
 //    UIViewController *viewController = tabBarController.selectedViewController;
     
     GLPublishController * publishVC = [[GLPublishController alloc] init];
@@ -94,13 +93,8 @@
     
     [[self topViewController] presentViewController:publishNav animated:YES completion:nil];
     
-//    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-//                                                            delegate:self
-//                                                    cancelButtonTitle:@"取消"
-//                                               destructiveButtonTitle:nil
-//                                                    otherButtonTitles:@"拍照", @"从相册选取", @"淘宝一键转卖", nil];
-//    [actionSheet showInView:viewController.view];
 }
+
 - (UIViewController*)topViewController
 {
     return [self topViewControllerWithRootViewController:self.window.rootViewController];
@@ -121,11 +115,6 @@
         return rootViewController;
     }
 }
-#pragma mark - UIActionSheetDelegate
-
-//- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-////    NSLog(@"buttonIndex = %ld", buttonIndex);
-//}
 
 
 @end

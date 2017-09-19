@@ -15,18 +15,18 @@
     
     CGFloat collectionHeight;
     
-    if([self.sum integerValue] == 0){
+    if(self.picture.count == 0){
         collectionHeight = 0;
-    }else if ([self.sum integerValue] == 1) {
+    }else if (self.picture.count == 1) {
         collectionHeight = kSCREEN_WIDTH - 20;
-    }else if([self.sum integerValue] == 2){
+    }else if(self.picture.count == 2){
         collectionHeight = (kSCREEN_WIDTH - 35)/2 + 10;
-    }else if ([self.sum integerValue]== 3){
+    }else if (self.picture.count== 3){
         collectionHeight = (kSCREEN_WIDTH - 40)/3 + 10;
         
-    }else if([self.sum integerValue] > 3 && [self.sum integerValue] <= 6){
+    }else if(self.picture.count > 3 && self.picture.count <= 6){
         collectionHeight = 2 *(kSCREEN_WIDTH - 40)/3 + 15;
-    }else if([self.sum integerValue] > 6){
+    }else if(self.picture.count > 6){
         collectionHeight = 3 *(kSCREEN_WIDTH - 40)/3 + 30;
     }
     

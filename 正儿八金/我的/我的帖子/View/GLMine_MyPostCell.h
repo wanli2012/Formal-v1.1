@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GLHome_AttentionModel.h"
+#import "GLMine_MyPostModel.h"
 
 @interface GLMine_MyPostCell : UITableViewCell
 
-@property (nonatomic, strong)GLHome_AttentionModel *model;
+@property (nonatomic, strong)GLMine_MyPostModel *model;
 
 @end

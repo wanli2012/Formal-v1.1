@@ -19,16 +19,21 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    NSString *name = @"你大爷";
-    NSString *str = [NSString stringWithFormat:@"%@:来说浪费哈商量好弗利萨兑换flash地方世毒妃来说浪费哈商量好弗利萨兑换flash地方世毒妃来说浪费哈商量好弗利萨兑换flash地方世毒妃来说浪费哈商量好弗利萨兑换flash地方",name];
+   
+   
+}
+- (void)setModel:(replyModel *)model{
+    _model = model;
+    NSString *name = model.user_name;
+    NSString *str = [NSString stringWithFormat:@"%@:%@",name,model.content];
     NSMutableAttributedString *noteStr = [[NSMutableAttributedString alloc] initWithString:str];
     NSRange redRange = NSMakeRange(0, [[noteStr string] rangeOfString:@":"].location);
     [noteStr addAttribute:NSForegroundColorAttributeName value:MAIN_COLOR range:redRange];
     
-    
     [self.contentLabel setAttributedText:noteStr] ;
     [self.contentLabel sizeToFit];
-}
 
+    
+}
 
 @end

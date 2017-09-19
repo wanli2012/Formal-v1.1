@@ -119,6 +119,72 @@
     [self.collectionView reloadData];
 }
 
+//- (void)setPostModel:(GLCommunity_PostCommentModel *)postModel{
+//    _postModel = postModel;
+//    
+//    self.nameLabel.text = postModel.user_name;
+//    [self.picImageV sd_setImageWithURL:[NSURL URLWithString:postModel.portrait] placeholderImage:[UIImage imageNamed:@"头像1"]];
+//    
+//    NSDictionary *dic = (NSDictionary *)postModel.post;
+//    self.communityLabel.text = [formattime formateTimeOfDate:[NSString stringWithFormat:@"%@",dic[@"time"]]];
+//    
+//    self.titleLabel.text = dic[@"title"];
+//    self.contentLabel.text = dic[@"content"];;
+//    
+//    [self.praiseBtn setTitle:dic[@"pv"] forState:UIControlStateNormal];
+//    [self.commentBtn setTitle:dic[@"praise"] forState:UIControlStateNormal];
+//    [self.praiseBtn setImage:[UIImage imageNamed:@"浏览"] forState:UIControlStateNormal];
+//    [self.commentBtn setImage:[UIImage imageNamed:@"赞"] forState:UIControlStateNormal];
+//    
+//    [self.addressBtn setTitle:dic[@"location"] forState:UIControlStateNormal];
+//    
+////    if([postModel.status integerValue] == 1){//已关注
+////        
+////        [self.attentionBtn setTitle:@"已关注" forState:UIControlStateNormal];
+////        [self.attentionBtn setTitleColor:MAIN_COLOR forState:UIControlStateNormal];
+////        self.attentionBtn.backgroundColor = [UIColor whiteColor];
+////        self.attentionBtn.layer.borderColor = MAIN_COLOR.CGColor;
+////        self.attentionBtn.layer.borderWidth = 1.f;
+////        
+////    }else{
+////        
+////        [self.attentionBtn setTitle:@"关注" forState:UIControlStateNormal];
+////        [self.attentionBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+////        self.attentionBtn.backgroundColor = MAIN_COLOR;
+////    }
+////    
+//    if ([dic[@"picture"] count] == 4) {
+//        
+//        self.collectionViewWidth.constant = 2 *(kSCREEN_WIDTH - 40)/3 + 36;
+//        
+//    }else{
+//        
+//        self.collectionViewWidth.constant = kSCREEN_WIDTH;
+//    }
+////    //是否隐藏关注按钮
+////    if (postModel.isHiddenAttendBtn) {
+////        self.attentionBtn.hidden = YES;
+////    }else{
+////        self.attentionBtn.hidden = NO;
+////    }
+////    
+////    //是否隐藏楼主标志
+////    if(postModel.isHiddenLandlord){
+////        self.landlordBtn.hidden = YES;
+////    }else{
+////        self.landlordBtn.hidden = NO;
+////    }
+////    
+////    //是否隐藏标题label
+////    if (postModel.isHiddenTitleLabel) {
+////        self.titleLabelHeight.constant = 0;
+////    }else{
+////        
+////        self.titleLabelHeight.constant = 20;
+////    }
+//    
+//    [self.collectionView reloadData];
+//}
 #pragma mark - GLHomeAttentionCellDelegate
 //评论
 - (IBAction)comment:(id)sender {

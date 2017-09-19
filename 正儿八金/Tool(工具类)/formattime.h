@@ -14,4 +14,6 @@
 
 + (NSString *)formateTimeYM:(NSString *)time;
 
++ (NSString *)formateTimeOfDate:(NSString *)time;
+
 @end

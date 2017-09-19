@@ -10,20 +10,20 @@
 
 @interface GLMine_MyPostModel : NSObject
 
-@property (nonatomic, strong)NSString *location;
-@property (nonatomic, assign)NSArray *picture;
-@property (nonatomic, assign)NSString *post_id;
-@property (nonatomic, assign)NSString *pv;
-@property (nonatomic, assign)NSString *quantity;
-@property (nonatomic, assign)NSString *time;
-@property (nonatomic, assign)NSString *title;
+@property (nonatomic, copy)NSString *location;
+@property (nonatomic, copy)NSArray *picture;
+@property (nonatomic, copy)NSString *post_id;
+@property (nonatomic, copy)NSString *pv;
+@property (nonatomic, copy)NSString *quantity;
+@property (nonatomic, copy)NSString *time;
+@property (nonatomic, copy)NSString *title;
 
+@property (nonatomic, copy)NSString *content;
 
-@property (nonatomic, strong)NSString *content;
-
-@property (nonatomic, assign)NSString *sum;
+@property (nonatomic, copy)NSString *sum;
 
 @property (nonatomic, assign)CGFloat cellHeight;
+
 @end
 
 //@interface GLMine_MyPostModel : NSObject

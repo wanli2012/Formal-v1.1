@@ -10,4 +10,7 @@
 
 @interface GLCommunity_PostController : UIViewController
 
+@property (nonatomic, copy)NSString *mid;
+@property (nonatomic, copy)NSString *post_id;
+
 @end

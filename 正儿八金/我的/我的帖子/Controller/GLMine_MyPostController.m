@@ -105,6 +105,7 @@
     [NetworkManager requestPOSTWithURLStr:kCHECK_INFO_URL paramDic:dic finish:^(id responseObject) {
         
         [_loadV removeloadview];
+        [self endRefresh];
         
         if ([responseObject[@"code"] integerValue] == 104) {
             if ([responseObject[@"data"] count] == 0) {
@@ -122,9 +123,8 @@
                 [self.dataSourceArr addObject:model];
             }
             
-            [self.tableView reloadData];
-            
         }else if([responseObject[@"code"] integerValue] == 108){
+            
             if(_page != 1){
                 [MBProgressHUD showError:responseObject[@"message"]];
             }
@@ -170,6 +170,11 @@
 #pragma UITableViewDelegate UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
+    if (self.dataSourceArr.count <= 0 ) {
+        self.nodataV.hidden = NO;
+    }else{
+        self.nodataV.hidden = YES;
+    }
     return self.dataSourceArr.count;
 }
 
@@ -197,4 +202,6 @@
     }
     return _dataSourceArr;
 }
+
+
 @end

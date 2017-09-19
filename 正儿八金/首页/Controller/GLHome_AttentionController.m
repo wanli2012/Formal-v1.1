@@ -158,6 +158,7 @@
     GLHomeController *homeVC = [self View:self.tableView];
     
     homeVC.hidesBottomBarWhenPushed = YES;
+    
     GLMine_MyPostController *detailVC = [[GLMine_MyPostController alloc] init];
     detailVC.targetGroupID = model.group_id;
     detailVC.targetUID = model.mid;
@@ -180,6 +181,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     GLHome_AttentionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GLHome_AttentionCell"];
     cell.selectionStyle =  UITableViewCellSelectionStyleNone;
     cell.delegate = self;
@@ -200,10 +202,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
     GLHomeController *homeVC = [self View:tableView];
-    
+    GLHome_AttentionModel *model = self.dataSourceArr[indexPath.row];
+
     homeVC.hidesBottomBarWhenPushed = YES;
     GLCommunity_PostController *detailVC = [[GLCommunity_PostController alloc] init];
-    
+    detailVC.mid = model.mid;
+    detailVC.post_id = model.post.post_id;
     [homeVC.navigationController pushViewController:detailVC animated:YES];
     homeVC.hidesBottomBarWhenPushed = NO;
 
@@ -214,7 +218,7 @@
     UIResponder *responder = view;
     //循环获取下一个响应者,直到响应者是一个UIViewController类的一个对象为止,然后返回该对象.
     while ((responder = [responder nextResponder])) {
-        if ([responder isKindOfClass:[UIViewController class]]) {
+        if ([responder isKindOfClass:[GLHomeController class]]) {
             return (GLHomeController *)responder;
         }
     }

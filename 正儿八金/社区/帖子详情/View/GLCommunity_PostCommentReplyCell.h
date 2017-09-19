@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "GLCommunity_PostCommentModel.h"
+#import "GLCommunity_PostMainCommentModel.h"
 
 @interface GLCommunity_PostCommentReplyCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+
+@property (nonatomic, strong)replyModel *model;
 
 @end

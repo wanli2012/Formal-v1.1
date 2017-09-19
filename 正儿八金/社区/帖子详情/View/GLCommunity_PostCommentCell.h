@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GLCommunity_PostCommentModel.h"
+#import "GLCommunity_PostMainCommentModel.h"
 
 @protocol GLCommunity_PostCommentCellDelegate <NSObject>
 
@@ -17,7 +18,7 @@
 
 @interface GLCommunity_PostCommentCell : UITableViewCell
 
-@property (nonatomic, strong)GLCommunity_PostCommentModel *model;
+@property (nonatomic, strong)GLCommunity_PostMainCommentModel *model;
 
 @property (nonatomic, weak)id <GLCommunity_PostCommentCellDelegate> delegate;
 
