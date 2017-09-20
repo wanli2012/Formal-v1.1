@@ -11,6 +11,7 @@
 @implementation GLHome_AttentionModel
 
 - (CGFloat)cellHeight{
+    
     CGSize titleSize = [self.content boundingRectWithSize:CGSizeMake(kSCREEN_WIDTH - 20, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil].size;
     
     CGFloat collectionHeight;

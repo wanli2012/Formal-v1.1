@@ -64,8 +64,7 @@
     self.tableView.mj_header = header;
     self.tableView.mj_footer = footer;
     
-    [self.tableView.mj_header beginRefreshing];
-    
+    [self getData:YES];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"refreshInterface" object:nil];
     
     //设置头视图上的值

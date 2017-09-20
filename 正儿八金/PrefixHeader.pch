@@ -46,6 +46,9 @@
 #define kATTENTION_HOME_URL @"PostBar/PostHomePage"//首页关注动态
 #define kHOT_HOME_URL @"PostBar/PostHotTopic"//首页热门话题
 #define kPOST_DETAIL_URL @"PostBar/PostDetails"//帖子详情
+#define kGET_SECOND_COMMENT_URL @"PostBar/PostMoreComments"//获取更多下级评论
+#define kFOLLOW_OR_CANCEL_URL @"User/PartnerFollow"//关注其ta用户，或者取消关注
+#define kPOST_PRISE_URL @"PostBar/PostAppreciate"//帖子点赞取消点赞接口
 
 
 #endif /* PrefixHeader_pch */

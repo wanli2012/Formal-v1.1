@@ -8,18 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-@interface replyModel : NSObject
-
-@property (nonatomic, copy)NSString *reply_id;
-@property (nonatomic, copy)NSString *content;
-@property (nonatomic, copy)NSString *mid;
-@property (nonatomic, copy)NSString *user_name;
-@property (nonatomic, copy)NSString *group_id;
-@property (nonatomic, copy)NSString *mcid;
-@property (nonatomic, copy)NSString *nickname;
-@property (nonatomic, copy)NSString *identity;
-
-@end
+//@interface replyModel : NSObject
+//
+//@property (nonatomic, copy)NSString *reply_id;
+//@property (nonatomic, copy)NSString *content;
+//@property (nonatomic, copy)NSString *mid;
+//@property (nonatomic, copy)NSString *user_name;
+//@property (nonatomic, copy)NSString *group_id;
+//@property (nonatomic, copy)NSString *mcid;
+//@property (nonatomic, copy)NSString *nickname;
+//@property (nonatomic, copy)NSString *identity;
+//
+//@end
 
 @interface GLCommunity_PostMainCommentModel : NSObject
 

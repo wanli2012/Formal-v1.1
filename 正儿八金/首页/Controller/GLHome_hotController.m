@@ -57,12 +57,8 @@
     
     [self.tableView.mj_header beginRefreshing];
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"refreshInterface" object:nil];
-    
 }
-//- (void)refresh {
-//    [self getData:YES];
-//}
+
 
 - (void)getData:(BOOL)status {
     
@@ -161,6 +157,62 @@
     
     homeVC.hidesBottomBarWhenPushed = NO;
 }
+
+- (void)follow:(NSInteger)index{//关注 status:
+    NSLog(@"kFOLLOW_OR_CANCEL_URL关注%zd",index);
+    
+    GLHome_AttentionModel *model = self.dataSourceArr[index];
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    dic[@"token"] = [UserModel defaultUser].token;
+    dic[@"uid"] = [UserModel defaultUser].userId;
+    dic[@"group"] = [UserModel defaultUser].groupid;
+    dic[@"user_id"] = model.mid;
+    
+    if([model.status isEqualToString:@"1"]){//返回值status:1已关注 2:未关注
+        dic[@"status"] = @"2";//参数status:1 关注   2:取消关注
+    }else{
+        dic[@"status"] = @"1";//参数status:1 关注   2:取消关注
+    }
+    
+    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:kFOLLOW_OR_CANCEL_URL paramDic:dic finish:^(id responseObject) {
+        
+        [self endRefresh];
+        [_loadV removeloadview];
+        
+        if ([responseObject[@"code"] integerValue] == 104) {
+            
+            
+            //cell刷新
+            if([model.status isEqualToString:@"1"]){//status:1已关注 2:未关注
+                model.status = @"2";
+                [MBProgressHUD showSuccess:@"取消关注成功"];
+            }else{
+                model.status = @"1";
+                [MBProgressHUD showSuccess:@"关注成功"];
+            }
+
+            NSIndexPath *indexPathA = [NSIndexPath indexPathForRow:index inSection:0]; //刷新第0段第2行
+            
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPathA,nil] withRowAnimation:UITableViewRowAnimationNone];
+
+        }else{
+            
+            [MBProgressHUD showError:responseObject[@"message"]];
+        }
+        
+        [self.tableView reloadData];
+        
+    } enError:^(NSError *error) {
+        [self endRefresh];
+        [_loadV removeloadview];
+        [self.tableView reloadData];
+        [MBProgressHUD showError:error.localizedDescription];
+        
+    }];
+}
+
 #pragma mark - UITableViewDelegate UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -207,7 +259,7 @@
     UIResponder *responder = view;
     //循环获取下一个响应者,直到响应者是一个UIViewController类的一个对象为止,然后返回该对象.
     while ((responder = [responder nextResponder])) {
-        if ([responder isKindOfClass:[UIViewController class]]) {
+        if ([responder isKindOfClass:[GLHomeController class]]) {
             return (GLHomeController *)responder;
         }
     }
@@ -219,6 +271,5 @@
     }
     return _dataSourceArr;
 }
-
 
 @end

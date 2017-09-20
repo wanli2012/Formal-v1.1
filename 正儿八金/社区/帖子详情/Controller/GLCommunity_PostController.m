@@ -9,9 +9,9 @@
 #import "GLCommunity_PostController.h"
 #import "GLHome_AttentionCell.h"
 #import "GLCommunity_PostCommentCell.h"
-//#import "GLCommunity_PostCommentModel.h"
 #import "GLCommentListController.h"
-#import "GLCommunity_PostMainCommentModel.h"
+//#import "GLCommunity_PostCommentModel.h"
+//#import "GLCommunity_PostMainCommentModel.h"
 
 @interface GLCommunity_PostController ()<UITableViewDelegate,UITableViewDataSource,GLCommunity_PostCommentCellDelegate>
 {
@@ -25,8 +25,10 @@
 @property (nonatomic, assign)NSInteger page;
 @property (nonatomic,strong)NodataView *nodataV;
 
-//@property (nonatomic, strong)GLCommunity_PostCommentModel * commentModel;
+@property (nonatomic, strong)GLCommunity_PostCommentModel * model;
 
+@property (weak, nonatomic) IBOutlet UILabel *communityNameLabel;//社区名
+@property (weak, nonatomic) IBOutlet UILabel *topicLabel;//话题
 
 @property (nonatomic, strong)NSMutableArray *mainCommentArr;//主评论数组
 @property (nonatomic, strong)NSMutableArray *sonCommentArr;//子评论数组
@@ -48,27 +50,7 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"GLHome_AttentionCell" bundle:nil] forCellReuseIdentifier:@"GLHome_AttentionCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"GLCommunity_PostCommentCell" bundle:nil] forCellReuseIdentifier:@"GLCommunity_PostCommentCell"];
-    
 
-    
-    
-//    for (int j = 0; j < 4; j ++ ) {
-//        
-//        NSMutableArray *arr = [NSMutableArray array];
-//        for (int i = 0; i < 3; i ++) {
-//            
-//            GLCommunity_PostCommentModel *model = [[GLCommunity_PostCommentModel alloc] init];
-//            model.son_commentName = @"你大爷";
-//            model.son_comment = [NSString stringWithFormat:@"dfsfsf代峰峻螺蛳粉连手机分类是否杀戮空间福建省类是否杀戮空间拉伸发链接阿拉斯加冯老师sf哈哈回复%zd",i];
-//            [arr addObject:model];
-//        }
-//        GLCommunity_PostCommentModel *model = [[GLCommunity_PostCommentModel alloc] init];
-//        model.commentArr = arr;
-//        model.comment = [NSString stringWithFormat:@"我是主代峰峻螺蛳粉连手机分类是否杀戮空间福建省类是否杀戮空间菲利克斯福建省菲利克斯积分拉伸发链接阿拉斯加冯老师评论:我是主评论:我是主评论:我是主评论:我是主评论:%zd",j];
-//        [self.dataSourceArr addObject:model];
-//    }
-    
-    
     [self.tableView addSubview:self.nodataV];
     __weak __typeof(self) weakSelf = self;
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -126,26 +108,16 @@
                 return;
             }
             
-            _postModel = [[GLHome_AttentionModel alloc] init];
-            _postModel.sum = @"2";
-            _postModel.content = [NSString stringWithFormat:@"lldsfjj垃圾袋龙卷风拉丝机放辣椒酸辣粉静安路附近奥拉夫极乐世界分类设计费时代峰峻螺蛳粉连手机分类是否杀戮空间福建省类是否杀戮空间菲利克斯福建省菲利克斯积分拉伸发链接阿拉斯加冯老师分类是------"];
-            _postModel.isHiddenAttendBtn = YES;
-            _postModel.isHiddenLandlord = NO;
-            _postModel.isHiddenTitleLabel = YES;
-            _postModel.portrait = responseObject[@"data"][@"portrait"];
-            _postModel.user_name = responseObject[@"data"][@"user_name"];
-            _postModel.post.time = responseObject[@"data"][@"post"][@"time"];
-            _postModel.post.praise = responseObject[@"data"][@"post"][@"praise"];
-            _postModel.post.quantity = responseObject[@"data"][@"post"][@"pv"];
-            _postModel.post.title = responseObject[@"data"][@"post"][@"title"];
-            _postModel.post.content = responseObject[@"data"][@"post"][@"content"];
-            _postModel.post.picture = responseObject[@"data"][@"post"][@"picture"];
-            _postModel.post.location = responseObject[@"data"][@"post"][@"location"];
+            self.model = [GLCommunity_PostCommentModel mj_objectWithKeyValues:responseObject[@"data"]];
+            self.model.isHiddenAttendBtn = YES;
+            self.model.isHiddenLandlord = NO;
+            self.model.isHiddenTitleLabel = NO;
             
+            self.communityNameLabel.text = self.model.post.paste_name;
+//            self.topicLabel.text = self.model.post;
+            
+            for (mainModel *model in self.model.main) {
 
-            for (NSDictionary *dict in responseObject[@"data"][@"main"]) {
-                GLCommunity_PostMainCommentModel *model = [GLCommunity_PostMainCommentModel mj_objectWithKeyValues:dict];
-                
                 [self.mainCommentArr addObject:model];
             }
 
@@ -155,7 +127,6 @@
             }
             
         }else{
-            
             [MBProgressHUD showError:responseObject[@"message"]];
         }
         
@@ -180,6 +151,7 @@
     return _nodataV;
     
 }
+
 - (void)endRefresh {
     
     [self.tableView.mj_header endRefreshing];
@@ -195,10 +167,12 @@
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 //举报
 - (IBAction)report:(id)sender {
     NSLog(@"我要举报");
 }
+
 //发送消息
 - (IBAction)sendMessage:(id)sender {
     
@@ -208,9 +182,17 @@
 
 #pragma mark - GLCommunity_PostCommentCellDelegate
 
-- (void)pushController {
+- (void)pushController:(NSInteger )index {
+    
     self.hidesBottomBarWhenPushed = YES;
+    
     GLCommentListController *commentListVC = [[GLCommentListController alloc] init];
+    
+    commentListVC.user_id = self.model.mid;
+    commentListVC.group_id = self.model.group_id;
+    commentListVC.post_id = self.model.post.post_id;
+    commentListVC.comm_id = self.model.main[index-1].comm_id;
+
     [self.navigationController pushViewController:commentListVC animated:YES];
 }
 
@@ -234,7 +216,7 @@
         GLHome_AttentionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GLHome_AttentionCell"];
         cell.selectionStyle =  UITableViewCellSelectionStyleNone;
 
-        cell.model = _postModel;
+        cell.postModel = self.model;
         
         return cell;
         
@@ -242,7 +224,7 @@
         
         GLCommunity_PostCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GLCommunity_PostCommentCell"];
         cell.selectionStyle =  UITableViewCellSelectionStyleNone;
-        
+        cell.index = indexPath.row;
         cell.delegate = self;
         cell.model = self.mainCommentArr[indexPath.row - 1];
         
@@ -252,9 +234,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    self.hidesBottomBarWhenPushed = YES;
-    GLCommentListController *commentListVC = [[GLCommentListController alloc] init];
-    [self.navigationController pushViewController:commentListVC animated:YES];
+    if (indexPath.row == 0) {
+        return;
+    }
+    
+    [self pushController:indexPath.row];
     
 }
 
@@ -262,13 +246,13 @@
     
     if (indexPath.row == 0) {
         
-        return 100;
+        return self.model.cellHeight;
         
     }else{
         if (self.mainCommentArr.count == 0) {
             return 0;
         }
-        GLCommunity_PostMainCommentModel *model = self.mainCommentArr[indexPath.row - 1];
+        mainModel *model = self.mainCommentArr[indexPath.row - 1];
         return model.cellHeight;
 
     }

@@ -15,7 +15,7 @@
 - (void)praise:(NSInteger)index;
 - (void)comment:(NSInteger)index;
 - (void)personInfo:(NSInteger)index;
-
+- (void)follow:(NSInteger)index;
 
 @end
 

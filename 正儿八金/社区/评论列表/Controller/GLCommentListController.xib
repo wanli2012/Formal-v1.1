@@ -11,10 +11,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLCommentListController">
             <connections>
+                <outlet property="commentBtn" destination="Wtj-O5-Hmd" id="ezL-zN-iDK"/>
                 <outlet property="commentLabel" destination="iH9-ky-G2p" id="jF5-tQ-Tgq"/>
                 <outlet property="commentTF" destination="U47-Bj-OJE" id="sb7-4y-IDc"/>
                 <outlet property="commentView" destination="imO-ML-tHb" id="Umi-Wn-WqK"/>
+                <outlet property="dateLabel" destination="D1C-W1-71c" id="Ndg-D1-aXC"/>
                 <outlet property="headerView" destination="79j-qF-V84" id="ix6-fy-xDE"/>
+                <outlet property="nameLabel" destination="9BJ-CB-aS2" id="vSl-EJ-3k1"/>
+                <outlet property="picImageV" destination="w8Y-X2-l7Q" id="42f-9o-GEG"/>
+                <outlet property="priseBtn" destination="pRp-3w-Yqz" id="KHG-DJ-ONJ"/>
                 <outlet property="tableView" destination="bDT-ni-V6n" id="EsU-V1-yGf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -24,28 +29,28 @@
             <rect key="frame" x="0.0" y="0.0" width="356" height="354"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bDT-ni-V6n">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bDT-ni-V6n">
                     <rect key="frame" x="0.0" y="0.0" width="356" height="354"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <view key="tableHeaderView" contentMode="scaleToFill" id="79j-qF-V84" userLabel="headerView">
                         <rect key="frame" x="0.0" y="0.0" width="356" height="118"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="头像1" translatesAutoresizingMaskIntoConstraints="NO" id="w8Y-X2-l7Q">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w8Y-X2-l7Q">
                                 <rect key="frame" x="10" y="10" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="H2K-xu-I4Y"/>
                                     <constraint firstAttribute="height" constant="30" id="Jt1-PH-hca"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小树林" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9BJ-CB-aS2">
-                                <rect key="frame" x="50" y="10" width="40" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9BJ-CB-aS2">
+                                <rect key="frame" x="50" y="10" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.91507440809999996" green="0.2976952195" blue="0.53578960899999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="06-12 05:12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1C-W1-71c">
-                                <rect key="frame" x="50" y="28" width="59" height="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1C-W1-71c">
+                                <rect key="frame" x="50" y="40" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -57,7 +62,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
-                                <state key="normal" title="123" image="评论">
+                                <state key="normal" title="0" image="评论">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -68,12 +73,12 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
-                                <state key="normal" title="123" image="赞">
+                                <state key="normal" title="0" image="赞">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="有人说世上99%的事都能用钱解决,但是他们没说,解决剩下的1%有人说1%" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iH9-ky-G2p">
-                                <rect key="frame" x="50" y="50" width="296" height="31.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iH9-ky-G2p">
+                                <rect key="frame" x="50" y="50" width="296" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -178,7 +183,6 @@
     </objects>
     <resources>
         <image name="share" width="26" height="25"/>
-        <image name="头像1" width="35" height="35"/>
         <image name="评论" width="15" height="15"/>
         <image name="赞" width="15" height="15"/>
     </resources>

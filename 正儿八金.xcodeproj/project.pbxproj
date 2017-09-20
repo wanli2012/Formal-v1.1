@@ -45,7 +45,6 @@
 		4A0E4BA41F6A504600EBADE8 /* UIButton+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B831F6A504600EBADE8 /* UIButton+HXExtension.m */; };
 		4A0E4BA51F6A504600EBADE8 /* UIImage+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B851F6A504600EBADE8 /* UIImage+HXExtension.m */; };
 		4A0E4BA61F6A504600EBADE8 /* UIView+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B871F6A504600EBADE8 /* UIView+HXExtension.m */; };
-		4A10256E1F711DF10055644A /* GLCommunity_PostMainCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A10256D1F711DF10055644A /* GLCommunity_PostMainCommentModel.m */; };
 		4A4950891F5F886600180007 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4950881F5F886600180007 /* main.m */; };
 		4A49508C1F5F886600180007 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A49508B1F5F886600180007 /* AppDelegate.m */; };
 		4A49508F1F5F886600180007 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A49508E1F5F886600180007 /* ViewController.m */; };
@@ -306,6 +305,7 @@
 		4AB993131F6A9D4500DE5590 /* GLMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB993111F6A9D4500DE5590 /* GLMessageCell.m */; };
 		4AB993141F6A9D4500DE5590 /* GLMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AB993121F6A9D4500DE5590 /* GLMessageCell.xib */; };
 		4AB993171F6AA1C400DE5590 /* yindaotuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB993161F6AA1C400DE5590 /* yindaotuViewController.m */; };
+		4AFBF7B11F725392001915DD /* GLCommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFBF7B01F725392001915DD /* GLCommentListModel.m */; };
 		62DDAB3E488A5881405D5AFA /* libPods-正儿八金.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 164A41A728AEAD2883C7498C /* libPods-正儿八金.a */; };
 /* End PBXBuildFile section */
 
@@ -383,8 +383,6 @@
 		4A0E4B851F6A504600EBADE8 /* UIImage+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HXExtension.m"; sourceTree = "<group>"; };
 		4A0E4B861F6A504600EBADE8 /* UIView+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HXExtension.h"; sourceTree = "<group>"; };
 		4A0E4B871F6A504600EBADE8 /* UIView+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HXExtension.m"; sourceTree = "<group>"; };
-		4A10256C1F711DF10055644A /* GLCommunity_PostMainCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCommunity_PostMainCommentModel.h; sourceTree = "<group>"; };
-		4A10256D1F711DF10055644A /* GLCommunity_PostMainCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCommunity_PostMainCommentModel.m; sourceTree = "<group>"; };
 		4A4950841F5F886600180007 /* 正儿八金.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "正儿八金.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A4950881F5F886600180007 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4A49508A1F5F886600180007 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -871,6 +869,8 @@
 		4AB993121F6A9D4500DE5590 /* GLMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLMessageCell.xib; sourceTree = "<group>"; };
 		4AB993151F6AA1C400DE5590 /* yindaotuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yindaotuViewController.h; sourceTree = "<group>"; };
 		4AB993161F6AA1C400DE5590 /* yindaotuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = yindaotuViewController.m; sourceTree = "<group>"; };
+		4AFBF7AF1F725392001915DD /* GLCommentListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLCommentListModel.h; path = "正儿八金/社区/帖子详情/Model/GLCommentListModel.h"; sourceTree = SOURCE_ROOT; };
+		4AFBF7B01F725392001915DD /* GLCommentListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLCommentListModel.m; path = "正儿八金/社区/帖子详情/Model/GLCommentListModel.m"; sourceTree = SOURCE_ROOT; };
 		6B31BB0DBF2BD8D4ACBD79BB /* Pods-正儿八金.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-正儿八金.debug.xcconfig"; path = "Pods/Target Support Files/Pods-正儿八金/Pods-正儿八金.debug.xcconfig"; sourceTree = "<group>"; };
 		EF60FA471903D3B61FEEB693 /* Pods-正儿八金.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-正儿八金.release.xcconfig"; path = "Pods/Target Support Files/Pods-正儿八金/Pods-正儿八金.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1922,6 +1922,8 @@
 		4A605EC71F67B80200F80666 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4AFBF7AF1F725392001915DD /* GLCommentListModel.h */,
+				4AFBF7B01F725392001915DD /* GLCommentListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2322,8 +2324,6 @@
 			children = (
 				4A605EB91F677DD500F80666 /* GLCommunity_PostCommentModel.h */,
 				4A605EBA1F677DD500F80666 /* GLCommunity_PostCommentModel.m */,
-				4A10256C1F711DF10055644A /* GLCommunity_PostMainCommentModel.h */,
-				4A10256D1F711DF10055644A /* GLCommunity_PostMainCommentModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2745,7 +2745,6 @@
 				4A5D0CD81F628637009DD45D /* NIMSessionMsgDatasource.m in Sources */,
 				4A5D0CFC1F628637009DD45D /* NIMKitDevice.m in Sources */,
 				4A0E4B9F1F6A504600EBADE8 /* HXTransition.m in Sources */,
-				4A10256E1F711DF10055644A /* GLCommunity_PostMainCommentModel.m in Sources */,
 				4A5D0CD41F628637009DD45D /* NIMVideoContentConfig.m in Sources */,
 				4A5D0D081F628637009DD45D /* NIMWebImageDecoder.m in Sources */,
 				4AAE8F2E1F66A0AA00AC549D /* GLCommunity_PostCommentReplyCell.m in Sources */,
@@ -2843,6 +2842,7 @@
 				4A5D0CB11F628637009DD45D /* NIMLoadProgressView.m in Sources */,
 				4A5D0CB01F628637009DD45D /* NIMKitNotificationFirer.m in Sources */,
 				4A5D0CF81F628637009DD45D /* NIMTeamCardHeaderCell.m in Sources */,
+				4AFBF7B11F725392001915DD /* GLCommentListModel.m in Sources */,
 				4A5D0D111F628637009DD45D /* NIMIndefiniteAnimatedView.m in Sources */,
 				4A8398B11F6BDCB7001D76C8 /* MBProgressHUD+LB.m in Sources */,
 				4A5D0D171F628637009DD45D /* SessionConfig.m in Sources */,

@@ -52,7 +52,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会员等级:新手妈妈" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y3z-KY-EmK">
-                                <rect key="frame" x="130" y="137.5" width="118.5" height="17"/>
+                                <rect key="frame" x="130" y="137.5" width="230" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -72,6 +72,7 @@
                             <constraint firstItem="5gq-Yc-HnZ" firstAttribute="top" secondItem="lzK-JQ-Sf7" secondAttribute="top" constant="5" id="ICV-e0-tHP"/>
                             <constraint firstItem="UJu-Cg-35D" firstAttribute="leading" secondItem="lzK-JQ-Sf7" secondAttribute="trailing" constant="20" id="LQw-E6-Oct"/>
                             <constraint firstItem="lvZ-YA-QGH" firstAttribute="leading" secondItem="GtI-lX-gs8" secondAttribute="leading" id="RGb-Is-89m"/>
+                            <constraint firstAttribute="trailing" secondItem="Y3z-KY-EmK" secondAttribute="trailing" constant="10" id="UxD-W2-9si"/>
                             <constraint firstItem="UJu-Cg-35D" firstAttribute="bottom" secondItem="lzK-JQ-Sf7" secondAttribute="bottom" constant="-5" id="bnW-bb-hI4"/>
                             <constraint firstItem="Y3z-KY-EmK" firstAttribute="centerY" secondItem="lzK-JQ-Sf7" secondAttribute="centerY" id="cX8-wC-l26"/>
                             <constraint firstItem="5gq-Yc-HnZ" firstAttribute="leading" secondItem="lzK-JQ-Sf7" secondAttribute="trailing" constant="20" id="eoT-rT-HJR"/>

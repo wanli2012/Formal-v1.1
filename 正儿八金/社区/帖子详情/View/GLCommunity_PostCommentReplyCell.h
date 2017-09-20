@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "GLCommunity_PostCommentModel.h"
-#import "GLCommunity_PostMainCommentModel.h"
 
 @interface GLCommunity_PostCommentReplyCell : UITableViewCell
 

@@ -36,7 +36,7 @@
     
 }
 
-- (void)setModel:(GLCommunity_PostMainCommentModel *)model{
+- (void)setModel:(mainModel *)model{
     _model = model;
     
     self.commentLabel.text = model.content;
@@ -55,6 +55,17 @@
     
     [self.tableView reloadData];
 }
+
+//点赞
+- (IBAction)prise:(id)sender {
+    
+}
+//评论
+- (IBAction)comment:(id)sender {
+    
+}
+
+
 
 #pragma mark UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -80,8 +91,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if ([self.delegate respondsToSelector:@selector(pushController)]) {
-        [self.delegate pushController];
+    if ([self.delegate respondsToSelector:@selector(pushController:)]) {
+        [self.delegate pushController:self.index];
     }
     
 }

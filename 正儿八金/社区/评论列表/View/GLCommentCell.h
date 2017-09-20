@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GLCommentListModel.h"
 
 @interface GLCommentCell : UITableViewCell
+
+@property (nonatomic, strong)commentModel *model;
 
 @end

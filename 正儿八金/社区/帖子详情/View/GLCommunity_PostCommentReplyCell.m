@@ -8,9 +8,7 @@
 
 #import "GLCommunity_PostCommentReplyCell.h"
 
-
 @interface GLCommunity_PostCommentReplyCell()
-
 
 @end
 
@@ -19,9 +17,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-   
-   
 }
+
 - (void)setModel:(replyModel *)model{
     _model = model;
     NSString *name = model.user_name;
@@ -33,7 +30,6 @@
     [self.contentLabel setAttributedText:noteStr] ;
     [self.contentLabel sizeToFit];
 
-    
 }
 
 @end

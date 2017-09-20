@@ -10,4 +10,9 @@
 
 @interface GLCommentListController : UIViewController
 
+@property (nonatomic, copy)NSString *user_id;
+@property (nonatomic, copy)NSString *group_id;
+@property (nonatomic, copy)NSString *post_id;
+@property (nonatomic, copy)NSString *comm_id;
+
 @end

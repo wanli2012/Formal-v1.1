@@ -11,8 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLCommunity_PostController">
             <connections>
+                <outlet property="communityNameLabel" destination="vrG-Mc-i2r" id="SSC-Yp-hyN"/>
                 <outlet property="searchView" destination="6Dg-yO-aIj" id="YcN-98-bBe"/>
                 <outlet property="tableView" destination="a2e-Ih-cMZ" id="YT7-fX-QyM"/>
+                <outlet property="topicLabel" destination="Duh-vw-0d4" id="pdS-Tv-jcP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -76,7 +78,7 @@
                         <constraint firstAttribute="bottom" secondItem="6Dg-yO-aIj" secondAttribute="bottom" constant="7" id="voM-VB-J0E"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a2e-Ih-cMZ">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a2e-Ih-cMZ">
                     <rect key="frame" x="0.0" y="66" width="341" height="425"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <view key="tableHeaderView" contentMode="scaleToFill" id="6cK-rT-xo5" userLabel="headerView">

@@ -10,10 +10,12 @@
 
 @interface formattime : NSObject
 
-+ (NSString *)formateTime:(NSString *)time;
++ (NSString *)formateTime:(NSString *)time;//YYYY-MM-dd
 
-+ (NSString *)formateTimeYM:(NSString *)time;
++ (NSString *)formateTimeYM:(NSString *)time;//YYYY年MM月
 
-+ (NSString *)formateTimeOfDate:(NSString *)time;
++ (NSString *)formateTimeOfDate:(NSString *)time;//MM-dd
+
++ (NSString *)formateTimeOfDate2:(NSString *)time;//dd/MM月
 
 @end

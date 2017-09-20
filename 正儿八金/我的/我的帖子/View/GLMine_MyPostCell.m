@@ -44,7 +44,7 @@
     _model = model;
     
     self.contentLabel.text = model.title;
-    self.dateLabel.text = [formattime formateTimeOfDate:model.time];
+    self.dateLabel.text = [formattime formateTimeOfDate2:model.time];
     [self.scanBtn setTitle:model.pv forState:UIControlStateNormal];
     [self.replyBtn setTitle:model.quantity forState:UIControlStateNormal];
     

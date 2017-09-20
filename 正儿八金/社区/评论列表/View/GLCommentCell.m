@@ -7,6 +7,17 @@
 //
 
 #import "GLCommentCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "formattime.h"
+
+@interface GLCommentCell()
+@property (weak, nonatomic) IBOutlet UIImageView *picImageV;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+@property (weak, nonatomic) IBOutlet UIButton *priseBtn;
+
+@end
 
 @implementation GLCommentCell
 
@@ -15,10 +26,15 @@
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setModel:(commentModel *)model{
+    _model = model;
+    
+    [self.picImageV sd_setImageWithURL:[NSURL URLWithString:model.pic] placeholderImage:[UIImage imageNamed:@""]];
+    self.nameLabel.text = model.user_name;
+    self.dateLabel.text = [formattime formateTimeOfDate:model.addtime];
+    self.contentLabel.text = model.content;
+    [self.priseBtn setTitle:model.laud forState:UIControlStateNormal];
+    
 }
 
 @end

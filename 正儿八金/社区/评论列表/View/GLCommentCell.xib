@@ -62,7 +62,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" red="0.98028594255447388" green="0.98045331239700317" blue="0.98027533292770386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="o3u-Pc-gF1" secondAttribute="trailing" constant="10" id="Ecp-tF-7te"/>
                     <constraint firstAttribute="trailing" secondItem="1ta-yb-lOT" secondAttribute="trailing" id="OvG-dm-ga1"/>
@@ -81,6 +81,13 @@
                     <constraint firstItem="cl5-mr-eFn" firstAttribute="bottom" secondItem="V87-Ff-7DM" secondAttribute="bottom" id="ywz-fg-HJ8"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="contentLabel" destination="o3u-Pc-gF1" id="s8F-NS-Iej"/>
+                <outlet property="dateLabel" destination="cl5-mr-eFn" id="vgf-Ub-O6G"/>
+                <outlet property="nameLabel" destination="r1h-VF-xec" id="P3E-Pg-DwU"/>
+                <outlet property="picImageV" destination="V87-Ff-7DM" id="jnw-5H-qvq"/>
+                <outlet property="priseBtn" destination="IRQ-sw-gAr" id="bkO-1z-qdz"/>
+            </connections>
             <point key="canvasLocation" x="37" y="-0.5"/>
         </tableViewCell>
     </objects>
