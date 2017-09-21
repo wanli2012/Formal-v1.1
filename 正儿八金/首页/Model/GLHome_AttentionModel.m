@@ -22,7 +22,7 @@
         collectionHeight = (kSCREEN_WIDTH - 30)/2;
     }else if (self.post.picture.count== 3){
         collectionHeight = (kSCREEN_WIDTH - 40)/3;
-    }else if(self.post.picture.count > 3 && [self.sum integerValue] <= 6){
+    }else if(self.post.picture.count > 3 && self.post.picture.count <= 6){
         collectionHeight = 2 *(kSCREEN_WIDTH - 40)/3 + 10;
     }else if(self.post.picture.count > 6){
         collectionHeight = 3 *(kSCREEN_WIDTH - 40)/3 + 20;

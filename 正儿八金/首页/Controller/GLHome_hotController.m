@@ -20,7 +20,7 @@
 @property (nonatomic, strong)NSMutableArray *dataSourceArr;
 @property (strong, nonatomic)LoadWaitView *loadV;
 @property (nonatomic, assign)NSInteger page;
-@property (nonatomic,strong)NodataView *nodataV;
+//@property (nonatomic,strong)NodataView *nodataV;
 @end
 
 @implementation GLHome_hotController
@@ -32,7 +32,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self.tableView registerNib:[UINib nibWithNibName:@"GLHome_AttentionCell" bundle:nil] forCellReuseIdentifier:@"GLHome_AttentionCell"];
     
-    [self.tableView addSubview:self.nodataV];
+//    [self.tableView addSubview:self.nodataV];
     __weak __typeof(self) weakSelf = self;
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
@@ -55,7 +55,7 @@
     self.tableView.mj_header = header;
     self.tableView.mj_footer = footer;
     
-    [self.tableView.mj_header beginRefreshing];
+    [self getData:YES];
     
 }
 
@@ -100,6 +100,7 @@
                 
                 [self.dataSourceArr addObject:model];
             }
+            
         }else if([responseObject[@"code"] integerValue] == 108){
             if(_page != 1){
                 [MBProgressHUD showError:responseObject[@"message"]];
@@ -120,24 +121,85 @@
     }];
 }
 
--(NodataView*)nodataV{
-    
-    if (!_nodataV) {
-        _nodataV=[[NSBundle mainBundle]loadNibNamed:@"NodataView" owner:self options:nil].firstObject;
-        _nodataV.frame = CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT - 64 - 49 - 49);
-    }
-    return _nodataV;
-    
-}
+//-(NodataView*)nodataV{
+//    
+//    if (!_nodataV) {
+//        _nodataV=[[NSBundle mainBundle]loadNibNamed:@"NodataView" owner:self options:nil].firstObject;
+//        _nodataV.frame = CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT - 64 - 49 - 49);
+//    }
+//    return _nodataV;
+//    
+//}
 - (void)endRefresh {
     
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
+    
 }
 
 #pragma mark - GLHomeAttentionCellDelegate
 - (void)praise:(NSInteger)index{
-    NSLog(@"点赞%zd",index);
+  
+    if([UserModel defaultUser].loginstatus == NO){
+        [MBProgressHUD showError:@"请先登录"];
+        return;
+    }
+    
+    GLHome_AttentionModel *model = self.dataSourceArr[index];
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    dic[@"token"] = [UserModel defaultUser].token;
+    dic[@"uid"] = [UserModel defaultUser].userId;
+    dic[@"group"] = [UserModel defaultUser].groupid;
+    dic[@"postid"] = model.post.post_id;
+    dic[@"port"] = @"1";//1:ios 2:安卓 3:web 默认1
+    
+    if([model.post.fabulous isEqualToString:@"1"]){//返回值fabulous:1已关注 2:未关注
+        dic[@"type"] = @"2";//参数status:1 点赞   2:取消点赞
+    }else{
+        dic[@"type"] = @"1";
+    }
+    
+    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:kPOST_PRISE_URL paramDic:dic finish:^(id responseObject) {
+        
+        [self endRefresh];
+        [_loadV removeloadview];
+        
+        if ([responseObject[@"code"] integerValue] == 104) {
+            
+            NSInteger praise = [model.post.praise integerValue];
+            //cell刷新
+            if([model.post.fabulous isEqualToString:@"1"]){//fabulous:1已关注 2:未关注
+                model.post.fabulous = @"2";
+                model.post.praise  = [NSString stringWithFormat:@"%zd",praise - 1];
+                [MBProgressHUD showSuccess:@"取消点赞"];
+            }else{
+                model.post.fabulous = @"1";
+                model.post.praise  = [NSString stringWithFormat:@"%zd",praise + 1];
+                [MBProgressHUD showSuccess:@"点赞+1"];
+                
+            }
+            
+            NSIndexPath *indexPathA = [NSIndexPath indexPathForRow:index inSection:0]; //刷新第0段第2行
+            
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPathA,nil] withRowAnimation:UITableViewRowAnimationNone];
+            
+        }else{
+            
+            [MBProgressHUD showError:responseObject[@"message"]];
+        }
+        
+        [self.tableView reloadData];
+        
+    } enError:^(NSError *error) {
+        [self endRefresh];
+        [_loadV removeloadview];
+        [self.tableView reloadData];
+        [MBProgressHUD showError:error.localizedDescription];
+        
+    }];
+
 }
 - (void)comment:(NSInteger)index{
     NSLog(@"评论%zd",index);
@@ -159,8 +221,11 @@
 }
 
 - (void)follow:(NSInteger)index{//关注 status:
-    NSLog(@"kFOLLOW_OR_CANCEL_URL关注%zd",index);
     
+    if([UserModel defaultUser].loginstatus == NO){
+        [MBProgressHUD showError:@"请先登录"];
+        return;
+    }
     GLHome_AttentionModel *model = self.dataSourceArr[index];
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
@@ -193,6 +258,8 @@
                 [MBProgressHUD showSuccess:@"关注成功"];
             }
 
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshFollowNotification" object:nil];
+            
             NSIndexPath *indexPathA = [NSIndexPath indexPathForRow:index inSection:0]; //刷新第0段第2行
             
             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPathA,nil] withRowAnimation:UITableViewRowAnimationNone];
@@ -216,12 +283,12 @@
 #pragma mark - UITableViewDelegate UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    if (self.dataSourceArr.count <= 0 ) {
-        self.nodataV.hidden = NO;
-    }else{
-        self.nodataV.hidden = YES;
-    }
-    
+//    if (self.dataSourceArr.count <= 0 ) {
+//        self.nodataV.hidden = NO;
+//    }else{
+//        self.nodataV.hidden = YES;
+//    }
+//    
     return self.dataSourceArr.count;
 }
 
@@ -250,6 +317,19 @@
     GLCommunity_PostController *detailVC = [[GLCommunity_PostController alloc] init];
     detailVC.mid = model.mid;
     detailVC.post_id = model.post.post_id;
+    detailVC.group_id = model.group_id;
+    
+    typeof(self)weakSelf = self;
+    
+    detailVC.block = ^(NSString *praise,NSString *fablous){
+        
+        model.post.fabulous = fablous;
+        model.post.praise = praise;
+        
+        NSIndexPath *indexPathA = [NSIndexPath indexPathForRow:indexPath.row inSection:0]; //刷新第0段第2行
+        [weakSelf.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPathA,nil] withRowAnimation:UITableViewRowAnimationNone];
+        
+    };
     [homeVC.navigationController pushViewController:detailVC animated:YES];
     homeVC.hidesBottomBarWhenPushed = NO;
     

@@ -34,11 +34,11 @@
 @property (nonatomic, copy)NSString *reply_laud;
 @property (nonatomic, copy)NSString *reply_publish;
 @property (nonatomic, copy)NSArray *reply;
+@property (nonatomic, copy)NSString *ctfabulous;
 
 @property (nonatomic, assign)CGFloat cellHeight;//cell总高度
 
 @end
-
 
 @interface postModel : NSObject
 
@@ -52,6 +52,7 @@
 @property (nonatomic, copy)NSString *location;
 @property (nonatomic, copy)NSString *pv;
 @property (nonatomic, copy)NSString *praise;
+@property (nonatomic, copy)NSString *fabulous;
 
 @property (nonatomic, assign)CGFloat cellHeight;//cell总高度
 

@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLCommunity_PostController">
             <connections>
+                <outlet property="commentTF" destination="4M8-77-fRf" id="CZR-na-Bfh"/>
                 <outlet property="communityNameLabel" destination="vrG-Mc-i2r" id="SSC-Yp-hyN"/>
                 <outlet property="searchView" destination="6Dg-yO-aIj" id="YcN-98-bBe"/>
                 <outlet property="tableView" destination="a2e-Ih-cMZ" id="YT7-fX-QyM"/>
@@ -172,7 +173,7 @@
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
                             <state key="normal" image="share"/>
                             <connections>
-                                <action selector="sendMessage:" destination="-1" eventType="touchUpInside" id="o1C-yZ-MzJ"/>
+                                <action selector="sendMessage" destination="-1" eventType="touchUpInside" id="TjH-Qb-iAt"/>
                             </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="评论" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4M8-77-fRf">

@@ -12,6 +12,8 @@
 @protocol GLCommunity_PostCommentCellDelegate <NSObject>
 
 - (void)pushController:(NSInteger)index;
+- (void)prise:(NSInteger)index;
+- (void)comment:(NSInteger)index;
 
 @end
 

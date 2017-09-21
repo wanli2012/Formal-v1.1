@@ -35,6 +35,10 @@
 #define kSCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
 #define kSCREEN_HEIGHT  [UIScreen mainScreen].bounds.size.height
 
+//占位图
+#define PlaceHolderImage @"头像1"
+#define LUNBO_PlaceHolder @"轮播暂位图"
+
 #define URL_Base @"http://192.168.1.132/baby/index.php/App/"
 //#define URL_Base2 @"App/"
 #define kGETCODE_URL @"User/PartneVerificationCode"//获取验证码User/PartnerRegister
@@ -49,6 +53,7 @@
 #define kGET_SECOND_COMMENT_URL @"PostBar/PostMoreComments"//获取更多下级评论
 #define kFOLLOW_OR_CANCEL_URL @"User/PartnerFollow"//关注其ta用户，或者取消关注
 #define kPOST_PRISE_URL @"PostBar/PostAppreciate"//帖子点赞取消点赞接口
-
+#define kCOMMENT_PRISE_URL @"PostBar/PostCommentPointPraise"//评论点赞
+#define kCOMMENT_POST_URL @"PostBar/PostAtom"//帖子添加评论
 
 #endif /* PrefixHeader_pch */

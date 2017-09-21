@@ -18,5 +18,6 @@
 @property (nonatomic, strong)NSString *quantity;//帖子评论量
 @property (nonatomic, strong)NSString *time;//发帖时间
 @property (nonatomic, strong)NSString *location;//发帖地址
+@property (nonatomic, strong)NSString *fabulous;//点赞状态 1:已点赞  2:未点赞
 
 @end

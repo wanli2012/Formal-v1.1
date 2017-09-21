@@ -50,18 +50,22 @@
     
     // 设置文字
     [header setTitle:@"快扯我，快点" forState:MJRefreshStateIdle];
-    
     [header setTitle:@"数据要来啦" forState:MJRefreshStatePulling];
-    
     [header setTitle:@"服务器正在狂奔..." forState:MJRefreshStateRefreshing];
     
     self.tableView.mj_header = header;
     self.tableView.mj_footer = footer;
 
-    [self.tableView.mj_header beginRefreshing];
+    [self getData:YES];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"refreshInterface" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"refreshFollowNotification" object:nil];
     
+}
+
+- (void)dealloc{
+    //移除通知
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void)refresh {
     [self getData:YES];
@@ -146,8 +150,10 @@
 
 #pragma mark - GLHomeAttentionCellDelegate
 - (void)praise:(NSInteger)index{
-    
-    NSLog(@"点赞%zd",index);
+    if([UserModel defaultUser].loginstatus == NO){
+        [MBProgressHUD showError:@"请先登录"];
+        return;
+    }
 
     GLHome_AttentionModel *model = self.dataSourceArr[index];
     
@@ -158,7 +164,7 @@
     dic[@"postid"] = model.post.post_id;
     dic[@"port"] = @"1";//1:ios 2:安卓 3:web 默认1
 
-    if([model.fabulous isEqualToString:@"1"]){//返回值status:1已关注 2:未关注
+    if([model.post.fabulous isEqualToString:@"1"]){//返回值status:1已关注 2:未关注
         dic[@"type"] = @"2";//参数status:1 点赞   2:取消点赞
     }else{
         dic[@"type"] = @"1";
@@ -174,19 +180,17 @@
             
             NSInteger praise = [model.post.praise integerValue];
             //cell刷新
-            if([model.fabulous isEqualToString:@"1"]){//fabulous:1已关注 2:未关注
-                model.fabulous = @"2";
+            if([model.post.fabulous isEqualToString:@"1"]){//fabulous:1已关注 2:未关注
+                model.post.fabulous = @"2";
                 model.post.praise  = [NSString stringWithFormat:@"%zd",praise - 1];
                 [MBProgressHUD showSuccess:@"取消点赞"];
             }else{
-                model.fabulous = @"1";
+                model.post.fabulous = @"1";
                 model.post.praise  = [NSString stringWithFormat:@"%zd",praise + 1];
                 [MBProgressHUD showSuccess:@"点赞+1"];
-            
             }
             
             NSIndexPath *indexPathA = [NSIndexPath indexPathForRow:index inSection:0]; //刷新第0段第2行
-            
             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPathA,nil] withRowAnimation:UITableViewRowAnimationNone];
             
         }else{
@@ -226,6 +230,12 @@
     homeVC.hidesBottomBarWhenPushed = NO;
 }
 - (void)follow:(NSInteger)index{//关注 status:
+    
+    if([UserModel defaultUser].loginstatus == NO){
+        [MBProgressHUD showError:@"请先登录"];
+        return;
+    }
+    
     GLHome_AttentionModel *model = self.dataSourceArr[index];
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
@@ -317,6 +327,19 @@
     GLCommunity_PostController *detailVC = [[GLCommunity_PostController alloc] init];
     detailVC.mid = model.mid;
     detailVC.post_id = model.post.post_id;
+    detailVC.group_id = model.group_id;
+    
+    typeof(self)weakSelf = self;
+    detailVC.block = ^(NSString *praise,NSString *fablous){
+        
+        model.post.fabulous = fablous;
+        model.post.praise = praise;
+        
+        NSIndexPath *indexPathA = [NSIndexPath indexPathForRow:indexPath.row inSection:0]; //刷新第0段第2行
+        [weakSelf.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPathA,nil] withRowAnimation:UITableViewRowAnimationNone];
+        
+    };
+
     [homeVC.navigationController pushViewController:detailVC animated:YES];
     homeVC.hidesBottomBarWhenPushed = NO;
 

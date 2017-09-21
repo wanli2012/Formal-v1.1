@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^GLCommentListBlock)(NSString *praiseNum,NSString *fabulous);
+
 @interface GLCommentListController : UIViewController
 
 @property (nonatomic, copy)NSString *user_id;
 @property (nonatomic, copy)NSString *group_id;
 @property (nonatomic, copy)NSString *post_id;
 @property (nonatomic, copy)NSString *comm_id;
+@property (nonatomic, copy)GLCommentListBlock block;
 
 @end

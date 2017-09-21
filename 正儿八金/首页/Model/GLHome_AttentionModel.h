@@ -28,7 +28,7 @@
 @property (nonatomic, strong)NSString *portrait;
 @property (nonatomic, strong)GLHome_AttentionPostModel *post;
 @property (nonatomic, strong)NSString *status;//关注状态 1:已关注  2:未关注
-@property (nonatomic, strong)NSString *fabulous;//点赞状态 1:已点赞  2:未点赞
+
 @property (nonatomic, strong)NSString *user_name;
 
 @end

@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;//标题Label
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleLabelHeight;
 
-
 @property (nonatomic, assign)BOOL isHiddenAttendBtn;
 @property (weak, nonatomic) IBOutlet UIButton *attentionBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *picImageV;
@@ -53,13 +52,12 @@
     
 }
 
-
 - (void)setModel:(GLHome_AttentionModel *)model{
     
     _model = model;
     
     self.nameLabel.text = model.user_name;
-    [self.picImageV sd_setImageWithURL:[NSURL URLWithString:model.portrait] placeholderImage:[UIImage imageNamed:@"头像1"]];
+    [self.picImageV sd_setImageWithURL:[NSURL URLWithString:model.portrait] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
     
     self.communityLabel.text = [formattime formateTime:model.post.time];
     
@@ -85,11 +83,12 @@
         self.attentionBtn.backgroundColor = MAIN_COLOR;
     }
     
-    if ([model.fabulous integerValue] == 1) {//已点赞
+    if ([model.post.fabulous integerValue] == 1) {//已点赞
         
         [self.praiseBtn setImage:[UIImage imageNamed:@"赞点中"] forState:UIControlStateNormal];
         
     }else{
+        
         [self.praiseBtn setImage:[UIImage imageNamed:@"赞"] forState:UIControlStateNormal];
     }
     
@@ -100,7 +99,14 @@
     }else{
         self.collectionViewWidth.constant = kSCREEN_WIDTH;
     }
-    
+    //如果没有地址,隐藏按钮
+    if(model.post.location.length == 0){
+        self.addressBtn.hidden = YES;
+    }else{
+        self.addressBtn.hidden = NO;
+        [self.addressBtn setTitle:model.post.location forState:UIControlStateNormal];
+    }
+
     //是否隐藏关注按钮
     if (model.isHiddenAttendBtn) {
         self.attentionBtn.hidden = YES;
@@ -131,9 +137,8 @@
     _postModel = postModel;
     
     self.nameLabel.text = postModel.user_name;
-    [self.picImageV sd_setImageWithURL:[NSURL URLWithString:postModel.portrait] placeholderImage:[UIImage imageNamed:@"头像1"]];
-    
-//    NSDictionary *dic = (NSDictionary *)postModel.post;
+    [self.picImageV sd_setImageWithURL:[NSURL URLWithString:postModel.portrait] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
+
     self.communityLabel.text = [formattime formateTimeOfDate:[NSString stringWithFormat:@"%@",postModel.post.time]];
     
     self.titleLabel.text = postModel.post.title;
@@ -142,10 +147,22 @@
     [self.praiseBtn setTitle:postModel.post.pv forState:UIControlStateNormal];
     [self.commentBtn setTitle:postModel.post.praise forState:UIControlStateNormal];
     [self.praiseBtn setImage:[UIImage imageNamed:@"浏览"] forState:UIControlStateNormal];
-    [self.commentBtn setImage:[UIImage imageNamed:@"赞"] forState:UIControlStateNormal];
     
-    [self.addressBtn setTitle:postModel.post.location forState:UIControlStateNormal];
+    if ([self.postModel.post.fabulous integerValue] == 1) {//已点赞
+        
+        [self.commentBtn setImage:[UIImage imageNamed:@"赞点中"] forState:UIControlStateNormal];
 
+    }else{
+        
+        [self.commentBtn setImage:[UIImage imageNamed:@"赞"] forState:UIControlStateNormal];
+    }
+    //如果没有地址,隐藏按钮
+    if(postModel.post.location.length == 0){
+        self.addressBtn.hidden = YES;
+    }else{
+        self.addressBtn.hidden = NO;
+        [self.addressBtn setTitle:postModel.post.location forState:UIControlStateNormal];
+    }
 
     if ([postModel.post.picture count] == 4) {
         
@@ -186,6 +203,9 @@
     if ([self.delegate respondsToSelector:@selector(comment:)]) {
         [self.delegate comment:self.index];
     }
+    if ([self.delegate respondsToSelector:@selector(postPraise:)]) {
+        [self.delegate postPraise:self.index];
+    }
 }
 
 //点赞
@@ -201,6 +221,7 @@
         [self.delegate personInfo:self.index];
     }
 }
+
 - (IBAction)follow:(id)sender {
     if ([self.delegate respondsToSelector:@selector(follow:)]) {
         [self.delegate follow:self.index];
@@ -214,9 +235,12 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
     GLHome_AttentionCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GLHome_AttentionCollectionCell" forIndexPath:indexPath];
 
-    cell.imageV.image = [UIImage imageNamed:@"图-2"];
+    NSString *imageName = self.postModel?self.postModel.post.picture[indexPath.row]:self.model.post.picture[indexPath.row];
+    
+    [cell.imageV sd_setImageWithURL:[NSURL URLWithString:imageName] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
 
     return cell;
 }
@@ -234,13 +258,26 @@
 //定义每个UICollectionViewCell 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    if ([self.model.sum integerValue] == 1) {
-        return CGSizeMake(kSCREEN_WIDTH - 30, kSCREEN_WIDTH - 30);
-    }else if([self.model.sum integerValue] == 2){
-        return CGSizeMake((kSCREEN_WIDTH - 35)/2, (kSCREEN_WIDTH - 35)/2);
+    if(self.postModel){
+        
+        if (self.postModel.post.picture.count == 1) {
+            return CGSizeMake(kSCREEN_WIDTH - 30, kSCREEN_WIDTH - 30);
+        }else if(self.postModel.post.picture.count == 2){
+            return CGSizeMake((kSCREEN_WIDTH - 35)/2, (kSCREEN_WIDTH - 35)/2);
+        }
+        
+        return CGSizeMake((kSCREEN_WIDTH - 40)/3, (kSCREEN_WIDTH - 40)/3);
+
+    }else{
+        
+        if (self.model.post.picture.count == 1) {
+            return CGSizeMake(kSCREEN_WIDTH - 30, kSCREEN_WIDTH - 30);
+        }else if(self.model.post.picture.count == 2){
+            return CGSizeMake((kSCREEN_WIDTH - 35)/2, (kSCREEN_WIDTH - 35)/2);
+        }
+        
+        return CGSizeMake((kSCREEN_WIDTH - 40)/3, (kSCREEN_WIDTH - 40)/3);
     }
-    
-    return CGSizeMake((kSCREEN_WIDTH - 40)/3, (kSCREEN_WIDTH - 40)/3);
 }
 
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {

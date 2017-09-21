@@ -11,6 +11,7 @@
 #import "formattime.h"
 
 @interface GLCommentCell()
+
 @property (weak, nonatomic) IBOutlet UIImageView *picImageV;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
@@ -23,18 +24,30 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
 }
 
 - (void)setModel:(commentModel *)model{
     _model = model;
     
-    [self.picImageV sd_setImageWithURL:[NSURL URLWithString:model.pic] placeholderImage:[UIImage imageNamed:@""]];
+    [self.picImageV sd_setImageWithURL:[NSURL URLWithString:model.pic] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
+    
+    if (!self.picImageV.image) {
+        self.picImageV.image = [UIImage imageNamed:PlaceHolderImage];
+    }
+    
+    if ([model.fabulous integerValue] == 1) {//已点赞
+        [self.priseBtn setImage:[UIImage imageNamed:@"赞点中"] forState:UIControlStateNormal];
+    }else{
+        [self.priseBtn setImage:[UIImage imageNamed:@"赞"] forState:UIControlStateNormal];
+    }
+    
     self.nameLabel.text = model.user_name;
     self.dateLabel.text = [formattime formateTimeOfDate:model.addtime];
     self.contentLabel.text = model.content;
     [self.priseBtn setTitle:model.laud forState:UIControlStateNormal];
     
 }
+
 
 @end

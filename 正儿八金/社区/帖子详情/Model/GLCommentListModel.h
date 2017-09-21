@@ -21,6 +21,7 @@
 @property (nonatomic, copy)NSString *pic;//评论用户头像
 @property (nonatomic, copy)NSString *reply_id;//评论ID
 @property (nonatomic, copy)NSString *user_name;//评论用户昵称
+@property (nonatomic, copy)NSString *fabulous;//评论是否点赞 1点赞 2未点赞
 
 @end
 
@@ -36,5 +37,6 @@
 @property (nonatomic, copy)NSString *reply_publish;//评论的评论量
 @property (nonatomic, copy)NSString *user_name;//评论用户的昵称
 @property (nonatomic, copy)NSArray *post;//评论的下级评论数据数组
+@property (nonatomic, copy)NSString *fabulous;//评论是否点赞 1点赞 2未点赞
 
 @end

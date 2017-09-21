@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^GLCommunity_PostControllerBlock)(NSString *praiseNum,NSString *fabulous);
+
 @interface GLCommunity_PostController : UIViewController
 
 @property (nonatomic, copy)NSString *mid;
 @property (nonatomic, copy)NSString *post_id;
+@property (nonatomic, copy)NSString *group_id;
+
+@property (nonatomic, copy)GLCommunity_PostControllerBlock block;
 
 @end

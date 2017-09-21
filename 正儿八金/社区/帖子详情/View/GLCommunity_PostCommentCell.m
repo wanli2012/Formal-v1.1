@@ -40,11 +40,17 @@
     _model = model;
     
     self.commentLabel.text = model.content;
-    [self.picImageV sd_setImageWithURL:[NSURL URLWithString:model.portrait] placeholderImage:[UIImage imageNamed:@"头像1"]];
+    [self.picImageV sd_setImageWithURL:[NSURL URLWithString:model.portrait] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
     self.nameLabel.text = model.user_name;
     self.dateLabel.text = [formattime formateTimeOfDate:model.commenttiem];
     [self.praiseBtn setTitle:model.reply_laud forState:UIControlStateNormal];
     [self.commentBtn setTitle:model.reply_publish forState:UIControlStateNormal];
+    
+    if ([model.ctfabulous integerValue] == 1) {//已点赞
+        [self.praiseBtn setImage:[UIImage imageNamed:@"赞点中"] forState:UIControlStateNormal];
+    }else{
+        [self.praiseBtn setImage:[UIImage imageNamed:@"赞"] forState:UIControlStateNormal];
+    }
     
     [self.models removeAllObjects];
     
@@ -59,12 +65,18 @@
 //点赞
 - (IBAction)prise:(id)sender {
     
+    if ([self.delegate respondsToSelector:@selector(prise:)]) {
+        [self.delegate prise:self.index];
+    }
 }
+
 //评论
 - (IBAction)comment:(id)sender {
     
+    if ([self.delegate respondsToSelector:@selector(comment:)]) {
+        [self.delegate comment:self.index];
+    }
 }
-
 
 
 #pragma mark UITableViewDelegate
@@ -94,7 +106,6 @@
     if ([self.delegate respondsToSelector:@selector(pushController:)]) {
         [self.delegate pushController:self.index];
     }
-    
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{

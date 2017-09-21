@@ -12,10 +12,13 @@
 
 @protocol GLHome_AttentionCellDelegate <NSObject>
 
+@optional
 - (void)praise:(NSInteger)index;
 - (void)comment:(NSInteger)index;
 - (void)personInfo:(NSInteger)index;
 - (void)follow:(NSInteger)index;
+
+- (void)postPraise:(NSInteger)index;//帖子详情里的点赞
 
 @end
 

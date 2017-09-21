@@ -79,12 +79,18 @@
 //为头视图赋值
 - (void)setHeader{
 
-    [self.picImageV sd_setImageWithURL:[NSURL URLWithString:self.model.portrait] placeholderImage:[UIImage imageNamed:@"头像1"]];
+    [self.picImageV sd_setImageWithURL:[NSURL URLWithString:self.model.portrait] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
     self.nameLabel.text = self.model.user_name;
     self.dateLabel.text = [formattime formateTimeOfDate:self.model.commenttiem];
     self.commentLabel.text = self.model.content;
     [self.priseBtn setTitle:self.model.reply_laud forState:UIControlStateNormal];
     [self.commentBtn setTitle:self.model.reply_publish forState:UIControlStateNormal];
+    
+    if ([self.model.fabulous integerValue] == 1) {//已点赞
+        [self.priseBtn setImage:[UIImage imageNamed:@"赞点中"] forState:UIControlStateNormal];
+    }else{
+        [self.priseBtn setImage:[UIImage imageNamed:@"赞"] forState:UIControlStateNormal];
+    }
     
     CGSize titleSize = [self.model.content boundingRectWithSize:CGSizeMake(kSCREEN_WIDTH - 60, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil].size;
     
@@ -110,6 +116,14 @@
     dic[@"comm_id"] = self.comm_id;
     dic[@"group_id"] = self.group_id;
     dic[@"page"] =@(_page);
+    
+    if ([UserModel defaultUser].loginstatus == YES) {
+        
+        dic[@"token"] = [UserModel defaultUser].token;
+        dic[@"uid"] = [UserModel defaultUser].userId;
+        dic[@"group"] = [UserModel defaultUser].groupid;
+
+    }
     
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:kGET_SECOND_COMMENT_URL paramDic:dic finish:^(id responseObject) {
@@ -157,16 +171,6 @@
     }];
 }
 
-//-(NodataView*)nodataV{
-//    
-//    if (!_nodataV) {
-//        _nodataV=[[NSBundle mainBundle]loadNibNamed:@"NodataView" owner:self options:nil].firstObject;
-//        _nodataV.frame = CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT - 64 - 49 - 49);
-//    }
-//    return _nodataV;
-//    
-//}
-
 - (void)endRefresh {
     
     [self.tableView.mj_header endRefreshing];
@@ -184,6 +188,73 @@
     NSLog(@"查看原帖子");
 }
 
+- (IBAction)commentPraise:(id)sender {
+    if([UserModel defaultUser].loginstatus == NO){
+        [MBProgressHUD showError:@"请先登录"];
+        return;
+    }
+    
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    dic[@"token"] = [UserModel defaultUser].token;
+    dic[@"uid"] = [UserModel defaultUser].userId;
+    dic[@"group"] = [UserModel defaultUser].groupid;
+    dic[@"commid"] = self.model.comm_id;
+    dic[@"data"] = @"1";
+    dic[@"postid"] = self.post_id;
+    dic[@"port"] = @"1";//1:ios 2:安卓 3:web 默认1
+    
+    if([self.model.fabulous isEqualToString:@"1"]){//返回值fabulous:1已关注 2:未关注
+        dic[@"type"] = @"2";//参数status:1 点赞   2:取消点赞
+    }else{
+        dic[@"type"] = @"1";
+    }
+    
+    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:kCOMMENT_PRISE_URL paramDic:dic finish:^(id responseObject) {
+        
+        [self endRefresh];
+        [_loadV removeloadview];
+        
+        if ([responseObject[@"code"] integerValue] == 104) {
+            
+            NSInteger praise = [self.model.reply_laud integerValue];
+            //cell刷新
+            if([self.model.fabulous isEqualToString:@"1"]){//fabulous:1已关注 2:未关注
+                self.model.fabulous = @"2";
+                self.model.reply_laud = [NSString stringWithFormat:@"%zd",praise - 1];
+                [MBProgressHUD showSuccess:@"取消点赞"];
+            }else{
+                self.model.fabulous = @"1";
+                self.model.reply_laud = [NSString stringWithFormat:@"%zd",praise + 1];
+                [MBProgressHUD showSuccess:@"点赞+1"];
+            }
+            
+            [self setHeader];//为头视图赋值
+            
+            self.block(self.model.reply_laud,self.model.fabulous);
+            
+        }else{
+            
+            [MBProgressHUD showError:responseObject[@"message"]];
+        }
+        
+        [self.tableView reloadData];
+        
+    } enError:^(NSError *error) {
+        [self endRefresh];
+        [_loadV removeloadview];
+        [self.tableView reloadData];
+        [MBProgressHUD showError:error.localizedDescription];
+        
+    }];
+    
+
+}
+
+- (IBAction)comment:(id)sender {
+    NSLog(@"评论");
+}
 
 #pragma mark - UITableViewDelegate UITableViewDataSource
 

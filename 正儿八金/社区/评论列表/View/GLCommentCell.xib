@@ -37,7 +37,7 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRQ-sw-gAr">
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRQ-sw-gAr">
                         <rect key="frame" x="276" y="17.5" width="60" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="3oB-S8-qDB"/>
@@ -62,7 +62,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <color key="backgroundColor" red="0.92156862745098034" green="0.9206315279006958" blue="0.9457707405090332" alpha="0.5" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="o3u-Pc-gF1" secondAttribute="trailing" constant="10" id="Ecp-tF-7te"/>
                     <constraint firstAttribute="trailing" secondItem="1ta-yb-lOT" secondAttribute="trailing" id="OvG-dm-ga1"/>
