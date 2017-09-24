@@ -59,6 +59,15 @@
         [self.models addObject:reply];
     }
     
+    if ([model.reply_publish integerValue] > 2) {
+        NSString *str = [NSString stringWithFormat:@"共%@条评论>>",model.reply_publish];
+        replyModel *m = [[replyModel alloc] init];
+        m.content = str;
+        [self.models addObject:m];
+    }
+    
+    [self layoutIfNeeded];
+    
     [self.tableView reloadData];
 }
 
@@ -80,10 +89,6 @@
 
 
 #pragma mark UITableViewDelegate
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
     return self.models.count;
@@ -95,8 +100,71 @@
     
     replyModel *model = self.models[indexPath.row];
     cell.model = model;
+    cell.index = indexPath.row;
+
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
     
+    NSString *str = [NSString stringWithFormat:@"%@",model.nickname];
+    
+    typeof(self)weakSelf = self;
+    
+    if (model.user_name == nil && model.nickname == nil) {
+        
+        cell.contentLabel.text = model.content;
+        cell.contentLabel.selectBlobk = nil;
+        
+    }else if ([str rangeOfString:@"null"].location != NSNotFound) {
+        
+        NSString *str = [NSString stringWithFormat:@"%@:%@",model.user_name,model.content];
+        
+        NSMutableAttributedString *noteStr = [[NSMutableAttributedString alloc] initWithString:str];
+        NSRange redRange = NSMakeRange(0, model.user_name.length);
+        [noteStr addAttribute:NSForegroundColorAttributeName value:MAIN_COLOR range:redRange];
+        
+        cell.contentLabel.rangeArr=(id)@[NSStringFromRange(NSMakeRange(0, model.user_name.length))];
+        
+        cell.contentLabel.selectBlobk = ^(NSString *str,NSRange range,NSInteger index){
+            
+            if ([weakSelf.delegate respondsToSelector:@selector(personInfo:cellIndex:isSecommend:)]) {
+                [weakSelf.delegate personInfo:indexPath.row cellIndex:self.index isSecommend:YES];
+            }
+        };
+        
+        cell.contentLabel.attributedText = noteStr;
+        
+    }else{
+        
+        NSString *str = [NSString stringWithFormat:@"%@回复%@: %@",model.user_name,model.nickname,model.content];
+        NSMutableAttributedString *noteStr = [[NSMutableAttributedString alloc] initWithString:str];
+        NSRange redRange = NSMakeRange(0, model.user_name.length);
+        NSRange redRange2 = NSMakeRange(model.user_name.length + 2, model.nickname.length);
+        
+        [noteStr addAttribute:NSForegroundColorAttributeName value:MAIN_COLOR range:redRange];
+        [noteStr addAttribute:NSForegroundColorAttributeName value:MAIN_COLOR range:redRange2];
+        
+        cell.contentLabel.rangeArr=(id)@[NSStringFromRange(NSMakeRange(0, model.user_name.length)),NSStringFromRange(NSMakeRange(model.user_name.length + 2, model.nickname.length))];
+        
+        
+        cell.contentLabel.selectBlobk = ^(NSString *str,NSRange range,NSInteger index){
+            
+            if ([self.delegate respondsToSelector:@selector(personInfo:cellIndex:isSecommend:)]) {
+                
+                if (index == 0) {
+                    [weakSelf.delegate personInfo:indexPath.row cellIndex:self.index isSecommend:YES];
+                    
+                }else{
+                    
+                    [weakSelf.delegate personInfo:indexPath.row cellIndex:self.index isSecommend:NO];
+                }
+            }
+            
+        };
+        
+        cell.contentLabel.attributedText = noteStr;
+        
+    }
+
     return cell;
     
 }
@@ -108,17 +176,6 @@
     }
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 0)];
-    view.backgroundColor = [UIColor clearColor];
-    return view;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    
-    return 0;
-}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -129,10 +186,9 @@
 
 - (NSMutableArray *)models{
     if (!_models) {
-        
         _models = [NSMutableArray array];
-        
     }
     return _models;
 }
+
 @end

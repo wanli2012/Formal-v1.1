@@ -10,6 +10,8 @@
 #import "GLHome_AttentionCell.h"
 #import "GLCommunity_PostCommentCell.h"
 #import "GLCommentListController.h"
+#import "GLMine_MyPostController.h"
+
 //#import "GLCommunity_PostCommentModel.h"
 //#import "GLCommunity_PostMainCommentModel.h"
 
@@ -58,10 +60,10 @@
         [weakSelf getData:YES];
     }];
     
-    MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        
-        [weakSelf getData:NO];
-    }];
+//    MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+//        
+//        [weakSelf getData:NO];
+//    }];
     
     // 设置文字
     [header setTitle:@"快扯我，快点" forState:MJRefreshStateIdle];
@@ -71,7 +73,7 @@
     [header setTitle:@"服务器正在狂奔..." forState:MJRefreshStateRefreshing];
     
     self.tableView.mj_header = header;
-    self.tableView.mj_footer = footer;
+//    self.tableView.mj_footer = footer;
     
     [self getData:YES];
     
@@ -91,7 +93,7 @@
     dic[@"mid"] = self.mid;
     dic[@"post_id"] = self.post_id;
     dic[@"group_id"] = self.group_id;
-    dic[@"page"] =@(_page);
+//    dic[@"page"] =@(_page);
     
     if ([UserModel defaultUser].loginstatus == YES) {
         
@@ -153,7 +155,7 @@
 - (void)endRefresh {
     
     [self.tableView.mj_header endRefreshing];
-    [self.tableView.mj_footer endRefreshing];
+//    [self.tableView.mj_footer endRefreshing];
     
 }
 
@@ -176,70 +178,54 @@
 
 //发送消息
 - (IBAction)sendMessage {
-//    NSLog(@"发送消息kCOMMENT_POST_URL");
-//    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-//    
-//    dic[@"token"] = [UserModel defaultUser].token;
-//    dic[@"uid"] = [UserModel defaultUser].userId;
-//    dic[@"group"] = [UserModel defaultUser].groupid;
-//    dic[@"data"] = @"1";
-//    dic[@"post_id"] = self.post_id;
-////    dic[@"content"] = self.;
-//    dic[@"comm_id"] = [UserModel defaultUser].userId);
-//    dic[@"mcid"] = nil;
-//    dic[@"port"] = @"1";
-//    
-//    
-//    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-//    [NetworkManager requestPOSTWithURLStr:kPOST_DETAIL_URL paramDic:dic finish:^(id responseObject) {
-//        
-//        [self endRefresh];
-//        [_loadV removeloadview];
-//        
-//        if ([responseObject[@"code"] integerValue] == 104) {
-//            
-//            if ([responseObject[@"data"] count] == 0) {
-//                
-//                [self.tableView reloadData];
-//                
-//                return;
-//            }
-//            
-//            self.model = [GLCommunity_PostCommentModel mj_objectWithKeyValues:responseObject[@"data"]];
-//            self.model.isHiddenAttendBtn = YES;
-//            self.model.isHiddenLandlord = NO;
-//            self.model.isHiddenTitleLabel = NO;
-//            
-//            self.communityNameLabel.text = self.model.post.paste_name;
-//            //            self.topicLabel.text = self.model.post;
-//            
-//            for (mainModel *model in self.model.main) {
-//                
-//                [self.mainCommentArr addObject:model];
-//            }
-//            
-//        }else if([responseObject[@"code"] integerValue] == 108){
-//            if(_page != 1){
-//                [MBProgressHUD showError:responseObject[@"message"]];
-//            }
-//            
-//        }else{
-//            [MBProgressHUD showError:responseObject[@"message"]];
-//        }
-//        
-//        [self.tableView reloadData];
-//        
-//    } enError:^(NSError *error) {
-//        
-//        [self endRefresh];
-//        [_loadV removeloadview];
-//        [self.tableView reloadData];
-//        [MBProgressHUD showError:error.localizedDescription];
-//        
-//    }];
-//
     
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    
+    dic[@"token"] = [UserModel defaultUser].token;
+    dic[@"uid"] = [UserModel defaultUser].userId;
+    dic[@"group"] = [UserModel defaultUser].groupid;
+    dic[@"data"] = @"1";//评论标识. 1一级评论 2 二级评论
+    dic[@"post_id"] = self.post_id;
+    dic[@"content"] = self.commentTF.text;
+    dic[@"comm_id"] = [UserModel defaultUser].userId;
+    dic[@"port"] = @"1";
+    
+    
+    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:kCOMMENT_POST_URL paramDic:dic finish:^(id responseObject) {
+        
+        [self endRefresh];
+        [_loadV removeloadview];
+        
+        if ([responseObject[@"code"] integerValue] == 104) {
+            
+            [MBProgressHUD showSuccess:responseObject[@"message"]];
+            
+            self.commentTF.text = nil;
+            [self.commentTF resignFirstResponder];
+            
+        }else if([responseObject[@"code"] integerValue] == 108){
+            if(_page != 1){
+                [MBProgressHUD showError:responseObject[@"message"]];
+            }
+            
+        }else{
+            [MBProgressHUD showError:responseObject[@"message"]];
+        }
+        
+        [self.tableView reloadData];
+        
+    } enError:^(NSError *error) {
+        
+        [self endRefresh];
+        [_loadV removeloadview];
+        [self.tableView reloadData];
+        [MBProgressHUD showError:error.localizedDescription];
+        
+    }];
+
 }
+
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     
@@ -346,8 +332,28 @@
         [MBProgressHUD showError:@"请先登录"];
         return;
     }
-    NSLog(@"评价%zd",index);
 }
+
+- (void)personInfo:(NSInteger)index cellIndex:(NSInteger)cellIndex isSecommend:(BOOL)isSecond{
+    mainModel *model = self.mainCommentArr[cellIndex - 1];
+    
+    self.hidesBottomBarWhenPushed = YES;
+    GLMine_MyPostController *myPostVC = [[GLMine_MyPostController alloc] init];
+    if (isSecond) {
+
+        replyModel *reply = model.reply[index];
+        myPostVC.targetUID = reply.mid;
+        myPostVC.targetGroupID = reply.group_id;
+        
+    }else{
+
+        myPostVC.targetUID = model.reply[index].mcid;
+        myPostVC.targetGroupID = model.reply[index].identity;
+
+    }
+    [self.navigationController pushViewController:myPostVC animated:YES];
+}
+
 
 #pragma mark - GLHome_AttentionCellDelegate
 //点赞

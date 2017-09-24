@@ -38,7 +38,9 @@
     [UserModel defaultUser].loginstatus = NO;
     
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"您确定要退出吗?" preferredStyle:UIAlertControllerStyleAlert];
+    
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
         [UserModel defaultUser].loginstatus = NO;
 //        [UserModel defaultUser].headPic = @"";
 //        [UserModel defaultUser].usrtype = @"0";

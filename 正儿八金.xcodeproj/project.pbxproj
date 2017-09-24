@@ -252,6 +252,7 @@
 		4A605F1E1F67EB5A00F80666 /* WXSTransitionProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605F0C1F67EB5A00F80666 /* WXSTransitionProperty.m */; };
 		4A605F221F67F0C600F80666 /* GLForgetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A605F201F67F0C600F80666 /* GLForgetController.m */; };
 		4A61EF921F6CBC55002150DD /* GLForgetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A61EF911F6CBC55002150DD /* GLForgetController.xib */; };
+		4A69BE561F7797F700A6BFD4 /* LWLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A69BE551F7797F700A6BFD4 /* LWLabel.m */; };
 		4A6A768D1F6BC0EB00B0766A /* 社区.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A6A768C1F6BC0EB00B0766A /* 社区.xcassets */; };
 		4A6FC4341F662B94002AE9DE /* GLHomeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6FC4331F662B94002AE9DE /* GLHomeController.xib */; };
 		4A73CE9A1F60D7760071C559 /* GLHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A73CE981F60D7760071C559 /* GLHomeController.m */; };
@@ -783,6 +784,8 @@
 		4A605F1F1F67F0C600F80666 /* GLForgetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLForgetController.h; sourceTree = "<group>"; };
 		4A605F201F67F0C600F80666 /* GLForgetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLForgetController.m; sourceTree = "<group>"; };
 		4A61EF911F6CBC55002150DD /* GLForgetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLForgetController.xib; sourceTree = "<group>"; };
+		4A69BE541F7797F700A6BFD4 /* LWLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWLabel.h; sourceTree = "<group>"; };
+		4A69BE551F7797F700A6BFD4 /* LWLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWLabel.m; sourceTree = "<group>"; };
 		4A6A768C1F6BC0EB00B0766A /* 社区.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "社区.xcassets"; sourceTree = "<group>"; };
 		4A6FC4331F662B94002AE9DE /* GLHomeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLHomeController.xib; sourceTree = "<group>"; };
 		4A73CE971F60D7760071C559 /* GLHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHomeController.h; sourceTree = "<group>"; };
@@ -1177,6 +1180,8 @@
 		4A4954D51F5F89B200180007 /* Tool(工具类) */ = {
 			isa = PBXGroup;
 			children = (
+				4A69BE541F7797F700A6BFD4 /* LWLabel.h */,
+				4A69BE551F7797F700A6BFD4 /* LWLabel.m */,
 				4A4954D61F5F89B200180007 /* formattime.h */,
 				4A4954D71F5F89B200180007 /* formattime.m */,
 				4A4954D81F5F89B200180007 /* GetLabelBounds.h */,
@@ -2819,6 +2824,7 @@
 				4A5D0CC51F628637009DD45D /* NIMInputView.m in Sources */,
 				4A5D0D071F628637009DD45D /* NIMWebImageCompat.m in Sources */,
 				4A73CF501F6146D70071C559 /* DWTabBar.m in Sources */,
+				4A69BE561F7797F700A6BFD4 /* LWLabel.m in Sources */,
 				4A5D0CB61F628637009DD45D /* NIMGroupedUsrInfo.m in Sources */,
 				4A5D0CC11F628637009DD45D /* NIMInputEmoticonTabView.m in Sources */,
 				4A73CEEC1F61369A0071C559 /* XBPageCell.m in Sources */,

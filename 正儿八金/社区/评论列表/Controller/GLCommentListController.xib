@@ -26,22 +26,26 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="356" height="354"/>
+            <rect key="frame" x="0.0" y="0.0" width="344" height="261"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bDT-ni-V6n">
-                    <rect key="frame" x="0.0" y="0.0" width="356" height="354"/>
+                    <rect key="frame" x="0.0" y="0.0" width="344" height="261"/>
                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                     <view key="tableHeaderView" contentMode="scaleToFill" id="79j-qF-V84" userLabel="headerView">
-                        <rect key="frame" x="0.0" y="0.0" width="356" height="108"/>
+                        <rect key="frame" x="0.0" y="0.0" width="344" height="108"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w8Y-X2-l7Q">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w8Y-X2-l7Q">
                                 <rect key="frame" x="10" y="10" width="30" height="30"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="H2K-xu-I4Y"/>
                                     <constraint firstAttribute="height" constant="30" id="Jt1-PH-hca"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="vEA-RV-bo7" appends="YES" id="d3w-YS-Igm"/>
+                                </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9BJ-CB-aS2">
                                 <rect key="frame" x="50" y="10" width="0.0" height="0.0"/>
@@ -56,7 +60,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wtj-O5-Hmd">
-                                <rect key="frame" x="286" y="18" width="60" height="15"/>
+                                <rect key="frame" x="274" y="18" width="60" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="sKf-7U-Sne"/>
                                 </constraints>
@@ -70,7 +74,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRp-3w-Yqz">
-                                <rect key="frame" x="216" y="18" width="60" height="15"/>
+                                <rect key="frame" x="204" y="18" width="60" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="KpO-cb-yQJ"/>
                                 </constraints>
@@ -84,7 +88,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iH9-ky-G2p">
-                                <rect key="frame" x="50" y="50" width="296" height="0.0"/>
+                                <rect key="frame" x="50" y="50" width="284" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -104,7 +108,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="any-CL-Qmy">
-                                <rect key="frame" x="0.0" y="108" width="356" height="0.0"/>
+                                <rect key="frame" x="0.0" y="108" width="344" height="0.0"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="KNI-zh-ePN"/>
@@ -112,6 +116,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="any-CL-Qmy" secondAttribute="trailing" id="3Pb-lm-znt"/>
                             <constraint firstItem="w8Y-X2-l7Q" firstAttribute="leading" secondItem="79j-qF-V84" secondAttribute="leading" constant="10" id="3z7-Ky-gfV"/>
@@ -132,6 +137,9 @@
                             <constraint firstItem="Wtj-O5-Hmd" firstAttribute="centerY" secondItem="w8Y-X2-l7Q" secondAttribute="centerY" id="uAg-Zv-yGu"/>
                             <constraint firstItem="pRp-3w-Yqz" firstAttribute="centerY" secondItem="Wtj-O5-Hmd" secondAttribute="centerY" id="vNg-NI-HvB"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Y6y-aX-HdF" appends="YES" id="E3U-Cn-U9h"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="CfT-kk-2RV"/>
@@ -139,18 +147,21 @@
                     </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imO-ML-tHb">
-                    <rect key="frame" x="0.0" y="304" width="356" height="50"/>
+                    <rect key="frame" x="0.0" y="211" width="344" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znp-It-9QJ">
-                            <rect key="frame" x="306" y="0.0" width="50" height="50"/>
+                            <rect key="frame" x="294" y="0.0" width="50" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="jgf-XL-cYz"/>
                             </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
                             <state key="normal" image="share"/>
+                            <connections>
+                                <action selector="send:" destination="-1" eventType="touchUpInside" id="xrK-3b-uRl"/>
+                            </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="评论" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U47-Bj-OJE">
-                            <rect key="frame" x="10" y="10" width="296" height="30"/>
+                            <rect key="frame" x="10" y="10" width="284" height="30"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" returnKeyType="send"/>
@@ -159,7 +170,7 @@
                             </connections>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Scw-SO-EUU">
-                            <rect key="frame" x="0.0" y="1" width="356" height="1"/>
+                            <rect key="frame" x="0.0" y="1" width="344" height="1"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="nGt-mC-I7F"/>
@@ -194,8 +205,18 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="107" y="-292"/>
+            <point key="canvasLocation" x="126" y="-358"/>
         </view>
+        <tapGestureRecognizer id="vEA-RV-bo7" userLabel="头像手势">
+            <connections>
+                <action selector="personInfo:" destination="-1" id="fLV-P2-VTm"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="Y6y-aX-HdF" userLabel="评价手势">
+            <connections>
+                <action selector="comment:" destination="-1" id="fyy-i9-GrT"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="share" width="26" height="25"/>

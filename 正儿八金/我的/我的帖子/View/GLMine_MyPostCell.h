@@ -11,6 +11,6 @@
 
 @interface GLMine_MyPostCell : UITableViewCell
 
-@property (nonatomic, strong)GLMine_MyPostModel *model;
+@property (nonatomic, strong)GLMine_MyPost *model;
 
 @end

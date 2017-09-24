@@ -59,8 +59,7 @@
     [self getData:YES];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"refreshInterface" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"refreshFollowNotification" object:nil];
-    
+   
 }
 
 - (void)dealloc{
@@ -105,7 +104,7 @@
                 
                 GLHome_AttentionModel *model = [GLHome_AttentionModel mj_objectWithKeyValues:dic];
                 
-                model.isHiddenAttendBtn = NO;
+                model.isHiddenAttendBtn = YES;
                 model.isHiddenLandlord = YES;
                 model.isHiddenTitleLabel = NO;
                 

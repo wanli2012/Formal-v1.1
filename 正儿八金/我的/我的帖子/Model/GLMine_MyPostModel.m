@@ -8,9 +8,10 @@
 
 #import "GLMine_MyPostModel.h"
 
-@implementation GLMine_MyPostModel
+@implementation GLMine_MyPost
 
 - (CGFloat)cellHeight{
+    
     CGSize titleSize = [self.content boundingRectWithSize:CGSizeMake(kSCREEN_WIDTH - 90, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil].size;
     
     CGFloat collectionHeight;
@@ -32,5 +33,16 @@
     
     return 65 + titleSize.height + collectionHeight;
 }
+
+@end
+
+@implementation GLMine_MyPostModel
+
++ (NSDictionary *)mj_objectClassInArray {
+    
+    return @{@"post":@"GLMine_MyPost"};
+}
+
+
 
 @end

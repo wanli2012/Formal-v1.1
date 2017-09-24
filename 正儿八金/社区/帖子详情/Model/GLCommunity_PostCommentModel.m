@@ -37,6 +37,15 @@
         CGSize commentSize = [str boundingRectWithSize:CGSizeMake(kSCREEN_WIDTH - 80, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil].size;
         
         height = height + commentSize.height + 5;
+        
+    }
+    
+    if ([self.reply_publish integerValue] > 2) {
+        
+        NSString *str = [NSString stringWithFormat:@"查看所有%@条回复>>",self.reply_publish];
+        CGSize commentSize = [str boundingRectWithSize:CGSizeMake(kSCREEN_WIDTH - 80, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil].size;
+        
+        height = height + commentSize.height + 5;
     }
 
     return 70 + titleSize.height + height;

@@ -33,7 +33,7 @@
 @property (nonatomic, copy)NSString *group_id;
 @property (nonatomic, copy)NSString *reply_laud;
 @property (nonatomic, copy)NSString *reply_publish;
-@property (nonatomic, copy)NSArray *reply;
+@property (nonatomic, copy)NSArray <replyModel *>*reply;
 @property (nonatomic, copy)NSString *ctfabulous;
 
 @property (nonatomic, assign)CGFloat cellHeight;//cell总高度

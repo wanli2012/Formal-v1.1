@@ -59,7 +59,6 @@
     
 }
 
-
 - (void)getData:(BOOL)status {
     
     if (status){
@@ -94,7 +93,7 @@
                 
                 GLHome_AttentionModel *model = [GLHome_AttentionModel mj_objectWithKeyValues:dic];
                 
-                model.isHiddenAttendBtn = NO;
+                model.isHiddenAttendBtn = YES;
                 model.isHiddenLandlord = YES;
                 model.isHiddenTitleLabel = NO;
                 
@@ -102,9 +101,11 @@
             }
             
         }else if([responseObject[@"code"] integerValue] == 108){
+            
             if(_page != 1){
                 [MBProgressHUD showError:responseObject[@"message"]];
             }
+            
         }else{
             
             [MBProgressHUD showError:responseObject[@"message"]];
@@ -248,21 +249,39 @@
         
         if ([responseObject[@"code"] integerValue] == 104) {
             
+            NSString *statusStr = model.status;
             
             //cell刷新
-            if([model.status isEqualToString:@"1"]){//status:1已关注 2:未关注
+            if([statusStr isEqualToString:@"1"]){//status:1已关注 2:未关注
                 model.status = @"2";
                 [MBProgressHUD showSuccess:@"取消关注成功"];
             }else{
                 model.status = @"1";
                 [MBProgressHUD showSuccess:@"关注成功"];
             }
-
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshFollowNotification" object:nil];
             
-            NSIndexPath *indexPathA = [NSIndexPath indexPathForRow:index inSection:0]; //刷新第0段第2行
+            //发送通知,关注动态更新界面
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshInterface" object:nil];
+            NSMutableArray *arr = [NSMutableArray array];
             
-            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPathA,nil] withRowAnimation:UITableViewRowAnimationNone];
+            for (int i = 0;i < self.dataSourceArr.count;i++) {
+                
+                GLHome_AttentionModel *m = self.dataSourceArr[i];
+                
+                if (m.mid == model.mid) {
+                    if([statusStr isEqualToString:@"1"]){//status:1已关注 2:未关注
+                        m.status = @"2";
+                    }else{
+                        m.status = @"1";
+                      
+                    }
+                    
+                    [arr addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+                }
+            }
+//            NSIndexPath *indexPathA = [NSIndexPath indexPathForRow:index inSection:0]; //刷新第0段第2行
+            
+            [self.tableView reloadRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationNone];
 
         }else{
             

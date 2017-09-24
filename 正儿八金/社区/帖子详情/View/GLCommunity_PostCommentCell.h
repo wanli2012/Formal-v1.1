@@ -15,6 +15,8 @@
 - (void)prise:(NSInteger)index;
 - (void)comment:(NSInteger)index;
 
+- (void)personInfo:(NSInteger)index cellIndex:(NSInteger)cellIndex isSecommend:(BOOL)isSecond;
+
 @end
 
 @interface GLCommunity_PostCommentCell : UITableViewCell

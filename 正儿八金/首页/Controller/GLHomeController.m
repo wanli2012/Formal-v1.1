@@ -58,14 +58,11 @@
     //设置自定义属性
     self.tagItemSize = CGSizeMake(kSCREEN_WIDTH / 2, 49);
 
-    NSArray *titleArray = @[
-                            @"关注动态",
-                            @"热门话题",
-                            ];
+    NSArray *titleArray = @[@"热门话题",
+                            @"关注动态"];
     
-    NSArray *classNames = @[
-                            [GLHome_AttentionController class],
-                            [GLHome_hotController class],
+    NSArray *classNames = @[[GLHome_hotController class],
+                            [GLHome_AttentionController class]
                             ];
     
     self.normalTitleColor = [UIColor blackColor];

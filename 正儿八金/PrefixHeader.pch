@@ -39,7 +39,7 @@
 #define PlaceHolderImage @"头像1"
 #define LUNBO_PlaceHolder @"轮播暂位图"
 
-#define URL_Base @"http://192.168.1.132/baby/index.php/App/"
+#define URL_Base @"http://192.168.1.131/baby/index.php/App/"
 //#define URL_Base2 @"App/"
 #define kGETCODE_URL @"User/PartneVerificationCode"//获取验证码User/PartnerRegister
 #define kREGISTER_URL @"User/PartnerRegister"//注册

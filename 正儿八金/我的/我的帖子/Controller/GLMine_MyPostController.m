@@ -9,26 +9,26 @@
 #import "GLMine_MyPostController.h"
 #import "GLMine_MyPostCell.h"
 #import "GLMine_MyPostModel.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface GLMine_MyPostController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong)NSMutableArray *dataSourceArr;
-@property (nonatomic, strong)NSDictionary *dataDic;
+@property (nonatomic, strong)GLMine_MyPostModel *model;
+//@property (nonatomic, strong)NSDictionary *dataDic;
 
 @property (strong, nonatomic)LoadWaitView *loadV;
 @property (nonatomic, assign)NSInteger page;
 @property (nonatomic,strong)NodataView *nodataV;
 
+@property (weak, nonatomic) IBOutlet UIImageView *picImageV;//头像
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;//用户名
 @property (weak, nonatomic) IBOutlet UILabel *gradeLabel;//级别
 @property (weak, nonatomic) IBOutlet UILabel *attentionLabel;//关注人数
 @property (weak, nonatomic) IBOutlet UILabel *fansLabel;//粉丝数
 @property (weak, nonatomic) IBOutlet UILabel *postLabel;//帖子数
-
-
-
 
 @end
 
@@ -46,12 +46,11 @@
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
         [weakSelf getData:YES];
-        
     }];
+    
     MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         
         [weakSelf getData:NO];
-        
     }];
     
     // 设置文字
@@ -65,20 +64,20 @@
     self.tableView.mj_footer = footer;
     
     [self getData:YES];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"refreshInterface" object:nil];
-    
-    //设置头视图上的值
-    [self setHeader];
-    
 }
+
 - (void)setHeader {
     
-    self.nameLabel.text = self.dataDic[@"user_name"];
-    self.gradeLabel.text = self.dataDic[@"number_name"];
-    self.attentionLabel.text = self.dataDic[@"follow"];
-    self.fansLabel.text = self.dataDic[@"fans"];
-    self.postLabel.text = self.dataDic[@"posts"];
+    [self.picImageV sd_setImageWithURL:[NSURL URLWithString:self.model.portrait] placeholderImage:[UIImage imageNamed:@"图-2"]];
+    self.nameLabel.text = self.model.user_name;
+    self.gradeLabel.text = self.model.number_name;
+    self.attentionLabel.text =[NSString stringWithFormat:@"关注:%@",self.model.follow];
+    self.fansLabel.text = [NSString stringWithFormat:@"粉丝:%@",self.model.fans];
+    self.postLabel.text = [NSString stringWithFormat:@"帖子:%@",self.model.posts];
 }
+
 - (void)refresh {
     [self getData:YES];
 }
@@ -113,13 +112,12 @@
                 
                 return;
             }
-            self.dataDic = responseObject[@"data"];
+          
+            self.model = [GLMine_MyPostModel mj_objectWithKeyValues:responseObject[@"data"]];
             
-            for (NSDictionary *dic in responseObject[@"data"][@"post"]) {
+            for (GLMine_MyPost *post in self.model.post) {
             
-                GLMine_MyPostModel *model = [GLMine_MyPostModel mj_objectWithKeyValues:dic];
-
-                [self.dataSourceArr addObject:model];
+                [self.dataSourceArr addObject:post];
             }
             
         }else if([responseObject[@"code"] integerValue] == 108){
@@ -133,6 +131,8 @@
             [MBProgressHUD showError:responseObject[@"message"]];
         }
         
+        //设置头视图上的值
+        [self setHeader];
         [self.tableView reloadData];
         
     } enError:^(NSError *error) {
@@ -144,6 +144,7 @@
         
     }];
 }
+
 
 -(NodataView*)nodataV{
     
@@ -161,6 +162,12 @@
     [self.tableView.mj_footer endRefreshing];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBar.hidden = YES;
+    
+}
 - (IBAction)pop:(id)sender {
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -189,7 +196,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    GLMine_MyPostModel *model = self.dataSourceArr[indexPath.row];
+    GLMine_MyPost *model = self.dataSourceArr[indexPath.row];
     
     return model.cellHeight;
     

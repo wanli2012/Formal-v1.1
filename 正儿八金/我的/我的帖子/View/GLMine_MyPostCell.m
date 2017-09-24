@@ -40,7 +40,7 @@
     
 }
 
-- (void)setModel:(GLMine_MyPostModel *)model{
+- (void)setModel:(GLMine_MyPost *)model{
     _model = model;
     
     self.contentLabel.text = model.title;

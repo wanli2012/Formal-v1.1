@@ -11,9 +11,14 @@
 #import "GLCommentListModel.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "formattime.h"
+#import "GLMine_MyPostController.h"
 
-@interface GLCommentListController ()<UITableViewDelegate,UITableViewDataSource>
-
+@interface GLCommentListController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UITextViewDelegate,GLCommentCellDelegate>
+{
+    NSInteger _commentIndex;//评论哪一行
+    
+    NSString *_signStr;
+}
 @property (weak, nonatomic) IBOutlet UILabel *commentLabel;//主评论内容
 @property (weak, nonatomic) IBOutlet UIImageView *picImageV;//主评论头像
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;//主评论名字
@@ -199,7 +204,7 @@
     dic[@"token"] = [UserModel defaultUser].token;
     dic[@"uid"] = [UserModel defaultUser].userId;
     dic[@"group"] = [UserModel defaultUser].groupid;
-    dic[@"commid"] = self.model.comm_id;
+    dic[@"commid"] = self.model.mid;
     dic[@"data"] = @"1";
     dic[@"postid"] = self.post_id;
     dic[@"port"] = @"1";//1:ios 2:安卓 3:web 默认1
@@ -248,24 +253,133 @@
         [MBProgressHUD showError:error.localizedDescription];
         
     }];
-    
+}
 
+- (IBAction)personInfo:(id)sender {
+    NSLog(@"个人信息");
 }
 
 - (IBAction)comment:(id)sender {
-    NSLog(@"评论");
+
+    self.commentView.alpha = 1;
+    [self.commentTF becomeFirstResponder];
+    self.commentTF.placeholder = [NSString stringWithFormat:@"回复%@",self.model.user_name];
+    _commentIndex = -1;
+}
+
+- (IBAction)send:(NSInteger )index{
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    
+    dic[@"token"] = [UserModel defaultUser].token;
+    dic[@"uid"] = [UserModel defaultUser].userId;
+    dic[@"group"] = [UserModel defaultUser].groupid;
+    dic[@"data"] = @"2";//评论标识. 1一级评论 2 二级评论
+    dic[@"post_id"] = self.post_id;
+    dic[@"content"] = self.commentTF.text;
+    dic[@"port"] = @"1";
+
+    dic[@"comm_id"] = self.model.comm_id;
+    
+    if (_commentIndex != -1) {//回复二级评论
+    
+        dic[@"mcid"] =self.model.post[index].mid;
+
+    }
+    
+    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:kCOMMENT_POST_URL paramDic:dic finish:^(id responseObject) {
+        
+        [self endRefresh];
+        [_loadV removeloadview];
+        
+        if ([responseObject[@"code"] integerValue] == 104) {
+            
+            [MBProgressHUD showSuccess:responseObject[@"message"]];
+            
+            self.commentTF.text = nil;
+            [self.commentTF resignFirstResponder];
+            self.commentView.alpha = 0;
+            
+            [self getData:YES];
+            
+//            NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:self.dataSource.count - 1];
+//            
+//            [_tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationFade];
+//            
+//            [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
+//             
+//                                        animated:YES
+//             
+//                                  scrollPosition:UITableViewScrollPositionTop];
+
+            
+        }else if([responseObject[@"code"] integerValue] == 108){
+            if(_page != 1){
+                [MBProgressHUD showError:responseObject[@"message"]];
+            }
+            
+        }else{
+            [MBProgressHUD showError:responseObject[@"message"]];
+        }
+        
+        [self.tableView reloadData];
+        
+    } enError:^(NSError *error) {
+        
+        [self endRefresh];
+        [_loadV removeloadview];
+        [self.tableView reloadData];
+        [MBProgressHUD showError:error.localizedDescription];
+        
+    }];
+}
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [self send:_commentIndex];
+    
+    return YES;
+}
+
+#pragma mark - GLCommentCellModelDelegate
+//查看评论人
+- (void)commentPersonInfo:(NSInteger)index{
+    
+    self.hidesBottomBarWhenPushed = YES;
+    
+    commentModel *model = self.dataSource[index];
+    
+    GLMine_MyPostController *personVC = [[GLMine_MyPostController alloc] init];
+    personVC.targetUID = model.mid;
+    personVC.targetGroupID = model.group_id;
+    
+     [self.commentTF resignFirstResponder];
+    [self.navigationController pushViewController:personVC animated:YES];
+    
+}
+
+//查看被回复人
+- (void)otherPersonInfo:(NSInteger)index{
+    
+    self.hidesBottomBarWhenPushed = YES;
+    
+    commentModel *model = self.dataSource[index];
+    
+    GLMine_MyPostController *personVC = [[GLMine_MyPostController alloc] init];
+    personVC.targetUID = model.mcid;
+    personVC.targetGroupID = model.identity;
+    
+    [self.commentTF resignFirstResponder];
+    [self.navigationController pushViewController:personVC animated:nil];
+    
 }
 
 #pragma mark - UITableViewDelegate UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-//    if (self.dataSource.count <= 0 ) {
-//        self.nodataV.hidden = NO;
-//    }else{
-//        self.nodataV.hidden = YES;
-//    }
-
     return self.dataSource.count;
 }
 
@@ -275,10 +389,13 @@
     cell.selectionStyle =  UITableViewCellSelectionStyleNone;
     
     cell.model = self.model.post[indexPath.row];
-    
+    cell.index = indexPath.row;
+    cell.delegate = self;
+
     return cell;
     
 }
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -293,6 +410,9 @@
     self.commentView.alpha = 1;
     [self.commentTF becomeFirstResponder];
     
+    commentModel *model = self.dataSource[indexPath.row];
+    self.commentTF.placeholder = [NSString stringWithFormat:@"回复%@",model.user_name];
+    _commentIndex = indexPath.row;
 }
 
 
