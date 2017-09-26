@@ -7,6 +7,14 @@
 //
 
 #import "GLPublish_CommunityCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+
+@interface GLPublish_CommunityCell ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *picImageV;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+@end
 
 @implementation GLPublish_CommunityCell
 
@@ -15,10 +23,11 @@
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setModel:(GLPublish_CommunityModel *)model{
+    _model = model;
+    
+    self.nameLabel.text = model.name;
+    [self.picImageV sd_setImageWithURL:[NSURL URLWithString:model.picture] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
 }
 
 @end

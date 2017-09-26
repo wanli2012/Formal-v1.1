@@ -31,9 +31,18 @@ static const CGFloat kPhotoViewMargin = 12.0;
 @property (weak, nonatomic) IBOutlet UILabel *communityNameLabel;//社区名Label
 @property (weak, nonatomic) IBOutlet UIButton *addressBtn;//选择地址Btn
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleTextFHeight;//标题高度
-@property (weak, nonatomic) IBOutlet UIButton *addTitleBtn;
-@property (weak, nonatomic) IBOutlet UITextView *contentTextV;
+@property (weak, nonatomic) IBOutlet UIButton *addTitleBtn;//添加title 按钮
+@property (weak, nonatomic) IBOutlet UITextView *contentTextV;//内容TextV
+@property (weak, nonatomic) IBOutlet UITextField *titleTF;//标题TF
 
+@property (strong, nonatomic)LoadWaitView *loadV;
+@property (nonatomic, assign)NSInteger page;
+@property (nonatomic,strong)NodataView *nodataV;
+
+
+@property (nonatomic, copy)NSString *bar_id;//社区id
+@property (nonatomic, copy)NSString *location;//发帖位置
+@property (nonatomic, copy)NSString *topic;//话题
 
 @end
 
@@ -104,7 +113,7 @@ static const CGFloat kPhotoViewMargin = 12.0;
     if (self.communityNameLabel.text.length == 0) {
         GLPublish_CommunityChooseController *communityVC = [[GLPublish_CommunityChooseController alloc] init];
         
-        communityVC.block = ^(NSString *name){
+        communityVC.block = ^(NSString *name,NSString *bar_id){
             
             self.communityNameLabel.text = name;
             
@@ -116,9 +125,44 @@ static const CGFloat kPhotoViewMargin = 12.0;
         
         NSLog(@"发表");
     }
-    
 }
 
+//发表帖子请求
+- (void)publishPost{
+    
+//    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+//    dic[@"token"] = [UserModel defaultUser].token;
+//    dic[@"uid"] = [UserModel defaultUser].userId;
+//    dic[@"group"] = [UserModel defaultUser].groupid;
+//    dic[@"content"] = self.contentTextV.text;
+//    dic[@"title"] = self.titleTF.text;
+//    dic[@"topic"] = self.topic;
+//    dic[@"picture"] = ;
+//    dic[@"bar_id"] = self.bar_id;
+//    dic[@"location"] = self.location;
+//    dic[@"port"] = @"1";//1:ios 2:安卓 3:web 默认1
+//    
+//
+//    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+//    [NetworkManager requestPOSTWithURLStr:kPUBLISH_POST_URL paramDic:dic finish:^(id responseObject) {
+//        
+//        [_loadV removeloadview];
+//        
+//        if ([responseObject[@"code"] integerValue] == 104) {
+//            
+//        }else{
+//            
+//            [MBProgressHUD showError:responseObject[@"message"]];
+//        }
+//
+//        
+//    } enError:^(NSError *error) {
+//        [_loadV removeloadview];
+//        [MBProgressHUD showError:error.localizedDescription];
+//        
+//    }];
+
+}
 //选择地址
 - (IBAction)chooseAddress:(id)sender {
     NSLog(@"选择地址");
@@ -142,7 +186,7 @@ static const CGFloat kPhotoViewMargin = 12.0;
     
     GLPublish_CommunityChooseController *communityVC = [[GLPublish_CommunityChooseController alloc] init];
     
-    communityVC.block = ^(NSString *name){
+    communityVC.block = ^(NSString *name,NSString * bar_id){
         
         self.communityNameLabel.text = name;
         

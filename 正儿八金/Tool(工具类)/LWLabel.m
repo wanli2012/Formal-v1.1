@@ -93,11 +93,8 @@
                 if (self.selectBlobk) {
                     self.selectBlobk(str,range,index);
                 }
-
             }
-            
             return;
-            
         }
     }
     

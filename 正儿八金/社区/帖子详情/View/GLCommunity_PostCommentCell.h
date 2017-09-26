@@ -14,8 +14,10 @@
 - (void)pushController:(NSInteger)index;
 - (void)prise:(NSInteger)index;
 - (void)comment:(NSInteger)index;
-
+//从二级评论名字处 push到个人信息界面
 - (void)personInfo:(NSInteger)index cellIndex:(NSInteger)cellIndex isSecommend:(BOOL)isSecond;
+//一级评论名字处 push到个人信息界面
+//- (void)personInfo:(NSInteger)index;
 
 @end
 

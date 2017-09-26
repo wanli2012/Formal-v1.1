@@ -20,6 +20,7 @@
                 <outlet property="contentViewHeight" destination="hSo-W9-BNp" id="isr-qd-E22"/>
                 <outlet property="contentViewWidth" destination="hK9-PE-4r7" id="442-d2-l3J"/>
                 <outlet property="textViewHeight" destination="eUN-ZY-afZ" id="YtJ-m8-ZRg"/>
+                <outlet property="titleTF" destination="3lh-fk-Mo6" id="LHS-9i-kmz"/>
                 <outlet property="titleTextFHeight" destination="j0P-O3-brQ" id="yyM-TK-45r"/>
                 <outlet property="toolView" destination="fcJ-5c-28M" id="lNI-sa-MFE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

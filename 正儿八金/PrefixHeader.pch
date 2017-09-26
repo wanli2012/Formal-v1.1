@@ -55,5 +55,7 @@
 #define kPOST_PRISE_URL @"PostBar/PostAppreciate"//帖子点赞取消点赞接口
 #define kCOMMENT_PRISE_URL @"PostBar/PostCommentPointPraise"//评论点赞
 #define kCOMMENT_POST_URL @"PostBar/PostAtom"//帖子添加评论
+#define kGET_ALL_COMMUNITY_URL @"PostBar/PostCommunity"//获取所有社区
+#define kPUBLISH_POST_URL @"PostBar/Posting"//发布帖子
 
 #endif /* PrefixHeader_pch */

@@ -306,6 +306,7 @@
 		4AB993131F6A9D4500DE5590 /* GLMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB993111F6A9D4500DE5590 /* GLMessageCell.m */; };
 		4AB993141F6A9D4500DE5590 /* GLMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AB993121F6A9D4500DE5590 /* GLMessageCell.xib */; };
 		4AB993171F6AA1C400DE5590 /* yindaotuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB993161F6AA1C400DE5590 /* yindaotuViewController.m */; };
+		4AF106F61F78A7C100CB51FA /* GLPublish_CommunityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF106F51F78A7C100CB51FA /* GLPublish_CommunityModel.m */; };
 		4AFBF7B11F725392001915DD /* GLCommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFBF7B01F725392001915DD /* GLCommentListModel.m */; };
 		62DDAB3E488A5881405D5AFA /* libPods-正儿八金.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 164A41A728AEAD2883C7498C /* libPods-正儿八金.a */; };
 /* End PBXBuildFile section */
@@ -872,6 +873,8 @@
 		4AB993121F6A9D4500DE5590 /* GLMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLMessageCell.xib; sourceTree = "<group>"; };
 		4AB993151F6AA1C400DE5590 /* yindaotuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yindaotuViewController.h; sourceTree = "<group>"; };
 		4AB993161F6AA1C400DE5590 /* yindaotuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = yindaotuViewController.m; sourceTree = "<group>"; };
+		4AF106F41F78A7C100CB51FA /* GLPublish_CommunityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLPublish_CommunityModel.h; sourceTree = "<group>"; };
+		4AF106F51F78A7C100CB51FA /* GLPublish_CommunityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLPublish_CommunityModel.m; sourceTree = "<group>"; };
 		4AFBF7AF1F725392001915DD /* GLCommentListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLCommentListModel.h; path = "正儿八金/社区/帖子详情/Model/GLCommentListModel.h"; sourceTree = SOURCE_ROOT; };
 		4AFBF7B01F725392001915DD /* GLCommentListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLCommentListModel.m; path = "正儿八金/社区/帖子详情/Model/GLCommentListModel.m"; sourceTree = SOURCE_ROOT; };
 		6B31BB0DBF2BD8D4ACBD79BB /* Pods-正儿八金.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-正儿八金.debug.xcconfig"; path = "Pods/Target Support Files/Pods-正儿八金/Pods-正儿八金.debug.xcconfig"; sourceTree = "<group>"; };
@@ -2403,6 +2406,8 @@
 		4AB992FB1F6A801900DE5590 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4AF106F41F78A7C100CB51FA /* GLPublish_CommunityModel.h */,
+				4AF106F51F78A7C100CB51FA /* GLPublish_CommunityModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2846,6 +2851,7 @@
 				4A5D0CD21F628637009DD45D /* NIMTipContentConfig.m in Sources */,
 				4A0E4B9C1F6A504600EBADE8 /* HXPhotoViewCell.m in Sources */,
 				4A5D0CB11F628637009DD45D /* NIMLoadProgressView.m in Sources */,
+				4AF106F61F78A7C100CB51FA /* GLPublish_CommunityModel.m in Sources */,
 				4A5D0CB01F628637009DD45D /* NIMKitNotificationFirer.m in Sources */,
 				4A5D0CF81F628637009DD45D /* NIMTeamCardHeaderCell.m in Sources */,
 				4AFBF7B11F725392001915DD /* GLCommentListModel.m in Sources */,

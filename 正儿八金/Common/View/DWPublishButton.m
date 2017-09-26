@@ -79,13 +79,11 @@
     return button;
     
 }
-
-
 #pragma mark - Event Response
 
 - (void)clickPublish {
+    
 //    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-//    
 //    UIViewController *viewController = tabBarController.selectedViewController;
     
     GLPublishController * publishVC = [[GLPublishController alloc] init];
@@ -115,6 +113,5 @@
         return rootViewController;
     }
 }
-
 
 @end

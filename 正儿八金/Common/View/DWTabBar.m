@@ -34,10 +34,7 @@
     return self;
 }
 
-
-
 -(void)layoutSubviews{
-    
     
     NSLog(@"%s",__func__);
     

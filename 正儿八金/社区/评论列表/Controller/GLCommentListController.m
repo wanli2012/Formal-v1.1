@@ -61,12 +61,12 @@
         [weakSelf getData:YES];
         
     }];
-    MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        
-        [weakSelf getData:NO];
-        
-    }];
-    
+//    MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+//        
+//        [weakSelf getData:NO];
+//        
+//    }];
+//    
     // 设置文字
     [header setTitle:@"快扯我，快点" forState:MJRefreshStateIdle];
     
@@ -75,7 +75,7 @@
     [header setTitle:@"服务器正在狂奔..." forState:MJRefreshStateRefreshing];
     
     self.tableView.mj_header = header;
-    self.tableView.mj_footer = footer;
+//    self.tableView.mj_footer = footer;
     
 //    [self.tableView.mj_header beginRefreshing];
     [self getData:YES];
@@ -108,19 +108,19 @@
 //获取数据
 - (void)getData:(BOOL)status {
     
-    if (status){
-        _page = 1;
+//    if (status){
+//        _page = 1;
         [self.dataSource removeAllObjects];
-    }else{
-        _page ++;
-    }
+//    }else{
+//        _page ++;
+//    }
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     dic[@"user_id"] = self.user_id;
     dic[@"post_id"] = self.post_id;
     dic[@"comm_id"] = self.comm_id;
     dic[@"group_id"] = self.group_id;
-    dic[@"page"] =@(_page);
+//    dic[@"page"] =@(_page);
     
     if ([UserModel defaultUser].loginstatus == YES) {
         
@@ -179,7 +179,7 @@
 - (void)endRefresh {
     
     [self.tableView.mj_header endRefreshing];
-    [self.tableView.mj_footer endRefreshing];
+//    [self.tableView.mj_footer endRefreshing];
 }
 
 
@@ -198,7 +198,6 @@
         [MBProgressHUD showError:@"请先登录"];
         return;
     }
-    
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     dic[@"token"] = [UserModel defaultUser].token;

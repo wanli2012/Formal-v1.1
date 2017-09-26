@@ -60,10 +60,10 @@
         [weakSelf getData:YES];
     }];
     
-//    MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-//        
-//        [weakSelf getData:NO];
-//    }];
+    MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        
+        [weakSelf getData:NO];
+    }];
     
     // 设置文字
     [header setTitle:@"快扯我，快点" forState:MJRefreshStateIdle];
@@ -73,7 +73,7 @@
     [header setTitle:@"服务器正在狂奔..." forState:MJRefreshStateRefreshing];
     
     self.tableView.mj_header = header;
-//    self.tableView.mj_footer = footer;
+    self.tableView.mj_footer = footer;
     
     [self getData:YES];
     
@@ -93,7 +93,7 @@
     dic[@"mid"] = self.mid;
     dic[@"post_id"] = self.post_id;
     dic[@"group_id"] = self.group_id;
-//    dic[@"page"] =@(_page);
+    dic[@"page"] =@(_page);
     
     if ([UserModel defaultUser].loginstatus == YES) {
         
@@ -155,7 +155,7 @@
 - (void)endRefresh {
     
     [self.tableView.mj_header endRefreshing];
-//    [self.tableView.mj_footer endRefreshing];
+    [self.tableView.mj_footer endRefreshing];
     
 }
 
@@ -338,24 +338,41 @@
     mainModel *model = self.mainCommentArr[cellIndex - 1];
     
     self.hidesBottomBarWhenPushed = YES;
+
     GLMine_MyPostController *myPostVC = [[GLMine_MyPostController alloc] init];
-    if (isSecond) {
-
-        replyModel *reply = model.reply[index];
-        myPostVC.targetUID = reply.mid;
-        myPostVC.targetGroupID = reply.group_id;
-        
+    
+    if (index == -1) {
+        myPostVC.targetUID = model.mid;
+        myPostVC.targetGroupID = model.group_id;
     }else{
-
-        myPostVC.targetUID = model.reply[index].mcid;
-        myPostVC.targetGroupID = model.reply[index].identity;
-
+        
+        if (isSecond) {
+            
+            replyModel *reply = model.reply[index];
+            myPostVC.targetUID = reply.mid;
+            myPostVC.targetGroupID = reply.group_id;
+            
+        }else{
+            
+            myPostVC.targetUID = model.reply[index].mcid;
+            myPostVC.targetGroupID = model.reply[index].identity;
+            
+        }
     }
     [self.navigationController pushViewController:myPostVC animated:YES];
 }
 
-
 #pragma mark - GLHome_AttentionCellDelegate
+- (void)personInfo:(NSInteger)index{
+    
+    self.hidesBottomBarWhenPushed = YES;
+    GLMine_MyPostController *myPostVC = [[GLMine_MyPostController alloc] init];
+    
+    myPostVC.targetUID = self.model.mid;
+    myPostVC.targetGroupID = self.model.group_id;
+    
+    [self.navigationController pushViewController:myPostVC animated:YES];
+}
 //点赞
 - (void)postPraise:(NSInteger)index{
     

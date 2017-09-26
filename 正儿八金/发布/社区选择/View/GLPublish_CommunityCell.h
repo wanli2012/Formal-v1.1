@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GLPublish_CommunityModel.h"
 
 @interface GLPublish_CommunityCell : UITableViewCell
+
+@property (nonatomic, strong)GLPublish_CommunityModel *model;
 
 @end

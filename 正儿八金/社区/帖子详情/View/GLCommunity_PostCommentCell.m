@@ -32,10 +32,22 @@
     
     [super awakeFromNib];
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(personInfo)];
+    UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(personInfo)];
+    
+    [self.picImageV addGestureRecognizer:tap];
+    [self.nameLabel addGestureRecognizer:tap2];
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"GLCommunity_PostCommentReplyCell" bundle:nil] forCellReuseIdentifier:@"GLCommunity_PostCommentReplyCell"];
     
 }
-
+- (void)personInfo {
+    
+    if ([self.delegate respondsToSelector:@selector(personInfo:cellIndex:isSecommend:)]) {
+        [self.delegate personInfo:-1 cellIndex:self.index isSecommend:nil];
+    }
+    
+}
 - (void)setModel:(mainModel *)model{
     _model = model;
     
@@ -86,7 +98,11 @@
         [self.delegate comment:self.index];
     }
 }
-
+//- (void)personInfo {
+//    if ([self.delegate respondsToSelector:@selector(personInfo:)]) {
+//        [self.delegate personInfo:self.index];
+//    }
+//}
 
 #pragma mark UITableViewDelegate
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -111,8 +127,16 @@
     
     if (model.user_name == nil && model.nickname == nil) {
         
+        cell.contentLabel.rangeArr=(id)@[NSStringFromRange(NSMakeRange(0, model.content.length))];
+        
+        cell.contentLabel.selectBlobk = ^(NSString *str,NSRange range,NSInteger index){
+            
+            if ([weakSelf.delegate respondsToSelector:@selector(pushController:)]) {
+                [weakSelf.delegate pushController:self.index];
+            }
+        };
+        
         cell.contentLabel.text = model.content;
-        cell.contentLabel.selectBlobk = nil;
         
     }else if ([str rangeOfString:@"null"].location != NSNotFound) {
         
@@ -122,13 +146,21 @@
         NSRange redRange = NSMakeRange(0, model.user_name.length);
         [noteStr addAttribute:NSForegroundColorAttributeName value:MAIN_COLOR range:redRange];
         
-        cell.contentLabel.rangeArr=(id)@[NSStringFromRange(NSMakeRange(0, model.user_name.length))];
+        cell.contentLabel.rangeArr=(id)@[NSStringFromRange(NSMakeRange(0, model.user_name.length)),NSStringFromRange(NSMakeRange(model.user_name.length, model.content.length + 1))];
         
         cell.contentLabel.selectBlobk = ^(NSString *str,NSRange range,NSInteger index){
             
-            if ([weakSelf.delegate respondsToSelector:@selector(personInfo:cellIndex:isSecommend:)]) {
-                [weakSelf.delegate personInfo:indexPath.row cellIndex:self.index isSecommend:YES];
+            if (index == 0) {
+                
+                if ([weakSelf.delegate respondsToSelector:@selector(personInfo:cellIndex:isSecommend:)]) {
+                    [weakSelf.delegate personInfo:indexPath.row cellIndex:self.index isSecommend:YES];
+                }
+            }else{
+                if ([weakSelf.delegate respondsToSelector:@selector(pushController:)]) {
+                    [weakSelf.delegate pushController:self.index];
+                }
             }
+            
         };
         
         cell.contentLabel.attributedText = noteStr;
@@ -143,22 +175,36 @@
         [noteStr addAttribute:NSForegroundColorAttributeName value:MAIN_COLOR range:redRange];
         [noteStr addAttribute:NSForegroundColorAttributeName value:MAIN_COLOR range:redRange2];
         
-        cell.contentLabel.rangeArr=(id)@[NSStringFromRange(NSMakeRange(0, model.user_name.length)),NSStringFromRange(NSMakeRange(model.user_name.length + 2, model.nickname.length))];
+        cell.contentLabel.rangeArr=(id)@[NSStringFromRange(NSMakeRange(0, model.user_name.length)),NSStringFromRange(NSMakeRange(model.user_name.length + 2, model.nickname.length)),NSStringFromRange(NSMakeRange(model.nickname.length + model.user_name.length + 2, model.content.length + 2))];
         
         
         cell.contentLabel.selectBlobk = ^(NSString *str,NSRange range,NSInteger index){
-            
-            if ([self.delegate respondsToSelector:@selector(personInfo:cellIndex:isSecommend:)]) {
-                
-                if (index == 0) {
-                    [weakSelf.delegate personInfo:indexPath.row cellIndex:self.index isSecommend:YES];
-                    
-                }else{
-                    
-                    [weakSelf.delegate personInfo:indexPath.row cellIndex:self.index isSecommend:NO];
+            switch (index) {
+                case 0:
+                {
+                    if ([weakSelf.delegate respondsToSelector:@selector(personInfo:cellIndex:isSecommend:)]) {
+                        [weakSelf.delegate personInfo:indexPath.row cellIndex:weakSelf.index isSecommend:YES];
+                    }
                 }
+                    break;
+                case 1:
+                {
+                    if ([weakSelf.delegate respondsToSelector:@selector(personInfo:cellIndex:isSecommend:)]) {
+                        [weakSelf.delegate personInfo:indexPath.row cellIndex:weakSelf.index isSecommend:NO];
+                    }
+                }
+                    break;
+                case 2:
+                {
+                    if ([weakSelf.delegate respondsToSelector:@selector(pushController:)]) {
+                        [weakSelf.delegate pushController:weakSelf.index];
+                    }
+                }
+                    break;
+                    
+                default:
+                    break;
             }
-            
         };
         
         cell.contentLabel.attributedText = noteStr;
@@ -182,6 +228,21 @@
     self.tableView.estimatedRowHeight = 44;
     
     return self.tableView.rowHeight;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 5)];
+    view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    
+    if(self.models.count == 0){
+        return 0;
+    }else{
+        return 5;
+    }
 }
 
 - (NSMutableArray *)models{
