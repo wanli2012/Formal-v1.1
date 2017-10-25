@@ -10,4 +10,6 @@
 
 @interface DWTabBarController : UITabBarController
 
++ (instancetype)instance;
+
 @end

@@ -12,17 +12,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.backgroundColor = YYSRGBColor(102, 139, 255, 1);
+    self.titleLabel.textColor = [UIColor whiteColor];
 }
 
-- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
-    [super setHighlighted:highlighted animated:animated];
-    
-    if (highlighted) {
-        self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.1];
-    }else {
-        self.backgroundColor = [UIColor whiteColor];
-    }
-}
 
 @end
