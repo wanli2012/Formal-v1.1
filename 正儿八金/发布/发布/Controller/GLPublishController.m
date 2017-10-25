@@ -74,7 +74,6 @@ static const CGFloat kPhotoViewMargin = 12.0;
     _placeHoler = @"老司机准备飙车了";
     self.contentTextV.text = _placeHoler;
     
-
 }
 
 - (void)viewWillAppear:(BOOL)animated{

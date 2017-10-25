@@ -93,7 +93,7 @@
                 
                 GLHome_AttentionModel *model = [GLHome_AttentionModel mj_objectWithKeyValues:dic];
                 
-                model.isHiddenAttendBtn = YES;
+                model.isHiddenAttendBtn = NO;
                 model.isHiddenLandlord = YES;
                 model.isHiddenTitleLabel = NO;
                 

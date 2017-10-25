@@ -29,7 +29,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     self.bgViewBottom.constant = 100 *autoSizeScaleY;
     
     self.getCodeBtn.layer.borderColor = MAIN_COLOR.CGColor;
