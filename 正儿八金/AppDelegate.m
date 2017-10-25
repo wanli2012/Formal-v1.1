@@ -34,6 +34,7 @@
     
 //    BaseNavigationViewController *loginNav = [[BaseNavigationViewController alloc] initWithRootViewController:[[GLLoginController alloc] init]];
 //    self.window.rootViewController = loginNav;
+    NSLog(@"ddd");
     
     
     [self.window makeKeyAndVisible];
