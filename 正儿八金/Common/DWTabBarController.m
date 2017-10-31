@@ -14,14 +14,19 @@
 #import "GLMineController.h"
 
 #import "DWTabBar.h"
-#import "LBSessionListViewController.h"
-
+#import "GLFriendController.h"
 #import "GLLoginController.h"
+#import "AppDelegate.h"
+#import "NTESCustomNotificationDB.h"
 
 #define DWColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0] //用10进制表示颜色，例如（255,255,255）黑色
 #define DWRandomColor DWColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
-@interface DWTabBarController ()<UITabBarControllerDelegate>
+@interface DWTabBarController ()<UITabBarControllerDelegate,NIMSystemNotificationManagerDelegate,NIMConversationManagerDelegate>
+@property (nonatomic,assign) NSInteger sessionUnreadCount;
 
+@property (nonatomic,assign) NSInteger systemUnreadCount;
+
+@property (nonatomic,assign) NSInteger customSystemUnreadCount;
 @end
 
 
@@ -29,6 +34,15 @@
 
 #pragma mark -
 #pragma mark - Life Cycle
++ (instancetype)instance{
+    AppDelegate *delegete = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    UIViewController *vc = delegete.window.rootViewController;
+    if ([vc isKindOfClass:[DWTabBarController class]]) {
+        return (DWTabBarController *)vc;
+    }else{
+        return nil;
+    }
+}
 
 -(void)viewDidLoad{
     
@@ -55,7 +69,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(refreshInterface) name:@"refreshInterface" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(exitLogin) name:@"exitLogin" object:nil];
-
+     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(selectChatVc) name:@"selectChatVc" object:nil];//聊天未读数
+   [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(jumploginInterface) name:@"jumploginInterface" object:nil];//跳转登录界面
 }
 
 //完善资料退出跳转登录
@@ -141,7 +156,7 @@
                   selectedImageName:@"社区"];
     
     
-    [self addOneChildViewController:[[BaseNavigationViewController alloc]initWithRootViewController:[[LBSessionListViewController alloc]init]]
+    [self addOneChildViewController:[[BaseNavigationViewController alloc]initWithRootViewController:[[GLFriendController alloc]init]]
                           WithTitle:@"好友"
                           imageName:@"好友未点中"
                   selectedImageName:@"好友"];
@@ -174,7 +189,74 @@
     [self addChildViewController:viewController];
     
 }
+-(void)selectChatVc{
+    
+    self.selectedIndex = 2;//选中聊天界面
+    
+}
 
+#pragma mark - NIMConversationManagerDelegate
+- (void)didAddRecentSession:(NIMRecentSession *)recentSession
+           totalUnreadCount:(NSInteger)totalUnreadCount{
+    self.sessionUnreadCount = totalUnreadCount;
+    [self refreshSessionBadge];
+}
+
+
+- (void)didUpdateRecentSession:(NIMRecentSession *)recentSession
+              totalUnreadCount:(NSInteger)totalUnreadCount{
+    self.sessionUnreadCount = totalUnreadCount;
+    [self refreshSessionBadge];
+}
+
+
+- (void)didRemoveRecentSession:(NIMRecentSession *)recentSession totalUnreadCount:(NSInteger)totalUnreadCount{
+    self.sessionUnreadCount = totalUnreadCount;
+    [self refreshSessionBadge];
+}
+
+- (void)messagesDeletedInSession:(NIMSession *)session{
+    self.sessionUnreadCount = [NIMSDK sharedSDK].conversationManager.allUnreadCount;
+    [self refreshSessionBadge];
+}
+
+- (void)allMessagesDeleted{
+    self.sessionUnreadCount = 0;
+    [self refreshSessionBadge];
+}
+
+#pragma mark - NIMSystemNotificationManagerDelegate
+- (void)onSystemNotificationCountChanged:(NSInteger)unreadCount
+{
+    self.systemUnreadCount = unreadCount;
+    [self refreshContactBadge];
+}
+
+#pragma mark - Notification
+
+- (void)refreshSessionBadge{
+    UINavigationController *nav = self.viewControllers[2];
+    nav.tabBarItem.badgeValue = self.self.systemUnreadCount + self.sessionUnreadCount ? @(self.self.systemUnreadCount + self.sessionUnreadCount).stringValue : nil;
+    
+}
+
+- (void)refreshContactBadge{
+    UINavigationController *nav = self.viewControllers[2];
+    NSInteger badge = self.systemUnreadCount + self.sessionUnreadCount;
+    nav.tabBarItem.badgeValue = badge ? @(badge).stringValue : nil;
+    
+}
+//跳转到登录界面
+-(void)jumploginInterface{
+   
+    
+}
+
+- (void)dealloc{
+    [[NIMSDK sharedSDK].systemNotificationManager removeDelegate:self];
+    [[NIMSDK sharedSDK].conversationManager removeDelegate:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 //这个方法可以抽取到 UIImage 的分类中
 - (UIImage *)imageWithColor:(UIColor *)color

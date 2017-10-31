@@ -23,6 +23,23 @@
 #import <MJRefresh/MJRefresh.h>
 #import <MJExtension/MJExtension.h>
 
+#import "NIMKit.h"
+#import <NIMSDK/NIMSDK.h>
+#import <NIMAVChat/NIMAVChat.h>
+#import "NTESGlobalMacro.h"
+#import <CocoaLumberjack/CocoaLumberjack.h>
+#import <CocoaLumberjack/DDLogMacros.h>
+#import "ijksdl.h"
+#import "SVProgressHUD.h"
+#import "UIView+Toast.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <SDWebImage/UIButton+WebCache.h>
+
+#ifdef DEBUG
+static DDLogLevel ddLogLevel = DDLogLevelVerbose;
+#else
+static DDLogLevel ddLogLevel = DDLogLevelInfo;
+
 #endif
 
 #define YYSRGBColor(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
@@ -58,4 +75,21 @@
 #define kGET_ALL_COMMUNITY_URL @"PostBar/PostCommunity"//获取所有社区
 #define kPUBLISH_POST_URL @"PostBar/Posting"//发布帖子
 
+#define FONT(s)       [UIFont systemFontOfSize:s]
+
+#pragma mark - UIColor宏定义
+#define UIColorFromRGBA(rgbValue, alphaValue) [UIColor \
+colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0x00FF00) >> 8))/255.0 \
+blue:((float)(rgbValue & 0x0000FF))/255.0 \
+alpha:alphaValue]
+
+#define UIColorFromRGB(rgbValue) UIColorFromRGBA(rgbValue, 1.0)
+#define NTES_USE_CLEAR_BAR - (BOOL)useClearBar{return YES;}
+#define NTES_FORBID_INTERACTIVE_POP - (BOOL)forbidInteractivePop{return YES;}
+#define UIScreenWidth                              [UIScreen mainScreen].bounds.size.width
+#define UIScreenHeight                             [UIScreen mainScreen].bounds.size.height
+#define UISreenWidthScale   UIScreenWidth / 320
+
+#endif /* PrefixHeader_pch */
 #endif /* PrefixHeader_pch */

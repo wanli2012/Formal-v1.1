@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftconstart;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widethconstart;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightconstrait;
 
 
 @end

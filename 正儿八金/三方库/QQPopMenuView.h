@@ -22,6 +22,8 @@
 
 @property (nonatomic, assign) BOOL isHideImage;//是否隐藏左边的图片 YES隐藏
 
+@property (nonatomic, assign) BOOL isBigImage;//是否显示大图
+
 /**
  *  实例化方法
  *

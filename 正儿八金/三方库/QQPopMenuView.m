@@ -119,7 +119,7 @@ static CGFloat const kCellHeight = 44;
 #pragma mark - Draw triangle
 - (void)drawRect:(CGRect)rect {
     // 设置背景色
-    [[UIColor whiteColor] set];
+    [YYSRGBColor(102, 139, 255, 1) set];
     //拿到当前视图准备好的画板
     CGContextRef context = UIGraphicsGetCurrentContext();
     //利用path进行绘制三角形
@@ -132,9 +132,9 @@ static CGFloat const kCellHeight = 44;
     CGContextAddLineToPoint(context, point.x + 10, point.y + 10);
     CGContextClosePath(context);
     // 设置填充色
-    [[UIColor whiteColor] setFill];
+    [YYSRGBColor(102, 139, 255, 1) setFill];
     // 设置边框颜色
-    [[UIColor whiteColor] setStroke];
+    [YYSRGBColor(102, 139, 255, 1) setStroke];
     // 绘制路径
     CGContextDrawPath(context, kCGPathFillStroke);
 }
@@ -160,9 +160,16 @@ static CGFloat const kCellHeight = 44;
         cell.widethconstart.constant = 0;
     }else{
     
+        if (self.isBigImage) {
+            cell.leftconstart.constant = 7;
+            cell.widethconstart.constant = 20;
+            cell.heightconstrait.constant = 20;
+        }else{
+            cell.leftconstart.constant = 7;
+            cell.widethconstart.constant = 8;
+            cell.heightconstrait.constant = 8;
+        }
         cell.leftImageView.hidden = NO;
-        cell.leftconstart.constant = 7;
-        cell.widethconstart.constant = 8;
     
     }
     
