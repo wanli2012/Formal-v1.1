@@ -20,6 +20,8 @@
 
 - (void)postPraise:(NSInteger)index;//帖子详情里的点赞
 
+- (void)clickToBigImage:(NSInteger)cellIndex index:(NSInteger)index;
+
 @end
 
 @interface GLHome_AttentionCell : UITableViewCell

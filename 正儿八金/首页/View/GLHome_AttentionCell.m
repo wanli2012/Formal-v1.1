@@ -11,17 +11,28 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "formattime.h"
 
+#define bigSpace 15
+#define smallSpace 5
+
 @interface GLHome_AttentionCell()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIButton *landlordBtn;//楼主标志
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;//标题Label
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleLabelHeight;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentLabelTopConstrait;//内容label顶部约束
 
 @property (nonatomic, assign)BOOL isHiddenAttendBtn;
 @property (weak, nonatomic) IBOutlet UIButton *attentionBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *picImageV;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *communityLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleLabelRightConstait;
+
+//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewHeight;
+
+@property (weak, nonatomic) IBOutlet UIImageView *eliteImageV;//精华帖标志 1是精华帖 2不是精华帖
+
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 
@@ -92,16 +103,35 @@
         [self.praiseBtn setImage:[UIImage imageNamed:@"赞"] forState:UIControlStateNormal];
     }
     
-    if (model.post.picture.count == 4) {
-        
-        self.collectionViewWidth.constant = 2 *(kSCREEN_WIDTH - 40)/3 + 36;
-        
-    }else{
-        self.collectionViewWidth.constant = kSCREEN_WIDTH;
+//    if (model.post.picture.count == 4) {
+//        
+//        self.collectionViewWidth.constant = 2 *(kSCREEN_WIDTH - 40)/3 + 36;
+//        
+//    }else{
+//        self.collectionViewWidth.constant = kSCREEN_WIDTH;
+//    }
+    
+    CGFloat collectionHeight = 0.0;
+    if(model.post.picture.count == 0){
+        collectionHeight = 0;
+    }else if(model.post.picture.count == 1) {
+        collectionHeight = (kSCREEN_WIDTH - 35)/2 + 10;
+    }else if(model.post.picture.count == 2){
+        collectionHeight = (kSCREEN_WIDTH - 35)/2 + 10;
+    }else if (model.post.picture.count== 3){
+        collectionHeight = (kSCREEN_WIDTH - 40)/3 + 10;
+    }else if(model.post.picture.count > 3 && model.post.picture.count <= 6){
+        collectionHeight = 2 *(kSCREEN_WIDTH - 40)/3 + 15;
+    }else if(model.post.picture.count > 6){
+        collectionHeight = 3 *(kSCREEN_WIDTH - 40)/3 + 20;
     }
+
+    self.collectionViewHeight.constant = collectionHeight;
+    
     //如果没有地址,隐藏按钮
     if(model.post.location.length == 0){
         self.addressBtn.hidden = YES;
+        
     }else{
         self.addressBtn.hidden = NO;
         [self.addressBtn setTitle:model.post.location forState:UIControlStateNormal];
@@ -117,17 +147,29 @@
     //是否隐藏楼主标志
     if(model.isHiddenLandlord){
         self.landlordBtn.hidden = YES;
+        
     }else{
         self.landlordBtn.hidden = NO;
     }
     
     //是否隐藏标题label
-    if (model.isHiddenTitleLabel) {
-        self.titleLabelHeight.constant = 0;
+    if (model.post.title.length == 0) {
+        self.titleLabel.hidden = YES;
+        self.contentLabelTopConstrait.constant = 10;
+        self.eliteImageV.hidden = YES;
     }else{
-        
-        self.titleLabelHeight.constant = 20;
+        //是否显示精华帖标志
+        if ([model.post.elite integerValue] == 1) {//1是精华帖 2不是精华帖
+            self.eliteImageV.hidden = NO;
+            self.titleLabelRightConstait.constant = 37;
+        }else{
+            self.eliteImageV.hidden = YES;
+            self.titleLabelRightConstait.constant = 10;
+        }
+        self.titleLabel.hidden = NO;
+        self.contentLabelTopConstrait.constant = 35;
     }
+    
     
     
     [self.collectionView reloadData];
@@ -163,15 +205,7 @@
         self.addressBtn.hidden = NO;
         [self.addressBtn setTitle:postModel.post.location forState:UIControlStateNormal];
     }
-
-    if ([postModel.post.picture count] == 4) {
-        
-        self.collectionViewWidth.constant = 2 *(kSCREEN_WIDTH - 40)/3 + 36;
-        
-    }else{
-        
-        self.collectionViewWidth.constant = kSCREEN_WIDTH;
-    }
+    
     //是否隐藏关注按钮
     if (postModel.isHiddenAttendBtn) {
         self.attentionBtn.hidden = YES;
@@ -187,11 +221,12 @@
     }
     
     //是否隐藏标题label
-    if (postModel.isHiddenTitleLabel) {
-        self.titleLabelHeight.constant = 0;
+    if (postModel.post.title.length == 0) {
+        self.titleLabel.hidden = YES;
+        self.contentLabelTopConstrait.constant = 10;
     }else{
-        
-        self.titleLabelHeight.constant = 20;
+        self.titleLabel.hidden = NO;
+        self.contentLabelTopConstrait.constant = 35;
     }
     
     [self.collectionView reloadData];
@@ -239,20 +274,28 @@
     GLHome_AttentionCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GLHome_AttentionCollectionCell" forIndexPath:indexPath];
 
     NSString *imageName = self.postModel?self.postModel.post.picture[indexPath.row]:self.model.post.picture[indexPath.row];
+    NSString *img = [NSString stringWithFormat:@"%@?x-oss-process=style/miquan",imageName];//300X300
     
-    [cell.imageV sd_setImageWithURL:[NSURL URLWithString:imageName] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
+    [cell.imageV sd_setImageWithURL:[NSURL URLWithString:img] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
 
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if ([self.delegate respondsToSelector:@selector(clickToBigImage:index:)]) {
+        [self.delegate clickToBigImage:self.index index:indexPath.row];
+    }
+    
+}
 //每个item之间的间距
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return 5;
+    return smallSpace;
 }
 
 //每个section中不同的行之间的行间距
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 5;
+    return smallSpace;
 }
 
 //定义每个UICollectionViewCell 的大小
@@ -261,27 +304,29 @@
     if(self.postModel){
         
         if (self.postModel.post.picture.count == 1) {
-            return CGSizeMake(kSCREEN_WIDTH - 30, kSCREEN_WIDTH - 30);
+//            return CGSizeMake(kSCREEN_WIDTH - 2 * bigSpace, kSCREEN_WIDTH - 2 * bigSpace);
+            return CGSizeMake((kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2, (kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2);
         }else if(self.postModel.post.picture.count == 2){
-            return CGSizeMake((kSCREEN_WIDTH - 35)/2, (kSCREEN_WIDTH - 35)/2);
+            return CGSizeMake((kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2, (kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2);
         }
         
-        return CGSizeMake((kSCREEN_WIDTH - 40)/3, (kSCREEN_WIDTH - 40)/3);
+        return CGSizeMake((kSCREEN_WIDTH - 2*(bigSpace + smallSpace))/3, (kSCREEN_WIDTH - 2*(bigSpace + smallSpace))/3);
 
     }else{
         
         if (self.model.post.picture.count == 1) {
-            return CGSizeMake(kSCREEN_WIDTH - 30, kSCREEN_WIDTH - 30);
+//            return CGSizeMake(kSCREEN_WIDTH - 2 * bigSpace, kSCREEN_WIDTH - 2 * bigSpace);
+            return CGSizeMake((kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2, (kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2);
         }else if(self.model.post.picture.count == 2){
-            return CGSizeMake((kSCREEN_WIDTH - 35)/2, (kSCREEN_WIDTH - 35)/2);
+            return CGSizeMake((kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2, (kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2);
         }
         
-        return CGSizeMake((kSCREEN_WIDTH - 40)/3, (kSCREEN_WIDTH - 40)/3);
+        return CGSizeMake((kSCREEN_WIDTH - 2*(bigSpace + smallSpace))/3, (kSCREEN_WIDTH - 2*(bigSpace + smallSpace))/3);
     }
 }
 
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(0, 15, 0, 15);
+    return UIEdgeInsetsMake(smallSpace, bigSpace, smallSpace, bigSpace);
 }
 
 @end

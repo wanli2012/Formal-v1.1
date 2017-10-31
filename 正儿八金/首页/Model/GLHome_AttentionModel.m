@@ -12,24 +12,53 @@
 
 - (CGFloat)cellHeight{
     
-    CGSize titleSize = [self.content boundingRectWithSize:CGSizeMake(kSCREEN_WIDTH - 20, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil].size;
+    CGSize contentSize = [self.post.content boundingRectWithSize:CGSizeMake(kSCREEN_WIDTH - 20, MAXFLOAT) options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil].size;
     
-    CGFloat collectionHeight;
+//    CGFloat contentHeight = 0.0;
+//    static UILabel *tempLabel;
+//    const CGFloat space = 10;
+//    if (!tempLabel)
+//    {
+//        tempLabel = [[UILabel alloc] initWithFrame:(CGRect){0, 0, kSCREEN_WIDTH - space * 2, MAXFLOAT}];
+//        tempLabel.font = [UIFont systemFontOfSize:14];
+//    }
+//    
+//    tempLabel.text = self.post.content;
+//    [tempLabel sizeToFit];
+//    
+//    contentHeight = tempLabel.frame.size.height;
     
-    if (self.post.picture.count == 1) {
-        collectionHeight = kSCREEN_WIDTH - 20;
+    
+    CGFloat collectionHeight = 0.0;
+    if(self.post.picture.count == 0){
+        collectionHeight = 0;
+    }else if(self.post.picture.count == 1) {
+//        collectionHeight = kSCREEN_WIDTH - 30;
+        collectionHeight = (kSCREEN_WIDTH - 35)/2 + 10;
     }else if(self.post.picture.count == 2){
-        collectionHeight = (kSCREEN_WIDTH - 30)/2;
+        collectionHeight = (kSCREEN_WIDTH - 35)/2 + 10;
     }else if (self.post.picture.count== 3){
-        collectionHeight = (kSCREEN_WIDTH - 40)/3;
+        collectionHeight = (kSCREEN_WIDTH - 40)/3 + 10;
     }else if(self.post.picture.count > 3 && self.post.picture.count <= 6){
-        collectionHeight = 2 *(kSCREEN_WIDTH - 40)/3 + 10;
+        collectionHeight = 2 *(kSCREEN_WIDTH - 40)/3 + 15;
     }else if(self.post.picture.count > 6){
         collectionHeight = 3 *(kSCREEN_WIDTH - 40)/3 + 20;
     }
     
-    return 140 + titleSize.height + collectionHeight;
+    if(self.post.title.length == 0){//没有title
+        if (self.post.picture.count == 0) {//也没有图片,在contentLabel底部有10的间距
+            
+            return 115 + contentSize.height + collectionHeight;
+            
+        }else{//有图片,在contentLabel底部去掉10的间距 间距在collectinView里面设置
+            
+            return 105 + contentSize.height + collectionHeight;
+        }
+    }
+    
+    return 105 + 25 + contentSize.height + collectionHeight;
 }
+
 
 //- (void)setValue:(id)value forUndefinedKey:(NSString *)key
 //{

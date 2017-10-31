@@ -20,9 +20,11 @@
 + (void)show:(NSString *)text icon:(NSString *)icon view:(UIView *)view
 {
     if (view == nil) view = [[UIApplication sharedApplication].windows lastObject];
+    view.hidden = NO;
     // 快速显示一个提示信息
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
-    hud.labelText = text;
+    hud.label.text = text;
+    
     // 设置图片
     hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"MBProgressHUD.bundle/%@", icon]]];
     // 再设置模式
@@ -32,7 +34,8 @@
     hud.removeFromSuperViewOnHide = YES;
     
     // 1秒之后再消失
-    [hud hide:YES afterDelay:1.5];
+//    [hud hide:YES afterDelay:1.5];
+    [hud hideAnimated:YES afterDelay:1.5];
 }
 
 /**
@@ -72,6 +75,7 @@
  *  @param view  需要显示信息的视图
  */
 + (void)showError:(NSString *)error toView:(UIView *)view{
+    
     [self show:error icon:@"error.png" view:view];
 }
 

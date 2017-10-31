@@ -16,7 +16,7 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view autoresizesSubviews="NO" contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="323" height="432"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -70,7 +70,6 @@
                         <constraint firstItem="yGs-4W-SW6" firstAttribute="leading" secondItem="s43-De-3GX" secondAttribute="trailing" id="UHi-2L-7D2"/>
                         <constraint firstItem="s43-De-3GX" firstAttribute="top" secondItem="ZfL-ym-WXy" secondAttribute="top" constant="7" id="VKa-Yx-ScK"/>
                         <constraint firstItem="yGs-4W-SW6" firstAttribute="top" secondItem="ZfL-ym-WXy" secondAttribute="top" id="Y2O-oc-Y1j"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="mG4-Fp-hf1"/>
                         <constraint firstAttribute="bottom" secondItem="s43-De-3GX" secondAttribute="bottom" constant="7" id="yTZ-gi-AUe"/>
                     </constraints>
                 </view>

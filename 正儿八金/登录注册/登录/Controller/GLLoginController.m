@@ -11,11 +11,11 @@
 #import "GLForgetController.h"
 
 
-@interface GLLoginController ()
+@interface GLLoginController ()<UITextFieldDelegate>
 
 @property (strong, nonatomic)LoadWaitView *loadV;
-@property (weak, nonatomic) IBOutlet UITextField *phoneTF;
-@property (weak, nonatomic) IBOutlet UITextField *pwdTF;
+@property (weak, nonatomic) IBOutlet UITextField *phoneTF;//账号
+@property (weak, nonatomic) IBOutlet UITextField *pwdTF;//密码
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @property (weak, nonatomic) IBOutlet UIButton *registerBtn;
 
@@ -75,6 +75,9 @@
     [self.view endEditing:YES];
     if (self.phoneTF.text.length <=0 ) {
         [MBProgressHUD showError:@"请输入手机号码"];
+        return;
+    }else if(![predicateModel valiMobile:self.phoneTF.text]){
+        [MBProgressHUD showError:@"手机号输入错误"];
         return;
     }
     
@@ -141,5 +144,25 @@
 
 }
 
+#pragma mark - UITextfieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    if (textField == self.phoneTF) {
+        [self.pwdTF becomeFirstResponder];
+    }else{
+        [self.view endEditing:YES];
+    }
+    
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    //是否需要判断只能输入数字(手机号码)
+    
+    
+    
+    return YES;
+}
 
 @end

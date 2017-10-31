@@ -12,6 +12,7 @@
 #import "GLCommunity_PostController.h"
 #import "GLHomeController.h"
 #import "GLMine_MyPostController.h"
+#import "JZAlbumViewController.h"
 
 @interface GLHome_hotController ()<GLHome_AttentionCellDelegate>
 
@@ -20,7 +21,10 @@
 @property (nonatomic, strong)NSMutableArray *dataSourceArr;
 @property (strong, nonatomic)LoadWaitView *loadV;
 @property (nonatomic, assign)NSInteger page;
-//@property (nonatomic,strong)NodataView *nodataV;
+@property (nonatomic,strong)NodataView *nodataV;
+
+@property (nonatomic, assign)BOOL  HideNavagation;//是否需要恢复自定义导航栏
+
 @end
 
 @implementation GLHome_hotController
@@ -32,7 +36,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self.tableView registerNib:[UINib nibWithNibName:@"GLHome_AttentionCell" bundle:nil] forCellReuseIdentifier:@"GLHome_AttentionCell"];
     
-//    [self.tableView addSubview:self.nodataV];
+    [self.tableView addSubview:self.nodataV];
+    self.nodataV.hidden = YES;
+    
     __weak __typeof(self) weakSelf = self;
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
@@ -63,7 +69,7 @@
     
     if (status){
         _page = 1;
-        [self.dataSourceArr removeAllObjects];
+        
     }else{
         _page ++;
     }
@@ -74,7 +80,7 @@
     dic[@"group"] = [UserModel defaultUser].groupid;
     dic[@"page"] =@(_page);
     
-    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    _loadV=[LoadWaitView addloadview:CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT - 84 - 49) tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:kHOT_HOME_URL paramDic:dic finish:^(id responseObject) {
         
         [self endRefresh];
@@ -84,9 +90,15 @@
             
             if ([responseObject[@"data"] count] == 0) {
                 
+                
                 [self.tableView reloadData];
                 
                 return;
+            }
+            
+            if(status){
+                
+                [self.dataSourceArr removeAllObjects];
             }
             
             for (NSDictionary *dic in responseObject[@"data"]) {
@@ -95,7 +107,7 @@
                 
                 model.isHiddenAttendBtn = NO;
                 model.isHiddenLandlord = YES;
-                model.isHiddenTitleLabel = NO;
+//                model.isHiddenTitleLabel = NO;
                 
                 [self.dataSourceArr addObject:model];
             }
@@ -122,15 +134,6 @@
     }];
 }
 
-//-(NodataView*)nodataV{
-//    
-//    if (!_nodataV) {
-//        _nodataV=[[NSBundle mainBundle]loadNibNamed:@"NodataView" owner:self options:nil].firstObject;
-//        _nodataV.frame = CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT - 64 - 49 - 49);
-//    }
-//    return _nodataV;
-//    
-//}
 - (void)endRefresh {
     
     [self.tableView.mj_header endRefreshing];
@@ -241,7 +244,7 @@
         dic[@"status"] = @"1";//参数status:1 关注   2:取消关注
     }
     
-    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:[self View:self.view].view];
     [NetworkManager requestPOSTWithURLStr:kFOLLOW_OR_CANCEL_URL paramDic:dic finish:^(id responseObject) {
         
         [self endRefresh];
@@ -299,15 +302,33 @@
     }];
 }
 
+#pragma mark - 查看大图
+- (void)clickToBigImage:(NSInteger)cellIndex index:(NSInteger)index{
+    
+    GLHome_AttentionModel *model = self.dataSourceArr[cellIndex];
+    
+    self.HideNavagation = YES;
+    JZAlbumViewController *jzAlbumVC = [[JZAlbumViewController alloc]init];
+    jzAlbumVC.currentIndex = index;//这个参数表示当前图片的index，默认是0
+    
+    NSMutableArray *arrM = [NSMutableArray array];
+    for (NSString * s in model.post.picture) {//@"%@?imageView2/1/w/200/h/200",
+//        NSString *str = [NSString stringWithFormat:@"%@?x-oss-process=style/goods_Banne",s];
+        [arrM addObject:s];
+    }
+    jzAlbumVC.imgArr = arrM;//图片数组，可以是url，也可以是UIImage
+    [self presentViewController:jzAlbumVC animated:NO completion:nil];
+}
+
 #pragma mark - UITableViewDelegate UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-//    if (self.dataSourceArr.count <= 0 ) {
-//        self.nodataV.hidden = NO;
-//    }else{
-//        self.nodataV.hidden = YES;
-//    }
-//    
+    if (self.dataSourceArr.count <= 0 ) {
+        self.nodataV.hidden = NO;
+    }else{
+        self.nodataV.hidden = YES;
+    }
+
     return self.dataSourceArr.count;
 }
 
@@ -324,10 +345,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     GLHome_AttentionModel*model = self.dataSourceArr[indexPath.row];
-    
     return model.cellHeight;
-    
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     GLHome_AttentionModel *model = self.dataSourceArr[indexPath.row];
     GLHomeController *homeVC = [self View:tableView];
@@ -349,10 +369,12 @@
         [weakSelf.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPathA,nil] withRowAnimation:UITableViewRowAnimationNone];
         
     };
+    
     [homeVC.navigationController pushViewController:detailVC animated:YES];
     homeVC.hidesBottomBarWhenPushed = NO;
     
 }
+
 //可以获取到父容器的控制器的方法,就是这个黑科技.
 - (GLHomeController *)View:(UIView *)view{
     UIResponder *responder = view;
@@ -364,11 +386,20 @@
     }
     return nil;
 }
+
 - (NSMutableArray *)dataSourceArr{
     if (!_dataSourceArr) {
         _dataSourceArr = [[NSMutableArray alloc] init];
     }
     return _dataSourceArr;
+}
+
+- (NodataView *)nodataV{
+    if (!_nodataV) {
+        _nodataV = [[NSBundle mainBundle] loadNibNamed:@"NodataView" owner:nil options:nil].lastObject;
+        _nodataV.frame = CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT - 84 - 49);
+    }
+    return _nodataV;
 }
 
 @end

@@ -11,9 +11,9 @@
 
 @interface GLHome_AttentionModel : NSObject
 
-@property (nonatomic, strong)NSString *content;
+//@property (nonatomic, strong)NSString *content;
 
-@property (nonatomic, assign)NSString *sum;
+//@property (nonatomic, assign)NSString *sum;
 
 @property (nonatomic, assign)CGFloat cellHeight;
 

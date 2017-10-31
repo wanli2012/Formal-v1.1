@@ -45,6 +45,9 @@
 		4A0E4BA41F6A504600EBADE8 /* UIButton+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B831F6A504600EBADE8 /* UIButton+HXExtension.m */; };
 		4A0E4BA51F6A504600EBADE8 /* UIImage+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B851F6A504600EBADE8 /* UIImage+HXExtension.m */; };
 		4A0E4BA61F6A504600EBADE8 /* UIView+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B871F6A504600EBADE8 /* UIView+HXExtension.m */; };
+		4A409C7A1FA81D97002228C0 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A409C791FA81D97002228C0 /* NetworkManager.m */; };
+		4A409C801FA87EAE002228C0 /* JZAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A409C7D1FA87EAE002228C0 /* JZAlbumViewController.m */; };
+		4A409C811FA87EAE002228C0 /* PhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A409C7F1FA87EAE002228C0 /* PhotoView.m */; };
 		4A4950891F5F886600180007 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4950881F5F886600180007 /* main.m */; };
 		4A49508C1F5F886600180007 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4A49508B1F5F886600180007 /* AppDelegate.mm */; };
 		4A49508F1F5F886600180007 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A49508E1F5F886600180007 /* ViewController.m */; };
@@ -57,7 +60,7 @@
 		4A4950B11F5F897700180007 /* usermodelachivar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4950AE1F5F897700180007 /* usermodelachivar.m */; };
 		4A4954BC1F5F898F00180007 /* 首页.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4954AF1F5F898F00180007 /* 首页.xcassets */; };
 		4A4954BE1F5F898F00180007 /* loadWait.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4954B11F5F898F00180007 /* loadWait.xcassets */; };
-		4A4954BF1F5F898F00180007 /* loginRegister.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4954B21F5F898F00180007 /* loginRegister.xcassets */; };
+		4A4954BF1F5F898F00180007 /* 登录注册.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4954B21F5F898F00180007 /* 登录注册.xcassets */; };
 		4A4954C41F5F898F00180007 /* setUp.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4954B71F5F898F00180007 /* setUp.xcassets */; };
 		4A4954C51F5F898F00180007 /* tabbarimage.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4954B81F5F898F00180007 /* tabbarimage.xcassets */; };
 		4A4954C61F5F898F00180007 /* 我的.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4954B91F5F898F00180007 /* 我的.xcassets */; };
@@ -177,7 +180,6 @@
 		4AFBF7B11F725392001915DD /* GLCommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFBF7B01F725392001915DD /* GLCommentListModel.m */; };
 		62DDAB3E488A5881405D5AFA /* libPods-正儿八金.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 164A41A728AEAD2883C7498C /* libPods-正儿八金.a */; };
 		F977CD431FA062C3003596E7 /* MBProgressHUD+LB.m in Sources */ = {isa = PBXBuildFile; fileRef = F977CD421FA062C3003596E7 /* MBProgressHUD+LB.m */; };
-		F977CD471FA06386003596E7 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F977CD461FA06386003596E7 /* NetworkManager.m */; };
 		F977D0471FA0693A003596E7 /* NSData+NTES.m in Sources */ = {isa = PBXBuildFile; fileRef = F977CD4B1FA06939003596E7 /* NSData+NTES.m */; };
 		F977D0481FA0693A003596E7 /* NSDictionary+NTESJson.m in Sources */ = {isa = PBXBuildFile; fileRef = F977CD4D1FA06939003596E7 /* NSDictionary+NTESJson.m */; };
 		F977D0491FA0693A003596E7 /* NSString+NTES.m in Sources */ = {isa = PBXBuildFile; fileRef = F977CD4F1FA06939003596E7 /* NSString+NTES.m */; };
@@ -638,6 +640,12 @@
 		4A0E4B851F6A504600EBADE8 /* UIImage+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HXExtension.m"; sourceTree = "<group>"; };
 		4A0E4B861F6A504600EBADE8 /* UIView+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HXExtension.h"; sourceTree = "<group>"; };
 		4A0E4B871F6A504600EBADE8 /* UIView+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HXExtension.m"; sourceTree = "<group>"; };
+		4A409C781FA81D97002228C0 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
+		4A409C791FA81D97002228C0 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		4A409C7C1FA87EAE002228C0 /* JZAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZAlbumViewController.h; sourceTree = "<group>"; };
+		4A409C7D1FA87EAE002228C0 /* JZAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZAlbumViewController.m; sourceTree = "<group>"; };
+		4A409C7E1FA87EAE002228C0 /* PhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoView.h; sourceTree = "<group>"; };
+		4A409C7F1FA87EAE002228C0 /* PhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoView.m; sourceTree = "<group>"; };
 		4A4950841F5F886600180007 /* 正儿八金.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "正儿八金.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A4950881F5F886600180007 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4A49508A1F5F886600180007 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -658,7 +666,7 @@
 		4A4950AE1F5F897700180007 /* usermodelachivar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = usermodelachivar.m; sourceTree = "<group>"; };
 		4A4954AF1F5F898F00180007 /* 首页.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "首页.xcassets"; sourceTree = "<group>"; };
 		4A4954B11F5F898F00180007 /* loadWait.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = loadWait.xcassets; sourceTree = "<group>"; };
-		4A4954B21F5F898F00180007 /* loginRegister.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = loginRegister.xcassets; sourceTree = "<group>"; };
+		4A4954B21F5F898F00180007 /* 登录注册.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "登录注册.xcassets"; sourceTree = "<group>"; };
 		4A4954B71F5F898F00180007 /* setUp.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = setUp.xcassets; sourceTree = "<group>"; };
 		4A4954B81F5F898F00180007 /* tabbarimage.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = tabbarimage.xcassets; sourceTree = "<group>"; };
 		4A4954B91F5F898F00180007 /* 我的.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "我的.xcassets"; sourceTree = "<group>"; };
@@ -860,8 +868,6 @@
 		EF60FA471903D3B61FEEB693 /* Pods-正儿八金.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-正儿八金.release.xcconfig"; path = "Pods/Target Support Files/Pods-正儿八金/Pods-正儿八金.release.xcconfig"; sourceTree = "<group>"; };
 		F977CD411FA062C3003596E7 /* MBProgressHUD+LB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+LB.h"; sourceTree = "<group>"; };
 		F977CD421FA062C3003596E7 /* MBProgressHUD+LB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+LB.m"; sourceTree = "<group>"; };
-		F977CD451FA06386003596E7 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
-		F977CD461FA06386003596E7 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		F977CD4A1FA06939003596E7 /* NSData+NTES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+NTES.h"; sourceTree = "<group>"; };
 		F977CD4B1FA06939003596E7 /* NSData+NTES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+NTES.m"; sourceTree = "<group>"; };
 		F977CD4C1FA06939003596E7 /* NSDictionary+NTESJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NTESJson.h"; sourceTree = "<group>"; };
@@ -1790,6 +1796,17 @@
 			path = HXWeiboPhotoPicker;
 			sourceTree = "<group>";
 		};
+		4A409C7B1FA87EAE002228C0 /* IOS图片浏览器 */ = {
+			isa = PBXGroup;
+			children = (
+				4A409C7C1FA87EAE002228C0 /* JZAlbumViewController.h */,
+				4A409C7D1FA87EAE002228C0 /* JZAlbumViewController.m */,
+				4A409C7E1FA87EAE002228C0 /* PhotoView.h */,
+				4A409C7F1FA87EAE002228C0 /* PhotoView.m */,
+			);
+			path = "IOS图片浏览器";
+			sourceTree = "<group>";
+		};
 		4A49507B1F5F886600180007 = {
 			isa = PBXGroup;
 			children = (
@@ -1883,6 +1900,7 @@
 		4A4950B21F5F898C00180007 /* 三方库 */ = {
 			isa = PBXGroup;
 			children = (
+				4A409C7B1FA87EAE002228C0 /* IOS图片浏览器 */,
 				F977CD481FA06939003596E7 /* class */,
 				F977CF1B1FA0693A003596E7 /* NIMKit */,
 				4A0E4B4A1F6A504600EBADE8 /* HXWeiboPhotoPicker */,
@@ -1904,7 +1922,7 @@
 				4A4954AF1F5F898F00180007 /* 首页.xcassets */,
 				4A6A768C1F6BC0EB00B0766A /* 社区.xcassets */,
 				4A4954B11F5F898F00180007 /* loadWait.xcassets */,
-				4A4954B21F5F898F00180007 /* loginRegister.xcassets */,
+				4A4954B21F5F898F00180007 /* 登录注册.xcassets */,
 				4A4954B71F5F898F00180007 /* setUp.xcassets */,
 				4A4954B81F5F898F00180007 /* tabbarimage.xcassets */,
 				4A4954B91F5F898F00180007 /* 我的.xcassets */,
@@ -2659,8 +2677,8 @@
 		F977CD441FA06386003596E7 /* 网络请求 */ = {
 			isa = PBXGroup;
 			children = (
-				F977CD451FA06386003596E7 /* NetworkManager.h */,
-				F977CD461FA06386003596E7 /* NetworkManager.m */,
+				4A409C781FA81D97002228C0 /* NetworkManager.h */,
+				4A409C791FA81D97002228C0 /* NetworkManager.m */,
 			);
 			path = "网络请求";
 			sourceTree = "<group>";
@@ -4385,7 +4403,7 @@
 				F977D0951FA0693A003596E7 /* NTESSystemNotificationViewController.xib in Resources */,
 				F977D1031FA0693A003596E7 /* NTESNetDetectViewController.xib in Resources */,
 				4A0727791F692BE100F1AFFE /* GLMine_MyPostController.xib in Resources */,
-				4A4954BF1F5F898F00180007 /* loginRegister.xcassets in Resources */,
+				4A4954BF1F5F898F00180007 /* 登录注册.xcassets in Resources */,
 				F977D1A41FA06A1F003596E7 /* NIMKitEmoticon.bundle in Resources */,
 				F977D1A51FA06A1F003596E7 /* NIMKitResource.bundle in Resources */,
 				F977D1A31FA06A1F003596E7 /* NIMDemoChartlet.bundle in Resources */,
@@ -4490,6 +4508,7 @@
 				F977D0A01FA0693A003596E7 /* NTESSessionConfig.m in Sources */,
 				4AAE8F291F669E7200AC549D /* GLCommunity_PostCommentCell.m in Sources */,
 				4AAE8F161F6670F500AC549D /* GLCommunity_DetailController.m in Sources */,
+				4A409C7A1FA81D97002228C0 /* NetworkManager.m in Sources */,
 				F977D1FC1FA07DD4003596E7 /* ChineseInclude.m in Sources */,
 				4A0E4BA01F6A504600EBADE8 /* HXVideoPresentTransition.m in Sources */,
 				F977D1831FA0693B003596E7 /* NIMTeamMemberCardHeaderCell.m in Sources */,
@@ -4698,6 +4717,7 @@
 				F977D0781FA0693A003596E7 /* NTESLoginManager.m in Sources */,
 				F977D0601FA0693A003596E7 /* NTESLiveMasterInfoView.m in Sources */,
 				F977D1121FA0693B003596E7 /* NTESSignSettingViewController.m in Sources */,
+				4A409C811FA87EAE002228C0 /* PhotoView.m in Sources */,
 				4AAE8F111F6670C100AC549D /* GLCommunityCell.m in Sources */,
 				4A913C841F6F730000E357EF /* GLHome_AttentionPostModel.m in Sources */,
 				4A0E4B961F6A504600EBADE8 /* HXPhotoPreviewViewController.m in Sources */,
@@ -4719,6 +4739,7 @@
 				4A4954EB1F5F89B200180007 /* formattime.m in Sources */,
 				F977D0DE1FA0693A003596E7 /* renderer_yuv420sp.c in Sources */,
 				F977D0501FA0693A003596E7 /* UIScrollView+NTESPullToRefresh.m in Sources */,
+				4A409C801FA87EAE002228C0 /* JZAlbumViewController.m in Sources */,
 				F977D0E11FA0693A003596E7 /* mvp.vsh.c in Sources */,
 				4A73CEBD1F60E3090071C559 /* GLHome_AttentionController.m in Sources */,
 				F977D1F61FA07DD3003596E7 /* LBGoodFriendsSectionView.m in Sources */,
@@ -4817,7 +4838,6 @@
 				F977D0FD1FA0693A003596E7 /* NTESUserUtil.m in Sources */,
 				F977D12F1FA0693B003596E7 /* NIMLoadProgressView.m in Sources */,
 				F977D18E1FA0693B003596E7 /* NIMPinyinConverter.m in Sources */,
-				F977CD471FA06386003596E7 /* NetworkManager.m in Sources */,
 				F977D0AA1FA0693A003596E7 /* NTESSessionMsgConverter.m in Sources */,
 				F977D05C1FA0693A003596E7 /* NTESChatroomMemberCell.m in Sources */,
 				F977D0571FA0693A003596E7 /* NTESChatroomMessageDataProvider.m in Sources */,
