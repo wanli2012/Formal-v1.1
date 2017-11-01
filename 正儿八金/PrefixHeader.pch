@@ -53,7 +53,7 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
 #define kSCREEN_HEIGHT  [UIScreen mainScreen].bounds.size.height
 
 //占位图
-#define PlaceHolderImage @"头像1"
+#define PlaceHolderImage @"我的头像"
 #define LUNBO_PlaceHolder @"轮播暂位图"
 
 #define URL_Base @"http://192.168.0.118/baby/Eightgold/"
@@ -74,6 +74,12 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
 #define kCOMMENT_POST_URL @"PostBar/PostAtom"//帖子添加评论
 #define kGET_ALL_COMMUNITY_URL @"PostBar/PostCommunity"//获取所有社区
 #define kPUBLISH_POST_URL @"PostBar/Posting"//发布帖子
+#define kFOLLOW_COMMUNITY_URL @"PostBar/PostBarFollow"//社区已关注接口
+#define kRECOMMEND_COMMUNITY_URL @"PostBar/PostBarRecommend"//推荐社区未关注社区
+#define kCONCERN_COMMUNITY_URL @"User/PartnerCommunityConcern"//用户关注社区，或者取消关注
+#define kNOTICE_URL @"HomePage/Notice"//公告
+
+
 
 #define FONT(s)       [UIFont systemFontOfSize:s]
 
@@ -87,6 +93,20 @@ alpha:alphaValue]
 #define UIColorFromRGB(rgbValue) UIColorFromRGBA(rgbValue, 1.0)
 #define NTES_USE_CLEAR_BAR - (BOOL)useClearBar{return YES;}
 #define NTES_FORBID_INTERACTIVE_POP - (BOOL)forbidInteractivePop{return YES;}
+
+#pragma mark - Code 宏定义
+
+#define LOGIN_SUCCESS_CODE 100 //登录成功
+#define LOGIN_FAIL_CODE 101 //登录失败,账号密码错误或者身份类型错误
+#define OVERDUE_CODE 102 //token错误
+#define LOGIC_ERROR_CODE 103 //用户输入的数据后台验证格式错误,添加数据失败,修改失败,查询失败,失败返回
+#define SUCCESS_CODE 104 //服务器成功返回
+#define NO_LOGIN_CODE 105 //未登录请登录账户返回
+#define ERROR_CODE 106 //服务器错误
+#define BLACK_CODE 107 //用户被拉黑,返回本标识必须马上退出登录
+#define NO_MORE_CODE 108 //分页下拉没数据了
+
+
 #define UIScreenWidth                              [UIScreen mainScreen].bounds.size.width
 #define UIScreenHeight                             [UIScreen mainScreen].bounds.size.height
 #define UISreenWidthScale   UIScreenWidth / 320

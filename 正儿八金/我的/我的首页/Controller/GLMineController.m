@@ -25,7 +25,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *gradeLabel;//等级
 @property (weak, nonatomic) IBOutlet UILabel *experienceLabel;//经验值
 
+@property (weak, nonatomic) IBOutlet UIImageView *bgImageV;
+@property (weak, nonatomic) IBOutlet UIView *headerView;
+@property (weak, nonatomic) IBOutlet UIImageView *myPicImage;//头像
+@property (weak, nonatomic) IBOutlet UIImageView *levelImageV;//等级标志
+
 @end
+
+#define kHEIGHT 200
 
 @implementation GLMineController
 
@@ -41,12 +48,24 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
+    self.myPicImage.layer.cornerRadius = self.myPicImage.height / 2;
+    
     self.nameLabel.text = [NSString stringWithFormat:@"用户名:%@",[UserModel defaultUser].user_name];
     self.gradeLabel.text = [NSString stringWithFormat:@"会员等级:%@",[UserModel defaultUser].number_name];
     self.experienceLabel.text = [NSString stringWithFormat:@"经验值:%@",[UserModel defaultUser].experience];
+    [self.levelImageV sd_setImageWithURL:[NSURL URLWithString:[UserModel defaultUser].icon ] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
+    [self.myPicImage sd_setImageWithURL:[NSURL URLWithString:[UserModel defaultUser].portrait] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
     
     self.navigationController.navigationBar.hidden = YES;
     
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+
 }
 //个人信息
 - (IBAction)personInfo:(id)sender {
@@ -59,9 +78,29 @@
 //设置
 - (IBAction)setup:(id)sender {
     self.hidesBottomBarWhenPushed = YES;
+    
     GLMine_SetupController *setupVC = [[GLMine_SetupController alloc] init];
     [self.navigationController pushViewController:setupVC animated:YES];
     self.hidesBottomBarWhenPushed = NO;
+    
+}
+#pragma mark - UIScrollViewDelegate 下拉放大图片
+//scrollView的方法视图滑动时 实时调用
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat width = self.view.frame.size.width;
+    // 图片宽度
+    CGFloat yOffset = scrollView.contentOffset.y;
+    // 偏移的y值
+    
+    if(yOffset < 0){
+        
+        CGFloat totalOffset = kHEIGHT + ABS(yOffset);
+        CGFloat f = totalOffset / kHEIGHT;
+        //拉伸后的图片的frame应该是同比例缩放。
+        self.bgImageV.frame =  CGRectMake(- (width *f - width) / 2, yOffset, width * f, totalOffset);
+        
+    }
 }
 
 #pragma mark -

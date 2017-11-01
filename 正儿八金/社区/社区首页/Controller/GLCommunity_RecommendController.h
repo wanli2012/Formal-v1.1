@@ -16,7 +16,7 @@
 
 @interface GLCommunity_RecommendController : UITableViewController
 
-@property (nonatomic, strong)NSArray *dataSource;
+//@property (nonatomic, strong)NSArray *dataSource;
 
 @property (nonatomic, weak)id <GLCommunity_RecommendDelegate> delegate;
 

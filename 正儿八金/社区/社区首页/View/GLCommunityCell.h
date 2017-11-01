@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GLCommunity_FollowModel.h"
 
 @protocol GLCommunityCellDelegate <NSObject>
 
@@ -16,12 +17,14 @@
 
 @interface GLCommunityCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *attentLabel;//关注人数
 @property (weak, nonatomic) IBOutlet UIButton *attentBtn;//关注按钮
 
 @property (nonatomic, assign)NSInteger index;
 
 @property (nonatomic, weak)id<GLCommunityCellDelegate> delegate;
+
+@property (nonatomic, strong)GLCommunity_FollowModel *model;
+
+@property (nonatomic, strong)GLCommunity_RecommendModel *recommendModel;
 
 @end

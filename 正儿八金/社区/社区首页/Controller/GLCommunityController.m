@@ -109,7 +109,7 @@
         for (int i = 0; i < 8; i++) {
             [self.dataSource2 addObject:[NSString stringWithFormat:@"%zd",i]];
         }
-        _recommendVC.dataSource = self.dataSource2;
+//        _recommendVC.dataSource = self.dataSource2;
     }
     return _recommendVC;
 }

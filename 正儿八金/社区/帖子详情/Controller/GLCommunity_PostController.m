@@ -77,6 +77,10 @@
     
     [self getData:YES];
     
+    if (self.isCommenting) {
+        [self.commentTF becomeFirstResponder];
+    }
+    
 }
 
 - (void)getData:(BOOL)status {

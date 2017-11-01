@@ -14,6 +14,8 @@
 #import "GLMine_MyPostController.h"
 #import "JZAlbumViewController.h"
 
+#import "GLHomePageNoticeView.h"//公告
+
 @interface GLHome_hotController ()<GLHome_AttentionCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -24,6 +26,9 @@
 @property (nonatomic,strong)NodataView *nodataV;
 
 @property (nonatomic, assign)BOOL  HideNavagation;//是否需要恢复自定义导航栏
+
+@property (nonatomic, strong)UIView  *maskV;//遮罩
+@property (nonatomic, strong)GLHomePageNoticeView *noticeView;//公告
 
 @end
 
@@ -62,6 +67,8 @@
     self.tableView.mj_footer = footer;
     
     [self getData:YES];
+//    [self initInterDataSorceinfomessage];//公告
+    
     
 }
 
@@ -141,6 +148,95 @@
     
 }
 
+
+#pragma mark ----公告
+
+-(void)initInterDataSorceinfomessage{
+    
+    [[NSUserDefaults standardUserDefaults]setObject:@"NO" forKey:@"isShow"];//展示过就不要展示了，重启App在调
+    
+    CGFloat contentViewH = kSCREEN_HEIGHT / 2;
+    CGFloat contentViewW = kSCREEN_WIDTH - 40;
+    CGFloat contentViewX = 20;
+    
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    [window addSubview:self.maskV];
+    [window addSubview:self.noticeView];
+    
+    [NetworkManager requestPOSTWithURLStr:kNOTICE_URL paramDic:@{} finish:^(id responseObject) {
+        
+        if ([responseObject[@"code"] integerValue] == SUCCESS_CODE) {
+            
+            self.noticeView.titleLabel.text = responseObject[@"data"][@"title"];
+//            [self.noticeView.webView loadHTMLString:responseObject[@"data"][@"content"] baseURL:nil];
+            
+            NSString *htmlString;
+            
+//            UIFont *font = [UIFont systemFontOfSize:20];
+            CGFloat lineSpace = 10;
+            
+//            NSString *rgbString = [self JSONObjectFromUIColor:fontColor];
+            
+//            NSString *style = [NSString stringWithFormat:@"<style>*{font-size:40px;line-height:%@px;color:%@;}img{max-width:%@px;height:auto;}</style>", @(lineSpace * 4), responseObject[@"data"][@"content"], @(kSCREEN_WIDTH - 2 * 20)];
+            
+//            NSString *jsString = [NSString stringWithFormat:@"<html> \n"
+//                                  "<head> \n"
+//                                  "<style type=\"text/css\"> \n"
+//                                  "body {font-size: %f;}\n"
+//                                  "</style> \n"
+//                                  "</head> \n"
+//                                  "<body>%@</body> \n"
+//                                  "</html>", 20.0, responseObject[@"data"][@"content"]];
+            
+            
+//            NSMutableDictionary *optoins = [NSMutableDictionary dictionary];
+//            optoins[NSDocumentTypeDocumentAttribute] = NSHTMLTextDocumentType;
+//            
+//            htmlString = [NSString stringWithFormat:@"%@%@", responseObject[@"data"][@"content"], style];
+            
+            [self.noticeView.webView loadHTMLString:responseObject[@"data"][@"content"] baseURL:nil];
+            
+//            NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithData:[responseObject[@"data"][@"content"] dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType} documentAttributes:nil error:nil];
+//            [str addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:17.0] range:NSMakeRange(0, str.length)];
+//            self.noticeView.contentLabel.attributedText =  str;
+            
+        }
+        
+    } enError:^(NSError *error) {
+       
+        [MBProgressHUD showError:error.localizedDescription];
+        
+    }];
+
+    
+    self.noticeView.frame = CGRectMake(contentViewX, (kSCREEN_HEIGHT - contentViewH)/2, contentViewW, contentViewH);
+    //缩放
+    self.noticeView.transform=CGAffineTransformMakeScale(0.01f, 0.01f);
+    self.noticeView.alpha = 0;
+    [UIView animateWithDuration:0.2 animations:^{
+        
+        self.noticeView.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+        self.noticeView.alpha = 1;
+    }];
+    
+}
+
+- (void)dismiss{
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        
+        self.noticeView.transform = CGAffineTransformMakeScale(0.07, 0.07);
+        
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.noticeView.center = CGPointMake(kSCREEN_WIDTH - 30,30);
+        } completion:^(BOOL finished) {
+            [self.noticeView removeFromSuperview];
+            [self.maskV removeFromSuperview];
+        }];
+    }];
+}
+
 #pragma mark - GLHomeAttentionCellDelegate
 - (void)praise:(NSInteger)index{
   
@@ -207,6 +303,32 @@
 }
 - (void)comment:(NSInteger)index{
     NSLog(@"评论%zd",index);
+    
+    GLHome_AttentionModel *model = self.dataSourceArr[index];
+    GLHomeController *homeVC = [self View:self.tableView];
+    
+    homeVC.hidesBottomBarWhenPushed = YES;
+    GLCommunity_PostController *detailVC = [[GLCommunity_PostController alloc] init];
+    detailVC.mid = model.mid;
+    detailVC.post_id = model.post.post_id;
+    detailVC.group_id = model.group_id;
+    detailVC.isCommenting = YES;
+    
+    typeof(self)weakSelf = self;
+    
+    detailVC.block = ^(NSString *praise,NSString *fablous){
+        
+        model.post.fabulous = fablous;
+        model.post.praise = praise;
+        
+        NSIndexPath *indexPathA = [NSIndexPath indexPathForRow:index inSection:0]; //刷新第0段第2行
+        [weakSelf.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPathA,nil] withRowAnimation:UITableViewRowAnimationNone];
+        
+    };
+    
+    [homeVC.navigationController pushViewController:detailVC animated:YES];
+    homeVC.hidesBottomBarWhenPushed = NO;
+
 }
 - (void)personInfo:(NSInteger)index{
     
@@ -402,4 +524,42 @@
     return _nodataV;
 }
 
+- (UIView *)maskV{
+    if (!_maskV) {
+        _maskV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT)];
+        _maskV.backgroundColor = [UIColor blackColor];
+        _maskV.alpha = 0.3;
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(dismiss)];
+        [_maskV addGestureRecognizer:tap];
+        
+    }
+    return _maskV;
+}
+
+- (GLHomePageNoticeView *)noticeView{
+    if (!_noticeView) {
+        
+        _noticeView = [[NSBundle mainBundle] loadNibNamed:@"GLHomePageNoticeView" owner:nil options:nil].lastObject;
+        
+        _noticeView.contentViewW.constant = kSCREEN_WIDTH - 40;
+        _noticeView.contentViewH.constant = kSCREEN_HEIGHT / 2 - 30;
+        _noticeView.layer.cornerRadius = 5;
+        _noticeView.layer.masksToBounds = YES;
+        [_noticeView.cancelBt addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+        //设置webView
+        _noticeView.webView.scalesPageToFit = YES;
+        _noticeView.webView.autoresizesSubviews = NO;
+        _noticeView.webView.autoresizingMask=(UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
+        _noticeView.webView.scrollView.bounces = NO;
+        
+        //    NSURL *url = [NSURL URLWithString:NOTICE_URL];
+        //    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        //    [_contentView.webView loadRequest:request];
+        
+//        _noticeView.backgroundColor = [UIColor redColor];
+
+    }
+    return _noticeView;
+}
 @end

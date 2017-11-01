@@ -15,23 +15,26 @@
             <rect key="frame" x="0.0" y="0.0" width="325" height="59"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="325" height="58"/>
+                <rect key="frame" x="0.0" y="0.0" width="325" height="59"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="头像1" translatesAutoresizingMaskIntoConstraints="NO" id="ivz-Sv-7I3">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="头像1" translatesAutoresizingMaskIntoConstraints="NO" id="ivz-Sv-7I3">
                         <rect key="frame" x="10" y="10" width="40" height="39"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="CgF-it-ML7"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="买菜社区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0i-s4-anA">
-                        <rect key="frame" x="60" y="10" width="62" height="18"/>
+                        <rect key="frame" x="60" y="10" width="165" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主贴:12W 回复:21W" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSY-O6-sk9">
                         <rect key="frame" x="60" y="34" width="109" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="e8r-PN-Eoa"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -71,6 +74,7 @@
                     <constraint firstItem="u0i-s4-anA" firstAttribute="leading" secondItem="ivz-Sv-7I3" secondAttribute="trailing" constant="10" id="HZM-Kz-jse"/>
                     <constraint firstAttribute="trailing" secondItem="mon-Kf-hQr" secondAttribute="trailing" constant="10" id="IGt-M0-Vg8"/>
                     <constraint firstItem="DVj-AQ-voo" firstAttribute="centerY" secondItem="WSY-O6-sk9" secondAttribute="centerY" id="II8-IZ-2IE"/>
+                    <constraint firstItem="mon-Kf-hQr" firstAttribute="leading" secondItem="u0i-s4-anA" secondAttribute="trailing" constant="10" id="IeC-aN-nGN"/>
                     <constraint firstAttribute="bottom" secondItem="ivz-Sv-7I3" secondAttribute="bottom" constant="10" id="MYH-Un-aNw"/>
                     <constraint firstItem="u0i-s4-anA" firstAttribute="top" secondItem="ivz-Sv-7I3" secondAttribute="top" id="N7O-cp-J9o"/>
                     <constraint firstAttribute="trailing" secondItem="MP3-Gk-U0F" secondAttribute="trailing" id="a7p-d0-6Ab"/>

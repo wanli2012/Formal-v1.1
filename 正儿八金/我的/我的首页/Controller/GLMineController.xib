@@ -11,8 +11,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLMineController">
             <connections>
+                <outlet property="bgImageV" destination="lvZ-YA-QGH" id="mrk-MB-jcz"/>
                 <outlet property="experienceLabel" destination="UJu-Cg-35D" id="mN3-mb-iMF"/>
                 <outlet property="gradeLabel" destination="Y3z-KY-EmK" id="04A-5h-L6I"/>
+                <outlet property="headerView" destination="GtI-lX-gs8" id="8vG-Qd-aYJ"/>
+                <outlet property="levelImageV" destination="ZOC-l2-AuC" id="Zpg-Ax-cs7"/>
+                <outlet property="myPicImage" destination="lzK-JQ-Sf7" id="ltx-yN-MSj"/>
                 <outlet property="nameLabel" destination="5gq-Yc-HnZ" id="rXw-Wx-EoN"/>
                 <outlet property="tableView" destination="Jhd-u0-SF4" id="911-Tl-UqQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -27,15 +31,15 @@
                     <rect key="frame" x="0.0" y="0.0" width="370" height="575"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <view key="tableHeaderView" contentMode="scaleToFill" id="GtI-lX-gs8">
-                        <rect key="frame" x="0.0" y="0.0" width="370" height="228"/>
+                        <rect key="frame" x="0.0" y="0.0" width="370" height="200"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my-photo" translatesAutoresizingMaskIntoConstraints="NO" id="lvZ-YA-QGH">
-                                <rect key="frame" x="0.0" y="0.0" width="370" height="228"/>
-                                <color key="backgroundColor" red="0.91904610399999997" green="0.29763087630000001" blue="0.53569805619999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my-photo" translatesAutoresizingMaskIntoConstraints="NO" id="lvZ-YA-QGH">
+                                <rect key="frame" x="0.0" y="0.0" width="370" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的头像" translatesAutoresizingMaskIntoConstraints="NO" id="lzK-JQ-Sf7">
-                                <rect key="frame" x="30" y="106" width="80" height="80"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lzK-JQ-Sf7">
+                                <rect key="frame" x="30" y="92" width="80" height="80"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="bJF-LF-mMk"/>
@@ -46,23 +50,30 @@
                                 </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gq-Yc-HnZ">
-                                <rect key="frame" x="130" y="111" width="43" height="17"/>
+                                <rect key="frame" x="130" y="97" width="43" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会员等级:新手妈妈" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y3z-KY-EmK">
-                                <rect key="frame" x="130" y="137.5" width="230" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会员等级:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y3z-KY-EmK">
+                                <rect key="frame" x="130" y="123.5" width="61.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="经验值:100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJu-Cg-35D">
-                                <rect key="frame" x="130" y="163" width="75.5" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="经验值:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJu-Cg-35D">
+                                <rect key="frame" x="130" y="149" width="50.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZOC-l2-AuC">
+                                <rect key="frame" x="201.5" y="125" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="Obb-Jc-cHh"/>
+                                    <constraint firstAttribute="width" constant="15" id="ncZ-9H-kLh"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -70,14 +81,15 @@
                             <constraint firstItem="lzK-JQ-Sf7" firstAttribute="centerY" secondItem="lvZ-YA-QGH" secondAttribute="centerY" constant="32" id="Efj-BR-Iv8"/>
                             <constraint firstItem="Y3z-KY-EmK" firstAttribute="leading" secondItem="lzK-JQ-Sf7" secondAttribute="trailing" constant="20" id="Fuq-Pl-pB2"/>
                             <constraint firstItem="5gq-Yc-HnZ" firstAttribute="top" secondItem="lzK-JQ-Sf7" secondAttribute="top" constant="5" id="ICV-e0-tHP"/>
+                            <constraint firstItem="ZOC-l2-AuC" firstAttribute="centerY" secondItem="Y3z-KY-EmK" secondAttribute="centerY" id="Ikh-B2-aVy"/>
                             <constraint firstItem="UJu-Cg-35D" firstAttribute="leading" secondItem="lzK-JQ-Sf7" secondAttribute="trailing" constant="20" id="LQw-E6-Oct"/>
                             <constraint firstItem="lvZ-YA-QGH" firstAttribute="leading" secondItem="GtI-lX-gs8" secondAttribute="leading" id="RGb-Is-89m"/>
-                            <constraint firstAttribute="trailing" secondItem="Y3z-KY-EmK" secondAttribute="trailing" constant="10" id="UxD-W2-9si"/>
                             <constraint firstItem="UJu-Cg-35D" firstAttribute="bottom" secondItem="lzK-JQ-Sf7" secondAttribute="bottom" constant="-5" id="bnW-bb-hI4"/>
                             <constraint firstItem="Y3z-KY-EmK" firstAttribute="centerY" secondItem="lzK-JQ-Sf7" secondAttribute="centerY" id="cX8-wC-l26"/>
                             <constraint firstItem="5gq-Yc-HnZ" firstAttribute="leading" secondItem="lzK-JQ-Sf7" secondAttribute="trailing" constant="20" id="eoT-rT-HJR"/>
                             <constraint firstAttribute="trailing" secondItem="lvZ-YA-QGH" secondAttribute="trailing" id="hda-bK-zlm"/>
                             <constraint firstItem="lvZ-YA-QGH" firstAttribute="top" secondItem="GtI-lX-gs8" secondAttribute="top" id="qYH-wM-Vua"/>
+                            <constraint firstItem="ZOC-l2-AuC" firstAttribute="leading" secondItem="Y3z-KY-EmK" secondAttribute="trailing" constant="10" id="rXD-J0-xud"/>
                             <constraint firstItem="lzK-JQ-Sf7" firstAttribute="leading" secondItem="GtI-lX-gs8" secondAttribute="leading" constant="30" id="y7I-t9-gp9"/>
                         </constraints>
                     </view>
@@ -122,7 +134,7 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-69" y="70"/>
+            <point key="canvasLocation" x="-68" y="16"/>
         </view>
         <tapGestureRecognizer id="Bmt-d7-Xtz" userLabel="个人信息">
             <connections>
@@ -133,6 +145,5 @@
     <resources>
         <image name="my-photo" width="375" height="275"/>
         <image name="my-set" width="22" height="22"/>
-        <image name="我的头像" width="80" height="80"/>
     </resources>
 </document>

@@ -18,4 +18,6 @@ typedef void(^GLCommunity_PostControllerBlock)(NSString *praiseNum,NSString *fab
 
 @property (nonatomic, copy)GLCommunity_PostControllerBlock block;
 
+@property (nonatomic, assign)BOOL isCommenting;//是否需要默认评论框成为第一反应控件
+
 @end

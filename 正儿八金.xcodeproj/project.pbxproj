@@ -177,6 +177,9 @@
 		4AB993141F6A9D4500DE5590 /* GLMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AB993121F6A9D4500DE5590 /* GLMessageCell.xib */; };
 		4AB993171F6AA1C400DE5590 /* yindaotuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB993161F6AA1C400DE5590 /* yindaotuViewController.m */; };
 		4AF106F61F78A7C100CB51FA /* GLPublish_CommunityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF106F51F78A7C100CB51FA /* GLPublish_CommunityModel.m */; };
+		4AF20BF81FA95735009AEC48 /* GLCommunity_FollowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF20BF71FA95735009AEC48 /* GLCommunity_FollowModel.m */; };
+		4AF20BFE1FA9C1E0009AEC48 /* GLHomePageNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF20BFC1FA9C1E0009AEC48 /* GLHomePageNoticeView.m */; };
+		4AF20BFF1FA9C1E0009AEC48 /* GLHomePageNoticeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AF20BFD1FA9C1E0009AEC48 /* GLHomePageNoticeView.xib */; };
 		4AFBF7B11F725392001915DD /* GLCommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFBF7B01F725392001915DD /* GLCommentListModel.m */; };
 		62DDAB3E488A5881405D5AFA /* libPods-正儿八金.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 164A41A728AEAD2883C7498C /* libPods-正儿八金.a */; };
 		F977CD431FA062C3003596E7 /* MBProgressHUD+LB.m in Sources */ = {isa = PBXBuildFile; fileRef = F977CD421FA062C3003596E7 /* MBProgressHUD+LB.m */; };
@@ -862,6 +865,11 @@
 		4AB993161F6AA1C400DE5590 /* yindaotuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = yindaotuViewController.m; sourceTree = "<group>"; };
 		4AF106F41F78A7C100CB51FA /* GLPublish_CommunityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLPublish_CommunityModel.h; sourceTree = "<group>"; };
 		4AF106F51F78A7C100CB51FA /* GLPublish_CommunityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLPublish_CommunityModel.m; sourceTree = "<group>"; };
+		4AF20BF61FA95735009AEC48 /* GLCommunity_FollowModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCommunity_FollowModel.h; sourceTree = "<group>"; };
+		4AF20BF71FA95735009AEC48 /* GLCommunity_FollowModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCommunity_FollowModel.m; sourceTree = "<group>"; };
+		4AF20BFB1FA9C1E0009AEC48 /* GLHomePageNoticeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHomePageNoticeView.h; sourceTree = "<group>"; };
+		4AF20BFC1FA9C1E0009AEC48 /* GLHomePageNoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLHomePageNoticeView.m; sourceTree = "<group>"; };
+		4AF20BFD1FA9C1E0009AEC48 /* GLHomePageNoticeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLHomePageNoticeView.xib; sourceTree = "<group>"; };
 		4AFBF7AF1F725392001915DD /* GLCommentListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLCommentListModel.h; path = "正儿八金/社区/帖子详情/Model/GLCommentListModel.h"; sourceTree = SOURCE_ROOT; };
 		4AFBF7B01F725392001915DD /* GLCommentListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLCommentListModel.m; path = "正儿八金/社区/帖子详情/Model/GLCommentListModel.m"; sourceTree = SOURCE_ROOT; };
 		6B31BB0DBF2BD8D4ACBD79BB /* Pods-正儿八金.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-正儿八金.debug.xcconfig"; path = "Pods/Target Support Files/Pods-正儿八金/Pods-正儿八金.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1834,6 +1842,7 @@
 				4AB993151F6AA1C400DE5590 /* yindaotuViewController.h */,
 				4AB993161F6AA1C400DE5590 /* yindaotuViewController.m */,
 				4A605ED31F67CC9F00F80666 /* 登录注册 */,
+				4AF20BF91FA9C1E0009AEC48 /* 公告 */,
 				4A73CE8B1F60D7550071C559 /* 首页 */,
 				4A73CE931F60D7550071C559 /* 社区 */,
 				4A0E4B411F6A153800EBADE8 /* 发布 */,
@@ -2449,6 +2458,7 @@
 			children = (
 				4AAE8EFE1F6670C100AC549D /* Controller */,
 				4AAE8F061F6670C100AC549D /* View */,
+				4AF20BF51FA95713009AEC48 /* Model */,
 			);
 			path = "社区首页";
 			sourceTree = "<group>";
@@ -2651,6 +2661,33 @@
 				4AB993101F6A9D4500DE5590 /* GLMessageCell.h */,
 				4AB993111F6A9D4500DE5590 /* GLMessageCell.m */,
 				4AB993121F6A9D4500DE5590 /* GLMessageCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4AF20BF51FA95713009AEC48 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4AF20BF61FA95735009AEC48 /* GLCommunity_FollowModel.h */,
+				4AF20BF71FA95735009AEC48 /* GLCommunity_FollowModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4AF20BF91FA9C1E0009AEC48 /* 公告 */ = {
+			isa = PBXGroup;
+			children = (
+				4AF20BFA1FA9C1E0009AEC48 /* View */,
+			);
+			path = "公告";
+			sourceTree = "<group>";
+		};
+		4AF20BFA1FA9C1E0009AEC48 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4AF20BFB1FA9C1E0009AEC48 /* GLHomePageNoticeView.h */,
+				4AF20BFC1FA9C1E0009AEC48 /* GLHomePageNoticeView.m */,
+				4AF20BFD1FA9C1E0009AEC48 /* GLHomePageNoticeView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4422,6 +4459,7 @@
 				4A73CEC31F60E31E0071C559 /* GLHome_NewController.xib in Resources */,
 				4A5B48D51F68DA5700AD2F0D /* GLMine_SetupCell.xib in Resources */,
 				4A73CF5A1F6159020071C559 /* GLHome_NewCell.xib in Resources */,
+				4AF20BFF1FA9C1E0009AEC48 /* GLHomePageNoticeView.xib in Resources */,
 				F977D0CE1FA0693A003596E7 /* NTESTeamMeetingCallingViewController.xib in Resources */,
 				F977D08A1FA0693A003596E7 /* NTESSearchTeamViewController.xib in Resources */,
 				F977D09C1FA0693A003596E7 /* WalletResource.bundle in Resources */,
@@ -4678,6 +4716,7 @@
 				4A605F101F67EB5A00F80666 /* UIViewController+WXSTransitionProperty.m in Sources */,
 				F977D2021FA07DD4003596E7 /* PinyinHelper.m in Sources */,
 				F977D0BA1FA0693A003596E7 /* NTESGalleryViewController.m in Sources */,
+				4AF20BFE1FA9C1E0009AEC48 /* GLHomePageNoticeView.m in Sources */,
 				F977D0E31FA0693A003596E7 /* IJKSDLGLView.m in Sources */,
 				F977D1EF1FA07DD3003596E7 /* AnotherSearchViewController.m in Sources */,
 				F977D0A11FA0693A003596E7 /* NTESChartletAttachment.m in Sources */,
@@ -4755,6 +4794,7 @@
 				F977D11E1FA0693B003596E7 /* NSString+NIMKit.m in Sources */,
 				F977D0BE1FA0693A003596E7 /* NTESSessionRemoteHistoryViewController.m in Sources */,
 				F977D0761FA0693A003596E7 /* NTESChatroomTextContentConfig.m in Sources */,
+				4AF20BF81FA95735009AEC48 /* GLCommunity_FollowModel.m in Sources */,
 				4A5B48B51F68CABD00AD2F0D /* GLMineController.m in Sources */,
 				4A0E4BA51F6A504600EBADE8 /* UIImage+HXExtension.m in Sources */,
 				F977D1FA1FA07DD4003596E7 /* LBSerachFriendTableViewCell.m in Sources */,
