@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
 @interface GLHomePageNoticeView : UIView
 
@@ -16,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;//内容Label
-
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewH;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewW;

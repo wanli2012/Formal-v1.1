@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="GLCommunity_ReportCell">
+            <rect key="frame" x="0.0" y="0.0" width="199" height="48"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="199" height="48"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eSO-K5-Iie">
+                        <rect key="frame" x="10" y="16.5" width="15" height="15"/>
+                        <color key="backgroundColor" red="1" green="0.1015892991" blue="0.054391829209999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="6qd-BZ-ru6"/>
+                            <constraint firstAttribute="height" constant="15" id="e6s-BF-00w"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暴力" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ds-JS-Pxs">
+                        <rect key="frame" x="35" y="17" width="154" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="eSO-K5-Iie" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="0Vc-w4-qXm"/>
+                <constraint firstAttribute="trailing" secondItem="7ds-JS-Pxs" secondAttribute="trailing" constant="10" id="1Lq-z8-td5"/>
+                <constraint firstItem="7ds-JS-Pxs" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="9j1-Sl-rwS"/>
+                <constraint firstItem="eSO-K5-Iie" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="DDJ-Fd-ShR"/>
+                <constraint firstItem="7ds-JS-Pxs" firstAttribute="leading" secondItem="eSO-K5-Iie" secondAttribute="trailing" constant="10" id="bvB-C4-RZR"/>
+            </constraints>
+            <size key="customSize" width="199" height="48"/>
+            <connections>
+                <outlet property="selectImageV" destination="eSO-K5-Iie" id="rWA-Z8-MT5"/>
+                <outlet property="titleLabel" destination="7ds-JS-Pxs" id="kmf-uH-PR2"/>
+            </connections>
+            <point key="canvasLocation" x="-23.5" y="57"/>
+        </collectionViewCell>
+    </objects>
+</document>

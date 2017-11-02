@@ -63,42 +63,60 @@
 
 - (CGFloat)cellHeight{
     
-    CGSize titleSize = [self.post.content boundingRectWithSize:CGSizeMake(kSCREEN_WIDTH - 20, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil].size;
+//    CGSize titleSize = [self.post.content boundingRectWithSize:CGSizeMake(kSCREEN_WIDTH - 20, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil].size;
+//
+//    CGFloat collectionHeight = 0.0;
+//    if(self.post.picture.count == 0){
+//        collectionHeight = 0;
+//    }else if(self.post.picture.count == 1) {
+//        //        collectionHeight = kSCREEN_WIDTH - 30;
+//        collectionHeight = (kSCREEN_WIDTH - 35)/2 + 10;
+//    }else if(self.post.picture.count == 2){
+//        collectionHeight = (kSCREEN_WIDTH - 35)/2 + 10;
+//    }else if (self.post.picture.count== 3){
+//        collectionHeight = (kSCREEN_WIDTH - 40)/3 + 10;
+//    }else if(self.post.picture.count > 3 && self.post.picture.count <= 6){
+//        collectionHeight = 2 *(kSCREEN_WIDTH - 40)/3 + 15;
+//    }else if(self.post.picture.count > 6){
+//        collectionHeight = 3 *(kSCREEN_WIDTH - 40)/3 + 20;
+//    }
+//
+//    
+//    return 140 + titleSize.height + collectionHeight;
     
-    CGFloat collectionHeight;
     
-    if (self.post.picture.count == 1) {
-        collectionHeight = kSCREEN_WIDTH - 20;
+    
+    CGSize contentSize = [self.post.content boundingRectWithSize:CGSizeMake(kSCREEN_WIDTH - 20, MAXFLOAT) options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil].size;
+    
+    CGFloat collectionHeight = 0.0;
+    if(self.post.picture.count == 0){
+        collectionHeight = 0;
+    }else if(self.post.picture.count == 1) {
+        //        collectionHeight = kSCREEN_WIDTH - 30;
+        collectionHeight = (kSCREEN_WIDTH - 35)/2 + 10;
     }else if(self.post.picture.count == 2){
-        collectionHeight = (kSCREEN_WIDTH - 30)/2;
+        collectionHeight = (kSCREEN_WIDTH - 35)/2 + 10;
     }else if (self.post.picture.count== 3){
-        collectionHeight = (kSCREEN_WIDTH - 40)/3;
+        collectionHeight = (kSCREEN_WIDTH - 40)/3 + 10;
     }else if(self.post.picture.count > 3 && self.post.picture.count <= 6){
-        collectionHeight = 2 *(kSCREEN_WIDTH - 40)/3 + 10;
+        collectionHeight = 2 *(kSCREEN_WIDTH - 40)/3 + 15;
     }else if(self.post.picture.count > 6){
         collectionHeight = 3 *(kSCREEN_WIDTH - 40)/3 + 20;
     }
     
-    return 140 + titleSize.height + collectionHeight;
-//    //title的高度
-//    CGSize titleSize = [self.post.title boundingRectWithSize:CGSizeMake(kSCREEN_WIDTH - 60, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil].size;
-//    
-////    //内容的高度
-//    CGFloat height = 0.0;
-//    
-////    for (int i = 0; i< [self.main.reply count]; i ++) {
-////        GLCommunity_PostCommentModel *model = self.commentArr[i];
-////        
-//        NSString *str = [NSString stringWithFormat:@"%@",self.post.content];
-//    
-//        CGSize commentSize = [str boundingRectWithSize:CGSizeMake(kSCREEN_WIDTH - 80, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil].size;
-//    
-//        height = height + commentSize.height + 5;
-//    
-////    }
-//    
-//    return 70 + titleSize.height + height;
+    if(self.post.title.length == 0){//没有title
+        if (self.post.picture.count == 0) {//也没有图片,在contentLabel底部有10的间距
+            
+            return 115 + contentSize.height + collectionHeight;
+            
+        }else{//有图片,在contentLabel底部去掉10的间距 间距在collectinView里面设置
+            
+            return 105 + contentSize.height + collectionHeight;
+        }
+    }
     
+    return 105 + 25 + contentSize.height + collectionHeight;
+
 }
 
 @end

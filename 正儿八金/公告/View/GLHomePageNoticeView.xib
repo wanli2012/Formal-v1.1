@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="公告" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hy-TK-b1h">
-                    <rect key="frame" x="10" y="10" width="297" height="20.5"/>
+                    <rect key="frame" x="10" y="10" width="297" height="20"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.1072334722" green="0.61346602439999998" blue="0.7763050199" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -31,25 +31,15 @@
                                     <rect key="frame" x="5" y="0.0" width="307" height="228"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </webView>
-                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAw-Tx-zvC">
-                                    <rect key="frame" x="0.0" y="0.0" width="317" height="233"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="Wy0-cs-qe3" firstAttribute="top" secondItem="xbG-O6-qag" secondAttribute="top" id="4w4-jT-C8C"/>
                                 <constraint firstAttribute="trailing" secondItem="Wy0-cs-qe3" secondAttribute="trailing" constant="5" id="9wy-sq-Koo"/>
                                 <constraint firstAttribute="bottom" secondItem="Wy0-cs-qe3" secondAttribute="bottom" constant="5" id="GUo-ut-zou"/>
-                                <constraint firstAttribute="bottom" secondItem="iAw-Tx-zvC" secondAttribute="bottom" id="KdZ-gj-LY0"/>
                                 <constraint firstAttribute="height" constant="233" id="Pjr-fM-3kx"/>
-                                <constraint firstItem="iAw-Tx-zvC" firstAttribute="top" secondItem="xbG-O6-qag" secondAttribute="top" id="V55-h5-1lc"/>
                                 <constraint firstAttribute="width" constant="317" id="Xsh-s2-VmK"/>
-                                <constraint firstAttribute="trailing" secondItem="iAw-Tx-zvC" secondAttribute="trailing" id="bnI-nj-Fa2"/>
                                 <constraint firstItem="Wy0-cs-qe3" firstAttribute="leading" secondItem="xbG-O6-qag" secondAttribute="leading" constant="5" id="eRJ-F8-0g8"/>
-                                <constraint firstItem="iAw-Tx-zvC" firstAttribute="leading" secondItem="xbG-O6-qag" secondAttribute="leading" id="z7c-w1-p3c"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -61,14 +51,14 @@
                     </constraints>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTg-tL-q1F">
-                    <rect key="frame" x="272" y="2.5" width="35" height="35"/>
-                    <color key="backgroundColor" red="0.052515827119999997" green="0.36203587059999998" blue="0.90829825399999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="267" y="0.0" width="40" height="40"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="35" id="JeJ-wY-zh0"/>
-                        <constraint firstAttribute="width" constant="35" id="Z19-VS-em7"/>
+                        <constraint firstAttribute="height" constant="40" id="JeJ-wY-zh0"/>
+                        <constraint firstAttribute="width" constant="40" id="Z19-VS-em7"/>
                     </constraints>
-                    <inset key="imageEdgeInsets" minX="6" minY="6" maxX="6" maxY="6"/>
-                    <state key="normal" image="广告取消"/>
+                    <inset key="imageEdgeInsets" minX="5" minY="3" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" image="X"/>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -87,7 +77,6 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="cancelBt" destination="bTg-tL-q1F" id="bSE-9h-q2z"/>
-                <outlet property="contentLabel" destination="iAw-Tx-zvC" id="oRd-QF-OwW"/>
                 <outlet property="contentView" destination="xbG-O6-qag" id="YLr-Ia-pwG"/>
                 <outlet property="contentViewH" destination="Pjr-fM-3kx" id="7it-H0-Njd"/>
                 <outlet property="contentViewW" destination="Xsh-s2-VmK" id="nro-PW-suL"/>
@@ -99,6 +88,6 @@
         </view>
     </objects>
     <resources>
-        <image name="广告取消" width="25" height="25"/>
+        <image name="X" width="22" height="22"/>
     </resources>
 </document>

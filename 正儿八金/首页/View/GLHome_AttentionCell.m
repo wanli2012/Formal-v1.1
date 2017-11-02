@@ -67,7 +67,12 @@
     
     _model = model;
     
-    self.nameLabel.text = model.user_name;
+    if (model.user_name.length == 0) {
+        self.nameLabel.text = model.phone;
+    }else{
+        
+        self.nameLabel.text = model.user_name;
+    }
     [self.picImageV sd_setImageWithURL:[NSURL URLWithString:model.portrait] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
     
     self.communityLabel.text = [formattime formateTime:model.post.time];
@@ -102,14 +107,7 @@
         
         [self.praiseBtn setImage:[UIImage imageNamed:@"赞"] forState:UIControlStateNormal];
     }
-    
-//    if (model.post.picture.count == 4) {
-//        
-//        self.collectionViewWidth.constant = 2 *(kSCREEN_WIDTH - 40)/3 + 36;
-//        
-//    }else{
-//        self.collectionViewWidth.constant = kSCREEN_WIDTH;
-//    }
+
     
     CGFloat collectionHeight = 0.0;
     if(model.post.picture.count == 0){
@@ -198,6 +196,26 @@
         
         [self.commentBtn setImage:[UIImage imageNamed:@"赞"] forState:UIControlStateNormal];
     }
+    
+    
+    CGFloat collectionHeight = 0.0;
+    if(postModel.post.picture.count == 0){
+        collectionHeight = 0;
+    }else if(postModel.post.picture.count == 1) {
+        collectionHeight = (kSCREEN_WIDTH - 35)/2 + 10;
+    }else if(postModel.post.picture.count == 2){
+        collectionHeight = (kSCREEN_WIDTH - 35)/2 + 10;
+    }else if (postModel.post.picture.count== 3){
+        collectionHeight = (kSCREEN_WIDTH - 40)/3 + 10;
+    }else if(postModel.post.picture.count > 3 && postModel.post.picture.count <= 6){
+        collectionHeight = 2 *(kSCREEN_WIDTH - 40)/3 + 15;
+    }else if(postModel.post.picture.count > 6){
+        collectionHeight = 3 *(kSCREEN_WIDTH - 40)/3 + 20;
+    }
+    
+    self.collectionViewHeight.constant = collectionHeight;
+    
+    
     //如果没有地址,隐藏按钮
     if(postModel.post.location.length == 0){
         self.addressBtn.hidden = YES;
@@ -224,13 +242,24 @@
     if (postModel.post.title.length == 0) {
         self.titleLabel.hidden = YES;
         self.contentLabelTopConstrait.constant = 10;
+        self.eliteImageV.hidden = YES;
     }else{
+        //是否显示精华帖标志
+        if ([postModel.post.elite integerValue] == 1) {//1是精华帖 2不是精华帖
+            self.eliteImageV.hidden = NO;
+            self.titleLabelRightConstait.constant = 37;
+        }else{
+            self.eliteImageV.hidden = YES;
+            self.titleLabelRightConstait.constant = 10;
+        }
         self.titleLabel.hidden = NO;
         self.contentLabelTopConstrait.constant = 35;
     }
+
     
     [self.collectionView reloadData];
 }
+
 #pragma mark - GLHomeAttentionCellDelegate
 //评论
 - (IBAction)comment:(id)sender {

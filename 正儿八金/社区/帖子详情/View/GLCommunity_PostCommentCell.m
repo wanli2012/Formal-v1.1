@@ -44,7 +44,7 @@
 - (void)personInfo {
     
     if ([self.delegate respondsToSelector:@selector(personInfo:cellIndex:isSecommend:)]) {
-        [self.delegate personInfo:-1 cellIndex:self.index isSecommend:nil];
+        [self.delegate personInfo:-1 cellIndex:self.index isSecommend:NO];
     }
     
 }
@@ -53,7 +53,15 @@
     
     self.commentLabel.text = model.content;
     [self.picImageV sd_setImageWithURL:[NSURL URLWithString:model.portrait] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
-    self.nameLabel.text = model.user_name;
+    
+    if (model.user_name.length == 0) {
+        
+        self.nameLabel.text = model.phone;
+    }else{
+        
+        self.nameLabel.text = model.user_name;
+    }
+    
     self.dateLabel.text = [formattime formateTimeOfDate:model.commenttiem];
     [self.praiseBtn setTitle:model.reply_laud forState:UIControlStateNormal];
     [self.commentBtn setTitle:model.reply_publish forState:UIControlStateNormal];

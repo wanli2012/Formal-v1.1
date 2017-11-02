@@ -10,6 +10,7 @@
 #import "GLHome_AttentionCell.h"
 #import "GLCommunity_PostController.h"
 
+
 @interface GLCommunity_DetailController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

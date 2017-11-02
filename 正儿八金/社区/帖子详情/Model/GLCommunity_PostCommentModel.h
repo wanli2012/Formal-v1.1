@@ -29,6 +29,7 @@
 @property (nonatomic, copy)NSString *commenttiem;
 @property (nonatomic, copy)NSString *mid;
 @property (nonatomic, copy)NSString *user_name;
+@property (nonatomic, copy)NSString *phone;
 @property (nonatomic, copy)NSString *portrait;
 @property (nonatomic, copy)NSString *group_id;
 @property (nonatomic, copy)NSString *reply_laud;
@@ -53,6 +54,7 @@
 @property (nonatomic, copy)NSString *pv;
 @property (nonatomic, copy)NSString *praise;
 @property (nonatomic, copy)NSString *fabulous;
+@property (nonatomic, strong)NSString *elite;//1是精华帖 2不是精华帖
 
 @property (nonatomic, assign)CGFloat cellHeight;//cell总高度
 
@@ -79,6 +81,7 @@
 @property (nonatomic, copy)NSString *mid;
 @property (nonatomic, copy)NSString *group_id;
 @property (nonatomic, copy)NSString *user_name;
+@property (nonatomic, copy)NSString *phone;
 @property (nonatomic, copy)NSString *portrait;
 @property (nonatomic, strong)postModel *post;
 @property (nonatomic, strong)NSArray <mainModel *> *main;

@@ -60,7 +60,12 @@
         [self.priseBtn setImage:[UIImage imageNamed:@"赞"] forState:UIControlStateNormal];
     }
     
-    self.nameLabel.text = model.user_name;
+    if (model.user_name.length == 0) {
+        self.nameLabel.text = model.phone;
+    }else{
+        self.nameLabel.text = model.user_name;
+        
+    }
     self.dateLabel.text = [formattime formateTimeOfDate:model.addtime];
     [self.priseBtn setTitle:model.laud forState:UIControlStateNormal];
 
@@ -71,8 +76,13 @@
         self.contentLabel.selectBlobk = nil;
         
     }else{
-        
-        NSString *str = [NSString stringWithFormat:@"回复%@: %@",model.nickname,model.content];
+        NSString *str;
+        if (model.nickname.length == 0) {
+            
+            str = [NSString stringWithFormat:@"回复%@: %@",model.mphone,model.content];
+        }else{
+            str = [NSString stringWithFormat:@"回复%@: %@",model.nickname,model.content];
+        }
         NSMutableAttributedString *noteStr = [[NSMutableAttributedString alloc] initWithString:str];
         NSRange redRange = NSMakeRange(2, [[noteStr string] rangeOfString:@":"].location - 2);
         [noteStr addAttribute:NSForegroundColorAttributeName value:MAIN_COLOR range:redRange];

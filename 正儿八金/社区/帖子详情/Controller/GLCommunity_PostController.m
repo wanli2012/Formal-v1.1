@@ -11,6 +11,7 @@
 #import "GLCommunity_PostCommentCell.h"
 #import "GLCommentListController.h"
 #import "GLMine_MyPostController.h"
+#import "GLCommunity_ReportPostController.h"
 
 //#import "GLCommunity_PostCommentModel.h"
 //#import "GLCommunity_PostMainCommentModel.h"
@@ -82,7 +83,7 @@
     }
     
 }
-
+#pragma mark - 获取数据
 - (void)getData:(BOOL)status {
     
     if (status){
@@ -175,12 +176,23 @@
     
 }
 
-//举报
+#pragma mark -举报
 - (IBAction)report:(id)sender {
-    NSLog(@"我要举报");
+    
+    self.hidesBottomBarWhenPushed = YES;
+    GLCommunity_ReportPostController *reportVC = [[GLCommunity_ReportPostController alloc] init];
+    reportVC.imageUrl = self.model.portrait;
+    reportVC.name = self.model.user_name;
+    reportVC.postTitle = self.model.post.title;
+    reportVC.mid = self.model.mid;
+    reportVC.group_id = self.model.group_id;
+    reportVC.post_id = self.model.post.post_id;
+    
+    [self.navigationController pushViewController:reportVC animated:YES];
+
 }
 
-//发送消息
+#pragma mark - 发送消息
 - (IBAction)sendMessage {
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
@@ -201,14 +213,17 @@
         [self endRefresh];
         [_loadV removeloadview];
         
-        if ([responseObject[@"code"] integerValue] == 104) {
+        if ([responseObject[@"code"] integerValue] == SUCCESS_CODE) {
             
             [MBProgressHUD showSuccess:responseObject[@"message"]];
+            
             
             self.commentTF.text = nil;
             [self.commentTF resignFirstResponder];
             
-        }else if([responseObject[@"code"] integerValue] == 108){
+            [self getData:YES];
+            
+        }else if([responseObject[@"code"] integerValue] == NO_MORE_CODE){
             if(_page != 1){
                 [MBProgressHUD showError:responseObject[@"message"]];
             }
@@ -240,6 +255,7 @@
 
 #pragma mark - GLCommunity_PostCommentCellDelegate
 
+#pragma mark 查看所有二级评论
 - (void)pushController:(NSInteger )index {
     
     self.hidesBottomBarWhenPushed = YES;
@@ -265,6 +281,8 @@
 
     [self.navigationController pushViewController:commentListVC animated:YES];
 }
+
+#pragma mark 点赞
 - (void)prise:(NSInteger)index{
     
     if([UserModel defaultUser].loginstatus == NO){

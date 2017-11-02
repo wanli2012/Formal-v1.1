@@ -14,21 +14,6 @@
     
     CGSize contentSize = [self.post.content boundingRectWithSize:CGSizeMake(kSCREEN_WIDTH - 20, MAXFLOAT) options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil].size;
     
-//    CGFloat contentHeight = 0.0;
-//    static UILabel *tempLabel;
-//    const CGFloat space = 10;
-//    if (!tempLabel)
-//    {
-//        tempLabel = [[UILabel alloc] initWithFrame:(CGRect){0, 0, kSCREEN_WIDTH - space * 2, MAXFLOAT}];
-//        tempLabel.font = [UIFont systemFontOfSize:14];
-//    }
-//    
-//    tempLabel.text = self.post.content;
-//    [tempLabel sizeToFit];
-//    
-//    contentHeight = tempLabel.frame.size.height;
-    
-    
     CGFloat collectionHeight = 0.0;
     if(self.post.picture.count == 0){
         collectionHeight = 0;

@@ -85,7 +85,12 @@
 - (void)setHeader{
 
     [self.picImageV sd_setImageWithURL:[NSURL URLWithString:self.model.portrait] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
-    self.nameLabel.text = self.model.user_name;
+    
+    if (self.model.user_name.length == 0) {
+        self.nameLabel.text = self.model.phone;
+    }else{
+        self.nameLabel.text = self.model.user_name;
+    }
     self.dateLabel.text = [formattime formateTimeOfDate:self.model.commenttiem];
     self.commentLabel.text = self.model.content;
     [self.priseBtn setTitle:self.model.reply_laud forState:UIControlStateNormal];
@@ -136,7 +141,7 @@
         [self endRefresh];
         [_loadV removeloadview];
         
-        if ([responseObject[@"code"] integerValue] == 104) {
+        if ([responseObject[@"code"] integerValue] == SUCCESS_CODE) {
             
             if ([responseObject[@"data"] count] == 0) {
                 
@@ -154,7 +159,7 @@
                 [self.dataSource addObject:model];
             }
             
-        }else if([responseObject[@"code"] integerValue] == 108){
+        }else if([responseObject[@"code"] integerValue] == NO_MORE_CODE){
             if(_page != 1){
                 [MBProgressHUD showError:responseObject[@"message"]];
             }
@@ -258,8 +263,14 @@
     NSLog(@"个人信息");
 }
 
+#pragma mark - 直接评论 一级评论
 - (IBAction)comment:(id)sender {
 
+    if([self.model.mid isEqualToString:[UserModel defaultUser].userId]){
+        [MBProgressHUD showError:@"不能回复自己!"];
+        return;
+    }
+    
     self.commentView.alpha = 1;
     [self.commentTF becomeFirstResponder];
     self.commentTF.placeholder = [NSString stringWithFormat:@"回复%@",self.model.user_name];
@@ -277,6 +288,7 @@
     dic[@"post_id"] = self.post_id;
     dic[@"content"] = self.commentTF.text;
     dic[@"port"] = @"1";
+    dic[@"mid"] = self.model.mid;//一级评论人id
 
     dic[@"comm_id"] = self.model.comm_id;
     
@@ -286,13 +298,13 @@
 
     }
     
-    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    _loadV=[LoadWaitView addloadview:CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT - 64) tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:kCOMMENT_POST_URL paramDic:dic finish:^(id responseObject) {
         
         [self endRefresh];
         [_loadV removeloadview];
         
-        if ([responseObject[@"code"] integerValue] == 104) {
+        if ([responseObject[@"code"] integerValue] == SUCCESS_CODE) {
             
             [MBProgressHUD showSuccess:responseObject[@"message"]];
             
@@ -371,7 +383,7 @@
     personVC.targetGroupID = model.identity;
     
     [self.commentTF resignFirstResponder];
-    [self.navigationController pushViewController:personVC animated:nil];
+    [self.navigationController pushViewController:personVC animated:NO];
     
 }
 
@@ -406,10 +418,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    commentModel *model = self.dataSource[indexPath.row];
+   
+    if([model.mid isEqualToString:[UserModel defaultUser].userId]){
+        [MBProgressHUD showError:@"不能回复自己!"];
+        return;
+    }
+    
     self.commentView.alpha = 1;
     [self.commentTF becomeFirstResponder];
     
-    commentModel *model = self.dataSource[indexPath.row];
     self.commentTF.placeholder = [NSString stringWithFormat:@"回复%@",model.user_name];
     _commentIndex = indexPath.row;
 }

@@ -67,7 +67,7 @@
     self.tableView.mj_footer = footer;
     
     [self getData:YES];
-//    [self initInterDataSorceinfomessage];//公告
+    [self initInterDataSorceinfomessage];//公告
     
     
 }
@@ -148,9 +148,7 @@
     
 }
 
-
 #pragma mark ----公告
-
 -(void)initInterDataSorceinfomessage{
     
     [[NSUserDefaults standardUserDefaults]setObject:@"NO" forKey:@"isShow"];//展示过就不要展示了，重启App在调
@@ -163,17 +161,18 @@
     [window addSubview:self.maskV];
     [window addSubview:self.noticeView];
     
-    [NetworkManager requestPOSTWithURLStr:kNOTICE_URL paramDic:@{} finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:kNOTICE_URL paramDic:@{@"port":@"2"} finish:^(id responseObject) {
         
         if ([responseObject[@"code"] integerValue] == SUCCESS_CODE) {
             
             self.noticeView.titleLabel.text = responseObject[@"data"][@"title"];
+            
 //            [self.noticeView.webView loadHTMLString:responseObject[@"data"][@"content"] baseURL:nil];
             
-            NSString *htmlString;
+//            NSString *htmlString;
             
 //            UIFont *font = [UIFont systemFontOfSize:20];
-            CGFloat lineSpace = 10;
+//            CGFloat lineSpace = 10;
             
 //            NSString *rgbString = [self JSONObjectFromUIColor:fontColor];
             
@@ -541,25 +540,27 @@
     if (!_noticeView) {
         
         _noticeView = [[NSBundle mainBundle] loadNibNamed:@"GLHomePageNoticeView" owner:nil options:nil].lastObject;
-        
+
         _noticeView.contentViewW.constant = kSCREEN_WIDTH - 40;
-        _noticeView.contentViewH.constant = kSCREEN_HEIGHT / 2 - 30;
+        _noticeView.contentViewH.constant = kSCREEN_HEIGHT / 2 - 40;
         _noticeView.layer.cornerRadius = 5;
         _noticeView.layer.masksToBounds = YES;
         [_noticeView.cancelBt addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+        
         //设置webView
+        _noticeView.webView.scrollView.contentSize = CGSizeMake(kSCREEN_WIDTH - 40, 0);
         _noticeView.webView.scalesPageToFit = YES;
         _noticeView.webView.autoresizesSubviews = NO;
-        _noticeView.webView.autoresizingMask=(UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
+        _noticeView.webView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
         _noticeView.webView.scrollView.bounces = NO;
         
-        //    NSURL *url = [NSURL URLWithString:NOTICE_URL];
-        //    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        //    [_contentView.webView loadRequest:request];
+        _noticeView.webView.backgroundColor = [UIColor clearColor];
+        _noticeView.webView.opaque = NO;
         
-//        _noticeView.backgroundColor = [UIColor redColor];
-
+        [_noticeView.cancelBt setImageEdgeInsets:UIEdgeInsetsMake(13, 13, 13, 13)];
     }
     return _noticeView;
 }
+
+
 @end

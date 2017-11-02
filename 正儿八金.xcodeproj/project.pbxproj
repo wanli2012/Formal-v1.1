@@ -176,6 +176,11 @@
 		4AB993131F6A9D4500DE5590 /* GLMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB993111F6A9D4500DE5590 /* GLMessageCell.m */; };
 		4AB993141F6A9D4500DE5590 /* GLMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AB993121F6A9D4500DE5590 /* GLMessageCell.xib */; };
 		4AB993171F6AA1C400DE5590 /* yindaotuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB993161F6AA1C400DE5590 /* yindaotuViewController.m */; };
+		4AE5E1101FAB109000945CF2 /* GLCommunity_ReportPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE5E10E1FAB109000945CF2 /* GLCommunity_ReportPostController.m */; };
+		4AE5E1111FAB109000945CF2 /* GLCommunity_ReportPostController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AE5E10F1FAB109000945CF2 /* GLCommunity_ReportPostController.xib */; };
+		4AE5E1151FAB169100945CF2 /* GLCommunity_ReportCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE5E1131FAB169100945CF2 /* GLCommunity_ReportCell.m */; };
+		4AE5E1161FAB169100945CF2 /* GLCommunity_ReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AE5E1141FAB169100945CF2 /* GLCommunity_ReportCell.xib */; };
+		4AE5E1191FAB23C600945CF2 /* GLCommunity_ReportModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE5E1181FAB23C600945CF2 /* GLCommunity_ReportModel.m */; };
 		4AF106F61F78A7C100CB51FA /* GLPublish_CommunityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF106F51F78A7C100CB51FA /* GLPublish_CommunityModel.m */; };
 		4AF20BF81FA95735009AEC48 /* GLCommunity_FollowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF20BF71FA95735009AEC48 /* GLCommunity_FollowModel.m */; };
 		4AF20BFE1FA9C1E0009AEC48 /* GLHomePageNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF20BFC1FA9C1E0009AEC48 /* GLHomePageNoticeView.m */; };
@@ -863,6 +868,14 @@
 		4AB993121F6A9D4500DE5590 /* GLMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLMessageCell.xib; sourceTree = "<group>"; };
 		4AB993151F6AA1C400DE5590 /* yindaotuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yindaotuViewController.h; sourceTree = "<group>"; };
 		4AB993161F6AA1C400DE5590 /* yindaotuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = yindaotuViewController.m; sourceTree = "<group>"; };
+		4AE5E10D1FAB109000945CF2 /* GLCommunity_ReportPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCommunity_ReportPostController.h; sourceTree = "<group>"; };
+		4AE5E10E1FAB109000945CF2 /* GLCommunity_ReportPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCommunity_ReportPostController.m; sourceTree = "<group>"; };
+		4AE5E10F1FAB109000945CF2 /* GLCommunity_ReportPostController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLCommunity_ReportPostController.xib; sourceTree = "<group>"; };
+		4AE5E1121FAB169100945CF2 /* GLCommunity_ReportCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCommunity_ReportCell.h; sourceTree = "<group>"; };
+		4AE5E1131FAB169100945CF2 /* GLCommunity_ReportCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCommunity_ReportCell.m; sourceTree = "<group>"; };
+		4AE5E1141FAB169100945CF2 /* GLCommunity_ReportCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLCommunity_ReportCell.xib; sourceTree = "<group>"; };
+		4AE5E1171FAB23C600945CF2 /* GLCommunity_ReportModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCommunity_ReportModel.h; sourceTree = "<group>"; };
+		4AE5E1181FAB23C600945CF2 /* GLCommunity_ReportModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCommunity_ReportModel.m; sourceTree = "<group>"; };
 		4AF106F41F78A7C100CB51FA /* GLPublish_CommunityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLPublish_CommunityModel.h; sourceTree = "<group>"; };
 		4AF106F51F78A7C100CB51FA /* GLPublish_CommunityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLPublish_CommunityModel.m; sourceTree = "<group>"; };
 		4AF20BF61FA95735009AEC48 /* GLCommunity_FollowModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCommunity_FollowModel.h; sourceTree = "<group>"; };
@@ -2370,6 +2383,7 @@
 				4AAE8F0A1F6670C100AC549D /* 社区详情 */,
 				4AAE8F1D1F668C6F00AC549D /* 帖子详情 */,
 				4A605EC51F67B80200F80666 /* 评论列表 */,
+				4AE5E1091FAB102500945CF2 /* 举报 */,
 			);
 			path = "社区";
 			sourceTree = "<group>";
@@ -2661,6 +2675,45 @@
 				4AB993101F6A9D4500DE5590 /* GLMessageCell.h */,
 				4AB993111F6A9D4500DE5590 /* GLMessageCell.m */,
 				4AB993121F6A9D4500DE5590 /* GLMessageCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4AE5E1091FAB102500945CF2 /* 举报 */ = {
+			isa = PBXGroup;
+			children = (
+				4AE5E10A1FAB102500945CF2 /* Controller */,
+				4AE5E10B1FAB102500945CF2 /* Model */,
+				4AE5E10C1FAB102500945CF2 /* View */,
+			);
+			path = "举报";
+			sourceTree = "<group>";
+		};
+		4AE5E10A1FAB102500945CF2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4AE5E10D1FAB109000945CF2 /* GLCommunity_ReportPostController.h */,
+				4AE5E10E1FAB109000945CF2 /* GLCommunity_ReportPostController.m */,
+				4AE5E10F1FAB109000945CF2 /* GLCommunity_ReportPostController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4AE5E10B1FAB102500945CF2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4AE5E1171FAB23C600945CF2 /* GLCommunity_ReportModel.h */,
+				4AE5E1181FAB23C600945CF2 /* GLCommunity_ReportModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4AE5E10C1FAB102500945CF2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4AE5E1121FAB169100945CF2 /* GLCommunity_ReportCell.h */,
+				4AE5E1131FAB169100945CF2 /* GLCommunity_ReportCell.m */,
+				4AE5E1141FAB169100945CF2 /* GLCommunity_ReportCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4432,6 +4485,7 @@
 				F977D0971FA0693A003596E7 /* jrmf.cer in Resources */,
 				F977D0B71FA0693A003596E7 /* NTESFilePreViewController.xib in Resources */,
 				4AAE8F251F668CF200AC549D /* GLCommunity_PostController.xib in Resources */,
+				4AE5E1161FAB169100945CF2 /* GLCommunity_ReportCell.xib in Resources */,
 				4A4950941F5F886600180007 /* Assets.xcassets in Resources */,
 				F977D20B1FA07EAE003596E7 /* PopMenuTableViewCell.xib in Resources */,
 				4A4954D21F5F89A100180007 /* LoadWaitView.xib in Resources */,
@@ -4467,6 +4521,7 @@
 				4A5B48D71F68DDA600AD2F0D /* GLMine_SetupController.xib in Resources */,
 				4AB993011F6A803700DE5590 /* GLPublish_CommunityChooseController.xib in Resources */,
 				F977D1A61FA06A1F003596E7 /* NIMKitSettings.bundle in Resources */,
+				4AE5E1111FAB109000945CF2 /* GLCommunity_ReportPostController.xib in Resources */,
 				4A4954BE1F5F898F00180007 /* loadWait.xcassets in Resources */,
 				4A5B48ED1F69073900AD2F0D /* GLMine_EventController.xib in Resources */,
 				4A5D0D371F6293AF009DD45D /* GLHome_NewsHeaderView.xib in Resources */,
@@ -4540,6 +4595,7 @@
 			files = (
 				F977D0C31FA0693A003596E7 /* NTESVideoViewController.m in Sources */,
 				F977D1491FA0693B003596E7 /* NIMMediaItem.m in Sources */,
+				4AE5E1151FAB169100945CF2 /* GLCommunity_ReportCell.m in Sources */,
 				F977D0561FA0693A003596E7 /* NTESChatroomMemberListViewController.m in Sources */,
 				F977D06A1FA0693A003596E7 /* NTESGroupedDataCollection.m in Sources */,
 				F977D0D61FA0693A003596E7 /* common.c in Sources */,
@@ -4560,6 +4616,7 @@
 				F977D0871FA0693A003596E7 /* NTESRobotCardViewController.m in Sources */,
 				F977D12A1FA0693B003596E7 /* NIMAvatarImageView.m in Sources */,
 				F977D1721FA0693B003596E7 /* NIMSessionListDefaultConfig.m in Sources */,
+				4AE5E1101FAB109000945CF2 /* GLCommunity_ReportPostController.m in Sources */,
 				4A0E4B891F6A504600EBADE8 /* HXAlbumModel.m in Sources */,
 				F977D09D1FA0693A003596E7 /* NTESDemoFetchChatroomTask.m in Sources */,
 				F977D0C71FA0693A003596E7 /* NTESTeamMeetingCalleeInfo.m in Sources */,
@@ -4864,6 +4921,7 @@
 				F977D0F71FA0693A003596E7 /* NTESFileLocationHelper.m in Sources */,
 				F977D0F41FA0693A003596E7 /* NTESClientUtil.m in Sources */,
 				4A73CF501F6146D70071C559 /* DWTabBar.m in Sources */,
+				4AE5E1191FAB23C600945CF2 /* GLCommunity_ReportModel.m in Sources */,
 				F977D16B1FA0693B003596E7 /* NIMSessionNotificationContentView.m in Sources */,
 				F977D0EE1FA0693A003596E7 /* NTESClientsTableViewController.m in Sources */,
 				F977D0F61FA0693A003596E7 /* NTESDevice.m in Sources */,
