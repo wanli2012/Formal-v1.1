@@ -34,9 +34,6 @@
 @property (nonatomic,strong) NSTimer *graceTimer;
 @property (nonatomic,strong) UIView *selectionIndicator;  /**< 选择指示器  */
 
-
-
-
 @end
 
 @implementation XBScrollPageController
@@ -55,7 +52,8 @@
     return self;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
@@ -68,16 +66,16 @@
 {
     [super viewDidLayoutSubviews];
     self.tagCollectionView.frame = CGRectMake(0, self.yFloat, XBScreenWidth, self.tagViewHeight);
-    self.pageCollectionView.frame = CGRectMake(0, self.tagViewHeight + self.yFloat , XBScreenWidth, self.view.frame.size.height - self.tagViewHeight);
-
+    self.pageCollectionView.frame = CGRectMake(0, self.tagViewHeight + self.yFloat , XBScreenWidth, self.view.frame.size.height - self.tagViewHeight - self.yFloat);
+    
     self.tagCollectionView.backgroundColor = [UIColor whiteColor];
 }
 
--(void)viewWillAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated
+{
 
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;
-
 }
 
 - (void)dealloc

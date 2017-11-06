@@ -17,6 +17,7 @@
                 <outlet property="submitBtn" destination="SJL-0K-hW3" id="bN2-DT-kuT"/>
                 <outlet property="textV" destination="I7i-5D-yaN" id="Gbx-TQ-9ou"/>
                 <outlet property="titleLabel" destination="OP4-JT-Xt7" id="M4D-2n-vdQ"/>
+                <outlet property="titleNameLabel" destination="Ogl-xP-wkW" id="ZDt-f2-5tc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -91,7 +92,7 @@
                         <constraint firstItem="UU7-iY-lE6" firstAttribute="top" secondItem="Ogl-xP-wkW" secondAttribute="bottom" constant="15" id="xGK-jp-zSh"/>
                     </constraints>
                 </view>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="  举报描述:60字以内" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="I7i-5D-yaN">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="  举报描述:15字以上,60字以内" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="I7i-5D-yaN">
                     <rect key="frame" x="10" y="285" width="304" height="100"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>

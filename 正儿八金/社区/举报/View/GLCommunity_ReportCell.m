@@ -23,17 +23,19 @@
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(click)];
     [self addGestureRecognizer:tap];
     
-    
 }
+
 - (void)setModel:(GLCommunity_rtypeModel *)model{
     _model = model;
     
     self.titleLabel.text = model.type_name;
     
     if (model.isSelected) {
-        self.selectImageV.backgroundColor = [UIColor blackColor];
+        
+        self.selectImageV.image = [UIImage imageNamed:@"choice"];
     }else{
-        self.selectImageV.backgroundColor = [UIColor redColor];
+
+        self.selectImageV.image = [UIImage imageNamed:@"nochoice"];
     }
     
 }

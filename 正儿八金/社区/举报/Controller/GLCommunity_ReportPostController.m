@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UITextView *textV;
 @property (weak, nonatomic) IBOutlet UIButton *submitBtn;
+@property (weak, nonatomic) IBOutlet UILabel *titleNameLabel;//标题,内容
 
 @property (nonatomic, strong)NSMutableArray *dataSourceArr;//数据源
 @property (strong, nonatomic)LoadWaitView *loadV;
@@ -50,8 +51,14 @@
     
     [self.picImageV sd_setImageWithURL:[NSURL URLWithString:self.imageUrl] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
     self.nameLabel.text = self.name;
-    self.titleLabel.text = self.postTitle;
-
+    
+    if(self.postTitle.length == 0){
+        self.titleNameLabel.text = @"内容";
+        self.titleLabel.text = self.content;
+    }else{
+        self.titleNameLabel.text = @"标题";
+        self.titleLabel.text = self.postTitle;
+    }
 
 }
 
@@ -111,18 +118,20 @@
     int i = 0;
     for (GLCommunity_rtypeModel *model in self.model.rtype) {
         if (model.isSelected) {
-            NSString *key = [NSString stringWithFormat:@"%d",i];
+            NSString *key = [NSString stringWithFormat:@"type_id[%d]",i];
             dic[key] = model.type_id;
             i++;
         }
     }
-    
-//    if (i == 0) {
-        if ([self.textV.text isEqualToString:@"  举报描述:60字以内"] || self.textV.text.length == 0) {
+    if ([self.textV.text isEqualToString:@"  举报描述:15字以上,60字以内"]) {
+        self.textV.text = @"";
+    }
+    if (i == 0) {
+        if ([self.textV.text isEqualToString:@"  举报描述:15字以上,60字以内"] || self.textV.text.length == 0) {
             [MBProgressHUD showError:@"请输入举报描述"];
             return;
         }
-//    }
+    }
     
     dic[@"token"] = [UserModel defaultUser].token;
     dic[@"uid"] = [UserModel defaultUser].userId;
@@ -191,7 +200,7 @@
         
         self.textV.textAlignment = NSTextAlignmentLeft;
         self.textV.textColor = [UIColor lightGrayColor];
-        self.textV.text = @"  举报描述:60字以内";
+        self.textV.text = @"  举报描述:15字以上,60字以内";
     }
     
     return YES;

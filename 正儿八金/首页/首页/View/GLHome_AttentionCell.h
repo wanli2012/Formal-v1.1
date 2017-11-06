@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GLHome_AttentionModel.h"
 #import "GLCommunity_PostCommentModel.h"
+#import "GLHome_Search_PostModel.h"
 
 @protocol GLHome_AttentionCellDelegate <NSObject>
 
@@ -28,6 +29,7 @@
 
 @property (nonatomic, strong)GLHome_AttentionModel *model;
 @property (nonatomic, strong)GLCommunity_PostCommentModel *postModel;
+@property (nonatomic, strong)GLHome_Search_PostModel *search_postModel;
 @property (nonatomic, assign)NSInteger index;
 
 @property (nonatomic, weak)id <GLHome_AttentionCellDelegate> delegate;

@@ -187,6 +187,7 @@
     reportVC.mid = self.model.mid;
     reportVC.group_id = self.model.group_id;
     reportVC.post_id = self.model.post.post_id;
+    reportVC.content = self.model.post.content;
     
     [self.navigationController pushViewController:reportVC animated:YES];
 

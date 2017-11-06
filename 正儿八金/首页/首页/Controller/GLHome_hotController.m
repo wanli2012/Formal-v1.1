@@ -93,10 +93,9 @@
         [self endRefresh];
         [_loadV removeloadview];
         
-        if ([responseObject[@"code"] integerValue] == 104) {
+        if ([responseObject[@"code"] integerValue] == SUCCESS_CODE) {
             
             if ([responseObject[@"data"] count] == 0) {
-                
                 
                 [self.tableView reloadData];
                 
@@ -114,12 +113,11 @@
                 
                 model.isHiddenAttendBtn = NO;
                 model.isHiddenLandlord = YES;
-//                model.isHiddenTitleLabel = NO;
                 
                 [self.dataSourceArr addObject:model];
             }
             
-        }else if([responseObject[@"code"] integerValue] == 108){
+        }else if([responseObject[@"code"] integerValue] == NO_MORE_CODE){
             
             if(_page != 1){
                 [MBProgressHUD showError:responseObject[@"message"]];
@@ -151,7 +149,7 @@
 #pragma mark ----公告
 -(void)initInterDataSorceinfomessage{
     
-    [[NSUserDefaults standardUserDefaults]setObject:@"NO" forKey:@"isShow"];//展示过就不要展示了，重启App在调
+    [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"isShow"];//展示过就不要展示了，重启App在调
     
     CGFloat contentViewH = kSCREEN_HEIGHT / 2;
     CGFloat contentViewW = kSCREEN_WIDTH - 40;
@@ -279,13 +277,10 @@
                 [MBProgressHUD showSuccess:@"点赞+1"];
                 
             }
-            
             NSIndexPath *indexPathA = [NSIndexPath indexPathForRow:index inSection:0]; //刷新第0段第2行
             
             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPathA,nil] withRowAnimation:UITableViewRowAnimationNone];
-            
         }else{
-            
             [MBProgressHUD showError:responseObject[@"message"]];
         }
         
@@ -293,6 +288,7 @@
         
     } enError:^(NSError *error) {
         [self endRefresh];
+        
         [_loadV removeloadview];
         [self.tableView reloadData];
         [MBProgressHUD showError:error.localizedDescription];
@@ -300,8 +296,8 @@
     }];
 
 }
+
 - (void)comment:(NSInteger)index{
-    NSLog(@"评论%zd",index);
     
     GLHome_AttentionModel *model = self.dataSourceArr[index];
     GLHomeController *homeVC = [self View:self.tableView];

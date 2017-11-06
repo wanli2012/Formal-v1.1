@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *detailLabel;
 @property (weak, nonatomic) IBOutlet UILabel *attentLabel;//关注人数
 
-
 @end
 
 @implementation GLCommunityCell
@@ -40,6 +39,7 @@
     }
     
 }
+
 - (void)setModel:(GLCommunity_FollowModel *)model{
     _model = model;
     
@@ -82,6 +82,30 @@
         self.attentBtn.enabled = YES;
     }
 }
+- (void)setSearchCommunityModel:(GLHome_Search_CommunityModel *)searchCommunityModel{
+    _searchCommunityModel = searchCommunityModel;
+    [self.picImageV sd_setImageWithURL:[NSURL URLWithString:searchCommunityModel.picture] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
+    self.titleLabel.text = searchCommunityModel.name;
+    self.detailLabel.text = [NSString stringWithFormat:@"帖子:%@ 评论:%@",searchCommunityModel.post_num,searchCommunityModel.comm_num];
+    
+    if (searchCommunityModel.isHiddenAttendLabel) {
+        self.attentLabel.hidden = YES;
+    }else{
+        self.attentLabel.hidden = NO;
+    }
+    if ([searchCommunityModel.follow integerValue] == 1) {//是否关注社区 1 关注 2未关注 uid空默认2
+        self.attentBtn.backgroundColor = [UIColor whiteColor];
+        [self.attentBtn setTitleColor:MAIN_COLOR forState:UIControlStateNormal];
+        [self.attentBtn setTitle:@"已关注" forState:UIControlStateNormal];
+        self.attentBtn.enabled = NO;
+    }else{
+        self.attentBtn.backgroundColor = MAIN_COLOR;
+        [self.attentBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.attentBtn setTitle:@"关注" forState:UIControlStateNormal];
+        self.attentBtn.enabled = YES;
 
+    }
+
+}
 
 @end

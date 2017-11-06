@@ -32,4 +32,8 @@
 @property (nonatomic, assign)BOOL isAttention;//是否已关注
 @property (nonatomic, assign)BOOL isHiddenAttendLabel;//是否隐藏关注人数label
 
+//搜索多出来的字段(两个)
+@property (nonatomic, copy)NSString *bar_id;//社区Id
+@property (nonatomic, copy)NSString *follow;//是否关注社区 1 关注 2未关注 uid空默认2
+
 @end

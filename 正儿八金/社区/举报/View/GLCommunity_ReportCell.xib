@@ -18,9 +18,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="199" height="48"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eSO-K5-Iie">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nochoice" translatesAutoresizingMaskIntoConstraints="NO" id="eSO-K5-Iie">
                         <rect key="frame" x="10" y="16.5" width="15" height="15"/>
-                        <color key="backgroundColor" red="1" green="0.1015892991" blue="0.054391829209999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="15" id="6qd-BZ-ru6"/>
                             <constraint firstAttribute="height" constant="15" id="e6s-BF-00w"/>
@@ -34,7 +34,7 @@
                     </label>
                 </subviews>
             </view>
-            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="eSO-K5-Iie" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="0Vc-w4-qXm"/>
                 <constraint firstAttribute="trailing" secondItem="7ds-JS-Pxs" secondAttribute="trailing" constant="10" id="1Lq-z8-td5"/>
@@ -47,7 +47,10 @@
                 <outlet property="selectImageV" destination="eSO-K5-Iie" id="rWA-Z8-MT5"/>
                 <outlet property="titleLabel" destination="7ds-JS-Pxs" id="kmf-uH-PR2"/>
             </connections>
-            <point key="canvasLocation" x="-23.5" y="57"/>
+            <point key="canvasLocation" x="50" y="-12"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="nochoice" width="20" height="20"/>
+    </resources>
 </document>

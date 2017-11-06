@@ -13,6 +13,7 @@
 #import "GLHome_hotController.h"
 
 #import "GLMessageController.h"//消息
+#import "GLHome_SearchController.h"//搜索
 
 @interface GLHomeController ()
 
@@ -34,7 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -47,6 +48,7 @@
     [self selectTagByIndex:0 animated:YES];
 
 }
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
@@ -70,13 +72,21 @@
     self.selectedIndicatorColor = MAIN_COLOR;
     
     [self reloadDataWith:titleArray andSubViewdisplayClasses:classNames withParams:nil];
-    
 }
+
 //消息
 - (IBAction)message:(id)sender {
     self.hidesBottomBarWhenPushed = YES;
     GLMessageController *messageVC = [[GLMessageController alloc] init];
     [self.navigationController pushViewController:messageVC animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
+}
+
+//搜索
+- (IBAction)search:(id)sender {
+    self.hidesBottomBarWhenPushed = YES;
+    GLHome_SearchController *searchVC = [[GLHome_SearchController alloc] init];
+    [self.navigationController pushViewController:searchVC animated:NO];
     self.hidesBottomBarWhenPushed = NO;
 }
 

@@ -79,6 +79,7 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
 #define kCONCERN_COMMUNITY_URL @"User/PartnerCommunityConcern"//用户关注社区，或者取消关注
 #define kNOTICE_URL @"HomePage/Notice"//公告
 #define kPOST_REPORT_URL @"PostBar/PostReport"//用户举报帖子
+#define kPOST_SEARCH_URL @"PostBar/PostSearch"//搜索接口
 
 
 

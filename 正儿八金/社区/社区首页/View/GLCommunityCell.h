@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GLCommunity_FollowModel.h"
+#import "GLHome_Search_CommunityModel.h"
 
 @protocol GLCommunityCellDelegate <NSObject>
 
@@ -26,5 +27,6 @@
 @property (nonatomic, strong)GLCommunity_FollowModel *model;
 
 @property (nonatomic, strong)GLCommunity_RecommendModel *recommendModel;
+@property (nonatomic, strong)GLHome_Search_CommunityModel *searchCommunityModel;
 
 @end
