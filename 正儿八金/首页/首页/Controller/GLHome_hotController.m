@@ -39,6 +39,7 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = [UIColor whiteColor];
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"GLHome_AttentionCell" bundle:nil] forCellReuseIdentifier:@"GLHome_AttentionCell"];
     
     [self.tableView addSubview:self.nodataV];
@@ -68,8 +69,13 @@
     
     [self getData:YES];
     [self initInterDataSorceinfomessage];//公告
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"refreshInterface" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"attention_PraiseNotification" object:nil];
     
-    
+}
+- (void)refresh
+{
+    [self getData:YES];
 }
 
 - (void)getData:(BOOL)status {
@@ -165,38 +171,8 @@
             
             self.noticeView.titleLabel.text = responseObject[@"data"][@"title"];
             
-//            [self.noticeView.webView loadHTMLString:responseObject[@"data"][@"content"] baseURL:nil];
-            
-//            NSString *htmlString;
-            
-//            UIFont *font = [UIFont systemFontOfSize:20];
-//            CGFloat lineSpace = 10;
-            
-//            NSString *rgbString = [self JSONObjectFromUIColor:fontColor];
-            
-//            NSString *style = [NSString stringWithFormat:@"<style>*{font-size:40px;line-height:%@px;color:%@;}img{max-width:%@px;height:auto;}</style>", @(lineSpace * 4), responseObject[@"data"][@"content"], @(kSCREEN_WIDTH - 2 * 20)];
-            
-//            NSString *jsString = [NSString stringWithFormat:@"<html> \n"
-//                                  "<head> \n"
-//                                  "<style type=\"text/css\"> \n"
-//                                  "body {font-size: %f;}\n"
-//                                  "</style> \n"
-//                                  "</head> \n"
-//                                  "<body>%@</body> \n"
-//                                  "</html>", 20.0, responseObject[@"data"][@"content"]];
-            
-            
-//            NSMutableDictionary *optoins = [NSMutableDictionary dictionary];
-//            optoins[NSDocumentTypeDocumentAttribute] = NSHTMLTextDocumentType;
-//            
-//            htmlString = [NSString stringWithFormat:@"%@%@", responseObject[@"data"][@"content"], style];
-            
             [self.noticeView.webView loadHTMLString:responseObject[@"data"][@"content"] baseURL:nil];
-            
-//            NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithData:[responseObject[@"data"][@"content"] dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType} documentAttributes:nil error:nil];
-//            [str addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:17.0] range:NSMakeRange(0, str.length)];
-//            self.noticeView.contentLabel.attributedText =  str;
-            
+
         }
         
     } enError:^(NSError *error) {
@@ -204,7 +180,6 @@
         [MBProgressHUD showError:error.localizedDescription];
         
     }];
-
     
     self.noticeView.frame = CGRectMake(contentViewX, (kSCREEN_HEIGHT - contentViewH)/2, contentViewW, contentViewH);
     //缩放
@@ -263,23 +238,27 @@
         [self endRefresh];
         [_loadV removeloadview];
         
-        if ([responseObject[@"code"] integerValue] == 104) {
+        if ([responseObject[@"code"] integerValue] == SUCCESS_CODE) {
             
             NSInteger praise = [model.post.praise integerValue];
             //cell刷新
+            NSString *fabulous;
             if([model.post.fabulous isEqualToString:@"1"]){//fabulous:1已关注 2:未关注
-                model.post.fabulous = @"2";
+                fabulous = @"2";
                 model.post.praise  = [NSString stringWithFormat:@"%zd",praise - 1];
                 [MBProgressHUD showSuccess:@"取消点赞"];
             }else{
-                model.post.fabulous = @"1";
+                fabulous = @"1";
                 model.post.praise  = [NSString stringWithFormat:@"%zd",praise + 1];
                 [MBProgressHUD showSuccess:@"点赞+1"];
-                
             }
-            NSIndexPath *indexPathA = [NSIndexPath indexPathForRow:index inSection:0]; //刷新第0段第2行
             
-            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPathA,nil] withRowAnimation:UITableViewRowAnimationNone];
+            model.post.fabulous = fabulous;
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"Hot_isPraiseNotification" object:nil];
+            
+             [self.tableView reloadData];
+
         }else{
             [MBProgressHUD showError:responseObject[@"message"]];
         }
@@ -294,7 +273,6 @@
         [MBProgressHUD showError:error.localizedDescription];
         
     }];
-
 }
 
 - (void)comment:(NSInteger)index{
@@ -311,7 +289,7 @@
     
     typeof(self)weakSelf = self;
     
-    detailVC.block = ^(NSString *praise,NSString *fablous){
+    detailVC.block = ^(NSString *praise,NSString *fablous,NSString *scanNum){
         
         model.post.fabulous = fablous;
         model.post.praise = praise;
@@ -367,7 +345,7 @@
         [self endRefresh];
         [_loadV removeloadview];
         
-        if ([responseObject[@"code"] integerValue] == 104) {
+        if ([responseObject[@"code"] integerValue] == SUCCESS_CODE) {
             
             NSString *statusStr = model.status;
             
@@ -477,7 +455,7 @@
     
     typeof(self)weakSelf = self;
     
-    detailVC.block = ^(NSString *praise,NSString *fablous){
+    detailVC.block = ^(NSString *praise,NSString *fablous,NSString *scanNum){
         
         model.post.fabulous = fablous;
         model.post.praise = praise;

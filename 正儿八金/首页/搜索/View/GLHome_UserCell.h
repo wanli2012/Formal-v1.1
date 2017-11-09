@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GLHome_Search_UserModel.h"
 
 @protocol GLHome_UserCellDelegate <NSObject>
 
@@ -19,5 +20,7 @@
 @property (nonatomic, weak)id <GLHome_UserCellDelegate>delegate;
 
 @property (nonatomic, assign)NSInteger index;
+
+@property (nonatomic, strong)GLHome_Search_UserModel *model;
 
 @end

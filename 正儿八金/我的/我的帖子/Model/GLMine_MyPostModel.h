@@ -19,6 +19,8 @@
 @property (nonatomic, copy)NSString *title;//帖子标题
 @property (nonatomic, copy)NSString *content;//发帖内容
 @property (nonatomic, copy)NSString *fabulous;//评论是否点赞 1点赞 2未点赞 uid等于空默认未点赞
+@property (nonatomic, copy)NSString *elite;//1是精华帖 2不是精华帖
+@property (nonatomic, copy)NSString *topic;//帖子话题
 
 @property (nonatomic, assign)CGFloat cellHeight;
 

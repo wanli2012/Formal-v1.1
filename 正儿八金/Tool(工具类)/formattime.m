@@ -108,31 +108,13 @@
     
     NSTimeInterval tempTime = [time intValue];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    NSDateFormatter *formatterT = [[NSDateFormatter alloc] init];
     NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:tempTime];
-    [formatter setDateFormat:@"dd/MM月"];
-    NSDate *confromTimespT = [NSDate dateWithTimeIntervalSince1970:tempTime];
-    [formatterT setDateFormat:@"HH:mm"];
-    NSDate *startDate = confromTimesp;
-    NSDate *endDate = [NSDate date];
-    NSCalendar *cal = [NSCalendar currentCalendar];
-    unsigned int unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute |NSCalendarUnitSecond;
-    NSDateComponents *endDateComponents = [cal components:unitFlags fromDate:endDate];
-    NSDateComponents *startDateComponents = [cal components:unitFlags fromDate:startDate];
-    
-    NSInteger d_endDate = [endDateComponents day];
-    int64_t d_startDate = [startDateComponents day];
-    
+    [formatter setDateFormat:@"MM-dd"];
+
     NSString *confromTimespStr =nil;
-    if (d_endDate - d_startDate == 0)
-        confromTimespStr =[NSString stringWithFormat:@"今天 %@",[formatterT stringFromDate:confromTimespT]];
-    else if (d_endDate - d_startDate == 1)
-        confromTimespStr =[NSString stringWithFormat:@"昨天 %@",[formatterT stringFromDate:confromTimespT]];
-    else if (d_endDate - d_startDate == 2)
-        confromTimespStr =[NSString stringWithFormat:@"前天 %@",[formatterT stringFromDate:confromTimespT]];
-    else
-        confromTimespStr = [formatter stringFromDate:confromTimesp];
+    confromTimespStr =[NSString stringWithFormat:@"%@",[formatter stringFromDate:confromTimesp]];
+
     return confromTimespStr;
-    
 }
+
 @end

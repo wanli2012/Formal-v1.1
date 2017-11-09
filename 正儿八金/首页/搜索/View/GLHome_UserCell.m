@@ -7,6 +7,7 @@
 //
 
 #import "GLHome_UserCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface GLHome_UserCell()
 
@@ -32,4 +33,28 @@
     }
 }
 
+- (void)setModel:(GLHome_Search_UserModel *)model{
+    _model = model;
+    [self.imageV sd_setImageWithURL:[NSURL URLWithString:model.portrait] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
+    self.titleLabel.text = model.user_name;
+    self.detailLabel.text = [NSString stringWithFormat:@"粉丝:%@",model.fans];
+    
+    self.attentionBtn.enabled = NO;
+    if ([model.follow integerValue] == 1) {//是否关注用户 1 关注 2未关注 uid空默认2
+        
+        [self.attentionBtn setTitle:@"已关注" forState:UIControlStateNormal];
+        [self.attentionBtn setTitleColor:MAIN_COLOR forState:UIControlStateNormal];
+        self.attentionBtn.backgroundColor = [UIColor whiteColor];
+        self.attentionBtn.layer.borderColor = MAIN_COLOR.CGColor;
+        self.attentionBtn.layer.borderWidth = 1.f;
+
+    }else{
+        
+        [self.attentionBtn setTitle:@"关注" forState:UIControlStateNormal];
+        [self.attentionBtn setTitleColor:MAIN_COLOR forState:UIControlStateNormal];
+        self.attentionBtn.backgroundColor = [UIColor whiteColor];
+        self.attentionBtn.layer.borderColor = MAIN_COLOR.CGColor;
+        self.attentionBtn.layer.borderWidth = 1.f;
+    }
+}
 @end

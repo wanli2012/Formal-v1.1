@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="403" height="185"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="403" height="185"/>
+                <rect key="frame" x="0.0" y="0.0" width="403" height="184"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="头像1" translatesAutoresizingMaskIntoConstraints="NO" id="DrA-u9-14C">
@@ -76,6 +76,7 @@
                         <rect key="frame" x="0.0" y="96" width="403" height="20"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="width" constant="403" id="O5w-b8-Tgz"/>
                             <constraint firstAttribute="height" constant="20" id="mWc-FN-qLR"/>
                         </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bcM-bU-XHo">
@@ -181,7 +182,6 @@
                     <constraint firstItem="DrA-u9-14C" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="TcP-Re-Tp8"/>
                     <constraint firstItem="ajY-mo-JnX" firstAttribute="top" secondItem="W4d-yU-8o4" secondAttribute="bottom" constant="10" id="VHM-Gh-Do6"/>
                     <constraint firstItem="edf-jg-sVs" firstAttribute="centerY" secondItem="PFY-Xl-KEf" secondAttribute="centerY" id="WEr-KJ-TgB"/>
-                    <constraint firstAttribute="trailing" secondItem="XUG-sl-asG" secondAttribute="trailing" id="ZDY-Nb-0MU"/>
                     <constraint firstAttribute="bottom" secondItem="u5x-PA-ehx" secondAttribute="bottom" id="ZWT-aq-81L"/>
                     <constraint firstItem="hZO-19-a0e" firstAttribute="centerY" secondItem="ajY-mo-JnX" secondAttribute="centerY" id="bHr-RN-IEA"/>
                     <constraint firstItem="edf-jg-sVs" firstAttribute="leading" secondItem="zcF-1J-bZq" secondAttribute="trailing" id="dNo-ah-ew0"/>
@@ -203,6 +203,7 @@
                 <outlet property="attentionBtn" destination="oxi-6h-e41" id="DLo-nC-Cs9"/>
                 <outlet property="collectionView" destination="XUG-sl-asG" id="iI1-C0-coG"/>
                 <outlet property="collectionViewHeight" destination="mWc-FN-qLR" id="DsY-yG-fGq"/>
+                <outlet property="collectionViewWidth" destination="O5w-b8-Tgz" id="CFz-2z-Tyx"/>
                 <outlet property="commentBtn" destination="PFY-Xl-KEf" id="HPz-IR-twk"/>
                 <outlet property="communityLabel" destination="W4d-yU-8o4" id="XOl-28-buS"/>
                 <outlet property="contentLabel" destination="Mz6-n1-JgU" id="Iqo-AO-srl"/>

@@ -11,4 +11,6 @@
 
 @interface GLCommunity_DetailController : UIViewController
 
+@property (nonatomic, copy)NSString *communityID;//社区id
+
 @end

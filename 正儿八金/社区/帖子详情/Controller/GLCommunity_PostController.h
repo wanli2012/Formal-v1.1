@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^GLCommunity_PostControllerBlock)(NSString *praiseNum,NSString *fabulous);
+typedef void(^GLCommunity_PostControllerBlock)(NSString *praiseNum,NSString *fabulous,NSString *scanNum);
 
 @interface GLCommunity_PostController : UIViewController
 

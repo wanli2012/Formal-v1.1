@@ -37,7 +37,6 @@
     if ([self.delegate respondsToSelector:@selector(attent:)]) {
         [self.delegate attent:self.index];
     }
-    
 }
 
 - (void)setModel:(GLCommunity_FollowModel *)model{
@@ -45,8 +44,13 @@
     
     [self.picImageV sd_setImageWithURL:[NSURL URLWithString:model.picture] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
     self.titleLabel.text = model.name;
-    self.detailLabel.text = model.mark;
     self.attentLabel.text = [NSString stringWithFormat:@"关注:%@",model.num];
+    
+    if (model.mark.length == 0) {
+        self.detailLabel.text = @"社区介绍:无";
+    }else{
+        self.detailLabel.text = model.mark;
+    }
     
     if (model.isHiddenAttendBtn) {
         self.attentBtn.hidden = YES;
@@ -99,10 +103,12 @@
         [self.attentBtn setTitle:@"已关注" forState:UIControlStateNormal];
         self.attentBtn.enabled = NO;
     }else{
-        self.attentBtn.backgroundColor = MAIN_COLOR;
-        [self.attentBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//        self.attentBtn.backgroundColor = MAIN_COLOR;
+//        [self.attentBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        self.attentBtn.backgroundColor = [UIColor whiteColor];
+        [self.attentBtn setTitleColor:MAIN_COLOR forState:UIControlStateNormal];
         [self.attentBtn setTitle:@"关注" forState:UIControlStateNormal];
-        self.attentBtn.enabled = YES;
+        self.attentBtn.enabled = NO;
 
     }
 

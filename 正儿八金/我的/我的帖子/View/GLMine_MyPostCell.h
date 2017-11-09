@@ -9,8 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "GLMine_MyPostModel.h"
 
+@protocol GLMine_MyPostCellDelegate <NSObject>
+
+- (void)clickToBigImage:(NSInteger)cellIndex index:(NSInteger)index;
+
+@end
+
 @interface GLMine_MyPostCell : UITableViewCell
 
 @property (nonatomic, strong)GLMine_MyPost *model;
+
+@property (nonatomic, assign)NSInteger index;
+
+@property (nonatomic, weak)id <GLMine_MyPostCellDelegate> delegate;
 
 @end

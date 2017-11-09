@@ -9,10 +9,10 @@
 #import "GLHome_AttentionController.h"
 #import "GLHome_AttentionCell.h"
 #import "GLHome_AttentionModel.h"
-//#import "GLCommunity_DetailController.h"
 #import "GLHomeController.h"
 #import "GLCommunity_PostController.h"
 #import "GLMine_MyPostController.h"
+#import "JZAlbumViewController.h"
 
 @interface GLHome_AttentionController ()<UITableViewDelegate,UITableViewDataSource,GLHome_AttentionCellDelegate>
 
@@ -23,6 +23,7 @@
 @property (strong, nonatomic)LoadWaitView *loadV;
 @property (nonatomic, assign)NSInteger page;
 @property (nonatomic,strong)NodataView *nodataV;
+@property (nonatomic, assign)BOOL  HideNavagation;//是否需要恢复自定义导航栏
 
 @end
 
@@ -59,6 +60,7 @@
     [self getData:YES];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"refreshInterface" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"Hot_isPraiseNotification" object:nil];
    
 }
 
@@ -91,7 +93,7 @@
         [self endRefresh];
         [_loadV removeloadview];
         
-        if ([responseObject[@"code"] integerValue] == 104) {
+        if ([responseObject[@"code"] integerValue] == SUCCESS_CODE) {
             
             if ([responseObject[@"data"] count] == 0) {
                 
@@ -110,7 +112,7 @@
                 
                 [self.dataSourceArr addObject:model];
             }
-        }else if([responseObject[@"code"] integerValue] == 108){
+        }else if([responseObject[@"code"] integerValue] == NO_MORE_CODE){
             if(_page != 1){
                 [MBProgressHUD showError:responseObject[@"message"]];
             }
@@ -147,6 +149,23 @@
     [self.tableView.mj_footer endRefreshing];
 }
 
+#pragma mark - 查看大图
+- (void)clickToBigImage:(NSInteger)cellIndex index:(NSInteger)index{
+    
+    GLHome_AttentionModel *model = self.dataSourceArr[cellIndex];
+    
+    self.HideNavagation = YES;
+    JZAlbumViewController *jzAlbumVC = [[JZAlbumViewController alloc]init];
+    jzAlbumVC.currentIndex = index;//这个参数表示当前图片的index，默认是0
+    
+    NSMutableArray *arrM = [NSMutableArray array];
+    for (NSString * s in model.post.picture) {//@"%@?imageView2/1/w/200/h/200",
+        //        NSString *str = [NSString stringWithFormat:@"%@?x-oss-process=style/goods_Banne",s];
+        [arrM addObject:s];
+    }
+    jzAlbumVC.imgArr = arrM;//图片数组，可以是url，也可以是UIImage
+    [self presentViewController:jzAlbumVC animated:NO completion:nil];
+}
 #pragma mark - GLHomeAttentionCellDelegate
 - (void)praise:(NSInteger)index{
     if([UserModel defaultUser].loginstatus == NO){
@@ -188,10 +207,10 @@
                 model.post.praise  = [NSString stringWithFormat:@"%zd",praise + 1];
                 [MBProgressHUD showSuccess:@"点赞+1"];
             }
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"attention_PraiseNotification" object:nil];
             
-            NSIndexPath *indexPathA = [NSIndexPath indexPathForRow:index inSection:0]; //刷新第0段第2行
-            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPathA,nil] withRowAnimation:UITableViewRowAnimationNone];
-            
+            [self.tableView reloadData];
+
         }else{
             
             [MBProgressHUD showError:responseObject[@"message"]];
@@ -329,7 +348,7 @@
     detailVC.group_id = model.group_id;
     
     typeof(self)weakSelf = self;
-    detailVC.block = ^(NSString *praise,NSString *fablous){
+    detailVC.block = ^(NSString *praise,NSString *fablous,NSString *scanNum){
         
         model.post.fabulous = fablous;
         model.post.praise = praise;
@@ -362,4 +381,6 @@
     }
     return _dataSourceArr;
 }
+
+
 @end

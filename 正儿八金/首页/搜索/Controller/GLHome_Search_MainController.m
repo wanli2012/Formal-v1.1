@@ -41,20 +41,14 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationItem.title = @"搜索结果";
-//    self.searchView.layer.borderColor = MAIN_COLOR.CGColor;
-//    self.searchView.layer.borderWidth = 1.f;
-//    self.searchView.layer.cornerRadius = 5.f;
-    
+
     [self addviewcontrol];
     [self selectTagByIndex:0 animated:YES];
-    
-//    [self getFmdbDatasoruce];
-    //    [self.view addSubview:_secondView];
-//    self.type = @"1";
+
 }
 
--(void)getFmdbDatasoruce{
-    
+//-(void)getFmdbDatasoruce{
+
 //    self.fmdbArr = nil;
 //    self.reCoderArr = nil;
 //    //    _secondView = nil;
@@ -77,15 +71,13 @@
 //        self.fmdbArr = [NSMutableArray array];
 //    }
 //    
-}
+//}
 
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-//    [self.view addSubview:_secondView];
+
     self.navigationController.navigationBar.hidden = NO;
-    
 }
 
 -(void)addviewcontrol{
@@ -108,6 +100,5 @@
     
     [self reloadDataWith:titleArray andSubViewdisplayClasses:classNames withParams:nil];
 }
-
 
 @end

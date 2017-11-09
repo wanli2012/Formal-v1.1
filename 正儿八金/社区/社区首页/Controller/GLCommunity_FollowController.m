@@ -10,6 +10,7 @@
 #import "GLCommunityCell.h"
 #import "GLCommunity_FollowModel.h"
 #import "GLCommunityController.h"
+#import "GLCommunity_DetailController.h"
 
 @interface GLCommunity_FollowController ()
 
@@ -76,7 +77,7 @@
     dic[@"group"] = [UserModel defaultUser].groupid;
     dic[@"page"] =@(_page);
     
-    _loadV=[LoadWaitView addloadview:CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT - 49) tagert:[self View:self.view].view];
+    _loadV=[LoadWaitView addloadview:CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT - 49) tagert:[self Controller:self.view].view];
     [NetworkManager requestPOSTWithURLStr:kFOLLOW_COMMUNITY_URL paramDic:dic finish:^(id responseObject) {
         
         [self endRefresh];
@@ -129,7 +130,7 @@
  
 }
 //可以获取到父容器的控制器的方法,就是这个黑科技.
-- (GLCommunityController *)View:(UIView *)view{
+- (GLCommunityController *)Controller:(UIView *)view{
     UIResponder *responder = view;
     //循环获取下一个响应者,直到响应者是一个UIViewController类的一个对象为止,然后返回该对象.
     while ((responder = [responder nextResponder])) {
@@ -174,9 +175,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if ([self.delegate respondsToSelector:@selector(pushControllerWithIndex:)]) {
-        [self.delegate pushControllerWithIndex:indexPath.row];
-    }
+//    if ([self.delegate respondsToSelector:@selector(pushControllerWithIndex:)]) {
+//        [self.delegate pushControllerWithIndex:indexPath.row];
+//    }
+    
+    [self Controller:tableView].hidesBottomBarWhenPushed = YES;
+    GLCommunity_FollowModel *model = self.models[indexPath.row];
+    
+    GLCommunity_DetailController *detailVC = [[GLCommunity_DetailController alloc] init];
+    detailVC.communityID = model.id;
+    
+    [[self Controller:tableView].navigationController pushViewController:detailVC animated:YES];
+    [self Controller:tableView].hidesBottomBarWhenPushed = NO;
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -225,7 +236,7 @@
             dic[@"status"] = @2; //关注 取消关注,关注状态 1关注 2取消关注
             dic[@"port"] = @1; //1ios 2安卓 3web 默认1
             
-            _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:[self View:self.view].view];
+            _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:[self Controller:self.view].view];
             [NetworkManager requestPOSTWithURLStr:kCONCERN_COMMUNITY_URL paramDic:dic finish:^(id responseObject) {
                 
                 [self endRefresh];

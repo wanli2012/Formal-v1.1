@@ -12,6 +12,7 @@
 #import "GLCommentListController.h"
 #import "GLMine_MyPostController.h"
 #import "GLCommunity_ReportPostController.h"
+#import "JZAlbumViewController.h"
 
 //#import "GLCommunity_PostCommentModel.h"
 //#import "GLCommunity_PostMainCommentModel.h"
@@ -36,6 +37,7 @@
 
 @property (nonatomic, strong)NSMutableArray *mainCommentArr;//主评论数组
 @property (nonatomic, strong)NSMutableArray *sonCommentArr;//子评论数组
+@property (nonatomic, assign)BOOL HideNavagation;//是否需要恢复自定义导航栏
 
 
 @end
@@ -114,7 +116,7 @@
         [self endRefresh];
         [_loadV removeloadview];
         
-        if ([responseObject[@"code"] integerValue] == 104) {
+        if ([responseObject[@"code"] integerValue] == SUCCESS_CODE) {
             
             if ([responseObject[@"data"] count] == 0) {
                 
@@ -136,7 +138,7 @@
                 [self.mainCommentArr addObject:model];
             }
 
-        }else if([responseObject[@"code"] integerValue] == 108){
+        }else if([responseObject[@"code"] integerValue] == NO_MORE_CODE){
             if(_page != 1){
                 [MBProgressHUD showError:responseObject[@"message"]];
             }
@@ -172,6 +174,7 @@
 //返回按钮点击事件
 - (IBAction)back:(id)sender {
     
+    self.block(self.model.post.praise,self.model.post.fabulous,self.model.post.pv);
     [self.navigationController popViewControllerAnimated:YES];
     
 }
@@ -206,7 +209,6 @@
     dic[@"content"] = self.commentTF.text;
     dic[@"comm_id"] = [UserModel defaultUser].userId;
     dic[@"port"] = @"1";
-    
     
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:kCOMMENT_POST_URL paramDic:dic finish:^(id responseObject) {
@@ -283,7 +285,7 @@
     [self.navigationController pushViewController:commentListVC animated:YES];
 }
 
-#pragma mark 点赞
+#pragma mark- 点赞
 - (void)prise:(NSInteger)index{
     
     if([UserModel defaultUser].loginstatus == NO){
@@ -348,7 +350,7 @@
     }];
     
 }
-//评价
+#pragma mark - 评价
 - (void)comment:(NSInteger)index{
     
     if([UserModel defaultUser].loginstatus == NO){
@@ -357,6 +359,7 @@
     }
 }
 
+#pragma mark - 个人信息
 - (void)personInfo:(NSInteger)index cellIndex:(NSInteger)cellIndex isSecommend:(BOOL)isSecond{
     mainModel *model = self.mainCommentArr[cellIndex - 1];
     
@@ -385,7 +388,7 @@
     [self.navigationController pushViewController:myPostVC animated:YES];
 }
 
-#pragma mark - GLHome_AttentionCellDelegate
+#pragma mark - GLHome_AttentionCell代理 点赞 评论 个人中心 看大图
 - (void)personInfo:(NSInteger)index{
     
     self.hidesBottomBarWhenPushed = YES;
@@ -396,6 +399,7 @@
     
     [self.navigationController pushViewController:myPostVC animated:YES];
 }
+
 //点赞
 - (void)postPraise:(NSInteger)index{
     
@@ -423,7 +427,7 @@
         [self endRefresh];
         [_loadV removeloadview];
         
-        if ([responseObject[@"code"] integerValue] == 104) {
+        if ([responseObject[@"code"] integerValue] == SUCCESS_CODE) {
             
             NSInteger praise = [self.model.post.praise integerValue];
             //cell刷新
@@ -438,7 +442,7 @@
                 
             }
             
-             self.block(self.model.post.praise,self.model.post.fabulous);
+             self.block(self.model.post.praise,self.model.post.fabulous,self.model.post.pv);
             NSIndexPath *indexPathA = [NSIndexPath indexPathForRow:index inSection:0]; //刷新第0段第2行
             
             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPathA,nil] withRowAnimation:UITableViewRowAnimationNone];
@@ -459,7 +463,21 @@
     }];
     
 }
-
+- (void)clickToBigImage:(NSInteger)cellIndex index:(NSInteger)index{
+    postModel *model = self.model.post;
+    
+    self.HideNavagation = YES;
+    JZAlbumViewController *jzAlbumVC = [[JZAlbumViewController alloc]init];
+    jzAlbumVC.currentIndex = index;//这个参数表示当前图片的index，默认是0
+    
+    NSMutableArray *arrM = [NSMutableArray array];
+    for (NSString * s in model.picture) {//@"%@?imageView2/1/w/200/h/200",
+        //        NSString *str = [NSString stringWithFormat:@"%@?x-oss-process=style/goods_Banne",s];
+        [arrM addObject:s];
+    }
+    jzAlbumVC.imgArr = arrM;//图片数组，可以是url，也可以是UIImage
+    [self presentViewController:jzAlbumVC animated:NO completion:nil];
+}
 
 #pragma mark - UITableViewDelegate UITableViewDataSource
 

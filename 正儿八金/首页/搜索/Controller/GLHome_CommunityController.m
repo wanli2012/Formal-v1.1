@@ -58,22 +58,13 @@
     
     self.tableView.mj_header = header;
     self.tableView.mj_footer = footer;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh:) name:@"GLHome_SearchNotification" object:nil];
+
+    [self searchPost:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-    if (_isUpdate) {
-        [self searchPost:YES];
-        _isUpdate = NO;
-    }
-}
 
-- (void)refresh:(NSNotification *)notification{
-    _isUpdate = YES;
-    self.searchContent = notification.userInfo[@"searchContent"];
 }
 
 - (void)searchPost:(BOOL)status {
@@ -84,19 +75,19 @@
     }else{
         _page ++;
     }
-    
-//    NSString *searchStr = [self Controller:self.view].searchTF.text;
-//    if (searchStr.length <= 0) {
-//        [MBProgressHUD showError:@"请输入关键字"];
-//        return;
-//    }
+
+    NSString *searchStr = [[NSUserDefaults standardUserDefaults] objectForKey:@"searchContent"];
+    if (searchStr.length <= 0) {
+        [MBProgressHUD showError:@"请输入关键字"];
+        return;
+    }
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
     dict[@"token"] = [UserModel defaultUser].token;
     dict[@"uid"] = [UserModel defaultUser].userId;
     dict[@"group"] = [UserModel defaultUser].groupid;
-    dict[@"searchname"] = self.searchContent;
+    dict[@"searchname"] = searchStr;
     dict[@"page"] = @(_page);
     dict[@"type"] = @"1";
     
@@ -117,6 +108,7 @@
                     [self.models addObject:model];
                 }
             }
+            
         }else{
             [MBProgressHUD showError:responseObject[@"message"]];
         }
@@ -139,13 +131,13 @@
         return;
     }
     
-    GLCommunity_RecommendModel *model = self.models[index];
+    GLHome_Search_CommunityModel *model = self.models[index];
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     dic[@"token"] = [UserModel defaultUser].token;
     dic[@"uid"] = [UserModel defaultUser].userId;
     dic[@"group"] = [UserModel defaultUser].groupid;
-    dic[@"barid"] = model.id; //社区id
+    dic[@"barid"] = model.bar_id; //社区id
     dic[@"status"] = @1; //关注 取消关注,关注状态 1关注 2取消关注
     dic[@"port"] = @1; //1ios 2安卓 3web 默认1
     
@@ -156,8 +148,6 @@
         [_loadV removeloadview];
         
         if ([responseObject[@"code"] integerValue] == SUCCESS_CODE) {
-            
-            model.isAttention = YES;
             
             [self.tableView reloadData];
             
@@ -173,12 +163,14 @@
         
     }];
 }
+
 - (void)endRefresh {
     
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
     
 }
+
 //可以获取到父容器的控制器的方法,就是这个黑科技.
 - (GLHome_Search_MainController *)Controller:(UIView *)view{
     UIResponder *responder = view;
@@ -211,7 +203,7 @@
     model.isHiddenAttendLabel = YES;
     
     cell.index = indexPath.row;
-    cell.delegate = self;
+//    cell.delegate = self;
     cell.searchCommunityModel = model;
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -222,6 +214,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     return 60;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"社区详情%zd",indexPath.row);
 }
 
 #pragma mark - 懒加载

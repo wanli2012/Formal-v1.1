@@ -41,7 +41,7 @@
                             <rect key="frame" x="94.5" y="0.0" width="94" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <state key="normal" title="新帖在前">
-                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="sort:" destination="-1" eventType="touchUpInside" id="yOf-vB-waA"/>

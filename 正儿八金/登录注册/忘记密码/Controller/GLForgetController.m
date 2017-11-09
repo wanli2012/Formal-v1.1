@@ -60,7 +60,7 @@
     
     [NetworkManager requestPOSTWithURLStr:kGETCODE_URL paramDic:@{@"phone":self.phoneTF.text} finish:^(id responseObject) {
         
-        if ([responseObject[@"code"] integerValue]==105) {
+        if ([responseObject[@"code"] integerValue] == SUCCESS_CODE) {
             [MBProgressHUD showSuccess:@"发送成功"];
             
         }else{
@@ -159,7 +159,7 @@
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:kFORGET_PWD_URL paramDic:dic finish:^(id responseObject) {
         [_loadV removeloadview];
-        if ([responseObject[@"code"] integerValue] == 104) {
+        if ([responseObject[@"code"] integerValue] == SUCCESS_CODE) {
             
             [MBProgressHUD showSuccess:responseObject[@"message"]];
             [self.navigationController popViewControllerAnimated:YES];

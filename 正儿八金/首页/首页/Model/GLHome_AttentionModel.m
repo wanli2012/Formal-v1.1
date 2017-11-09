@@ -8,6 +8,10 @@
 
 #import "GLHome_AttentionModel.h"
 
+@implementation GLHome_AttentionPostModel
+
+@end
+
 @implementation GLHome_AttentionModel
 
 - (CGFloat)cellHeight{

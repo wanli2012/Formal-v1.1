@@ -59,113 +59,44 @@
     
     self.fmdbArr = nil;
     self.reCoderArr = nil;
-    _secondView = [[MSSAutoresizeLabelFlow alloc]initWithFrame:CGRectMake(0, 70, kSCREEN_WIDTH, kSCREEN_HEIGHT - 70) titles:self.reCoderArr selectedHandler:^(NSUInteger index, NSString *title) {
-        
-        self.searchTF.text = [NSString stringWithFormat:@"%@",self.reCoderArr[index]];
-        //        [self updateData:YES];
-        [self.view endEditing:YES];
-        
-    }];
-    _secondView.backgroundColor = [UIColor redColor];
+    
     //获取本地搜索记录
     _dataBase = [GLHome_SearchDataBase greateTableOfFMWithTableName:@"GLHome_SearchDataBase"];
-    
     if ([_dataBase isDataInTheTable]) {
+        
         self.fmdbArr = [NSMutableArray arrayWithArray:[_dataBase queryAllDataOfFMDB]];
-        for (int i = 0; i < [[_dataBase queryAllDataOfFMDB]count]; i++) {
+        for (int i = 0; i < [[_dataBase queryAllDataOfFMDB] count]; i++) {
+            
             [self.reCoderArr addObject:[_dataBase queryAllDataOfFMDB][i][@"recoder"]];
         }
     }else{
-        _secondView.hidden = YES;
         [self.reCoderArr removeAllObjects];
         self.fmdbArr = [NSMutableArray array];
     }
     
+    _secondView = [[MSSAutoresizeLabelFlow alloc]initWithFrame:CGRectMake(0, 100, kSCREEN_WIDTH, kSCREEN_HEIGHT - 100) titles:self.reCoderArr selectedHandler:^(NSUInteger index, NSString *title) {
+    
+        self.searchTF.text = [NSString stringWithFormat:@"%@",self.reCoderArr[index]];
+        [self.view endEditing:YES];
+        
+        self.hidesBottomBarWhenPushed = YES;
+        GLHome_Search_MainController *searchVC = [[GLHome_Search_MainController alloc] init];
+        searchVC.searchContent = self.searchTF.text;
+        [[NSUserDefaults standardUserDefaults] setObject:self.searchTF.text forKey:@"searchContent"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [self.navigationController pushViewController:searchVC animated:NO];
+
+        
+    }];
+   
 }
-//- (void)updateData:(BOOL)status {
-//    if (status) {
-//        
-//        self.page = 1;
-//        
-//    }else{
-//        _page ++;
-//        
-//    }
-//    
-//    if (self.searchTF.text.length <= 0) {
-//        [MBProgressHUD showError:@"请输入关键字"];
-//        return;
-//    }
-//    
-//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//    
-//    dict[@"token"] = [UserModel defaultUser].token;
-//    dict[@"uid"] = [UserModel defaultUser].userId;
-//    dict[@"group"] = [UserModel defaultUser].groupid;
-//    dict[@"searchname"] = self.searchTF.text;
-//    dict[@"sort"] = self.sort;
-//    dict[@"page"] = @(_page);
-//    dict[@"type"] = self.type;
-//    
-//    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:[UIApplication sharedApplication].keyWindow];
-//    _loadV.isTap = NO;
-//    [NetworkManager requestPOSTWithURLStr:kPOST_SEARCH_URL paramDic:dict finish:^(id responseObject) {
-//        [_loadV removeloadview];
-////        [self endRefresh];
-//        if ([responseObject[@"code"] integerValue] == SUCCESS_CODE) {
-//            
-//            BOOL isSava = YES;//是否保存
-//            for (int i = 0; i < self.fmdbArr.count; i++) {
-//                if ([self.fmdbArr[i][@"recoder"] isEqualToString:self.searchTF.text]) {
-//                    isSava = NO;
-//                }
-//            }
-//            
-//            if (isSava == YES) {//保存记录
-//                [_dataBase deleteAllDataOfFMDB];
-//                _dataBase = [GLHome_SearchDataBase greateTableOfFMWithTableName:@"GLHome_SearchDataBase"];
-//                [self.fmdbArr insertObject:@{@"recoder":self.searchTF.text} atIndex:0];
-//                if (self.fmdbArr.count > 10) {
-//                    [self.fmdbArr  removeObjectsInRange:NSMakeRange(10, self.fmdbArr.count)];
-//                }
-//                [_dataBase insertOfFMWithDataArray:self.fmdbArr];
-//            }
-//            
-////            self.tableView.hidden = NO;
-//            self.secondView.hidden = YES;
-//            
-//            if (![responseObject[@"data"] isEqual:[NSNull null]]) {
-//                
-////                for (NSDictionary *dic  in responseObject[@"data"][@"shop_data"]) {
-////                    GLNearby_NearShopModel *model = [GLNearby_NearShopModel mj_objectWithKeyValues:dic];
-////                    [self.nearModels addObject:model];
-////                }
-//                
-////                [self.tableView reloadData];
-//            }
-//            
-//        }else{
-//            [MBProgressHUD showError:responseObject[@"message"]];
-////            [self.tableView reloadData];
-//        }
-//        
-//    } enError:^(NSError *error) {
-//        [_loadV removeloadview];
-////        [self endRefresh];
-//        [MBProgressHUD showError:error.localizedDescription];
-////        [self.tableView reloadData];
-//    }];
-//    
-//}
-//
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
     [self.view addSubview:_secondView];
     self.navigationController.navigationBar.hidden = YES;
-    
 }
-
 
 - (IBAction)pop:(id)sender {
     
@@ -175,6 +106,24 @@
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    BOOL isSava = YES;//是否保存
+    for (int i = 0; i < self.fmdbArr.count; i++) {
+        if ([self.fmdbArr[i][@"recoder"] isEqualToString:self.searchTF.text]) {
+            isSava = NO;
+        }
+    }
+    
+    [self getFmdbDatasoruce];//获取最新的数据库数据
+    
+    if (isSava == YES) {//保存记录
+        [_dataBase deleteAllDataOfFMDB];
+        _dataBase = [GLHome_SearchDataBase greateTableOfFMWithTableName:@"GLHome_SearchDataBase"];
+        [self.fmdbArr insertObject:@{@"recoder":self.searchTF.text} atIndex:0];
+        if (self.fmdbArr.count > 10) {
+            [self.fmdbArr  removeObjectsInRange:NSMakeRange(10, self.fmdbArr.count)];
+        }
+        [_dataBase insertOfFMWithDataArray:self.fmdbArr];
+    }
     
     self.secondView.hidden = YES;
     [self.view endEditing:YES];
@@ -182,6 +131,8 @@
     self.hidesBottomBarWhenPushed = YES;
     GLHome_Search_MainController *searchVC = [[GLHome_Search_MainController alloc] init];
     searchVC.searchContent = self.searchTF.text;
+    [[NSUserDefaults standardUserDefaults] setObject:self.searchTF.text forKey:@"searchContent"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     [self.navigationController pushViewController:searchVC animated:NO];
     
     return YES;
@@ -191,13 +142,14 @@
 - (NSMutableArray *)reCoderArr{
     if (!_reCoderArr) {
         _reCoderArr = [NSMutableArray array];
-        
-        for (int i = 0; i < 6; i ++) {
-            NSString *str = [NSString stringWithFormat:@"sdfsf%zd",i];
-            [_reCoderArr addObject:str];
-        }
     }
     return _reCoderArr;
+}
+- (NSMutableArray *)fmdbArr{
+    if (!_fmdbArr) {
+        _fmdbArr = [NSMutableArray array];
+    }
+    return _fmdbArr;
 }
 
 @end

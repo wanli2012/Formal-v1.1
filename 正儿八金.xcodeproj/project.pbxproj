@@ -14,6 +14,7 @@
 		4A0727821F6939AA00F1AFFE /* GLMine_MyPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0727811F6939AA00F1AFFE /* GLMine_MyPostModel.m */; };
 		4A07278A1F694ABC00F1AFFE /* GLMine_EventDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0727881F694ABC00F1AFFE /* GLMine_EventDetailController.m */; };
 		4A07278B1F694ABC00F1AFFE /* GLMine_EventDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0727891F694ABC00F1AFFE /* GLMine_EventDetailController.xib */; };
+		4A0BAC611FB436930039C81C /* GLCommunity_DetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0BAC601FB436930039C81C /* GLCommunity_DetailModel.m */; };
 		4A0E4B881F6A504600EBADE8 /* HXAlbumListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B4C1F6A504600EBADE8 /* HXAlbumListView.m */; };
 		4A0E4B891F6A504600EBADE8 /* HXAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B4E1F6A504600EBADE8 /* HXAlbumModel.m */; };
 		4A0E4B8A1F6A504600EBADE8 /* HXAlbumTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B501F6A504600EBADE8 /* HXAlbumTitleButton.m */; };
@@ -45,6 +46,7 @@
 		4A0E4BA41F6A504600EBADE8 /* UIButton+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B831F6A504600EBADE8 /* UIButton+HXExtension.m */; };
 		4A0E4BA51F6A504600EBADE8 /* UIImage+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B851F6A504600EBADE8 /* UIImage+HXExtension.m */; };
 		4A0E4BA61F6A504600EBADE8 /* UIView+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B871F6A504600EBADE8 /* UIView+HXExtension.m */; };
+		4A1BF7A61FB14BAF0054B16E /* GLHome_Search_UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1BF7A51FB14BAF0054B16E /* GLHome_Search_UserModel.m */; };
 		4A1DB0DF1FAFF81B00B55B1B /* MSSAutoresizeLabelFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1DB0D81FAFF81B00B55B1B /* MSSAutoresizeLabelFlow.m */; };
 		4A1DB0E01FAFF81B00B55B1B /* MSSAutoresizeLabelFlowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1DB0DA1FAFF81B00B55B1B /* MSSAutoresizeLabelFlowCell.m */; };
 		4A1DB0E11FAFF81B00B55B1B /* MSSAutoresizeLabelFlowConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1DB0DC1FAFF81B00B55B1B /* MSSAutoresizeLabelFlowConfig.m */; };
@@ -58,7 +60,6 @@
 		4A1DB1151FB0070F00B55B1B /* GLHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1DB0F41FB0070F00B55B1B /* GLHomeController.m */; };
 		4A1DB1161FB0070F00B55B1B /* GLHomeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A1DB0F51FB0070F00B55B1B /* GLHomeController.xib */; };
 		4A1DB1171FB0070F00B55B1B /* GLHome_AttentionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1DB0F81FB0070F00B55B1B /* GLHome_AttentionModel.m */; };
-		4A1DB1181FB0071000B55B1B /* GLHome_AttentionPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1DB0FA1FB0070F00B55B1B /* GLHome_AttentionPostModel.m */; };
 		4A1DB1191FB0071000B55B1B /* GLHome_AttentionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1DB0FD1FB0070F00B55B1B /* GLHome_AttentionCell.m */; };
 		4A1DB11A1FB0071000B55B1B /* GLHome_AttentionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A1DB0FE1FB0070F00B55B1B /* GLHome_AttentionCell.xib */; };
 		4A1DB11B1FB0071000B55B1B /* GLHome_AttentionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1DB1001FB0070F00B55B1B /* GLHome_AttentionCollectionCell.m */; };
@@ -605,6 +606,8 @@
 		4A0727871F694ABC00F1AFFE /* GLMine_EventDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMine_EventDetailController.h; sourceTree = "<group>"; };
 		4A0727881F694ABC00F1AFFE /* GLMine_EventDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLMine_EventDetailController.m; sourceTree = "<group>"; };
 		4A0727891F694ABC00F1AFFE /* GLMine_EventDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLMine_EventDetailController.xib; sourceTree = "<group>"; };
+		4A0BAC5F1FB436930039C81C /* GLCommunity_DetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCommunity_DetailModel.h; sourceTree = "<group>"; };
+		4A0BAC601FB436930039C81C /* GLCommunity_DetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCommunity_DetailModel.m; sourceTree = "<group>"; };
 		4A0E4B4B1F6A504600EBADE8 /* HXAlbumListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumListView.h; sourceTree = "<group>"; };
 		4A0E4B4C1F6A504600EBADE8 /* HXAlbumListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXAlbumListView.m; sourceTree = "<group>"; };
 		4A0E4B4D1F6A504600EBADE8 /* HXAlbumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXAlbumModel.h; sourceTree = "<group>"; };
@@ -666,6 +669,8 @@
 		4A0E4B851F6A504600EBADE8 /* UIImage+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HXExtension.m"; sourceTree = "<group>"; };
 		4A0E4B861F6A504600EBADE8 /* UIView+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HXExtension.h"; sourceTree = "<group>"; };
 		4A0E4B871F6A504600EBADE8 /* UIView+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HXExtension.m"; sourceTree = "<group>"; };
+		4A1BF7A41FB14BAF0054B16E /* GLHome_Search_UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHome_Search_UserModel.h; sourceTree = "<group>"; };
+		4A1BF7A51FB14BAF0054B16E /* GLHome_Search_UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLHome_Search_UserModel.m; sourceTree = "<group>"; };
 		4A1DB0D71FAFF81B00B55B1B /* MSSAutoresizeLabelFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSAutoresizeLabelFlow.h; sourceTree = "<group>"; };
 		4A1DB0D81FAFF81B00B55B1B /* MSSAutoresizeLabelFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSAutoresizeLabelFlow.m; sourceTree = "<group>"; };
 		4A1DB0D91FAFF81B00B55B1B /* MSSAutoresizeLabelFlowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSAutoresizeLabelFlowCell.h; sourceTree = "<group>"; };
@@ -688,8 +693,6 @@
 		4A1DB0F51FB0070F00B55B1B /* GLHomeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLHomeController.xib; sourceTree = "<group>"; };
 		4A1DB0F71FB0070F00B55B1B /* GLHome_AttentionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHome_AttentionModel.h; sourceTree = "<group>"; };
 		4A1DB0F81FB0070F00B55B1B /* GLHome_AttentionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLHome_AttentionModel.m; sourceTree = "<group>"; };
-		4A1DB0F91FB0070F00B55B1B /* GLHome_AttentionPostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHome_AttentionPostModel.h; sourceTree = "<group>"; };
-		4A1DB0FA1FB0070F00B55B1B /* GLHome_AttentionPostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLHome_AttentionPostModel.m; sourceTree = "<group>"; };
 		4A1DB0FC1FB0070F00B55B1B /* GLHome_AttentionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHome_AttentionCell.h; sourceTree = "<group>"; };
 		4A1DB0FD1FB0070F00B55B1B /* GLHome_AttentionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLHome_AttentionCell.m; sourceTree = "<group>"; };
 		4A1DB0FE1FB0070F00B55B1B /* GLHome_AttentionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLHome_AttentionCell.xib; sourceTree = "<group>"; };
@@ -1789,6 +1792,22 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		4A0BAC5D1FB436710039C81C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4A0BAC5F1FB436930039C81C /* GLCommunity_DetailModel.h */,
+				4A0BAC601FB436930039C81C /* GLCommunity_DetailModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4A0BAC5E1FB436710039C81C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		4A0E4B411F6A153800EBADE8 /* 发布 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1915,8 +1934,6 @@
 			children = (
 				4A1DB0F71FB0070F00B55B1B /* GLHome_AttentionModel.h */,
 				4A1DB0F81FB0070F00B55B1B /* GLHome_AttentionModel.m */,
-				4A1DB0F91FB0070F00B55B1B /* GLHome_AttentionPostModel.h */,
-				4A1DB0FA1FB0070F00B55B1B /* GLHome_AttentionPostModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1980,6 +1997,8 @@
 				4A1DB1401FB05B5D00B55B1B /* GLHome_Search_CommunityModel.m */,
 				4A1DB1421FB060E200B55B1B /* GLHome_Search_PostModel.h */,
 				4A1DB1431FB060E200B55B1B /* GLHome_Search_PostModel.m */,
+				4A1BF7A41FB14BAF0054B16E /* GLHome_Search_UserModel.h */,
+				4A1BF7A51FB14BAF0054B16E /* GLHome_Search_UserModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2633,7 +2652,8 @@
 			isa = PBXGroup;
 			children = (
 				4AAE8F0B1F6670C100AC549D /* Controller */,
-				4AAE8F0C1F6670C100AC549D /* View */,
+				4A0BAC5D1FB436710039C81C /* Model */,
+				4A0BAC5E1FB436710039C81C /* View */,
 			);
 			path = "社区详情";
 			sourceTree = "<group>";
@@ -2646,13 +2666,6 @@
 				4AAE8F151F6670F500AC549D /* GLCommunity_DetailController.xib */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		4AAE8F0C1F6670C100AC549D /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		4AAE8F1D1F668C6F00AC549D /* 帖子详情 */ = {
@@ -4874,6 +4887,7 @@
 				F977D16E1FA0693B003596E7 /* NIMSessionUnknowContentView.m in Sources */,
 				4A49508F1F5F886600180007 /* ViewController.m in Sources */,
 				4A1DB0E11FAFF81B00B55B1B /* MSSAutoresizeLabelFlowConfig.m in Sources */,
+				4A1BF7A61FB14BAF0054B16E /* GLHome_Search_UserModel.m in Sources */,
 				F977D1FE1FA07DD4003596E7 /* HanyuPinyinOutputFormat.m in Sources */,
 				F977D1101FA0693B003596E7 /* NTESMobileSettingViewController.m in Sources */,
 				F977D14A1FA0693B003596E7 /* NIMMessageModel.m in Sources */,
@@ -5018,6 +5032,7 @@
 				4A605F221F67F0C600F80666 /* GLForgetController.m in Sources */,
 				F977D0BF1FA0693A003596E7 /* NTESSessionViewController.m in Sources */,
 				4A605ECC1F67B81500F80666 /* GLCommentListController.m in Sources */,
+				4A0BAC611FB436930039C81C /* GLCommunity_DetailModel.m in Sources */,
 				F977D1401FA0693B003596E7 /* NIMInputEmoticonManager.m in Sources */,
 				4A1DB1301FB007BC00B55B1B /* GLHome_UserController.m in Sources */,
 				F977D1481FA0693B003596E7 /* NIMKitInfoFetchOption.m in Sources */,
@@ -5060,7 +5075,6 @@
 				F977D2041FA07DD4003596E7 /* ZYPinYinSearch.m in Sources */,
 				F977D1F81FA07DD3003596E7 /* LBGoodFriendsViewHeaderFooterView.m in Sources */,
 				4A4954F31F5F89B200180007 /* UIView+Extension.m in Sources */,
-				4A1DB1181FB0071000B55B1B /* GLHome_AttentionPostModel.m in Sources */,
 				4A0E4B9D1F6A504600EBADE8 /* HXPhotoViewController.m in Sources */,
 				F977D0F71FA0693A003596E7 /* NTESFileLocationHelper.m in Sources */,
 				F977D0F41FA0693A003596E7 /* NTESClientUtil.m in Sources */,
@@ -5307,6 +5321,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/正儿八金/PrefixHeader.pch";
 				INFOPLIST_FILE = "正儿八金/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5339,6 +5354,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/正儿八金/PrefixHeader.pch";
 				INFOPLIST_FILE = "正儿八金/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

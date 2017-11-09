@@ -16,6 +16,6 @@
 
 + (NSString *)formateTimeOfDate:(NSString *)time;//MM-dd
 
-+ (NSString *)formateTimeOfDate2:(NSString *)time;//dd/MM月
++ (NSString *)formateTimeOfDate2:(NSString *)time;//MM-dd 不包含时分秒和年份
 
 @end

@@ -80,6 +80,7 @@
     
     self.hidesBottomBarWhenPushed = YES;
     GLCommunity_DetailController *detailVC = [[GLCommunity_DetailController alloc] init];
+    detailVC.communityID = @"1";
     [self.navigationController pushViewController:detailVC animated:YES];
     self.hidesBottomBarWhenPushed = NO;
     
