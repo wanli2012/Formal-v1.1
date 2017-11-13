@@ -16,7 +16,8 @@
 
 - (CGFloat)cellHeight{
     
-    CGSize contentSize = [self.post.content boundingRectWithSize:CGSizeMake(kSCREEN_WIDTH - 20, MAXFLOAT) options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil].size;
+    NSString *str = [NSString stringWithFormat:@"#%@# %@",self.post.topic,self.post.content];
+    CGSize contentSize = [str boundingRectWithSize:CGSizeMake(kSCREEN_WIDTH - 20, MAXFLOAT) options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil].size;
     
     CGFloat collectionHeight = 0.0;
     if(self.post.picture.count == 0){

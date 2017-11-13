@@ -14,4 +14,7 @@
 @property (nonatomic, copy)NSString *name;
 @property (nonatomic, copy)NSString *picture;
 
+
+@property (nonatomic, copy)NSString *topic;//话题   GLPublish_TopicCell用的,因为只有一个字段就用的这个模型了
+
 @end

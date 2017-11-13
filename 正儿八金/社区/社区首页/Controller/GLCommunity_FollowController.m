@@ -31,7 +31,7 @@
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
-    [self.tableView registerNib:[UINib nibWithNibName:@"GLCommunityCell" bundle:nil] forCellReuseIdentifier:@"GLCommunityCell"];//kFOLLOW_COMMUNITY_URL
+    [self.tableView registerNib:[UINib nibWithNibName:@"GLCommunityCell" bundle:nil] forCellReuseIdentifier:@"GLCommunityCell"];
     
     [self.tableView addSubview:self.nodataV];
     self.nodataV.hidden = YES;
@@ -59,7 +59,12 @@
     self.tableView.mj_footer = footer;
     
     [self getData:YES];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"GLCommunity_Attend_Notification" object:nil];
     
+}
+
+- (void)refresh {
+    [self getData:YES];
 }
 
 - (void)getData:(BOOL)status {

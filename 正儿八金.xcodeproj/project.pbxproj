@@ -195,6 +195,10 @@
 		4AB993131F6A9D4500DE5590 /* GLMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB993111F6A9D4500DE5590 /* GLMessageCell.m */; };
 		4AB993141F6A9D4500DE5590 /* GLMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AB993121F6A9D4500DE5590 /* GLMessageCell.xib */; };
 		4AB993171F6AA1C400DE5590 /* yindaotuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB993161F6AA1C400DE5590 /* yindaotuViewController.m */; };
+		4ADFC1DA1FB9412F00FABE53 /* GLPublish_TopicChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADFC1D81FB9412F00FABE53 /* GLPublish_TopicChooseController.m */; };
+		4ADFC1DB1FB9412F00FABE53 /* GLPublish_TopicChooseController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ADFC1D91FB9412F00FABE53 /* GLPublish_TopicChooseController.xib */; };
+		4ADFC1DF1FB9420E00FABE53 /* GLPublish_TopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADFC1DD1FB9420E00FABE53 /* GLPublish_TopicCell.m */; };
+		4ADFC1E01FB9420E00FABE53 /* GLPublish_TopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ADFC1DE1FB9420E00FABE53 /* GLPublish_TopicCell.xib */; };
 		4AE5E1101FAB109000945CF2 /* GLCommunity_ReportPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE5E10E1FAB109000945CF2 /* GLCommunity_ReportPostController.m */; };
 		4AE5E1111FAB109000945CF2 /* GLCommunity_ReportPostController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AE5E10F1FAB109000945CF2 /* GLCommunity_ReportPostController.xib */; };
 		4AE5E1151FAB169100945CF2 /* GLCommunity_ReportCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE5E1131FAB169100945CF2 /* GLCommunity_ReportCell.m */; };
@@ -920,6 +924,12 @@
 		4AB993121F6A9D4500DE5590 /* GLMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLMessageCell.xib; sourceTree = "<group>"; };
 		4AB993151F6AA1C400DE5590 /* yindaotuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yindaotuViewController.h; sourceTree = "<group>"; };
 		4AB993161F6AA1C400DE5590 /* yindaotuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = yindaotuViewController.m; sourceTree = "<group>"; };
+		4ADFC1D71FB9412F00FABE53 /* GLPublish_TopicChooseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLPublish_TopicChooseController.h; sourceTree = "<group>"; };
+		4ADFC1D81FB9412F00FABE53 /* GLPublish_TopicChooseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLPublish_TopicChooseController.m; sourceTree = "<group>"; };
+		4ADFC1D91FB9412F00FABE53 /* GLPublish_TopicChooseController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLPublish_TopicChooseController.xib; sourceTree = "<group>"; };
+		4ADFC1DC1FB9420E00FABE53 /* GLPublish_TopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLPublish_TopicCell.h; sourceTree = "<group>"; };
+		4ADFC1DD1FB9420E00FABE53 /* GLPublish_TopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLPublish_TopicCell.m; sourceTree = "<group>"; };
+		4ADFC1DE1FB9420E00FABE53 /* GLPublish_TopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLPublish_TopicCell.xib; sourceTree = "<group>"; };
 		4AE5E10D1FAB109000945CF2 /* GLCommunity_ReportPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCommunity_ReportPostController.h; sourceTree = "<group>"; };
 		4AE5E10E1FAB109000945CF2 /* GLCommunity_ReportPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCommunity_ReportPostController.m; sourceTree = "<group>"; };
 		4AE5E10F1FAB109000945CF2 /* GLCommunity_ReportPostController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLCommunity_ReportPostController.xib; sourceTree = "<group>"; };
@@ -1813,6 +1823,7 @@
 			children = (
 				4AB992F01F6A7FF400DE5590 /* 发布 */,
 				4AB992F91F6A801900DE5590 /* 社区选择 */,
+				4ADFC1D31FB9410C00FABE53 /* 话题选择 */,
 			);
 			path = "发布";
 			sourceTree = "<group>";
@@ -2816,6 +2827,43 @@
 				4AB993101F6A9D4500DE5590 /* GLMessageCell.h */,
 				4AB993111F6A9D4500DE5590 /* GLMessageCell.m */,
 				4AB993121F6A9D4500DE5590 /* GLMessageCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4ADFC1D31FB9410C00FABE53 /* 话题选择 */ = {
+			isa = PBXGroup;
+			children = (
+				4ADFC1D41FB9410C00FABE53 /* Controller */,
+				4ADFC1D51FB9410C00FABE53 /* Model */,
+				4ADFC1D61FB9410C00FABE53 /* View */,
+			);
+			path = "话题选择";
+			sourceTree = "<group>";
+		};
+		4ADFC1D41FB9410C00FABE53 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4ADFC1D71FB9412F00FABE53 /* GLPublish_TopicChooseController.h */,
+				4ADFC1D81FB9412F00FABE53 /* GLPublish_TopicChooseController.m */,
+				4ADFC1D91FB9412F00FABE53 /* GLPublish_TopicChooseController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4ADFC1D51FB9410C00FABE53 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4ADFC1D61FB9410C00FABE53 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4ADFC1DC1FB9420E00FABE53 /* GLPublish_TopicCell.h */,
+				4ADFC1DD1FB9420E00FABE53 /* GLPublish_TopicCell.m */,
+				4ADFC1DE1FB9420E00FABE53 /* GLPublish_TopicCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4652,6 +4700,7 @@
 				F977D0D01FA0693A003596E7 /* NTESTeamMeetingMutesViewController.xib in Resources */,
 				F977D0811FA0693A003596E7 /* NMCVideoFilter.bundle in Resources */,
 				4A4950921F5F886600180007 /* Main.storyboard in Resources */,
+				4ADFC1DB1FB9412F00FABE53 /* GLPublish_TopicChooseController.xib in Resources */,
 				F977D1FB1FA07DD4003596E7 /* LBSerachFriendTableViewCell.xib in Resources */,
 				4A605EE11F67CCBB00F80666 /* GLLoginController.xib in Resources */,
 				F977D0D41FA0693A003596E7 /* NTESVideoChatViewController.xib in Resources */,
@@ -4678,6 +4727,7 @@
 				F977D2031FA07DD4003596E7 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				F977D0731FA0693A003596E7 /* NTESContactViewController.xib in Resources */,
 				4A4954C61F5F898F00180007 /* 我的.xcassets in Resources */,
+				4ADFC1E01FB9420E00FABE53 /* GLPublish_TopicCell.xib in Resources */,
 				4A4954C41F5F898F00180007 /* setUp.xcassets in Resources */,
 				4AB992F81F6A7FF400DE5590 /* GLPublishController.xib in Resources */,
 				4AB993061F6A809600DE5590 /* GLPublish_CommunityCell.xib in Resources */,
@@ -4935,6 +4985,7 @@
 				F977D0F21FA0693A003596E7 /* NTESBundleSetting.m in Sources */,
 				F977D15F1FA0693B003596E7 /* NIMSessionInteractorImpl.m in Sources */,
 				F977D08E1FA0693A003596E7 /* NTESCustomNotificationDB.m in Sources */,
+				4ADFC1DF1FB9420E00FABE53 /* GLPublish_TopicCell.m in Sources */,
 				4A0E4B981F6A504600EBADE8 /* HXPhotoSubViewCell.m in Sources */,
 				4A0E4B921F6A504600EBADE8 /* HXPhotoEditViewController.m in Sources */,
 				4A0E4B9F1F6A504600EBADE8 /* HXTransition.m in Sources */,
@@ -5041,6 +5092,7 @@
 				F977D0771FA0693A003596E7 /* NTESSessionCustomContentConfig.m in Sources */,
 				F977D10D1FA0693B003596E7 /* NTESBirthSettingViewController.m in Sources */,
 				4A5B48F31F690F9300AD2F0D /* GLMine_EventOffLineController.m in Sources */,
+				4ADFC1DA1FB9412F00FABE53 /* GLPublish_TopicChooseController.m in Sources */,
 				F977D0D91FA0693A003596E7 /* yuv420sp.fsh.c in Sources */,
 				F977D1761FA0693B003596E7 /* NIMTeamCardOperationItem.m in Sources */,
 				F977D1161FA0693B003596E7 /* NTESSettingCheckCell.m in Sources */,

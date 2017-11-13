@@ -108,7 +108,7 @@
                 
                 model.isHiddenAttendBtn = YES;
                 model.isHiddenLandlord = YES;
-                model.isHiddenTitleLabel = NO;
+//                model.isHiddenTitleLabel = NO;
                 
                 [self.dataSourceArr addObject:model];
             }

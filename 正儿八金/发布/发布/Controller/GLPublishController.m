@@ -10,6 +10,7 @@
 #import "HXPhotoViewController.h"
 #import "HXPhotoView.h"
 #import "GLPublish_CommunityChooseController.h"//社区选择
+#import "GLPublish_TopicChooseController.h"//话题选择
 
 static const CGFloat kPhotoViewMargin = 12.0;
 
@@ -30,19 +31,29 @@ static const CGFloat kPhotoViewMargin = 12.0;
 
 @property (weak, nonatomic) IBOutlet UILabel *communityNameLabel;//社区名Label
 @property (weak, nonatomic) IBOutlet UIButton *addressBtn;//选择地址Btn
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleTextFHeight;//标题高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topicTFHeight;//话题输入框高度
+
+@property (weak, nonatomic) IBOutlet UIButton *addTopicBtn;//添加话题 按钮
 @property (weak, nonatomic) IBOutlet UIButton *addTitleBtn;//添加title 按钮
 @property (weak, nonatomic) IBOutlet UITextView *contentTextV;//内容TextV
 @property (weak, nonatomic) IBOutlet UITextField *titleTF;//标题TF
+@property (weak, nonatomic) IBOutlet UITextField *topicTF;//话题TF
 
+@property (nonatomic, strong)UIScrollView *photoScrollView;
 @property (strong, nonatomic)LoadWaitView *loadV;
 @property (nonatomic, assign)NSInteger page;
 @property (nonatomic,strong)NodataView *nodataV;
 
-
 @property (nonatomic, copy)NSString *bar_id;//社区id
 @property (nonatomic, copy)NSString *location;//发帖位置
 @property (nonatomic, copy)NSString *topic;//话题
+
+/**
+ *imagearr  商品图片数组
+ */
+@property (strong, nonatomic)  NSMutableArray *imagearr;
 
 @end
 
@@ -68,7 +79,7 @@ static const CGFloat kPhotoViewMargin = 12.0;
     photoView.frame = CGRectMake(kPhotoViewMargin, 0, kSCREEN_WIDTH - kPhotoViewMargin * 2, 0);
     photoView.delegate = self;
     photoView.backgroundColor = [UIColor whiteColor];
-    [scrollView addSubview:photoView];
+    [self.scrollView addSubview:photoView];
     self.photoView = photoView;
     
     _placeHoler = @"老司机准备飙车了";
@@ -99,12 +110,12 @@ static const CGFloat kPhotoViewMargin = 12.0;
     return _manager;
 }
 
-//返回
+#pragma mark - 返回
 - (IBAction)back:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-//发表
+#pragma mark - 发表
 - (IBAction)publish:(id)sender {
     
     self.hidesBottomBarWhenPushed = YES;
@@ -115,6 +126,7 @@ static const CGFloat kPhotoViewMargin = 12.0;
         communityVC.block = ^(NSString *name,NSString *bar_id){
             
             self.communityNameLabel.text = name;
+            self.bar_id = bar_id;
             
         };
         
@@ -122,63 +134,107 @@ static const CGFloat kPhotoViewMargin = 12.0;
         
     }else{
         
-        NSLog(@"发表");
+        [self publishPost];
     }
 }
 
-//发表帖子请求
+#pragma mark - 发表帖子请求
 - (void)publishPost{
-    
-//    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-//    dic[@"token"] = [UserModel defaultUser].token;
-//    dic[@"uid"] = [UserModel defaultUser].userId;
-//    dic[@"group"] = [UserModel defaultUser].groupid;
-//    dic[@"content"] = self.contentTextV.text;
-//    dic[@"title"] = self.titleTF.text;
-//    dic[@"topic"] = self.topic;
-//    dic[@"picture"] = ;
-//    dic[@"bar_id"] = self.bar_id;
-//    dic[@"location"] = self.location;
-//    dic[@"port"] = @"1";//1:ios 2:安卓 3:web 默认1
-//    
-//
-//    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-//    [NetworkManager requestPOSTWithURLStr:kPUBLISH_POST_URL paramDic:dic finish:^(id responseObject) {
-//        
-//        [_loadV removeloadview];
-//        
-//        if ([responseObject[@"code"] integerValue] == 104) {
-//            
-//        }else{
-//            
-//            [MBProgressHUD showError:responseObject[@"message"]];
-//        }
-//
-//        
-//    } enError:^(NSError *error) {
-//        [_loadV removeloadview];
-//        [MBProgressHUD showError:error.localizedDescription];
-//        
-//    }];
 
-}
-//选择地址
-- (IBAction)chooseAddress:(id)sender {
-    NSLog(@"选择地址");
-}
-//添加标题
-- (IBAction)addTitle:(id)sender {
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    dic[@"token"] = [UserModel defaultUser].token;
+    dic[@"uid"] = [UserModel defaultUser].userId;
+    dic[@"group"] = [UserModel defaultUser].groupid;
+    dic[@"content"] = self.contentTextV.text;
+    dic[@"title"] = self.titleTF.text;
+    dic[@"topic"] = self.topic;
+    dic[@"bar_id"] = self.bar_id;
+    dic[@"location"] = @"成都市-金牛万达";
+    dic[@"port"] = @"1";//1:ios 2:安卓 3:web 默认1
     
-    [self.addTitleBtn setImage:[UIImage imageNamed:@"title-yes"] forState:UIControlStateNormal];
-    
-    [UIView animateWithDuration:0.2 animations:^{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
+    manager.requestSerializer.timeoutInterval = 20;
+    // 加上这行代码，https ssl 验证。
+    [manager setSecurityPolicy:[NetworkManager customSecurityPolicy]];
+    [manager POST:[NSString stringWithFormat:@"%@%@",URL_Base,kPUBLISH_POST_URL] parameters:dic constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        //将图片以表单形式上传
         
-        self.titleTextFHeight.constant = 50;
+        for (int i = 0; i < self.imagearr.count; i ++) {
+            
+            NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
+            formatter.dateFormat=@"yyyyMMddHHmmss";
+            NSString *str=[formatter stringFromDate:[NSDate date]];
+            NSString *fileName=[NSString stringWithFormat:@"%@%d.png",str,i];
+            NSString *title = [NSString stringWithFormat:@"picture[%zd]",i];
+            
+            NSData *data = UIImageJPEGRepresentation(self.imagearr[i], 0.2);
+            
+            [formData appendPartWithFileData:data name:title fileName:fileName mimeType:@"image/png"];
+        }
+        
+    }progress:^(NSProgress *uploadProgress){
+        
+        [SVProgressHUD showProgress:uploadProgress.fractionCompleted status:[NSString stringWithFormat:@"上传中%.0f%%",(uploadProgress.fractionCompleted * 100)]];
+        
+        if (uploadProgress.fractionCompleted == 1.0) {
+            [SVProgressHUD dismiss];
+        }
+        
+    }success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        
+        
+        if ([dic[@"code"] integerValue] == SUCCESS_CODE) {
+            
+            [SVProgressHUD showSuccessWithStatus:dic[@"message"]];
+            [self dismissViewControllerAnimated:YES completion:nil];
+            
+        }else{
+            
+            [SVProgressHUD showErrorWithStatus:dic[@"message"]];
+        }
+        [_loadV removeloadview];
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
     }];
+}
+
+#pragma mark - 选择地址
+- (IBAction)chooseAddress:(UIButton *)sender {
+    NSLog(@"选择地址");
+ 
+}
+
+#pragma mark - 添加标题
+- (IBAction)addTitle:(UIButton *)sender {
     
+    if(sender.isSelected){
+        
+        [self.addTitleBtn setImage:[UIImage imageNamed:@"title-yes"] forState:UIControlStateNormal];
+        
+        [UIView animateWithDuration:0.2 animations:^{
+            
+            self.titleTextFHeight.constant = 0;
+            self.titleTF.text = nil;
+            self.scrollView.y -= 50;
+        }];
+        
+    }else{
+        [self.addTitleBtn setImage:[UIImage imageNamed:@"title-no"] forState:UIControlStateNormal];
+        
+        [UIView animateWithDuration:0.2 animations:^{
+            self.scrollView.y += 50;
+            self.titleTextFHeight.constant = 50;
+        }];
+    }
+    sender.selected = !sender.selected;
     
 }
-//选择社区
+
+#pragma mark - 选择社区
 - (IBAction)chooseCommunity:(id)sender {
     
     self.hidesBottomBarWhenPushed = YES;
@@ -188,16 +244,26 @@ static const CGFloat kPhotoViewMargin = 12.0;
     communityVC.block = ^(NSString *name,NSString * bar_id){
         
         self.communityNameLabel.text = name;
-        
+        self.bar_id = self.bar_id;
     };
     
     [self.navigationController pushViewController:communityVC animated:YES];
-    
 }
 
-//话题选择
-- (IBAction)topicChoose:(id)sender {
-     NSLog(@"话题选择");
+#pragma mark - 话题选择
+- (IBAction)topicChoose:(UIButton *)sender {
+    
+    self.hidesBottomBarWhenPushed = YES;
+    
+    GLPublish_TopicChooseController *topicVC = [[GLPublish_TopicChooseController alloc] init];
+    topicVC.block = ^(NSString *topic){
+        self.topicTFHeight.constant = 50;
+        self.topic = topic;
+        self.topicTF.text = [NSString stringWithFormat:@"#%@#",topic];
+        self.scrollView.y = 50 + self.scrollView.y;
+    };
+    
+    [self.navigationController pushViewController:topicVC animated:YES];
 }
 
 #pragma mark - UITextViewDelegate
@@ -217,21 +283,40 @@ static const CGFloat kPhotoViewMargin = 12.0;
     }
 }
 
-#pragma mark-
-#pragma mark HXPhotoViewDelegate
+#pragma mark - 照片选择器 代理
 - (void)photoView:(HXPhotoView *)photoView changeComplete:(NSArray<HXPhotoModel *> *)allList photos:(NSArray<HXPhotoModel *> *)photos videos:(NSArray<HXPhotoModel *> *)videos original:(BOOL)isOriginal {
 //    NSSLog(@"所有:%ld - 照片:%ld - 视频:%ld",allList.count,photos.count,videos.count);
     
+    for (HXPhotoModel *photo in photos) {
+        PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+        options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+        __weak typeof(self) weakself = self;
+        [[PHImageManager defaultManager] requestImageForAsset:photo.asset targetSize:[UIScreen mainScreen].bounds.size contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage *result, NSDictionary *info) {
+                //设置图片
+                [weakself.imagearr insertObject:result atIndex:0];
+           
+        }];
+    }
 }
 
 - (void)photoView:(HXPhotoView *)photoView deleteNetworkPhoto:(NSString *)networkPhotoUrl {
+    
 //    NSSLog(@"%@",networkPhotoUrl);
 }
 
 - (void)photoView:(HXPhotoView *)photoView updateFrame:(CGRect)frame {
-//    NSSLog(@"%@",NSStringFromCGRect(frame));
+
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, CGRectGetMaxY(frame) + kPhotoViewMargin);
     
+}
+
+#pragma mark - 懒加载
+-(NSMutableArray*)imagearr{
+    
+    if (!_imagearr) {
+        _imagearr = [NSMutableArray arrayWithObjects:[UIImage imageNamed:@"发表图片"], nil];
+    }
+    return _imagearr;
 }
 
 @end

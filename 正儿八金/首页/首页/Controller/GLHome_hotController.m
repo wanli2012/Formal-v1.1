@@ -325,6 +325,7 @@
         [MBProgressHUD showError:@"请先登录"];
         return;
     }
+    
     GLHome_AttentionModel *model = self.dataSourceArr[index];
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];

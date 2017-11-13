@@ -70,6 +70,7 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
 #define kPOST_DETAIL_URL @"PostBar/PostDetails"//帖子详情
 #define kGET_SECOND_COMMENT_URL @"PostBar/PostMoreComments"//获取更多下级评论
 #define kFOLLOW_OR_CANCEL_URL @"User/PartnerFollow"//关注其ta用户，或者取消关注
+#define kATTEND_COMMUNITY_URL @"User/PartnerCommunityConcern"//用户关注社区
 #define kPOST_PRISE_URL @"PostBar/PostAppreciate"//帖子点赞取消点赞接口
 #define kCOMMENT_PRISE_URL @"PostBar/PostCommentPointPraise"//评论点赞
 #define kCOMMENT_POST_URL @"PostBar/PostAtom"//帖子添加评论
@@ -81,6 +82,7 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
 #define kNOTICE_URL @"HomePage/Notice"//公告
 #define kPOST_REPORT_URL @"PostBar/PostReport"//用户举报帖子
 #define kPOST_SEARCH_URL @"PostBar/PostSearch"//搜索接口
+#define kTOPIC_CHOOSE_URL @"PostBar/PostTopic"//话题选择
 
 
 

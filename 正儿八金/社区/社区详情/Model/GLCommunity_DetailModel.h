@@ -17,7 +17,7 @@
 @property (nonatomic, copy)NSString *title;//帖子标题
 @property (nonatomic, copy)NSString *content;//帖子内容
 @property (nonatomic, copy)NSString *pv;//帖子浏览量
-@property (nonatomic, copy)NSString *picture;//图片
+@property (nonatomic, copy)NSArray *picture;//图片
 @property (nonatomic, copy)NSString *time;//发帖时间
 @property (nonatomic, copy)NSString *comments;//帖子评论数
 @property (nonatomic, copy)NSString *elite;//是否为精华帖 1:精华帖 2:正常
@@ -31,6 +31,11 @@
 @property (nonatomic, copy)NSString *portrait;//活跃用户头像
 @property (nonatomic, copy)NSString *group_id;//活跃用户头像
 @property (nonatomic, strong)GLCommunity_Detail_post *post;//活跃用户头像
+
+@property (nonatomic, assign)CGFloat cellHeight;
+@property (nonatomic, assign)BOOL isHiddenAttendBtn;//关注按钮是否隐藏
+@property (nonatomic, assign)BOOL isHiddenLandlord;//楼主标志是否隐藏
+@property (nonatomic, assign)BOOL isHiddenTitleLabel;//标题是否隐藏
 
 @end
 

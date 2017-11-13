@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLPublishController">
             <connections>
                 <outlet property="addTitleBtn" destination="K4e-jy-mPG" id="mbM-i5-V5h"/>
+                <outlet property="addTopicBtn" destination="Mfj-a3-agR" id="mC9-X7-RKK"/>
                 <outlet property="addressBtn" destination="cAu-IW-Rbc" id="hwg-hc-wNP"/>
                 <outlet property="communityNameLabel" destination="He0-Uv-Bt4" id="Iga-gy-Xrw"/>
                 <outlet property="contentTextV" destination="QKB-dn-YB0" id="Eak-Fm-cNa"/>
@@ -23,16 +24,18 @@
                 <outlet property="titleTF" destination="3lh-fk-Mo6" id="LHS-9i-kmz"/>
                 <outlet property="titleTextFHeight" destination="j0P-O3-brQ" id="yyM-TK-45r"/>
                 <outlet property="toolView" destination="fcJ-5c-28M" id="lNI-sa-MFE"/>
+                <outlet property="topicTF" destination="uxp-eb-i5y" id="nEw-d2-RBL"/>
+                <outlet property="topicTFHeight" destination="ZAk-u3-cmg" id="grl-Tj-Vfx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="337" height="519"/>
+            <rect key="frame" x="0.0" y="0.0" width="332" height="430"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qi0-cl-aUD">
-                    <rect key="frame" x="0.0" y="20" width="337" height="44"/>
+                    <rect key="frame" x="0.0" y="20" width="332" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5MU-GZ-u4s">
                             <rect key="frame" x="0.0" y="0.0" width="80" height="44"/>
@@ -46,13 +49,13 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="编辑内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9L-85-wde">
-                            <rect key="frame" x="133.5" y="11.5" width="69.5" height="21"/>
+                            <rect key="frame" x="131" y="11.5" width="69.5" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.91904610399999997" green="0.29763087630000001" blue="0.53569805619999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tXe-ak-hL5">
-                            <rect key="frame" x="257" y="0.0" width="80" height="44"/>
+                            <rect key="frame" x="252" y="0.0" width="80" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="80" id="XQj-K6-uiA"/>
                             </constraints>
@@ -66,7 +69,7 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1m5-px-YUE">
-                            <rect key="frame" x="0.0" y="43" width="337" height="1"/>
+                            <rect key="frame" x="0.0" y="43" width="332" height="1"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="7dc-l5-y0l"/>
@@ -90,7 +93,7 @@
                     </constraints>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcL-kO-jsS">
-                    <rect key="frame" x="0.0" y="64" width="337" height="355"/>
+                    <rect key="frame" x="0.0" y="64" width="332" height="266"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ho1-od-dBX">
                             <rect key="frame" x="0.0" y="0.0" width="337" height="334"/>
@@ -117,16 +120,28 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
+                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="选择的话题" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uxp-eb-i5y">
+                                    <rect key="frame" x="10" y="0.0" width="317" height="0.0"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" id="ZAk-u3-cmg"/>
+                                    </constraints>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="3lh-fk-Mo6" firstAttribute="leading" secondItem="ho1-od-dBX" secondAttribute="leading" constant="10" id="WSf-zA-Jhb"/>
+                                <constraint firstItem="uxp-eb-i5y" firstAttribute="top" secondItem="3lh-fk-Mo6" secondAttribute="bottom" id="X9h-in-3et"/>
+                                <constraint firstAttribute="trailing" secondItem="uxp-eb-i5y" secondAttribute="trailing" constant="10" id="ZSL-uk-2NO"/>
+                                <constraint firstItem="QKB-dn-YB0" firstAttribute="top" secondItem="uxp-eb-i5y" secondAttribute="bottom" id="aJi-ic-6Rf"/>
                                 <constraint firstAttribute="trailing" secondItem="QKB-dn-YB0" secondAttribute="trailing" id="azk-LE-nZ0"/>
                                 <constraint firstItem="QKB-dn-YB0" firstAttribute="leading" secondItem="ho1-od-dBX" secondAttribute="leading" id="fkv-Kh-Abm"/>
                                 <constraint firstAttribute="width" constant="337" id="hK9-PE-4r7"/>
                                 <constraint firstAttribute="height" constant="334" id="hSo-W9-BNp"/>
+                                <constraint firstItem="uxp-eb-i5y" firstAttribute="leading" secondItem="ho1-od-dBX" secondAttribute="leading" constant="10" id="jmd-84-uK1"/>
                                 <constraint firstAttribute="trailing" secondItem="3lh-fk-Mo6" secondAttribute="trailing" constant="10" id="oIn-9a-SIU"/>
-                                <constraint firstItem="QKB-dn-YB0" firstAttribute="top" secondItem="3lh-fk-Mo6" secondAttribute="bottom" id="sgz-T5-ECE"/>
                                 <constraint firstItem="3lh-fk-Mo6" firstAttribute="top" secondItem="ho1-od-dBX" secondAttribute="top" id="wCW-yL-XU3"/>
                             </constraints>
                         </view>
@@ -139,10 +154,10 @@
                     </constraints>
                 </scrollView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcJ-5c-28M">
-                    <rect key="frame" x="0.0" y="419" width="337" height="100"/>
+                    <rect key="frame" x="0.0" y="330" width="332" height="100"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAu-IW-Rbc">
-                            <rect key="frame" x="0.0" y="0.0" width="317" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="312" height="50"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <inset key="titleEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -154,7 +169,7 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VnN-r0-Ncb">
-                            <rect key="frame" x="0.0" y="50" width="337" height="1"/>
+                            <rect key="frame" x="0.0" y="50" width="332" height="1"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="pJO-l2-2Qa"/>
@@ -165,8 +180,7 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="60" id="VAN-zH-0Pn"/>
                             </constraints>
-                            <state key="normal" image="title-no"/>
-                            <state key="selected" image="title-yes"/>
+                            <state key="normal" image="title-yes"/>
                             <connections>
                                 <action selector="addTitle:" destination="-1" eventType="touchUpInside" id="ZUa-4e-JGb"/>
                             </connections>
@@ -174,8 +188,6 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfj-a3-agR">
                             <rect key="frame" x="60" y="51" width="60" height="49"/>
                             <state key="normal" image="话题已选"/>
-                            <state key="selected" image="话题已选"/>
-                            <state key="highlighted" image="话题已选"/>
                             <connections>
                                 <action selector="topicChoose:" destination="-1" eventType="touchUpInside" id="XDi-8S-k5E"/>
                             </connections>
@@ -189,7 +201,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="He0-Uv-Bt4">
-                            <rect key="frame" x="327" y="0.0" width="0.0" height="50"/>
+                            <rect key="frame" x="322" y="0.0" width="0.0" height="50"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="0.91904610399999997" green="0.29763087630000001" blue="0.53569805619999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -237,13 +249,12 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="60.5" y="-47.5"/>
+            <point key="canvasLocation" x="56" y="-235"/>
         </view>
     </objects>
     <resources>
         <image name="X" width="22" height="22"/>
         <image name="community-yes" width="21" height="25"/>
-        <image name="title-no" width="24" height="24"/>
         <image name="title-yes" width="24" height="24"/>
         <image name="定位未选" width="11" height="15"/>
         <image name="话题已选" width="25" height="25"/>

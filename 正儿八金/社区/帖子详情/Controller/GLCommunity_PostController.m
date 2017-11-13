@@ -103,11 +103,9 @@
     dic[@"page"] =@(_page);
     
     if ([UserModel defaultUser].loginstatus == YES) {
-        
         dic[@"token"] = [UserModel defaultUser].token;
         dic[@"uid"] = [UserModel defaultUser].userId;
         dic[@"group"] = [UserModel defaultUser].groupid;
-        
     }
     
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
@@ -119,9 +117,7 @@
         if ([responseObject[@"code"] integerValue] == SUCCESS_CODE) {
             
             if ([responseObject[@"data"] count] == 0) {
-                
                 [self.tableView reloadData];
-                
                 return;
             }
             
@@ -132,7 +128,7 @@
             
             self.communityNameLabel.text = self.model.post.paste_name;
 //            self.topicLabel.text = self.model.post;
-            
+
             for (mainModel *model in self.model.main) {
 
                 [self.mainCommentArr addObject:model];
@@ -174,7 +170,13 @@
 //返回按钮点击事件
 - (IBAction)back:(id)sender {
     
-    self.block(self.model.post.praise,self.model.post.fabulous,self.model.post.pv);
+    if(self.mark == 2){
+        NSString *str = [NSString stringWithFormat:@"%zd",self.model.main.count];
+        self.block(str,@"-1",self.model.post.pv);
+    }else{
+        self.block(self.model.post.praise,self.model.post.fabulous,self.model.post.pv);
+    }
+    
     [self.navigationController popViewControllerAnimated:YES];
     
 }
@@ -211,7 +213,7 @@
     dic[@"port"] = @"1";
     
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:kCOMMENT_POST_URL paramDic:dic finish:^(id responseObject) {
+    [NetworkManager requestPOSTWithURLStr:kCOMMENT_POST_URL paramDic:dic finish:^(id responseObject){
         
         [self endRefresh];
         [_loadV removeloadview];
@@ -219,7 +221,6 @@
         if ([responseObject[@"code"] integerValue] == SUCCESS_CODE) {
             
             [MBProgressHUD showSuccess:responseObject[@"message"]];
-            
             
             self.commentTF.text = nil;
             [self.commentTF resignFirstResponder];
@@ -245,14 +246,12 @@
         [MBProgressHUD showError:error.localizedDescription];
         
     }];
-
 }
 
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     
     [self sendMessage];
-    
     return YES;
 }
 
@@ -316,7 +315,7 @@
         [self endRefresh];
         [_loadV removeloadview];
         
-        if ([responseObject[@"code"] integerValue] == 104) {
+        if ([responseObject[@"code"] integerValue] == SUCCESS_CODE) {
             
             NSInteger praise = [model.reply_laud integerValue];
             //cell刷新
@@ -329,7 +328,6 @@
                 model.reply_laud  = [NSString stringWithFormat:@"%zd",praise + 1];
                 [MBProgressHUD showSuccess:@"点赞+1"];
             }
-            
             
             NSIndexPath *indexPathA = [NSIndexPath indexPathForRow:index - 1 inSection:0]; //刷新第0段第2行
             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPathA,nil] withRowAnimation:UITableViewRowAnimationNone];
@@ -346,10 +344,9 @@
         [_loadV removeloadview];
         [self.tableView reloadData];
         [MBProgressHUD showError:error.localizedDescription];
-        
     }];
-    
 }
+
 #pragma mark - 评价
 - (void)comment:(NSInteger)index{
     
@@ -361,30 +358,26 @@
 
 #pragma mark - 个人信息
 - (void)personInfo:(NSInteger)index cellIndex:(NSInteger)cellIndex isSecommend:(BOOL)isSecond{
-    mainModel *model = self.mainCommentArr[cellIndex - 1];
     
+    mainModel *model = self.mainCommentArr[cellIndex - 1];
     self.hidesBottomBarWhenPushed = YES;
 
     GLMine_MyPostController *myPostVC = [[GLMine_MyPostController alloc] init];
-    
     if (index == -1) {
         myPostVC.targetUID = model.mid;
         myPostVC.targetGroupID = model.group_id;
     }else{
-        
         if (isSecond) {
-            
             replyModel *reply = model.reply[index];
             myPostVC.targetUID = reply.mid;
             myPostVC.targetGroupID = reply.group_id;
-            
         }else{
-            
             myPostVC.targetUID = model.reply[index].mcid;
             myPostVC.targetGroupID = model.reply[index].identity;
             
         }
     }
+    
     [self.navigationController pushViewController:myPostVC animated:YES];
 }
 
@@ -439,12 +432,10 @@
                 self.model.post.fabulous = @"1";
                 self.model.post.praise  = [NSString stringWithFormat:@"%zd",praise + 1];
                 [MBProgressHUD showSuccess:@"点赞+1"];
-                
             }
             
              self.block(self.model.post.praise,self.model.post.fabulous,self.model.post.pv);
             NSIndexPath *indexPathA = [NSIndexPath indexPathForRow:index inSection:0]; //刷新第0段第2行
-            
             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPathA,nil] withRowAnimation:UITableViewRowAnimationNone];
             
         }else{
@@ -461,8 +452,8 @@
         [MBProgressHUD showError:error.localizedDescription];
         
     }];
-    
 }
+
 - (void)clickToBigImage:(NSInteger)cellIndex index:(NSInteger)index{
     postModel *model = self.model.post;
     
@@ -472,9 +463,10 @@
     
     NSMutableArray *arrM = [NSMutableArray array];
     for (NSString * s in model.picture) {//@"%@?imageView2/1/w/200/h/200",
-        //        NSString *str = [NSString stringWithFormat:@"%@?x-oss-process=style/goods_Banne",s];
+//        NSString *str = [NSString stringWithFormat:@"%@?x-oss-process=style/goods_Banne",s];
         [arrM addObject:s];
     }
+    
     jzAlbumVC.imgArr = arrM;//图片数组，可以是url，也可以是UIImage
     [self presentViewController:jzAlbumVC animated:NO completion:nil];
 }

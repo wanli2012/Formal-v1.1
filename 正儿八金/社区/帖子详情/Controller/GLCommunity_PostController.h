@@ -20,4 +20,6 @@ typedef void(^GLCommunity_PostControllerBlock)(NSString *praiseNum,NSString *fab
 
 @property (nonatomic, assign)BOOL isCommenting;//是否需要默认评论框成为第一反应控件
 
+@property (nonatomic, assign)NSInteger mark;//1,热门话题,关注动态 2,社区详情
+
 @end

@@ -83,6 +83,11 @@
 @property (nonatomic, copy)NSString *user_name;
 @property (nonatomic, copy)NSString *phone;
 @property (nonatomic, copy)NSString *portrait;
+
+@property (nonatomic, copy)NSString *starttime;//社区禁言用户开始时间 没有为空
+@property (nonatomic, copy)NSString *endtime;//社区禁言用户结束时间 没有为空
+@property (nonatomic, copy)NSString *scause;//禁言原因 没有为空
+
 @property (nonatomic, strong)postModel *post;
 @property (nonatomic, strong)NSArray <mainModel *> *main;
 

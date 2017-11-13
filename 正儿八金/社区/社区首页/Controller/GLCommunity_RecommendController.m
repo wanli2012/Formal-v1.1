@@ -10,6 +10,7 @@
 #import "GLCommunityCell.h"
 #import "GLCommunity_FollowModel.h"
 #import "GLCommunityController.h"
+#import "GLCommunity_DetailController.h"
 
 @interface GLCommunity_RecommendController ()<GLCommunityCellDelegate>
 
@@ -60,7 +61,7 @@
     dic[@"group"] = [UserModel defaultUser].groupid;
     dic[@"type"] = @(1);//1推荐未关注社区 2获取所有社区
     
-    _loadV=[LoadWaitView addloadview:CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT - 49) tagert:[self View:self.view].view];
+    _loadV=[LoadWaitView addloadview:CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT - 49) tagert:[self Controller:self.view].view];
     [NetworkManager requestPOSTWithURLStr:kRECOMMEND_COMMUNITY_URL paramDic:dic finish:^(id responseObject) {
         
         [self endRefresh];
@@ -109,7 +110,7 @@
     
 }
 //可以获取到父容器的控制器的方法,就是这个黑科技.
-- (GLCommunityController *)View:(UIView *)view{
+- (GLCommunityController *)Controller:(UIView *)view{
     UIResponder *responder = view;
     //循环获取下一个响应者,直到响应者是一个UIViewController类的一个对象为止,然后返回该对象.
     while ((responder = [responder nextResponder])) {
@@ -139,7 +140,7 @@
     dic[@"status"] = @1; //关注 取消关注,关注状态 1关注 2取消关注
     dic[@"port"] = @1; //1ios 2安卓 3web 默认1
 
-    _loadV=[LoadWaitView addloadview:CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT - 49) tagert:[self View:self.view].view];
+    _loadV=[LoadWaitView addloadview:CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT - 49) tagert:[self Controller:self.view].view];
     [NetworkManager requestPOSTWithURLStr:kCONCERN_COMMUNITY_URL paramDic:dic finish:^(id responseObject) {
         
         [self endRefresh];
@@ -194,6 +195,16 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [self Controller:tableView].hidesBottomBarWhenPushed = YES;
+    GLCommunity_RecommendModel *model = self.models[indexPath.row];
+    
+    GLCommunity_DetailController *detailVC = [[GLCommunity_DetailController alloc] init];
+    detailVC.communityID = model.id;
+    
+    [[self Controller:tableView].navigationController pushViewController:detailVC animated:YES];
+    [self Controller:tableView].hidesBottomBarWhenPushed = NO;
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

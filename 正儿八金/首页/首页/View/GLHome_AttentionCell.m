@@ -78,7 +78,12 @@
     self.communityLabel.text = [formattime formateTime:model.post.time];
     
     self.titleLabel.text = model.post.title;
-    self.contentLabel.text = model.post.content;
+    
+    if (model.post.topic.length == 0) {
+        self.contentLabel.text = model.post.content;
+    }else{
+        self.contentLabel.text = [NSString stringWithFormat:@"#%@# %@",model.post.topic,model.post.content];
+    }
     
     [self.praiseBtn setTitle:model.post.praise forState:UIControlStateNormal];
     [self.commentBtn setTitle:model.post.quantity forState:UIControlStateNormal];
@@ -100,11 +105,8 @@
     }
     
     if ([model.post.fabulous integerValue] == 1) {//已点赞
-        
         [self.praiseBtn setImage:[UIImage imageNamed:@"赞点中"] forState:UIControlStateNormal];
-        
     }else{
-        
         [self.praiseBtn setImage:[UIImage imageNamed:@"赞"] forState:UIControlStateNormal];
     }
     
@@ -177,24 +179,32 @@
 - (void)setPostModel:(GLCommunity_PostCommentModel *)postModel{
     _postModel = postModel;
     
-    self.nameLabel.text = postModel.user_name;
+    if (postModel.user_name.length == 0) {
+        self.nameLabel.text = postModel.phone;
+    }else{
+        self.nameLabel.text = postModel.user_name;
+    }
+    
     [self.picImageV sd_setImageWithURL:[NSURL URLWithString:postModel.portrait] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
-
+    
     self.communityLabel.text = [formattime formateTimeOfDate:[NSString stringWithFormat:@"%@",postModel.post.time]];
     
     self.titleLabel.text = postModel.post.title;
+    
     self.contentLabel.text = postModel.post.content;
     
-    [self.praiseBtn setTitle:postModel.post.pv forState:UIControlStateNormal];
+    if(postModel.post.pv.length == 0){
+        [self.praiseBtn setTitle:@"0" forState:UIControlStateNormal];
+    }else{
+        [self.praiseBtn setTitle:postModel.post.pv forState:UIControlStateNormal];
+    }
+    
     [self.commentBtn setTitle:postModel.post.praise forState:UIControlStateNormal];
     [self.praiseBtn setImage:[UIImage imageNamed:@"浏览"] forState:UIControlStateNormal];
     
     if ([self.postModel.post.fabulous integerValue] == 1) {//已点赞
-        
         [self.commentBtn setImage:[UIImage imageNamed:@"赞点中"] forState:UIControlStateNormal];
-
     }else{
-        
         [self.commentBtn setImage:[UIImage imageNamed:@"赞"] forState:UIControlStateNormal];
     }
     
@@ -258,120 +268,106 @@
         self.titleLabel.hidden = NO;
         self.contentLabelTopConstrait.constant = 35;
     }
-
     [self.collectionView reloadData];
 }
-
-//- (void)setSearch_postModel:(GLHome_Search_PostModel *)search_postModel{
-//    _search_postModel = search_postModel;
-//  
-//    self.nameLabel.text = search_postModel.user_name;
-// 
-//    [self.picImageV sd_setImageWithURL:[NSURL URLWithString:search_postModel.portrait] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
-//    self.communityLabel.text = [formattime formateTime:search_postModel.post.time];
-//    self.titleLabel.text = search_postModel.post.title;
-//    self.contentLabel.text = search_postModel.post.content;
-//    
-//    [self.praiseBtn setTitle:search_postModel.post.praise forState:UIControlStateNormal];
-//    [self.commentBtn setTitle:search_postModel.post.quantity forState:UIControlStateNormal];
-//    [self.addressBtn setTitle:search_postModel.post.location forState:UIControlStateNormal];
-//    
-//    self.commentBtn.enabled = NO;
-//    self.praiseBtn.enabled = NO;
-//    self.addressBtn.enabled = NO;
-//    
-//    if([search_postModel.follow integerValue] == 1){//是否关注社区 1 关注 2未关注 uid空默认2
-//        
-//        [self.attentionBtn setTitle:@"已关注" forState:UIControlStateNormal];
-//        [self.attentionBtn setTitleColor:MAIN_COLOR forState:UIControlStateNormal];
-//        self.attentionBtn.backgroundColor = [UIColor whiteColor];
-//        self.attentionBtn.layer.borderColor = MAIN_COLOR.CGColor;
-//        self.attentionBtn.layer.borderWidth = 1.f;
-//        self.attentionBtn.enabled = NO;
-//    }else{
-//        
-//        [self.attentionBtn setTitle:@"关注" forState:UIControlStateNormal];
-//        [self.attentionBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//        self.attentionBtn.backgroundColor = MAIN_COLOR;
-//        self.attentionBtn.enabled = NO;
-//    }
-//    
-//    if ([search_postModel.post.fabulous integerValue] == 1) {//已点赞
-//        
-//        [self.praiseBtn setImage:[UIImage imageNamed:@"赞点中"] forState:UIControlStateNormal];
-//    }else{
-//        
-//        [self.praiseBtn setImage:[UIImage imageNamed:@"赞"] forState:UIControlStateNormal];
-//    }
-//    
-//    CGFloat collectionHeight = 0.0;
-//    CGFloat collectionWidth = 0.0;
-//    collectionWidth = kSCREEN_WIDTH;
-//    if(search_postModel.post.picture.count == 0){
-//        collectionHeight = 0;
-//    }else if(search_postModel.post.picture.count == 1) {
-//        collectionHeight = (kSCREEN_WIDTH - 35)/2 + 10;
-//        collectionWidth = (kSCREEN_WIDTH - 35)/2 + 10;
-//    }else if(search_postModel.post.picture.count == 2){
-//        collectionHeight = (kSCREEN_WIDTH - 35)/2 + 10;
-//    }else if (search_postModel.post.picture.count== 3){
-//        collectionHeight = (kSCREEN_WIDTH - 40)/3 + 10;
-//    }else if(search_postModel.post.picture.count > 3 && search_postModel.post.picture.count <= 6){
-//        collectionHeight = 2 *(kSCREEN_WIDTH - 40)/3 + 15;
-//    }else if(search_postModel.post.picture.count > 6){
-//        collectionHeight = 3 *(kSCREEN_WIDTH - 40)/3 + 20;
-//    }
-//    
-//    self.collectionViewHeight.constant = collectionHeight;
-//    self.collectionViewWidth.constant = collectionWidth;
-//    //如果没有地址,隐藏按钮
-//    if(search_postModel.post.location.length == 0){
-//        self.addressBtn.hidden = YES;
-//        
-//    }else{
-//        self.addressBtn.hidden = NO;
-//        [self.addressBtn setTitle:search_postModel.post.location forState:UIControlStateNormal];
-//    }
-//    
-//    //是否隐藏关注按钮
-//    if (search_postModel.isHiddenAttendBtn) {
-//        self.attentionBtn.hidden = YES;
-//    }else{
-//        self.attentionBtn.hidden = NO;
-//    }
-//    
-//    //是否隐藏楼主标志
-//    if(search_postModel.isHiddenLandlord){
-//        self.landlordBtn.hidden = YES;
-//        
-//    }else{
-//        self.landlordBtn.hidden = NO;
-//    }
-//    
-//    //是否隐藏标题label
-//    if (search_postModel.post.title.length == 0) {
-//        self.titleLabel.hidden = YES;
-//        self.contentLabelTopConstrait.constant = 10;
-//        self.eliteImageV.hidden = YES;
-//    }else{
-//        //是否显示精华帖标志
-//        if ([search_postModel.post.elite integerValue] == 1) {//1是精华帖 2不是精华帖
-//            self.eliteImageV.hidden = NO;
-//            self.titleLabelRightConstait.constant = 37;
-//        }else{
-//            self.eliteImageV.hidden = YES;
-//            self.titleLabelRightConstait.constant = 10;
-//        }
-//        self.titleLabel.hidden = NO;
-//        self.contentLabelTopConstrait.constant = 35;
-//    }
-//    
-//    [self.collectionView reloadData];
-//}
 
 - (void)setCommunity_Post:(GLCommunity_Detail_elite *)community_Post{
     _community_Post = community_Post;
     
+//    if (community_Post.user_name.length == 0) {
+//        self.nameLabel.text = community_Post.phone;
+//    }else{
+        self.nameLabel.text = community_Post.user_name;
+//    }
+
+    [self.picImageV sd_setImageWithURL:[NSURL URLWithString:community_Post.portrait] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
+    
+    self.communityLabel.text = [formattime formateTimeOfDate:[NSString stringWithFormat:@"%@",community_Post.post.time]];
+    
+    self.titleLabel.text = community_Post.post.title;
+
+    if (community_Post.post.topic.length == 0) {
+        self.contentLabel.text = community_Post.post.content;
+    }else{
+        self.contentLabel.text = [NSString stringWithFormat:@"#%@# %@",community_Post.post.topic,community_Post.post.content];
+    }
+    
+    [self.praiseBtn setImage:[UIImage imageNamed:@"浏览"] forState:UIControlStateNormal];
+    if (community_Post.post.pv.length == 0) {
+        [self.praiseBtn setTitle:@"0" forState:UIControlStateNormal];
+    }else{
+        [self.praiseBtn setTitle:community_Post.post.pv forState:UIControlStateNormal];
+    }
+    
+    [self.commentBtn setImage:[UIImage imageNamed:@"评论"] forState:UIControlStateNormal];
+    if (community_Post.post.comments.length == 0) {
+        [self.commentBtn setTitle:@"0" forState:UIControlStateNormal];
+    }else{
+        [self.commentBtn setTitle:community_Post.post.comments forState:UIControlStateNormal];
+    }
+    
+    CGFloat collectionHeight = 0.0;
+    CGFloat collectionWidth = 0.0;
+    collectionWidth = kSCREEN_WIDTH;
+    if(community_Post.post.picture.count == 0){
+        collectionHeight = 0;
+    }else if(community_Post.post.picture.count == 1) {
+        collectionHeight = (kSCREEN_WIDTH - 35)/2 + 10;
+        collectionWidth = (kSCREEN_WIDTH - 35)/2 + 10;
+    }else if(community_Post.post.picture.count == 2){
+        collectionHeight = (kSCREEN_WIDTH - 35)/2 + 10;
+    }else if (community_Post.post.picture.count== 3){
+        collectionHeight = (kSCREEN_WIDTH - 40)/3 + 10;
+    }else if(community_Post.post.picture.count > 3 && community_Post.post.picture.count <= 6){
+        collectionHeight = 2 *(kSCREEN_WIDTH - 40)/3 + 15;
+    }else if(community_Post.post.picture.count > 6){
+        collectionHeight = 3 *(kSCREEN_WIDTH - 40)/3 + 20;
+    }
+    
+    self.collectionViewHeight.constant = collectionHeight;
+    self.collectionViewWidth.constant = collectionWidth;
+    
+    //如果没有地址,隐藏按钮
+    if(community_Post.post.location.length == 0){
+        self.addressBtn.hidden = YES;
+    }else{
+        self.addressBtn.hidden = NO;
+        [self.addressBtn setTitle:community_Post.post.location forState:UIControlStateNormal];
+    }
+    
+    //是否隐藏关注按钮
+    if (community_Post.isHiddenAttendBtn) {
+        self.attentionBtn.hidden = YES;
+    }else{
+        self.attentionBtn.hidden = NO;
+    }
+    
+    //是否隐藏楼主标志
+    if(community_Post.isHiddenLandlord){
+        self.landlordBtn.hidden = YES;
+    }else{
+        self.landlordBtn.hidden = NO;
+    }
+    
+    //是否隐藏标题label
+    if (community_Post.post.title.length == 0) {
+        self.titleLabel.hidden = YES;
+        self.contentLabelTopConstrait.constant = 10;
+        self.eliteImageV.hidden = YES;
+    }else{
+        //是否显示精华帖标志
+        if ([community_Post.post.elite integerValue] == 1) {//1是精华帖 2不是精华帖
+            self.eliteImageV.hidden = NO;
+            self.titleLabelRightConstait.constant = 37;
+        }else{
+            self.eliteImageV.hidden = YES;
+            self.titleLabelRightConstait.constant = 10;
+        }
+        self.titleLabel.hidden = NO;
+        self.contentLabelTopConstrait.constant = 35;
+    }
+    
+    [self.collectionView reloadData];
 }
 
 #pragma mark - GLHomeAttentionCellDelegate
@@ -413,8 +409,10 @@
         return self.model.post.picture.count;
     }else if(self.postModel){
         return self.postModel.post.picture.count;
-    }else{
+    }else if(self.search_postModel){
         return self.search_postModel.post.picture.count;
+    }else{
+        return self.community_Post.post.picture.count;
     }
 }
 
@@ -429,8 +427,10 @@
         imageName = self.model.post.picture[indexPath.row];
     }else if(self.postModel){
         imageName = self.postModel.post.picture[indexPath.row];
-    }else{
+    }else if(self.search_postModel){
         imageName = self.search_postModel.post.picture[indexPath.row];
+    }else{
+        imageName = self.community_Post.post.picture[indexPath.row];
     }
     img = [NSString stringWithFormat:@"%@?x-oss-process=style/miquan",imageName];//300X300
     
@@ -462,7 +462,6 @@
     if(self.postModel){
         
         if (self.postModel.post.picture.count == 1) {
-//            return CGSizeMake(kSCREEN_WIDTH - 2 * bigSpace, kSCREEN_WIDTH - 2 * bigSpace);
             return CGSizeMake((kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2, (kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2);
         }else if(self.postModel.post.picture.count == 2){
             return CGSizeMake((kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2, (kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2);
@@ -470,12 +469,28 @@
         
         return CGSizeMake((kSCREEN_WIDTH - 2*(bigSpace + smallSpace))/3, (kSCREEN_WIDTH - 2*(bigSpace + smallSpace))/3);
 
-    }else{
+    }else if(self.model){
         
         if (self.model.post.picture.count == 1) {
-//            return CGSizeMake(kSCREEN_WIDTH - 2 * bigSpace, kSCREEN_WIDTH - 2 * bigSpace);
             return CGSizeMake((kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2, (kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2);
         }else if(self.model.post.picture.count == 2){
+            return CGSizeMake((kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2, (kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2);
+        }
+        
+        return CGSizeMake((kSCREEN_WIDTH - 2*(bigSpace + smallSpace))/3, (kSCREEN_WIDTH - 2*(bigSpace + smallSpace))/3);
+    }else if(self.search_postModel){
+        if (self.search_postModel.post.picture.count == 1) {
+            return CGSizeMake((kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2, (kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2);
+        }else if(self.search_postModel.post.picture.count == 2){
+            return CGSizeMake((kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2, (kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2);
+        }
+        
+        return CGSizeMake((kSCREEN_WIDTH - 2*(bigSpace + smallSpace))/3, (kSCREEN_WIDTH - 2*(bigSpace + smallSpace))/3);
+    }else{
+        if (self.community_Post.post.picture.count == 1) {
+            
+            return CGSizeMake((kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2, (kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2);
+        }else if(self.community_Post.post.picture.count == 2){
             return CGSizeMake((kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2, (kSCREEN_WIDTH - 2 * bigSpace - smallSpace)/2);
         }
         

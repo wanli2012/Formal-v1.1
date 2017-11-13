@@ -1139,7 +1139,6 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     [self.indefiniteAnimatedView removeFromSuperview];
 }
 
-
 #pragma mark - Utilities
 
 + (BOOL)isVisible {
@@ -1147,12 +1146,11 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     return ([self sharedView].hudView.contentView.alpha > 0.0f);
 }
 
-
 #pragma mark - Getters
 
 + (NSTimeInterval)displayDurationForString:(NSString*)string {
-    CGFloat minimum = MAX((CGFloat)string.length * 0.06 + 0.5, [self sharedView].minimumDismissTimeInterval);
-    return MIN(minimum, [self sharedView].maximumDismissTimeInterval);
+    CGFloat minimum = MIN((CGFloat)string.length * 0.06 + 0.2, [self sharedView].minimumDismissTimeInterval);
+    return MIN(minimum, 5.0);
 }
 
 - (UIColor*)foregroundColorForStyle {
