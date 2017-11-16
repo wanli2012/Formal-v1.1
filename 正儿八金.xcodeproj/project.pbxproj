@@ -5383,7 +5383,7 @@
 					"$(PROJECT_DIR)/正儿八金/三方库/UMessage_Sdk_1.5.0a",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sanjun.----";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sanjun.baby;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
@@ -5416,7 +5416,7 @@
 					"$(PROJECT_DIR)/正儿八金/三方库/UMessage_Sdk_1.5.0a",
 				);
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sanjun.----";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sanjun.baby;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};

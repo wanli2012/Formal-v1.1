@@ -59,7 +59,7 @@
     self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
     self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
-    
+//    [self setUpRightNavButton];
     if (self.locationPoint) {
         MKCoordinateRegion theRegion;
         theRegion.center = self.locationPoint.coordinate;
@@ -86,7 +86,11 @@
                         position:CSToastPositionCenter];
         }
     }
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
 }
 
 - (void)setUpRightNavButton{
@@ -100,7 +104,12 @@
     if ([self.delegate respondsToSelector:@selector(onSendLocation:)]) {
         [self.delegate onSendLocation:self.locationPoint];
     }
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    
+    if (self.sign == 1) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -117,8 +126,6 @@
     [self reverseGeoLocation:centerCoordinate];
 }
 
-
-
 - (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
 
 {
@@ -128,9 +135,8 @@
     [_mapView removeAnnotations:_mapView.annotations];
 }
 
-
-
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation{
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
     static NSString *reusePin = @"reusePin";
     MKPinAnnotationView * pin = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:reusePin];
     if (!pin) {
@@ -138,10 +144,10 @@
     }
     pin.canShowCallout	= YES;
     return pin;
-
 }
 
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
     _updateUserLocation = YES;
     MKCoordinateRegion theRegion;
     theRegion.center = userLocation.coordinate;
@@ -150,14 +156,16 @@
     [_mapView setRegion:theRegion animated:NO];
 }
 
-- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views{
+- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
+{
     [_mapView selectAnnotation:self.locationPoint animated:YES];
     UIView * view = [mapView viewForAnnotation:self.mapView.userLocation];
     view.hidden = YES;
 }
 
 
-- (void)reverseGeoLocation:(CLLocationCoordinate2D)locationCoordinate2D{
+- (void)reverseGeoLocation:(CLLocationCoordinate2D)locationCoordinate2D
+{
     if (self.geoCoder.isGeocoding) {
         [self.geoCoder cancelGeocode];
     }
@@ -173,6 +181,7 @@
              NSString * title  = [wself nameForPlaceMark:mark];
              NIMKitLocationPoint *ponit = [[NIMKitLocationPoint alloc]initWithCoordinate:locationCoordinate2D andTitle:title];
              wself.locationPoint = ponit;
+             wself.locationPoint.mark = mark;
              [wself.mapView addAnnotation:ponit];
              wself.sendButton.enabled = YES;
          } else {
@@ -194,12 +203,16 @@
 - (void)dismiss:(id)sender
 {
     if (self.navigationController.presentingViewController) {
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        if (self.sign == 1) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }else{
+            
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        }
     }else{
         [self.navigationController popViewControllerAnimated:YES];
     }
     
 }
-
 
 @end

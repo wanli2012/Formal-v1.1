@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLMine_SetupController">
             <connections>
+                <outlet property="quitBtn" destination="Qe2-w0-sSr" id="afG-db-alV"/>
                 <outlet property="tableView" destination="VDl-Mo-mAg" id="2wh-1w-2N6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -28,14 +29,15 @@
                         <outlet property="delegate" destination="-1" id="gVa-cc-gnR"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qe2-w0-sSr">
-                    <rect key="frame" x="99.5" y="392" width="120" height="30"/>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qe2-w0-sSr">
+                    <rect key="frame" x="30" y="382" width="259" height="40"/>
+                    <color key="backgroundColor" red="0.91904610399999997" green="0.29763087630000001" blue="0.53569805619999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="120" id="D3z-bt-9DZ"/>
+                        <constraint firstAttribute="height" constant="40" id="Rs2-sf-fy4"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="退出登录">
-                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="signOut:" destination="-1" eventType="touchUpInside" id="bbr-79-dfB"/>
@@ -45,6 +47,8 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="VDl-Mo-mAg" secondAttribute="trailing" id="23E-lX-ge9"/>
+                <constraint firstItem="Qe2-w0-sSr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="Ad7-Dk-vJv"/>
+                <constraint firstAttribute="trailing" secondItem="Qe2-w0-sSr" secondAttribute="trailing" constant="30" id="C3v-5Y-Ml8"/>
                 <constraint firstItem="VDl-Mo-mAg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fB0-r9-3Ld"/>
                 <constraint firstAttribute="bottom" secondItem="VDl-Mo-mAg" secondAttribute="bottom" constant="100" id="hVo-SF-U4m"/>
                 <constraint firstItem="VDl-Mo-mAg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="nAT-hZ-69E"/>

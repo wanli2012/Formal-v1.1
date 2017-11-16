@@ -57,20 +57,17 @@
     self.currentVC = self.sessionListVc;
     [self.view addSubview:self.sessionListVc.view];
     
-  }
-
+}
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
     
-
 }
 
 - (IBAction)backEvent:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
 
 -(void)updateViewConstraints{
     [super updateViewConstraints];
@@ -110,12 +107,12 @@
     _popview.isBigImage = YES;
     
     [_popview show];
-    
-    
 }
+
 #pragma mark -- 附加功能
 -(void)addGoodFriend{
    [_popview hide];
+    
     self.hidesBottomBarWhenPushed = YES;
   NTESContactAddFriendViewController  *vc = [[NTESContactAddFriendViewController alloc] initWithNibName:nil bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
@@ -124,7 +121,8 @@
 }
 
 -(void)InitiateGroupChat{
-[_popview hide];
+
+    [_popview hide];
     NSString *currentUserId = [[NIMSDK sharedSDK].loginManager currentAccount];
     [self presentMemberSelector:^(NSArray *uids) {
         NSArray *members = [@[currentUserId] arrayByAddingObjectsFromArray:uids];
@@ -187,6 +185,7 @@
 }
 //搜索
 -(void)tapgestureSearchFriend{
+    
     self.hidesBottomBarWhenPushed = YES;
    AnotherSearchViewController *vc = [[AnotherSearchViewController alloc] initWithNibName:nil bundle:nil];
     [self.navigationController pushViewController:vc animated:NO];
@@ -234,6 +233,7 @@
     [self replaceFromOldViewController:self.sessionListVc toNewViewController:self.contactVc];
     
 }
+
 -(LBGoodFriendsHeaderView*)goodFriendsHeaderView{
 
     if (!_goodFriendsHeaderView) {
@@ -249,6 +249,7 @@
 }
 
 - (void)replaceFromOldViewController:(UIViewController *)oldVc toNewViewController:(UIViewController *)newVc{
+    
     /**
      *  transitionFromViewController:toViewController:duration:options:animations:completion:
      *  fromViewController    当前显示在父视图控制器中的子视图控制器
@@ -258,6 +259,7 @@
      *  animations            转换过程中得动画
      *  completion            转换完成
      */
+    
     if (self.currentVC == newVc) {
         return;
     }
@@ -307,4 +309,5 @@
     
     return _typeArr;
 }
+
 @end

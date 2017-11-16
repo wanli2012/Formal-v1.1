@@ -450,7 +450,7 @@ NIMEventSubscribeManagerDelegate>
     }
     else if([eventName isEqualToString:NIMDemoEventNameOpenSnapPicture])
     {
-        NIMCustomObject *object = event.messageModel.message.messageObject;
+        NIMCustomObject *object = (NIMCustomObject *)event.messageModel.message.messageObject;
         NTESSnapchatAttachment *attachment = (NTESSnapchatAttachment *)object.attachment;
         if(attachment.isFired){
             return handled;
@@ -462,7 +462,7 @@ NIMEventSubscribeManagerDelegate>
     else if([eventName isEqualToString:NIMDemoEventNameCloseSnapPicture])
     {
         //点击很快的时候可能会触发两次查看，所以这里不管有没有查看过 先强直销毁掉
-        NIMCustomObject *object = event.messageModel.message.messageObject;
+        NIMCustomObject *object = (NIMCustomObject *)event.messageModel.message.messageObject;
         UIView *senderView = event.data;
         [senderView dismissPresentedView:YES complete:nil];
         
@@ -491,14 +491,14 @@ NIMEventSubscribeManagerDelegate>
     }
     else if([eventName isEqualToString:NIMDemoEventNameOpenRedPacket])
     {
-        NIMCustomObject *object = event.messageModel.message.messageObject;
+        NIMCustomObject *object = (NIMCustomObject *)event.messageModel.message.messageObject;
         NTESRedPacketAttachment *attachment = (NTESRedPacketAttachment *)object.attachment;
         [[NTESRedPacketManager sharedManager] openRedPacket:attachment.redPacketId from:event.messageModel.message.from session:self.session];
         handled = YES;
     }
     else if([eventName isEqualToString:NTESShowRedPacketDetailEvent])
     {
-        NIMCustomObject *object = event.messageModel.message.messageObject;
+        NIMCustomObject *object = (NIMCustomObject *)event.messageModel.message.messageObject;
         NTESRedPacketTipAttachment *attachment = (NTESRedPacketTipAttachment *)object.attachment;
         [[NTESRedPacketManager sharedManager] showRedPacketDetail:attachment.packetId];
         handled = YES;
@@ -550,7 +550,7 @@ NIMEventSubscribeManagerDelegate>
 #pragma mark - Cell Actions
 - (void)showImage:(NIMMessage *)message
 {
-    NIMImageObject *object = message.messageObject;
+    NIMImageObject *object = (NIMImageObject *)message.messageObject;
     NTESGalleryItem *item = [[NTESGalleryItem alloc] init];
     item.thumbPath      = [object thumbPath];
     item.imageURL       = [object url];
@@ -570,7 +570,7 @@ NIMEventSubscribeManagerDelegate>
 
 - (void)showVideo:(NIMMessage *)message
 {
-    NIMVideoObject *object = message.messageObject;
+    NIMVideoObject *object = (NIMVideoObject *)message.messageObject;
     NTESVideoViewController *playerViewController = [[NTESVideoViewController alloc] initWithVideoObject:object];
     [self.navigationController pushViewController:playerViewController animated:YES];
     if(![[NSFileManager defaultManager] fileExistsAtPath:object.coverPath]){
@@ -586,7 +586,7 @@ NIMEventSubscribeManagerDelegate>
 
 - (void)showLocation:(NIMMessage *)message
 {
-    NIMLocationObject *object = message.messageObject;
+    NIMLocationObject *object = (NIMLocationObject *)message.messageObject;
     NIMKitLocationPoint *locationPoint = [[NIMKitLocationPoint alloc] initWithLocationObject:object];
     NIMLocationViewController *vc = [[NIMLocationViewController alloc] initWithLocationPoint:locationPoint];
     [self.navigationController pushViewController:vc animated:YES];
@@ -594,7 +594,7 @@ NIMEventSubscribeManagerDelegate>
 
 - (void)showFile:(NIMMessage *)message
 {
-    NIMFileObject *object = message.messageObject;
+    NIMFileObject *object = (NIMFileObject *)message.messageObject;
     NTESFilePreViewController *vc = [[NTESFilePreViewController alloc] initWithFileObject:object];
     [self.navigationController pushViewController:vc animated:YES];
 }

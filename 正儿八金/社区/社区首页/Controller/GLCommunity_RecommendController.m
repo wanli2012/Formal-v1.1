@@ -50,7 +50,12 @@
     self.tableView.mj_header = header;
     
     [self getData:YES];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"GLCommunity_Attend_Notification" object:nil];
     
+}
+
+- (void)refresh {
+    [self getData:YES];
 }
 
 - (void)getData:(BOOL)status {

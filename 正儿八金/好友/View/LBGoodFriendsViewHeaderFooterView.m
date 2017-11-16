@@ -35,9 +35,7 @@
      [view.MailListBt addTarget:self action:@selector(clickmailListEvent:) forControlEvents:UIControlEventTouchUpInside];
     
     [self addSubview:view];
-    
     self.goodFriendsSectionView = view;
-
 }
 
 -(void)clickmessageEvent:(UIButton*)sender{

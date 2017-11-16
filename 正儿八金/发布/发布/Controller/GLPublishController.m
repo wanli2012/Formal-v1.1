@@ -11,10 +11,13 @@
 #import "HXPhotoView.h"
 #import "GLPublish_CommunityChooseController.h"//社区选择
 #import "GLPublish_TopicChooseController.h"//话题选择
+#import "NIMLocationViewController.h"
+#import "NIMKitLocationPoint.h"
+//#import <AMapSearchKit/AMapSearchAPI.h>
 
 static const CGFloat kPhotoViewMargin = 12.0;
 
-@interface GLPublishController ()<HXPhotoViewDelegate,UITextViewDelegate>
+@interface GLPublishController ()<HXPhotoViewDelegate,UITextViewDelegate,NIMLocationViewControllerDelegate>
 {
     NSString *_placeHoler;
 }
@@ -55,6 +58,9 @@ static const CGFloat kPhotoViewMargin = 12.0;
  */
 @property (strong, nonatomic)  NSMutableArray *imagearr;
 
+
+@property(nonatomic,strong) CLGeocoder * geoCoder;
+
 @end
 
 @implementation GLPublishController
@@ -82,7 +88,7 @@ static const CGFloat kPhotoViewMargin = 12.0;
     [self.scrollView addSubview:photoView];
     self.photoView = photoView;
     
-    _placeHoler = @"老司机准备飙车了";
+    _placeHoler = @"老司机准备飙车了(帖子内容)";
     self.contentTextV.text = _placeHoler;
     
 }
@@ -141,6 +147,20 @@ static const CGFloat kPhotoViewMargin = 12.0;
 #pragma mark - 发表帖子请求
 - (void)publishPost{
 
+    if (self.bar_id.length == 0) {
+        [SVProgressHUD showErrorWithStatus:@"还没选择发布的社区"];
+        return;
+    }
+    if (self.location.length == 0) {
+        [SVProgressHUD showErrorWithStatus:@"还没选择发布地点"];
+        return;
+    }
+    if([self.contentTextV.text isEqualToString:_placeHoler] || [self.contentTextV.text isEqualToString:@""]){
+        [SVProgressHUD showErrorWithStatus:@"请输入发布内容"];
+        return;
+    }
+    
+    
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     dic[@"token"] = [UserModel defaultUser].token;
     dic[@"uid"] = [UserModel defaultUser].userId;
@@ -149,7 +169,7 @@ static const CGFloat kPhotoViewMargin = 12.0;
     dic[@"title"] = self.titleTF.text;
     dic[@"topic"] = self.topic;
     dic[@"bar_id"] = self.bar_id;
-    dic[@"location"] = @"成都市-金牛万达";
+    dic[@"location"] = self.location;
     dic[@"port"] = @"1";//1:ios 2:安卓 3:web 默认1
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -159,6 +179,8 @@ static const CGFloat kPhotoViewMargin = 12.0;
     [manager setSecurityPolicy:[NetworkManager customSecurityPolicy]];
     [manager POST:[NSString stringWithFormat:@"%@%@",URL_Base,kPUBLISH_POST_URL] parameters:dic constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         //将图片以表单形式上传
+        
+        [self.imagearr removeLastObject];
         
         for (int i = 0; i < self.imagearr.count; i ++) {
             
@@ -204,8 +226,23 @@ static const CGFloat kPhotoViewMargin = 12.0;
 
 #pragma mark - 选择地址
 - (IBAction)chooseAddress:(UIButton *)sender {
-    NSLog(@"选择地址");
- 
+
+    self.hidesBottomBarWhenPushed = YES;
+    NIMLocationViewController *locationVC = [[NIMLocationViewController alloc] initWithNibName:nil bundle:nil];
+    locationVC.delegate = self;
+    locationVC.sign = 1;
+    [self.navigationController pushViewController:locationVC animated:YES];
+
+}
+
+#pragma mark - NIMLocationViewControllerDelegate
+- (void)onSendLocation:(NIMKitLocationPoint *)locationPoint{
+    
+//    NSLog(@" name = %@----thoroughfare = %@----locality = %@------subThoroughfare = %@,----administrativeArea = %@----subAdministrativeArea = %@----subLocality=%@----dic = %@",locationPoint.mark.name,locationPoint.mark.thoroughfare,locationPoint.mark.locality,locationPoint.mark.subThoroughfare,locationPoint.mark.administrativeArea,locationPoint.mark.subAdministrativeArea,locationPoint.mark.subLocality,locationPoint.mark.addressDictionary);
+    
+    self.location = [NSString stringWithFormat:@"%@%@%@",locationPoint.mark.locality,locationPoint.mark.subLocality,locationPoint.mark.thoroughfare];
+    [self.addressBtn setTitle:self.location forState:UIControlStateNormal];
+
 }
 
 #pragma mark - 添加标题
@@ -244,7 +281,7 @@ static const CGFloat kPhotoViewMargin = 12.0;
     communityVC.block = ^(NSString *name,NSString * bar_id){
         
         self.communityNameLabel.text = name;
-        self.bar_id = self.bar_id;
+        self.bar_id = bar_id;
     };
     
     [self.navigationController pushViewController:communityVC animated:YES];
@@ -271,37 +308,36 @@ static const CGFloat kPhotoViewMargin = 12.0;
     
     if(textView.text.length < 1){
         textView.text = _placeHoler;
-        textView.textColor = [UIColor grayColor];
+        textView.textColor = [UIColor lightGrayColor];
     }
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView{
     
     if([textView.text isEqualToString:_placeHoler]){
-        textView.text=@"";
+        textView.text = @"";
         textView.textColor=[UIColor blackColor];
     }
 }
 
 #pragma mark - 照片选择器 代理
 - (void)photoView:(HXPhotoView *)photoView changeComplete:(NSArray<HXPhotoModel *> *)allList photos:(NSArray<HXPhotoModel *> *)photos videos:(NSArray<HXPhotoModel *> *)videos original:(BOOL)isOriginal {
-//    NSSLog(@"所有:%ld - 照片:%ld - 视频:%ld",allList.count,photos.count,videos.count);
+    
+    [self.imagearr removeAllObjects];
     
     for (HXPhotoModel *photo in photos) {
         PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
         options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
         __weak typeof(self) weakself = self;
         [[PHImageManager defaultManager] requestImageForAsset:photo.asset targetSize:[UIScreen mainScreen].bounds.size contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage *result, NSDictionary *info) {
-                //设置图片
+            //设置图片
                 [weakself.imagearr insertObject:result atIndex:0];
-           
         }];
     }
 }
 
 - (void)photoView:(HXPhotoView *)photoView deleteNetworkPhoto:(NSString *)networkPhotoUrl {
     
-//    NSSLog(@"%@",networkPhotoUrl);
 }
 
 - (void)photoView:(HXPhotoView *)photoView updateFrame:(CGRect)frame {

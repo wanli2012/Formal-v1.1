@@ -41,7 +41,6 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"GLHome_AttentionCell" bundle:nil] forCellReuseIdentifier:@"GLHome_AttentionCell"];
-    
     [self.tableView addSubview:self.nodataV];
     self.nodataV.hidden = YES;
     
@@ -71,8 +70,8 @@
     [self initInterDataSorceinfomessage];//公告
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"refreshInterface" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"attention_PraiseNotification" object:nil];
-    
 }
+
 - (void)refresh
 {
     [self getData:YES];

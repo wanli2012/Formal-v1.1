@@ -38,13 +38,14 @@
         self.imageView.contentMode = UIViewContentModeScaleAspectFit;
         
         __block BOOL isCached;
-        __weak __typeof(self) weakSelf = self;
+//        __weak __typeof(self) weakSelf = self;
         SDWebImageManager *manager = [SDWebImageManager sharedManager];
         [manager cachedImageExistsForURL:[NSURL URLWithString:photoUrl] completion:^(BOOL isInCache) {
             isCached = isInCache;
             if (!isCached) {//没有缓存
-                hud = [MBProgressHUD showHUDAddedTo:weakSelf animated:YES];
-                hud.mode = MBProgressHUDModeDeterminate;
+                
+//                hud = [MBProgressHUD showHUDAddedTo:weakSelf animated:YES];
+//                hud.mode = MBProgressHUDModeDeterminate;
             }
         }];
 

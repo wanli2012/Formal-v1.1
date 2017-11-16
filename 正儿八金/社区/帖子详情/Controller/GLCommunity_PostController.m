@@ -127,7 +127,12 @@
             self.model.isHiddenTitleLabel = NO;
             
             self.communityNameLabel.text = self.model.post.paste_name;
-//            self.topicLabel.text = self.model.post;
+            
+            if (self.model.post.topic.length == 0) {
+                self.topicLabel.text = @"#无#";
+            }else{
+                self.topicLabel.text = [NSString stringWithFormat:@"#%@#",self.model.post.topic];
+            }
 
             for (mainModel *model in self.model.main) {
 

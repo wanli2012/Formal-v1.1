@@ -10,6 +10,7 @@
 #import "GLHome_AttentionCell.h"
 #import "GLCommunity_PostController.h"
 #import "GLCommunity_DetailModel.h"
+#import "GLMine_MyPostController.h"//个人详情界面
 
 @interface GLCommunity_DetailController ()<UITableViewDelegate,UITableViewDataSource,GLHome_AttentionCellDelegate>
 
@@ -24,14 +25,17 @@
 @property (weak, nonatomic) IBOutlet UIImageView *picImageV;
 @property (weak, nonatomic) IBOutlet UIImageView *picImageV2;
 @property (weak, nonatomic) IBOutlet UIImageView *picImageV3;
-
-
+@property (weak, nonatomic) IBOutlet UIButton *checkPostBtn;
+@property (weak, nonatomic) IBOutlet UIButton *sortBtn;
 
 @property (nonatomic, strong)NSMutableArray *postArr;
 @property (strong, nonatomic)LoadWaitView *loadV;
 @property (nonatomic, assign)NSInteger page;
 @property (nonatomic,strong)NodataView *nodataV;
 @property (nonatomic, strong)GLCommunity_DetailModel *model;
+
+@property (nonatomic, copy)NSString *eaiteall;//是否查看精华帖 1:正常 2:所有精华帖 默认正常
+@property (nonatomic, copy)NSString *condition;//帖子排序 1:按时间 2:按热度 默认按时间
 
 @end
 
@@ -47,7 +51,11 @@
     self.attentBtn.layer.borderWidth = 1.f;
     self.attentBtn.layer.borderColor = MAIN_COLOR.CGColor;
     
-    self.imageV.layer.cornerRadius = self.imageV.height / 2;
+    self.picImageV.layer.cornerRadius = self.picImageV.height/2;
+    self.picImageV2.layer.cornerRadius = self.picImageV2.height/2;
+    self.picImageV3.layer.cornerRadius = self.picImageV3.height/2;
+    
+    self.imageV.layer.cornerRadius = self.imageV.height/2;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"GLHome_AttentionCell" bundle:nil] forCellReuseIdentifier:@"GLHome_AttentionCell"];
     
@@ -73,6 +81,8 @@
     self.tableView.mj_header = header;
     self.tableView.mj_footer = footer;
     
+    self.eaiteall = @"1";
+    self.condition = @"1";
     [self getData:YES];
 }
 
@@ -89,8 +99,8 @@
     dic[@"uid"] = [UserModel defaultUser].userId;
     dic[@"group"] = [UserModel defaultUser].groupid;
     dic[@"id"] = self.communityID;
-    dic[@"condition"] = @"1";
-    dic[@"eaiteall"] = @"1";
+    dic[@"condition"] = self.condition;
+    dic[@"eaiteall"] = self.eaiteall;
     dic[@"page"] = @(_page);
     
     _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
@@ -114,9 +124,7 @@
                 
                 [self.postArr addObject:post];
             }
-            
             [self setHeader];//设置透视图
-            
         }else{
             [MBProgressHUD showError:responseObject[@"message"]];
         }
@@ -127,8 +135,8 @@
         [self endRefresh];
         [MBProgressHUD showError:error.localizedDescription];
         [self.tableView reloadData];
-        
     }];
+    
 }
 
 #pragma mark - 设置透视图
@@ -190,8 +198,7 @@
                 
                 if(self.model.users.count > 3){
                     return;
-                    
-//                    [self.picImageV2 sd_setImageWithURL:[NSURL URLWithString:self.model.users[4].header_pic ] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
+
                 }
             }
         }
@@ -208,26 +215,81 @@
     
     self.navigationController.navigationBar.hidden = NO;
 }
+
 #pragma mark - 查看活跃用户的个人信息
 - (IBAction)checkPersoninfo:(UITapGestureRecognizer *)tap {
     
+    self.hidesBottomBarWhenPushed = YES;
+    
+    GLMine_MyPostController *detailVC = [[GLMine_MyPostController alloc] init];
+    
     if(tap.view.tag == 11){
-        NSLog(@"个人信息  1");
+        detailVC.targetGroupID = self.model.users[0].group_id;
+        detailVC.targetUID = self.model.users[0].uid;
+
     }else if(tap.view.tag == 12){
-        NSLog(@"个人信息  2");
+        detailVC.targetGroupID = self.model.users[1].group_id;
+        detailVC.targetUID = self.model.users[1].uid;
     }else{
-        NSLog(@"个人信息  3");
+        detailVC.targetGroupID = self.model.users[2].group_id;
+        detailVC.targetUID = self.model.users[2].uid;
     }
+    [self.navigationController pushViewController:detailVC animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
+    
+}
+
+#pragma mark - 查看置顶帖子
+- (IBAction)checkTopPost:(id)sender {
+    
+    self.hidesBottomBarWhenPushed = YES;
+    GLCommunity_PostController *postVc = [[GLCommunity_PostController alloc] init];
+    postVc.post_id = self.model.toppost.post_id;
+    postVc.mid = self.model.toppost.uid;
+    postVc.group_id = self.model.toppost.group_id;
+    postVc.mark = 2;
+    [self.navigationController pushViewController:postVc animated:YES];
+
 }
 
 #pragma mark - 查看精帖
-- (IBAction)checkPost:(id)sender {
-    NSLog(@"查看精帖");
+- (IBAction)checkPost:(UIButton *)sender {
+
+    sender.selected = !sender.selected;
+    if (sender.isSelected) {
+        [self.checkPostBtn setTitle:@"查看所有帖子" forState:UIControlStateNormal];
+        self.eaiteall = @"2";
+        
+    }else{
+        [self.checkPostBtn setTitle:@"查看精帖" forState:UIControlStateNormal];
+        self.eaiteall = @"1";
+
+    }
+    [self getData:YES];
 }
 
 #pragma mark - 排序
 - (IBAction)sort:(id)sender {
-    NSLog(@"排序");
+   
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"排序" message:nil preferredStyle:UIAlertControllerStyleActionSheet];//condition   帖子排序 1:按时间 2:按热度 默认按时间
+    UIAlertAction *firstAC = [UIAlertAction actionWithTitle:@"按热度" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.sortBtn setTitle:@"按热度" forState:UIControlStateNormal];
+        self.condition = @"2";
+        [self getData:YES];
+    }];
+    UIAlertAction *secondAC = [UIAlertAction actionWithTitle:@"按时间" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.sortBtn setTitle:@"按时间" forState:UIControlStateNormal];
+        self.condition = @"1";
+        [self getData:YES];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertVC addAction:firstAC];
+    [alertVC addAction:secondAC];
+    [alertVC addAction:cancel];
+    
+    [self presentViewController:alertVC animated:YES completion:nil];
+    
 }
 
 #pragma mark - 关注
@@ -301,55 +363,22 @@
     }];
 }
 
-#pragma mark - 点赞
-- (void)praise:(NSInteger)index{
-    if([UserModel defaultUser].loginstatus == NO){
-        [MBProgressHUD showError:@"请先登录"];
-        return;
-    }
-    GLCommunity_Detail_elite *model = self.postArr[index];
+#pragma mark -GLHome_AttentionCellDelegate 查看个人详情
+- (void)personInfo:(NSInteger)index{
+    self.hidesBottomBarWhenPushed = YES;
     
-    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    dic[@"token"] = [UserModel defaultUser].token;
-    dic[@"uid"] = [UserModel defaultUser].userId;
-    dic[@"group"] = [UserModel defaultUser].groupid;
-    dic[@"postid"] = model.post.post_id;
-    dic[@"port"] = @"1";
+    GLCommunity_Detail_elite *post = self.postArr[index];
+    GLMine_MyPostController *detailVC = [[GLMine_MyPostController alloc] init];
     
-    _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
-    [NetworkManager requestPOSTWithURLStr:kPOST_PRISE_URL paramDic:dic finish:^(id responseObject) {
-        
-        [self endRefresh];
-        [_loadV removeloadview];
-        
-        if ([responseObject[@"code"] integerValue] == SUCCESS_CODE) {
-            
-            NSString *statusStr = self.model.userstatus;
-            //cell刷新
-            if([statusStr isEqualToString:@"1"]){//status:1已关注 2:未关注
-                self.model.userstatus = @"2";
-                [SVProgressHUD showSuccessWithStatus:@"取消关注成功"];
-            }else{
-                self.model.userstatus = @"1";
-                [SVProgressHUD showSuccessWithStatus:@"关注成功"];
-            }
-            
-        }else{
-            
-            [SVProgressHUD showErrorWithStatus:responseObject[@"message"]];
-        }
-        [self.tableView reloadData];
-        
-    } enError:^(NSError *error) {
-        [self endRefresh];
-        [_loadV removeloadview];
-        [self.tableView reloadData];
-        [MBProgressHUD showError:error.localizedDescription];
-        
-    }];
+    detailVC.targetGroupID = post.group_id;
+    detailVC.targetUID = post.mid;
+
+    [self.navigationController pushViewController:detailVC animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
+
 }
 
-#pragma mark - Table view data source
+#pragma mark - UITableView dataSource 数据源
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     return 1;
@@ -365,6 +394,7 @@
     GLHome_AttentionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GLHome_AttentionCell" forIndexPath:indexPath];
     cell.community_Post = self.postArr[indexPath.row];
     cell.delegate = self;
+    cell.index = indexPath.row;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

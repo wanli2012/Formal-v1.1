@@ -120,7 +120,7 @@ NSString *NTESNotificationLogout = @"NTESNotificationLogout";
 
 //iOS10新增：处理前台收到通知的代理方法
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
-    NSDictionary * userInfo = notification.request.content.userInfo;
+//    NSDictionary * userInfo = notification.request.content.userInfo;
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         //应用处于前台时的远程推送接受
         //关闭U-Push自带的弹出框

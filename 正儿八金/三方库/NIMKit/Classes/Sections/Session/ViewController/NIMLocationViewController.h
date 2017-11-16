@@ -19,6 +19,8 @@
 
 @interface NIMLocationViewController : UIViewController<MKMapViewDelegate>
 
+@property (nonatomic, assign)NSInteger sign;//1:发布界面跳转回来的
+
 @property(nonatomic,strong) MKMapView *mapView;
 
 @property(nonatomic,weak)   id<NIMLocationViewControllerDelegate> delegate;

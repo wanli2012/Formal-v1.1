@@ -99,7 +99,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="337" height="334"/>
                             <subviews>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" text="我是PlaceHolder" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QKB-dn-YB0">
-                                    <rect key="frame" x="0.0" y="0.0" width="337" height="120"/>
+                                    <rect key="frame" x="0.0" y="50" width="337" height="120"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="120" id="eUN-ZY-afZ"/>
@@ -120,10 +120,10 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="选择的话题" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uxp-eb-i5y">
-                                    <rect key="frame" x="10" y="0.0" width="317" height="0.0"/>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入你想要的话题(非必填)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uxp-eb-i5y">
+                                    <rect key="frame" x="10" y="0.0" width="317" height="50"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" id="ZAk-u3-cmg"/>
+                                        <constraint firstAttribute="height" constant="50" id="ZAk-u3-cmg"/>
                                     </constraints>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>

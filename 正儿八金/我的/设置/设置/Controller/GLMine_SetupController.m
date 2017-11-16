@@ -12,6 +12,7 @@
 @interface GLMine_SetupController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *quitBtn;
 
 @property (nonatomic, copy)NSArray *titleArr;
 
@@ -23,6 +24,7 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationItem.title = @"系统设置";
+    self.quitBtn.layer.cornerRadius = 5.f;
      [self.tableView registerNib:[UINib nibWithNibName:@"GLMine_SetupCell" bundle:nil] forCellReuseIdentifier:@"GLMine_SetupCell"];
     
 }
@@ -42,8 +44,11 @@
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
         [UserModel defaultUser].loginstatus = NO;
-//        [UserModel defaultUser].headPic = @"";
-//        [UserModel defaultUser].usrtype = @"0";
+        [UserModel defaultUser].portrait = @"";
+        [UserModel defaultUser].acc_id = @"";
+        [UserModel defaultUser].token = @"";
+        [UserModel defaultUser].userId = @"";
+        //        [UserModel defaultUser].usrtype = @"0";
         [usermodelachivar achive];
         
         CATransition *animation = [CATransition animation];

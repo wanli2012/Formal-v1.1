@@ -110,6 +110,7 @@
 }
 
 - (void)show{
+    
     UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController;
     [vc presentViewController:[[UINavigationController alloc] initWithRootViewController:self] animated:YES completion:nil];
 }
@@ -179,7 +180,6 @@
         [self.selectIndicatorView.pickedView addMemberInfo:info];
     }
 }
-
 
 #pragma mark - UITableViewDataSource
 

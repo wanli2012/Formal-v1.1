@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLMine_PersonInfoController">
             <connections>
+                <outlet property="picImageV" destination="Rpu-Jr-swV" id="OJ5-nW-ovD"/>
                 <outlet property="tableView" destination="pWB-Gi-mWY" id="59w-eO-Pty"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -56,6 +57,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="FaH-hZ-f79" firstAttribute="leading" secondItem="cjP-zp-BUh" secondAttribute="leading" id="BUN-Ki-Jrh"/>
                             <constraint firstItem="5qV-BB-luX" firstAttribute="leading" secondItem="Rpu-Jr-swV" secondAttribute="trailing" constant="10" id="D8D-Py-PJW"/>
@@ -67,6 +69,9 @@
                             <constraint firstAttribute="trailing" secondItem="5qV-BB-luX" secondAttribute="trailing" constant="10" id="qug-Jl-zU5"/>
                             <constraint firstItem="Yms-Ue-dh6" firstAttribute="centerY" secondItem="cjP-zp-BUh" secondAttribute="centerY" constant="-2.5" id="wnK-NA-S2r"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="MOk-A8-TBt" appends="YES" id="V8E-9m-psv"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="maW-UH-KaG"/>
@@ -85,6 +90,11 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="35" y="65.5"/>
         </view>
+        <tapGestureRecognizer id="MOk-A8-TBt" userLabel="修改头像">
+            <connections>
+                <action selector="modifyThePic:" destination="-1" id="cSz-Kq-wbM"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="个人信息头像底" width="50" height="50"/>

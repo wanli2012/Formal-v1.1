@@ -229,24 +229,27 @@ NIMEventSubscribeManagerDelegate> {
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     GLFriendController *friendvc = (GLFriendController*)self.nextResponder.nextResponder;
     id<NTESContactItem> contactItem = (id<NTESContactItem>)[_contacts memberOfIndex:indexPath];
+    
     if ([contactItem respondsToSelector:@selector(selName)] && [contactItem selName].length) {
         SEL sel = NSSelectorFromString([contactItem selName]);
         SuppressPerformSelectorLeakWarning([self performSelector:sel withObject:nil]);
-    }
-    else if (contactItem.vcName.length) {
+        
+    }else if (contactItem.vcName.length) {
         Class clazz = NSClassFromString(contactItem.vcName);
         UIViewController * vc = [[clazz alloc] initWithNibName:nil bundle:nil];
         friendvc.hidesBottomBarWhenPushed = YES;
         [friendvc.navigationController pushViewController:vc animated:YES];
-
+        friendvc.hidesBottomBarWhenPushed = NO;
+        
     }else if([contactItem respondsToSelector:@selector(userId)]){
         NSString * friendId   = contactItem.userId;
         [self enterPersonalCard:friendId];
     }
-
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -254,9 +257,7 @@ NIMEventSubscribeManagerDelegate> {
     return contactItem.uiHeight;
 }
 
-
 #pragma mark - UITableViewDataSource
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [_contacts memberCountOfGroup:section];
 }

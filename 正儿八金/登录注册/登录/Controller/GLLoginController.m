@@ -9,7 +9,10 @@
 #import "GLLoginController.h"
 #import "GLRegisterController.h"
 #import "GLForgetController.h"
-
+#import "NTESLoginManager.h"
+#import "NTESService.h"
+#import "UIImage+NTES.h"
+#import "NTESFileLocationHelper.h"
 
 @interface GLLoginController ()<UITextFieldDelegate>
 
@@ -99,25 +102,28 @@
         
         [_loadV removeloadview];
         
-        if ([responseObject[@"code"] integerValue] == 100) {
+        if ([responseObject[@"code"] integerValue] == LOGIN_SUCCESS_CODE) {
             
-            [MBProgressHUD showError:responseObject[@"message"]];
             
             [UserModel defaultUser].experience = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"experience"]];
             [UserModel defaultUser].groupid = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"groupid"]];
+            [UserModel defaultUser].icon = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"icon"]];
             [UserModel defaultUser].userId = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"id"]];
             [UserModel defaultUser].number_name = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"number_name"]];
             [UserModel defaultUser].phone = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"phone"]];
             [UserModel defaultUser].portrait = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"portrait"]];
             [UserModel defaultUser].token = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"token"]];
             [UserModel defaultUser].user_name = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"user_name"]];
-             
+            [UserModel defaultUser].acc_id = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"acc_id"]];
+            [UserModel defaultUser].cloud_token = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"cloud_token"]];
+            
             [UserModel defaultUser].loginstatus = YES;
             [usermodelachivar achive];
         
             [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshInterface" object:nil];
             
-            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+            [self loginChat];
+            [MBProgressHUD showError:responseObject[@"message"]];
             
         }else{
             
@@ -131,6 +137,77 @@
     }];
 }
 
+-(void)loginChat{
+
+    //NIM SDK 只提供消息通道，并不依赖用户业务逻辑，开发者需要为每个APP用户指定一个NIM帐号，NIM只负责验证NIM的帐号即可(在服务器端集成)
+    //用户APP的帐号体系和 NIM SDK 并没有直接关系
+    //DEMO中使用 username 作为 NIM 的account ，md5(password) 作为 token
+    //开发者需要根据自己的实际情况配置自身用户系统和 NIM 用户系统的关系
+    
+    [self uploadImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[UserModel defaultUser].portrait]]]];
+    
+    [[[NIMSDK sharedSDK] loginManager] login:[UserModel defaultUser].acc_id
+                                       token:[UserModel defaultUser].cloud_token
+                                  completion:^(NSError *error) {
+                                      [_loadV removeloadview];
+                                      if (error == nil)
+                                      {
+                                          LoginData *sdkData = [[LoginData alloc] init];
+                                          sdkData.account   = [UserModel defaultUser].acc_id;
+                                          sdkData.token     = [UserModel defaultUser].cloud_token;
+                                          [[NTESLoginManager sharedManager] setCurrentLoginData:sdkData];
+                                          
+                                          [[NTESServiceManager sharedManager] start];
+                                          
+//                                          BasetabbarViewController * mainTab = [[BasetabbarViewController alloc] initWithNibName:nil bundle:nil];
+                                          [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                                          
+//                                          [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+//                                          [UIApplication sharedApplication].keyWindow.rootViewController  = mainTab;
+                                          
+                                      }
+                                      else
+                                      {
+                                          
+                                          NSString *toast = [NSString stringWithFormat:@"登录失败"];
+                                          [[UIApplication sharedApplication].keyWindow makeToast:toast duration:2.0 position:CSToastPositionCenter];
+                                      }
+                                  }];
+}
+
+#pragma mark - Private
+- (void)uploadImage:(UIImage *)image{
+    UIImage *imageForAvatarUpload = [image imageForAvatarUpload];
+    NSString *fileName = [NTESFileLocationHelper genFilenameWithExt:@"jpg"];
+    NSString *filePath = [[NTESFileLocationHelper getAppDocumentPath] stringByAppendingPathComponent:fileName];
+    NSData *data = UIImageJPEGRepresentation(imageForAvatarUpload, 0.2);
+    BOOL success = data && [data writeToFile:filePath atomically:YES];
+    __weak typeof(self) wself = self;
+    if (success) {
+        [[NIMSDK sharedSDK].resourceManager upload:filePath progress:nil completion:^(NSString *urlString, NSError *error) {
+            [SVProgressHUD dismiss];
+            if (!error && wself) {
+                [[NIMSDK sharedSDK].userManager updateMyUserInfo:@{@(NIMUserInfoUpdateTagAvatar):urlString} completion:^(NSError *error) {
+                    if (!error) {
+                        [[SDWebImageManager sharedManager] saveImageToCache:imageForAvatarUpload forURL:[NSURL URLWithString:urlString]];
+                    }else{
+                        //                        [wself.view makeToast:@"设置头像失败，请重试"
+                        //                                     duration:2
+                        //                                     position:CSToastPositionCenter];
+                    }
+                }];
+            }else{
+                //                [wself.view makeToast:@"图片上传失败，请重试"
+                //                             duration:2
+                //                             position:CSToastPositionCenter];
+            }
+        }];
+    }else{
+        //        [self.view makeToast:@"图片保存失败，请重试"
+        //                    duration:2
+        //                    position:CSToastPositionCenter];
+    }
+}
 //注册
 - (IBAction)registe:(id)sender {
 

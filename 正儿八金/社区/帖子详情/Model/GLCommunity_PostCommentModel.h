@@ -55,6 +55,7 @@
 @property (nonatomic, copy)NSString *praise;
 @property (nonatomic, copy)NSString *fabulous;
 @property (nonatomic, strong)NSString *elite;//1是精华帖 2不是精华帖
+@property (nonatomic, strong)NSString *topic;//话题
 
 @property (nonatomic, assign)CGFloat cellHeight;//cell总高度
 

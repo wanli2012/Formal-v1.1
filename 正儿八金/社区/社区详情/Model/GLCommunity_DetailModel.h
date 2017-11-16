@@ -44,6 +44,7 @@
 @property (nonatomic, copy)NSString *uid;//活跃用户id
 @property (nonatomic, copy)NSString *user_name;//活跃用户名
 @property (nonatomic, copy)NSString *header_pic;//活跃用户头像
+@property (nonatomic, copy)NSString *group_id;
 
 @end
 

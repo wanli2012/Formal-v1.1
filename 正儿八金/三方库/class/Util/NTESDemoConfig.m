@@ -28,9 +28,10 @@
     if (self = [super init])
     {
         //ChatProductionCert。生产证书。ChatDevelopmentCer 测试证书
+        //MotherLinkBaby 测试证书
         _appKey = @"908b98015c289c5cce1a6021ff62128b";
         _apiURL = @"https://app.netease.im/api";
-        _apnsCername = @"ChatProductionCert";
+        _apnsCername = @"MotherLinkBaby";
         _pkCername = nil;
         
         _redPacketConfig = [[NTESRedPacketConfig alloc] init];        
