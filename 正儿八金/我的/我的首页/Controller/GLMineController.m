@@ -50,6 +50,11 @@
     
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
+    self.navigationController.navigationBar.hidden = YES;
+    [self postRequest];
+}
+#pragma mark - 重新赋值
+- (void)assignment {
     self.myPicImage.layer.cornerRadius = self.myPicImage.height / 2;
     
     self.nameLabel.text = [NSString stringWithFormat:@"用户名:%@",[UserModel defaultUser].user_name];
@@ -57,9 +62,34 @@
     self.experienceLabel.text = [NSString stringWithFormat:@"经验值:%@",[UserModel defaultUser].experience];
     [self.levelImageV sd_setImageWithURL:[NSURL URLWithString:[UserModel defaultUser].icon ] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
     [self.myPicImage sd_setImageWithURL:[NSURL URLWithString:[UserModel defaultUser].portrait] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
+
+}
+#pragma mark - 刷新数据
+- (void)postRequest {
     
-    self.navigationController.navigationBar.hidden = YES;
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"token"] = [UserModel defaultUser].token;
+    dict[@"uid"] = [UserModel defaultUser].userId;
+    dict[@"group"] = [UserModel defaultUser].groupid;
     
+    [NetworkManager requestPOSTWithURLStr:kREFRESH_URL paramDic:dict finish:^(id responseObject) {
+        
+        if ([responseObject[@"code"] integerValue] == SUCCESS_CODE){
+            
+            [UserModel defaultUser].user_name = responseObject[@"data"][@"user_name"];
+            [UserModel defaultUser].portrait = responseObject[@"data"][@"portrait"];
+            [UserModel defaultUser].number_name = responseObject[@"data"][@"number_name"];
+            [UserModel defaultUser].icon = responseObject[@"data"][@"icon"];
+            [UserModel defaultUser].experience = responseObject[@"data"][@"experience"];
+            [usermodelachivar achive];
+            
+            [self assignment];
+        }else{
+            [SVProgressHUD showErrorWithStatus:responseObject[@"message"]];
+        }
+    } enError:^(NSError *error) {
+
+    }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -67,6 +97,7 @@
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 
 }
+
 //个人信息
 - (IBAction)personInfo:(id)sender {
     
@@ -75,6 +106,7 @@
     [self.navigationController pushViewController:infoVC animated:YES];
     self.hidesBottomBarWhenPushed = NO;
 }
+
 //设置
 - (IBAction)setup:(id)sender {
     self.hidesBottomBarWhenPushed = YES;
@@ -82,8 +114,8 @@
     GLMine_SetupController *setupVC = [[GLMine_SetupController alloc] init];
     [self.navigationController pushViewController:setupVC animated:YES];
     self.hidesBottomBarWhenPushed = NO;
-    
 }
+
 #pragma mark - UIScrollViewDelegate 下拉放大图片
 //scrollView的方法视图滑动时 实时调用
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -114,7 +146,6 @@
     
     GLMineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GLMineCell"];
     cell.selectionStyle =  UITableViewCellSelectionStyleNone;
-    
     cell.picImageV.image = [UIImage imageNamed:self.imageArr[indexPath.row]];
     cell.titleLabel.text = self.titleArr[indexPath.row];
 

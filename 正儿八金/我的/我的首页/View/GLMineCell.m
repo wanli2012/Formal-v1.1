@@ -10,8 +10,6 @@
 
 @interface GLMineCell ()
 
-
-
 @end
 
 @implementation GLMineCell

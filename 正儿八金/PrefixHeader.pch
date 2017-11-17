@@ -84,6 +84,8 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
 #define kPOST_SEARCH_URL @"PostBar/PostSearch"//搜索接口
 #define kTOPIC_CHOOSE_URL @"PostBar/PostTopic"//话题选择
 #define kMODIFY_INFO_URL @"User/PartnerInformation"//用户修改个人信息接口
+#define kREFRESH_URL @"User/PartnerUser"//用户修改个人信息接口
+#define kCITY_INFO_URL @"User/PartnerAreas"//获取城市的3级联动数据
 
 
 #define FONT(s)       [UIFont systemFontOfSize:s]

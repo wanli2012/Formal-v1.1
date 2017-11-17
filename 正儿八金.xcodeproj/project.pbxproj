@@ -46,6 +46,9 @@
 		4A0E4BA41F6A504600EBADE8 /* UIButton+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B831F6A504600EBADE8 /* UIButton+HXExtension.m */; };
 		4A0E4BA51F6A504600EBADE8 /* UIImage+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B851F6A504600EBADE8 /* UIImage+HXExtension.m */; };
 		4A0E4BA61F6A504600EBADE8 /* UIView+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E4B871F6A504600EBADE8 /* UIView+HXExtension.m */; };
+		4A0FDE681FBEEB8200171347 /* editorMaskPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FDE641FBEEB8200171347 /* editorMaskPresentationController.m */; };
+		4A0FDE691FBEEB8200171347 /* LBMineCenterChooseAreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FDE661FBEEB8200171347 /* LBMineCenterChooseAreaViewController.m */; };
+		4A0FDE6A1FBEEB8200171347 /* LBMineCenterChooseAreaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0FDE671FBEEB8200171347 /* LBMineCenterChooseAreaViewController.xib */; };
 		4A1BF7A61FB14BAF0054B16E /* GLHome_Search_UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1BF7A51FB14BAF0054B16E /* GLHome_Search_UserModel.m */; };
 		4A1DB0DF1FAFF81B00B55B1B /* MSSAutoresizeLabelFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1DB0D81FAFF81B00B55B1B /* MSSAutoresizeLabelFlow.m */; };
 		4A1DB0E01FAFF81B00B55B1B /* MSSAutoresizeLabelFlowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1DB0DA1FAFF81B00B55B1B /* MSSAutoresizeLabelFlowCell.m */; };
@@ -673,6 +676,11 @@
 		4A0E4B851F6A504600EBADE8 /* UIImage+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HXExtension.m"; sourceTree = "<group>"; };
 		4A0E4B861F6A504600EBADE8 /* UIView+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HXExtension.h"; sourceTree = "<group>"; };
 		4A0E4B871F6A504600EBADE8 /* UIView+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HXExtension.m"; sourceTree = "<group>"; };
+		4A0FDE631FBEEB8200171347 /* editorMaskPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = editorMaskPresentationController.h; sourceTree = "<group>"; };
+		4A0FDE641FBEEB8200171347 /* editorMaskPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = editorMaskPresentationController.m; sourceTree = "<group>"; };
+		4A0FDE651FBEEB8200171347 /* LBMineCenterChooseAreaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBMineCenterChooseAreaViewController.h; sourceTree = "<group>"; };
+		4A0FDE661FBEEB8200171347 /* LBMineCenterChooseAreaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBMineCenterChooseAreaViewController.m; sourceTree = "<group>"; };
+		4A0FDE671FBEEB8200171347 /* LBMineCenterChooseAreaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBMineCenterChooseAreaViewController.xib; sourceTree = "<group>"; };
 		4A1BF7A41FB14BAF0054B16E /* GLHome_Search_UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLHome_Search_UserModel.h; sourceTree = "<group>"; };
 		4A1BF7A51FB14BAF0054B16E /* GLHome_Search_UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLHome_Search_UserModel.m; sourceTree = "<group>"; };
 		4A1DB0D71FAFF81B00B55B1B /* MSSAutoresizeLabelFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSAutoresizeLabelFlow.h; sourceTree = "<group>"; };
@@ -2292,6 +2300,11 @@
 				4A5B48DC1F68FD2000AD2F0D /* GLMine_PersonInfoController.h */,
 				4A5B48DD1F68FD2000AD2F0D /* GLMine_PersonInfoController.m */,
 				4A5B48DE1F68FD2000AD2F0D /* GLMine_PersonInfoController.xib */,
+				4A0FDE631FBEEB8200171347 /* editorMaskPresentationController.h */,
+				4A0FDE641FBEEB8200171347 /* editorMaskPresentationController.m */,
+				4A0FDE651FBEEB8200171347 /* LBMineCenterChooseAreaViewController.h */,
+				4A0FDE661FBEEB8200171347 /* LBMineCenterChooseAreaViewController.m */,
+				4A0FDE671FBEEB8200171347 /* LBMineCenterChooseAreaViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4730,6 +4743,7 @@
 				4ADFC1E01FB9420E00FABE53 /* GLPublish_TopicCell.xib in Resources */,
 				4A4954C41F5F898F00180007 /* setUp.xcassets in Resources */,
 				4AB992F81F6A7FF400DE5590 /* GLPublishController.xib in Resources */,
+				4A0FDE6A1FBEEB8200171347 /* LBMineCenterChooseAreaViewController.xib in Resources */,
 				4AB993061F6A809600DE5590 /* GLPublish_CommunityCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5055,6 +5069,7 @@
 				F977D1371FA0693B003596E7 /* NIMContactSelectConfig.m in Sources */,
 				F977D0671FA0693A003596E7 /* NTESCustomSysNotificationSender.m in Sources */,
 				F977D11E1FA0693B003596E7 /* NSString+NIMKit.m in Sources */,
+				4A0FDE681FBEEB8200171347 /* editorMaskPresentationController.m in Sources */,
 				F977D0BE1FA0693A003596E7 /* NTESSessionRemoteHistoryViewController.m in Sources */,
 				F977D0761FA0693A003596E7 /* NTESChatroomTextContentConfig.m in Sources */,
 				4AF20BF81FA95735009AEC48 /* GLCommunity_FollowModel.m in Sources */,
@@ -5110,6 +5125,7 @@
 				F977D0491FA0693A003596E7 /* NSString+NTES.m in Sources */,
 				F977D1041FA0693A003596E7 /* NTESNoDisturbSettingViewController.m in Sources */,
 				F977D04F1FA0693A003596E7 /* UIScrollView+NTESDirection.m in Sources */,
+				4A0FDE691FBEEB8200171347 /* LBMineCenterChooseAreaViewController.m in Sources */,
 				F977D1571FA0693B003596E7 /* NIMCellLayoutConfig.m in Sources */,
 				F977D0FE1FA0693A003596E7 /* NTESLogManager.m in Sources */,
 				F977D0941FA0693A003596E7 /* NTESSystemNotificationViewController.m in Sources */,
