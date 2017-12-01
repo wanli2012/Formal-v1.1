@@ -14,4 +14,6 @@
 
 @property (nonatomic, copy)NSString *targetGroupID;
 
+@property (nonatomic, assign)BOOL isHiddenBottomView;//是否隐藏底部功能View
+
 @end

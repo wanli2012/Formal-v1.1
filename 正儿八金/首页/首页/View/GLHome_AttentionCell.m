@@ -47,7 +47,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
 
-    self.picImageV.layer.cornerRadius = 20;
+    self.picImageV.layer.cornerRadius = self.picImageV.height/2;
     self.attentionBtn.layer.cornerRadius = 5.f;
 
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc] init];

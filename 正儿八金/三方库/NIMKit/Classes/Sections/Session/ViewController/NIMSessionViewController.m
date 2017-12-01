@@ -76,11 +76,21 @@
 - (void)setupNav
 {
     [self setUpTitleView];
-    UIButton *button=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 30)];
-    [button setImage:[UIImage imageNamed:@"iv_back"] forState:UIControlStateNormal];
+//    UIButton *button=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 30)];
+//    [button setImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
+//
+//    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [button setImageEdgeInsets:UIEdgeInsetsMake(5, -5, 5, 20)];
+//    [button addTarget:self action:@selector(popself) forControlEvents:UIControlEventTouchUpInside];
     
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [button setImageEdgeInsets:UIEdgeInsetsMake(5, -5, 5, 20)];
+    UIButton *button=[[UIButton alloc]initWithFrame:CGRectMake( 0, 0, 50, 44)];
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;//左对齐
+    [button setImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
+    [button setImageEdgeInsets:UIEdgeInsetsMake(0 ,10, 0, 0)];
+    // 让返回按钮内容继续向左边偏移10
+    button.contentEdgeInsets = UIEdgeInsetsMake(0, -17, 0, 0);
+    
+    button.backgroundColor=[UIColor clearColor];
     [button addTarget:self action:@selector(popself) forControlEvents:UIControlEventTouchUpInside];
     
     NIMCustomLeftBarView *leftBarView = [[NIMCustomLeftBarView alloc] init];
@@ -749,7 +759,7 @@
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.titleLabel.font = [UIFont boldSystemFontOfSize:15.f];
     self.titleLabel.text = self.sessionTitle;
-    self.titleLabel.textColor = [UIColor whiteColor];
+    self.titleLabel.textColor = MAIN_COLOR;
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     
     self.subTitleLabel  = [[UILabel alloc] initWithFrame:CGRectZero];

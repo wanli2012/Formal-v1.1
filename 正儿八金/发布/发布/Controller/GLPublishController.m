@@ -13,7 +13,6 @@
 #import "GLPublish_TopicChooseController.h"//话题选择
 #import "NIMLocationViewController.h"
 #import "NIMKitLocationPoint.h"
-//#import <AMapSearchKit/AMapSearchAPI.h>
 
 static const CGFloat kPhotoViewMargin = 12.0;
 
@@ -27,14 +26,13 @@ static const CGFloat kPhotoViewMargin = 12.0;
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *toolView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewHeight;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewWidth;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewHeight;
 
 @property (weak, nonatomic) IBOutlet UILabel *communityNameLabel;//社区名Label
 @property (weak, nonatomic) IBOutlet UIButton *addressBtn;//选择地址Btn
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleTextFHeight;//标题高度
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topicTFHeight;//话题输入框高度
 
@@ -54,10 +52,9 @@ static const CGFloat kPhotoViewMargin = 12.0;
 @property (nonatomic, copy)NSString *topic;//话题
 
 /**
- *imagearr  商品图片数组
+ *imagearr  图片数组
  */
 @property (strong, nonatomic)  NSMutableArray *imagearr;
-
 
 @property(nonatomic,strong) CLGeocoder * geoCoder;
 
@@ -73,9 +70,9 @@ static const CGFloat kPhotoViewMargin = 12.0;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.textViewHeight.constant = 120;
     self.contentViewWidth.constant = kSCREEN_WIDTH;
-    self.contentViewHeight.constant = kSCREEN_WIDTH + kPhotoViewMargin + 130;
+    self.contentViewHeight.constant = kSCREEN_WIDTH + kPhotoViewMargin + 170;
     
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 130, kSCREEN_WIDTH, kSCREEN_HEIGHT)];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 180, kSCREEN_WIDTH, kSCREEN_HEIGHT)];
     scrollView.alwaysBounceVertical = YES;
     scrollView.scrollEnabled = NO;
     [self.contentView addSubview:scrollView];
@@ -151,16 +148,15 @@ static const CGFloat kPhotoViewMargin = 12.0;
         [SVProgressHUD showErrorWithStatus:@"还没选择发布的社区"];
         return;
     }
-    if (self.location.length == 0) {
-        [SVProgressHUD showErrorWithStatus:@"还没选择发布地点"];
-        return;
-    }
+//    if (self.location.length == 0) {
+//        [SVProgressHUD showErrorWithStatus:@"还没选择发布地点"];
+//        return;
+//    }
     if([self.contentTextV.text isEqualToString:_placeHoler] || [self.contentTextV.text isEqualToString:@""]){
         [SVProgressHUD showErrorWithStatus:@"请输入发布内容"];
         return;
     }
-    
-    
+    self.location = @"成都金牛区-万达";
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     dic[@"token"] = [UserModel defaultUser].token;
     dic[@"uid"] = [UserModel defaultUser].userId;
@@ -179,26 +175,22 @@ static const CGFloat kPhotoViewMargin = 12.0;
     [manager setSecurityPolicy:[NetworkManager customSecurityPolicy]];
     [manager POST:[NSString stringWithFormat:@"%@%@",URL_Base,kPUBLISH_POST_URL] parameters:dic constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         //将图片以表单形式上传
-        
-        [self.imagearr removeLastObject];
-        
+
         for (int i = 0; i < self.imagearr.count; i ++) {
             
-            NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
-            formatter.dateFormat=@"yyyyMMddHHmmss";
-            NSString *str=[formatter stringFromDate:[NSDate date]];
-            NSString *fileName=[NSString stringWithFormat:@"%@%d.png",str,i];
+            NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+            formatter.dateFormat = @"yyyyMMddHHmmss";
+            NSString *str = [formatter stringFromDate:[NSDate date]];
+            NSString *fileName = [NSString stringWithFormat:@"%@%d.png",str,i];
             NSString *title = [NSString stringWithFormat:@"picture[%zd]",i];
             
             NSData *data = UIImageJPEGRepresentation(self.imagearr[i], 0.2);
-            
             [formData appendPartWithFileData:data name:title fileName:fileName mimeType:@"image/png"];
         }
         
     }progress:^(NSProgress *uploadProgress){
         
         [SVProgressHUD showProgress:uploadProgress.fractionCompleted status:[NSString stringWithFormat:@"上传中%.0f%%",(uploadProgress.fractionCompleted * 100)]];
-        
         if (uploadProgress.fractionCompleted == 1.0) {
             [SVProgressHUD dismiss];
         }
@@ -207,12 +199,10 @@ static const CGFloat kPhotoViewMargin = 12.0;
         
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
         
-        
         if ([dic[@"code"] integerValue] == SUCCESS_CODE) {
             
             [SVProgressHUD showSuccessWithStatus:dic[@"message"]];
             [self dismissViewControllerAnimated:YES completion:nil];
-            
         }else{
             
             [SVProgressHUD showErrorWithStatus:dic[@"message"]];
@@ -237,8 +227,6 @@ static const CGFloat kPhotoViewMargin = 12.0;
 
 #pragma mark - NIMLocationViewControllerDelegate
 - (void)onSendLocation:(NIMKitLocationPoint *)locationPoint{
-    
-//    NSLog(@" name = %@----thoroughfare = %@----locality = %@------subThoroughfare = %@,----administrativeArea = %@----subAdministrativeArea = %@----subLocality=%@----dic = %@",locationPoint.mark.name,locationPoint.mark.thoroughfare,locationPoint.mark.locality,locationPoint.mark.subThoroughfare,locationPoint.mark.administrativeArea,locationPoint.mark.subAdministrativeArea,locationPoint.mark.subLocality,locationPoint.mark.addressDictionary);
     
     self.location = [NSString stringWithFormat:@"%@%@%@",locationPoint.mark.locality,locationPoint.mark.subLocality,locationPoint.mark.thoroughfare];
     [self.addressBtn setTitle:self.location forState:UIControlStateNormal];
@@ -334,6 +322,7 @@ static const CGFloat kPhotoViewMargin = 12.0;
                 [weakself.imagearr insertObject:result atIndex:0];
         }];
     }
+    
 }
 
 - (void)photoView:(HXPhotoView *)photoView deleteNetworkPhoto:(NSString *)networkPhotoUrl {
@@ -343,7 +332,6 @@ static const CGFloat kPhotoViewMargin = 12.0;
 - (void)photoView:(HXPhotoView *)photoView updateFrame:(CGRect)frame {
 
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, CGRectGetMaxY(frame) + kPhotoViewMargin);
-    
 }
 
 #pragma mark - 懒加载

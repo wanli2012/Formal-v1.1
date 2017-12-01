@@ -12,6 +12,8 @@
 #import "GLMine_PersonInfoController.h"//个人信息
 #import "GLMine_EventController.h"//活动
 #import "GLMine_MyPostController.h"//我的帖子
+#import "GLMine_MyConcernController.h"//我关注的帖子
+#import "GLMine_ApplyRecordController.h"//申请记录
 
 @interface GLMineController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -139,7 +141,7 @@
 #pragma mark  UITableViewDelegate UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 3;
+    return self.titleArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -164,20 +166,30 @@
     switch (indexPath.row) {
         case 0:
         {
+            GLMine_MyConcernController *myConcernVC = [[GLMine_MyConcernController alloc] init];
+            [self.navigationController pushViewController:myConcernVC animated:YES];
             
         }
             break;
         case 1:
         {
-            GLMine_EventController * eventVC = [[GLMine_EventController alloc] init];
-            [self.navigationController pushViewController:eventVC animated:YES];
-            
+            GLMine_MyPostController *myPostVC = [[GLMine_MyPostController alloc] init];
+            myPostVC.targetUID = [UserModel defaultUser].userId;
+            myPostVC.targetGroupID = [UserModel defaultUser].groupid;
+            myPostVC.isHiddenBottomView = YES;
+            [self.navigationController pushViewController:myPostVC animated:YES];
         }
             break;
         case 2:
         {
-            GLMine_MyPostController *myPostVC = [[GLMine_MyPostController alloc] init];
-            [self.navigationController pushViewController:myPostVC animated:YES];
+            GLMine_ApplyRecordController * eventVC = [[GLMine_ApplyRecordController alloc] init];
+            [self.navigationController pushViewController:eventVC animated:YES];
+        }
+            break;
+        case 3:
+        {
+            GLMine_ApplyRecordController * eventVC = [[GLMine_ApplyRecordController alloc] init];
+            [self.navigationController pushViewController:eventVC animated:YES];
         }
             break;
             
@@ -190,16 +202,15 @@
 
 #pragma mark -
 #pragma mark lazy
-
 - (NSArray *)imageArr{
     if (!_imageArr) {
-        _imageArr = @[@"我关注的社区",@"活动",@"商城模块"];
+        _imageArr = @[@"我关注的社区",@"活动",@"商城模块",@"商城模块"];
     }
     return _imageArr;
 }
 - (NSArray *)titleArr{
     if (!_titleArr) {
-        _titleArr = @[@"我关注的社区",@"我参与的活动",@"商城模块"];
+        _titleArr = @[@"我关注的社区",@"我的帖子",@"申请记录",@"举报记录"];
     }
     return _titleArr;
 }

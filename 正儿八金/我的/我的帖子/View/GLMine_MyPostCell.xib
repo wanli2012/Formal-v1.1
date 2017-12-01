@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,11 +15,11 @@
             <rect key="frame" x="0.0" y="0.0" width="405" height="305"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="405" height="304"/>
+                <rect key="frame" x="0.0" y="0.0" width="405" height="304.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="吕斌是个傻逼,不管吕斌是个傻,不管" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLY-Tf-eq8">
-                        <rect key="frame" x="80" y="12" width="315" height="16"/>
+                        <rect key="frame" x="80" y="12" width="265" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -100,23 +100,37 @@
                             <constraint firstAttribute="height" constant="15" id="vkF-EY-pJh"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CoH-NJ-Ake">
+                        <rect key="frame" x="345" y="0.0" width="60" height="40"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="2B2-XP-sMH"/>
+                        </constraints>
+                        <state key="normal" image="垃圾桶"/>
+                        <connections>
+                            <action selector="delete:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="zDf-QZ-FNM"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Z6I-I7-gGA" firstAttribute="top" secondItem="oM1-yu-Q5R" secondAttribute="top" id="0bc-D1-Cr3"/>
                     <constraint firstItem="BrK-ov-zUG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="0sV-Qn-3pQ"/>
                     <constraint firstAttribute="trailing" secondItem="xTd-k2-VlV" secondAttribute="trailing" id="6QX-DY-uTa"/>
                     <constraint firstItem="GLY-Tf-eq8" firstAttribute="centerY" secondItem="BrK-ov-zUG" secondAttribute="centerY" id="7zn-vX-Ub7"/>
+                    <constraint firstItem="CoH-NJ-Ake" firstAttribute="leading" secondItem="GLY-Tf-eq8" secondAttribute="trailing" id="E9g-4f-5tm"/>
                     <constraint firstItem="Z6I-I7-gGA" firstAttribute="leading" secondItem="BrK-ov-zUG" secondAttribute="leading" constant="25" id="Ilw-di-qhv"/>
                     <constraint firstItem="xTd-k2-VlV" firstAttribute="top" secondItem="gJ9-rJ-Zw5" secondAttribute="bottom" id="V5p-Pk-Haf"/>
                     <constraint firstItem="Wxc-YT-Eg6" firstAttribute="leading" secondItem="gJ9-rJ-Zw5" secondAttribute="trailing" constant="10" id="XLY-nG-7By"/>
                     <constraint firstAttribute="bottom" secondItem="xTd-k2-VlV" secondAttribute="bottom" id="YgX-gk-EAP"/>
+                    <constraint firstItem="CoH-NJ-Ake" firstAttribute="centerY" secondItem="BrK-ov-zUG" secondAttribute="centerY" id="cUq-ej-ldj"/>
                     <constraint firstItem="BrK-ov-zUG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="d5T-jV-kq0"/>
                     <constraint firstItem="oM1-yu-Q5R" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="eZm-bV-IbN"/>
                     <constraint firstItem="gJ9-rJ-Zw5" firstAttribute="centerY" secondItem="Wxc-YT-Eg6" secondAttribute="centerY" id="edV-8E-WyR"/>
+                    <constraint firstItem="CoH-NJ-Ake" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ej3-TT-pUH"/>
                     <constraint firstItem="b1z-8Y-HTe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="evG-ZN-Dnl"/>
+                    <constraint firstAttribute="trailing" secondItem="CoH-NJ-Ake" secondAttribute="trailing" id="fgT-Zj-yJr"/>
                     <constraint firstAttribute="trailing" secondItem="Z6I-I7-gGA" secondAttribute="trailing" constant="10" id="g4h-jL-6x3"/>
                     <constraint firstItem="Z6I-I7-gGA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="38.5" id="j8C-OQ-D7S"/>
-                    <constraint firstAttribute="trailing" secondItem="GLY-Tf-eq8" secondAttribute="trailing" constant="10" id="mkN-oi-Fle"/>
                     <constraint firstAttribute="trailing" secondItem="Wxc-YT-Eg6" secondAttribute="trailing" constant="10" id="p18-qP-qpi"/>
                     <constraint firstItem="xTd-k2-VlV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="qAT-W1-Rq9"/>
                     <constraint firstItem="b1z-8Y-HTe" firstAttribute="top" secondItem="Z6I-I7-gGA" secondAttribute="bottom" id="vss-zO-Gup"/>
@@ -141,6 +155,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="垃圾桶" width="14" height="15"/>
         <image name="浏览" width="17" height="17"/>
         <image name="火" width="17" height="17"/>
         <image name="评论" width="15" height="15"/>

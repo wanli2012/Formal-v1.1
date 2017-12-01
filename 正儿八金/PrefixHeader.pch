@@ -86,6 +86,7 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
 #define kMODIFY_INFO_URL @"User/PartnerInformation"//用户修改个人信息接口
 #define kREFRESH_URL @"User/PartnerUser"//用户修改个人信息接口
 #define kCITY_INFO_URL @"User/PartnerAreas"//获取城市的3级联动数据
+#define kDEL_POST_URL @"PostBar/PostDel"//删除帖子
 
 
 #define FONT(s)       [UIFont systemFontOfSize:s]

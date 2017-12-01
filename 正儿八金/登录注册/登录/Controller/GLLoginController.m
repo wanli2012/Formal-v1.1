@@ -116,7 +116,6 @@
             [UserModel defaultUser].user_name = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"user_name"]];
             [UserModel defaultUser].acc_id = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"acc_id"]];
             [UserModel defaultUser].cloud_token = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"cloud_token"]];
-            
             [UserModel defaultUser].loginstatus = YES;
             [usermodelachivar achive];
         

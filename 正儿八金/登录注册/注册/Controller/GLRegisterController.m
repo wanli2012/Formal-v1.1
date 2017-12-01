@@ -137,7 +137,7 @@
         return;
     }
     
-    if (self.codeTF.text.length <= 0) {
+    if (self.codeTF.text.length == 0) {
         [MBProgressHUD showError:@"请输入验证码"];
         return;
     }
@@ -147,15 +147,15 @@
     dic[@"userphone"] = self.phoneTF.text;
     dic[@"password"] = self.pwdTF.text;
     dic[@"confirmpwd"] = self.pwdEnsureTF.text;
-    
+    dic[@"verification"] = self.codeTF.text;
     
     _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
     [NetworkManager requestPOSTWithURLStr:kREGISTER_URL paramDic:dic finish:^(id responseObject) {
         [_loadV removeloadview];
         
-        if ([responseObject[@"code"] integerValue] == 104) {
+        if ([responseObject[@"code"] integerValue] == SUCCESS_CODE) {
             
-            [MBProgressHUD showSuccess:responseObject[@"发送成功"]];
+            [MBProgressHUD showSuccess:responseObject[@"message"]];
             [self wxs_dismissViewControllerAnimated:YES completion:nil];
             
         }else{

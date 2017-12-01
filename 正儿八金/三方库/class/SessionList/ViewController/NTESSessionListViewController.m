@@ -83,13 +83,28 @@
 
 - (void)onSelectedRecent:(NIMRecentSession *)recent atIndexPath:(NSIndexPath *)indexPath{
 
-    GLFriendController *friendvc = (GLFriendController*)self.nextResponder.nextResponder;
+    GLFriendController *friendvc = [self viewController];
     friendvc.hidesBottomBarWhenPushed = YES;
     NTESSessionViewController *vc = [[NTESSessionViewController alloc] initWithSession:recent.session];
     [friendvc.navigationController pushViewController:vc animated:YES];
+    friendvc.hidesBottomBarWhenPushed = NO;
 
 }
-
+/**
+ *  获取父视图的控制器
+ *
+ *  @return 父视图的控制器
+ */
+- (GLFriendController *)viewController
+{
+    for (UIView* next = [self.view superview]; next; next = next.superview) {
+        UIResponder *nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[GLFriendController class]]) {
+            return (GLFriendController *)nextResponder;
+        }
+    }
+    return nil;
+}
 - (void)onSelectedAvatar:(NIMRecentSession *)recent
              atIndexPath:(NSIndexPath *)indexPath{
       GLFriendController *friendvc = (GLFriendController*)self.nextResponder.nextResponder;
@@ -283,7 +298,7 @@
     NSAttributedString *content;
     if (recent.lastMessage.messageType == NIMMessageTypeCustom)
     {
-        NIMCustomObject *object = recent.lastMessage.messageObject;
+        NIMCustomObject *object = (NIMCustomObject *)recent.lastMessage.messageObject;
         NSString *text = @"";
         if ([object.attachment isKindOfClass:[NTESSnapchatAttachment class]])
         {
@@ -331,7 +346,6 @@
     return attContent;
 }
 
-
 - (void)checkNeedAtTip:(NIMRecentSession *)recent content:(NSMutableAttributedString *)content
 {
     if ([NTESSessionUtil recentSessionIsAtMark:recent]) {
@@ -350,7 +364,6 @@
             [content insertAttributedString:atTip atIndex:0];
         }
     }
-    
 }
 
 @end

@@ -23,6 +23,7 @@
 @property (nonatomic, copy)NSString  *token;
 @property (nonatomic, copy)NSString  *user_name;//用户名
 @property (nonatomic, copy)NSString  *icon;//用户等级图标
+@property (nonatomic, copy)NSString  *region;//用户所在位置
 
 @property (nonatomic, copy)NSString  *acc_id;//用户云信id
 @property (nonatomic, copy)NSString  *cloud_token;//用户云信token

@@ -51,6 +51,12 @@
 - (IBAction)comment:(id)sender {
     
 }
+//删除
+- (IBAction)delete:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(deleteThePost:)]) {
+        [self.delegate deleteThePost:self.index];
+    }
+}
 
 - (void)setModel:(GLMine_MyPost *)model{
     _model = model;

@@ -172,7 +172,6 @@
             }
         }];
     }];
-
 }
 
 -(void)setUp{
@@ -245,7 +244,6 @@
     }
 
     return _goodFriendsHeaderView;
-
 }
 
 - (void)replaceFromOldViewController:(UIViewController *)oldVc toNewViewController:(UIViewController *)newVc{

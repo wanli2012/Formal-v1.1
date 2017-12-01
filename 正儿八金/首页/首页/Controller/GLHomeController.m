@@ -9,8 +9,8 @@
 #import "GLHomeController.h"
 
 #import "GLHome_AttentionController.h"
-#import "GLHome_NewController.h"
 #import "GLHome_hotController.h"
+//#import "GLHome_NewController.h"
 
 #import "GLMessageController.h"//消息
 #import "GLHome_SearchController.h"//搜索

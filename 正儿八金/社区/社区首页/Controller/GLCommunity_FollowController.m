@@ -252,7 +252,7 @@
                     [self.models removeObjectAtIndex:indexPath.row];
                     
                     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-                    
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"GLCommunity_Attend_Notification" object:nil];
                 }else{
                     
                     [MBProgressHUD showError:responseObject[@"message"]];

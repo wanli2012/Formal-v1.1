@@ -13,6 +13,8 @@
 
 - (void)clickToBigImage:(NSInteger)cellIndex index:(NSInteger)index;
 
+@optional
+- (void)deleteThePost:(NSInteger)cellIndex;
 @end
 
 @interface GLMine_MyPostCell : UITableViewCell

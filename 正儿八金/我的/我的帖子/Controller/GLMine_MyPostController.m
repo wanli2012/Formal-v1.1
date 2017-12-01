@@ -23,11 +23,13 @@
 
 @property (strong, nonatomic)LoadWaitView *loadV;
 @property (nonatomic, assign)NSInteger page;
-@property (nonatomic,strong)NodataView *nodataV;
+//@property (nonatomic,strong)NodataView *nodataV;
 
 @property (weak, nonatomic) IBOutlet UIImageView *picImageV;//头像
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;//用户名
 @property (weak, nonatomic) IBOutlet UILabel *gradeLabel;//级别
+@property (weak, nonatomic) IBOutlet UIImageView *gradeImageV;//等级图片
+
 @property (weak, nonatomic) IBOutlet UILabel *attentionLabel;//关注人数
 @property (weak, nonatomic) IBOutlet UILabel *fansLabel;//粉丝数
 @property (weak, nonatomic) IBOutlet UILabel *postLabel;//帖子数
@@ -35,6 +37,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *statusBtn;//是否关注了该用户
 
 @property (nonatomic, assign)BOOL  HideNavagation;//是否需要恢复自定义导航栏
+@property (weak, nonatomic) IBOutlet UIView *bottomView;//底部功能块
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewBottomConstrait;
 
 @end
 
@@ -49,8 +53,14 @@
     
     self.picImageV.layer.cornerRadius = self.picImageV.height/2;
     
-    [self.tableView addSubview:self.nodataV];
-    self.nodataV.hidden = YES;
+    if(self.isHiddenBottomView){
+        self.bottomView.hidden = YES;
+        self.tableViewBottomConstrait.constant = 0;
+    }else{
+        self.bottomView.hidden = NO;
+        self.tableViewBottomConstrait.constant = 50;
+    }
+
     __weak __typeof(self) weakSelf = self;
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
@@ -86,7 +96,7 @@
     self.attentionLabel.text =[NSString stringWithFormat:@"关注:%@",self.model.follow];
     self.fansLabel.text = [NSString stringWithFormat:@"粉丝:%@",self.model.fans];
     self.postLabel.text = [NSString stringWithFormat:@"帖子:%@",self.model.posts];
-    
+    [self.gradeImageV sd_setImageWithURL:[NSURL URLWithString:self.model.icon] placeholderImage:[UIImage imageNamed:PlaceHolderImage]];
     if ([self.model.status integerValue] == 1) {//查看人是否关注被查看人 1关注 2未关注 未登录查看默认2
         [self.statusBtn setTitle:@"已关注" forState:UIControlStateNormal];
         [self.statusBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
@@ -149,12 +159,13 @@
         }else if([responseObject[@"code"] integerValue] == NO_MORE_CODE){
             
             if(_page != 1){
-                [MBProgressHUD showError:responseObject[@"message"]];
+
+                [SVProgressHUD showErrorWithStatus:responseObject[@"message"]];
             }
             
         }else{
             
-            [MBProgressHUD showError:responseObject[@"message"]];
+            [SVProgressHUD showErrorWithStatus:responseObject[@"message"]];
         }
         
         [self.tableView reloadData];
@@ -164,7 +175,7 @@
         [self endRefresh];
         [_loadV removeloadview];
         [self.tableView reloadData];
-        [MBProgressHUD showError:error.localizedDescription];
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
         
     }];
 }
@@ -188,7 +199,7 @@
 
 #pragma mark - 关注
 - (IBAction)attent:(id)sender {
-    NSLog(@"关注");
+    
     if([UserModel defaultUser].loginstatus == NO){
         [MBProgressHUD showError:@"请先登录"];
         return;
@@ -218,13 +229,13 @@
             
         }else{
             
-            [MBProgressHUD showError:responseObject[@"message"]];
+           [SVProgressHUD showErrorWithStatus:responseObject[@"message"]];
         }
         
     } enError:^(NSError *error) {
         [self endRefresh];
         [_loadV removeloadview];
-        [MBProgressHUD showError:error.localizedDescription];
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
         
     }];
 }
@@ -254,18 +265,61 @@
     }
     jzAlbumVC.imgArr = arrM;//图片数组，可以是url，也可以是UIImage
     [self presentViewController:jzAlbumVC animated:NO completion:nil];
+}
 
+#pragma mark - 删除帖子
+- (void)deleteThePost:(NSInteger)cellIndex{
+    
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"你确定要删除该帖子吗?" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        dic[@"token"] = [UserModel defaultUser].token;
+        dic[@"uid"] = [UserModel defaultUser].userId;
+        dic[@"group"] = [UserModel defaultUser].groupid;
+        dic[@"post_id"] = self.model.post[cellIndex].post_id;
+        
+        _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+        [NetworkManager requestPOSTWithURLStr:kDEL_POST_URL paramDic:dic finish:^(id responseObject) {
+            
+            [self endRefresh];
+            [_loadV removeloadview];
+            
+            if ([responseObject[@"code"] integerValue] == SUCCESS_CODE) {
+                
+                [self.dataSourceArr removeObjectAtIndex:cellIndex];
+                [self.tableView reloadData];
+              
+            }else{
+                [SVProgressHUD showErrorWithStatus:responseObject[@"message"]];
+            }
+            
+        } enError:^(NSError *error) {
+            [self endRefresh];
+            [_loadV removeloadview];
+            [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+            
+        }];
+
+    }];
+    [alertVC addAction:cancel];
+    [alertVC addAction:ok];
+    [self presentViewController:alertVC animated:YES completion:nil];
+    
+    
 }
 
 #pragma mark - UITableViewDelegate UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    if (self.dataSourceArr.count <= 0 ) {
-        self.nodataV.hidden = NO;
-    }else{
-        self.nodataV.hidden = YES;
-    }
-    
+//    if (self.dataSourceArr.count <= 0 ) {
+//        self.nodataV.hidden = NO;
+//    }else{
+//        self.nodataV.hidden = YES;
+//    }
+//
     return self.dataSourceArr.count;
 }
 
@@ -283,11 +337,10 @@
     
     GLMine_MyPost *model = self.dataSourceArr[indexPath.row];
     return model.cellHeight;
-    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
     GLMine_MyPost *model = self.dataSourceArr[indexPath.row];
     self.hidesBottomBarWhenPushed = YES;
     GLCommunity_PostController *detailVC = [[GLCommunity_PostController alloc] init];
@@ -323,14 +376,14 @@
     return _dataSourceArr;
 }
 
--(NodataView*)nodataV{
-    
-    if (!_nodataV) {
-        _nodataV=[[NSBundle mainBundle]loadNibNamed:@"NodataView" owner:self options:nil].firstObject;
-        _nodataV.frame = CGRectMake(0, 230, kSCREEN_WIDTH, kSCREEN_HEIGHT - 64 - 49 - 49);
-    }
-    return _nodataV;
-    
-}
+//-(NodataView*)nodataV{
+//
+//    if (!_nodataV) {
+//        _nodataV=[[NSBundle mainBundle]loadNibNamed:@"NodataView" owner:self options:nil].firstObject;
+//        _nodataV.frame = CGRectMake(0, 230, kSCREEN_WIDTH, kSCREEN_HEIGHT - 64 - 49 - 49);
+//    }
+//    return _nodataV;
+//
+//}
 
 @end

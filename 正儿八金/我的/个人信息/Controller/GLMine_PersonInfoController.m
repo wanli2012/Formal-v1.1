@@ -47,7 +47,38 @@
     self.picImageV.layer.cornerRadius = self.picImageV.height / 2;
     
     [self.picImageV sd_setImageWithURL:[NSURL URLWithString:[UserModel defaultUser].portrait] placeholderImage:[UIImage imageNamed:@"个人信息头像底"]];
+    [self postRequest];
+}
+
+- (void)postRequest {
     
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[@"token"] = [UserModel defaultUser].token;
+    dict[@"uid"] = [UserModel defaultUser].userId;
+    dict[@"group"] = [UserModel defaultUser].groupid;
+    dict[@"type"] = @"1";//1查看信息 2修改信息头像和昵称 3修改城市地址
+    
+    _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
+    [NetworkManager requestPOSTWithURLStr:kMODIFY_INFO_URL paramDic:dict finish:^(id responseObject) {
+        
+        [_loadV removeloadview];
+        if ([responseObject[@"code"] integerValue] == SUCCESS_CODE){
+            
+            [UserModel defaultUser].region = responseObject[@"data"][@"region"];
+            [usermodelachivar achive];
+            [self.valueArr replaceObjectAtIndex:2 withObject:[UserModel defaultUser].region];
+            [SVProgressHUD showSuccessWithStatus:responseObject[@"message"]];
+            
+        }else{
+            
+            [SVProgressHUD showErrorWithStatus:responseObject[@"message"]];
+        }
+        
+        [self.tableView reloadData];
+    } enError:^(NSError *error) {
+        [_loadV removeloadview];
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -121,8 +152,8 @@
         dict[@"uid"] = [UserModel defaultUser].userId;
         dict[@"group"] = [UserModel defaultUser].groupid;
         dict[@"type"] = @"2";
-        dict[@"file_type"] = @"1";
         dict[@"user_name"] = [UserModel defaultUser].user_name;
+        dict[@"file_type"] = @"1";
         
         _loadV=[LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:self.view];
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -209,12 +240,11 @@
             break;
         case 1:
         {
-            NSLog(@"账号");
+            
         }
             break;
         case 2:
         {
-            NSLog(@"所在位置");
             [self modifyAddress];
         }
             break;
@@ -240,11 +270,9 @@
         }else{
             [SVProgressHUD showErrorWithStatus:responseObject[@"message"]];
         }
-        
     } enError:^(NSError *error) {
         [_loadV removeloadview];
         [MBProgressHUD showError:error.localizedDescription];
-        
     }];
 }
 
@@ -263,10 +291,43 @@
         weakself.provinceStrId = provinceid;
         weakself.cityStrId = cityd;
         weakself.countryStrId = areaid;
-        [weakself.valueArr replaceObjectAtIndex:2 withObject:str];
+//        [weakself.valueArr replaceObjectAtIndex:2 withObject:str];
         
         
-        [weakself.tableView reloadData];
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        dict[@"token"] = [UserModel defaultUser].token;
+        dict[@"uid"] = [UserModel defaultUser].userId;
+        dict[@"group"] = [UserModel defaultUser].groupid;
+        dict[@"type"] = @"3";//1查看信息 2修改信息头像和昵称 3修改城市地址
+        dict[@"file_type"] = @"2";//1上传新头像 2后台返回的头像路径提交 修改信息的时候传
+        dict[@"province"] = provinceid;
+        dict[@"city"] = cityd;
+        dict[@"area"] = areaid;
+        dict[@"portrait"] = [UserModel defaultUser].portrait;
+        
+        _loadV = [LoadWaitView addloadview:[UIScreen mainScreen].bounds tagert:weakself.view];
+        [NetworkManager requestPOSTWithURLStr:kMODIFY_INFO_URL paramDic:dict finish:^(id responseObject) {
+            
+            [_loadV removeloadview];
+            
+            if ([responseObject[@"code"] integerValue] == SUCCESS_CODE){
+                
+                [UserModel defaultUser].region = str;
+                [usermodelachivar achive];
+                [weakself.valueArr replaceObjectAtIndex:2 withObject:[UserModel defaultUser].region];
+                [SVProgressHUD showSuccessWithStatus:responseObject[@"message"]];
+                
+            }else{
+                
+                [SVProgressHUD showErrorWithStatus:responseObject[@"message"]];
+            }
+            
+            [weakself.tableView reloadData];
+        } enError:^(NSError *error) {
+            [_loadV removeloadview];
+            [weakself.tableView reloadData];
+        }];
+        
     };
 }
 
@@ -291,8 +352,8 @@
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext{
     
     return 0.5;
-    
 }
+
 -(void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext{
     if (_ishidecotr==YES) {
         UIView *toView = [transitionContext viewForKey:UITransitionContextToViewKey];
@@ -307,7 +368,6 @@
         } completion:^(BOOL finished) {
             
             [transitionContext completeTransition:YES]; //这个必须写,否则程序 认为动画还在执行中,会导致展示完界面后,无法处理用户的点击事件
-            
         }];
     }else{
         
@@ -322,15 +382,12 @@
                 [toView removeFromSuperview];
                 [transitionContext completeTransition:YES]; //这个必须写,否则程序 认为动画还在执行中,会导致展示完界面后,无法处理用户的点击事件
             }
-            
         }];
-        
     }
-
 }
 #pragma mark - 修改昵称
 - (void)modifyUserName {
-    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"昵称修改" message:@"what's your name?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"昵称修改" message:@"请输入你喜欢的用户名" preferredStyle:UIAlertControllerStyleAlert];
     
     [alertVC addTextFieldWithConfigurationHandler:^(UITextField *textField){
         textField.placeholder = @"请输入昵称";
@@ -396,7 +453,11 @@
 - (NSMutableArray *)valueArr{
     if (!_valueArr) {
         
-        _valueArr = [NSMutableArray arrayWithArray:@[[UserModel defaultUser].user_name,@"12345677",@"成都金牛万达写字楼"]];
+        if ([UserModel defaultUser].region.length == 0) {
+            [UserModel defaultUser].region = @"";
+            [usermodelachivar achive];
+        }
+        _valueArr = [NSMutableArray arrayWithArray:@[[UserModel defaultUser].user_name,[UserModel defaultUser].phone,[UserModel defaultUser].region]];
     }
     return _valueArr;
 }
